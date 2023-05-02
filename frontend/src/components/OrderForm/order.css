@@ -1,0 +1,38 @@
+.orderForm{
+  background-color: rgb(214, 225, 225);
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+  padding-bottom: 20px;
+  margin: 5% auto;
+}
+.forms{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.input_label{
+display: flex;
+flex-direction: column;
+ justify-content: center;
+  align-items: center;
+
+}
+ .lables{
+flex: 50%;
+font-size: 22px;
+justify-content: center;
+align-items: center;
+}
+.inputs{
+flex: 50%;
+justify-content: center;
+align-items: center;
+width: 350px;
+height: 40px;
+
+}

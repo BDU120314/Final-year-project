@@ -1,0 +1,54 @@
+.farmers {
+   background-color: rgb(237, 233, 233);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  margin: 2% auto;
+  text-align: center;
+  border-top-left-radius: 25%;
+}
+.farmer-registration-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  width: 80%;
+  max-width: 600px;
+  padding-bottom: 100px;
+}
+.label_input{
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 20px;
+  
+}
+#fname, #lname, #birth_date, #address{
+  margin-left: 10px;
+}
+#email, #id{
+  margin-left: 40px;
+}
+
+label {
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+button {
+  margin-top: 15px 0 40px 0;
+  padding: 8px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3e8e41;
+}
