@@ -11,19 +11,34 @@ const RegistrationFormate = ({typeName, fname, mname, lname, email, password, us
         </div>
         <div className="formate_input_label">
           <label htmlFor="fname">{fname}</label>
-          <input type="text" name="fname" id="fname" />
+          <input type="text" name="fname" id="fname" 
+            pattern="^[A-Z]\w*$"
+            oninvalid="this.setCustomValidity
+            ('please make first letter of your name as capital')"
+            onchange="try{setCustomValidity('')} catch(e){}"
+          />
         </div>
         <div className="formate_input_label">
           <label htmlFor="mname">{mname}</label>
-          <input type="text" name="mName" id="mname" />
+          <input type="text" name="mName" id="mname" 
+            pattern="^[A-Z]\w*$"
+            oninvalid="this.setCustomValidity
+            ('please make first letter of your name as capital')"
+            onchange="try{setCustomValidity('')} catch(e){}"/>
         </div>
         <div className="formate_input_label">
           <label htmlFor="lname">{lname}</label>
-          <input type="text" name="lName" id="lname" />
+          <input type="text" name="lName" id="lname" 
+            pattern="^[A-Z]\w*$"
+            oninvalid="this.setCustomValidity
+            ('please make first letter of your name as capital')"
+            onchange="try{setCustomValidity('')} catch(e){}"/>
         </div>
         <div className="formate_input_label">
           <label htmlFor="email">{email}</label>
-          <input type="text" name="email" id="email" />
+          <input type="text" name="email" id="email" 
+           oninvalid="this.setCustomValidity ('please inter the valid email')" onchange="try{setCustomValidity('')} catch(e){}"
+          />
         </div>
         <div className="formate_input_label">
           <label htmlFor="password">{password}</label>

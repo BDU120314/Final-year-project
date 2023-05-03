@@ -11,18 +11,7 @@ app.use(bodyparser.json());
 //register farmers
 app.post("/register", (req, res) => {
   const {fname, mname, lname, birth_date, email, address, phone_number, land_amount, user_name,password, id} = req.body
-  // const fname = req.body.fname;
-  // const mname = req.body.mname;
-  // const lname = req.body.lname;
-  // const birth_date = req.body.birth_date;
-  // const email = req.body.email;
-  // const password = req.body.password;
-  // const user_name = req.body.user_name;
-  // const address = req.body.fname;
-  // const id = req.body.id;
-  // const land_amount = req.body.land_amount;
-  // const phone_number = req.body.phone_number;
-
+  
   var sql =
     "INSERT INTO farmers (fname, mname, lname, birth_date, email, address, phone_number, land_amount, user_name,password, id) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
   db.query(sql,  [fname, mname, lname, birth_date, email, address, phone_number, land_amount, user_name,password, id], (error, result) => {
