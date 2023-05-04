@@ -19,12 +19,12 @@
 display: flex;
 flex-direction: column;
  justify-content: center;
-  align-items: center;
+  align-items: left;
 
 }
  .lables{
 flex: 50%;
-font-size: 22px;
+font-size: 18px;
 justify-content: center;
 align-items: center;
 }
