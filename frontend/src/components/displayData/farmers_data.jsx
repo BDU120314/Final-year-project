@@ -1,12 +1,24 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./farmers_data.css";
+import { Link } from "react-router-dom";
 const FarmersData = () => {
   const [farmersData, setFarmersData] = useState([]);
 
   const handleDelete = (id) => {
     axios
       .delete(`http://localhost:5000/api/v1/farmers/delete/${id}`)
+      .then((response) => {
+        setFarmersData(farmersData.filter((item) => item.id !== id));
+        console.log(`deleted user id :${id}`);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const handleUpdate = (id) => {
+    axios
+      .put(`http://localhost:5000/api/v1/farmers/update/${id}`)
       .then((response) => {
         setFarmersData(farmersData.filter((item) => item.id !== id));
         console.log(`deleted user id :${id}`);
@@ -53,7 +65,7 @@ const FarmersData = () => {
                 <td>{datas.user_name}</td>
                 <td>{datas.id}</td>
                 <td>
-                  <button className="btn edit">Edit</button>
+                  <Link to={`/update/ ${datas.id}`} className="btn edit">Edit</Link>
                   <button className="btn view">View</button>
                   <button
                     className="btn delete"
