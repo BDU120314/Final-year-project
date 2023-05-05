@@ -60,10 +60,9 @@ const getAllFarmers = (req, res) => {
 const GetSingleFarmer = (req, res) => {
   const id = req.params.id;
   const sql = `SELECT * FROM farmers where id = "${id}"`;
-  db.query(sql, (err, data, field) => {
+  db.query(sql, (err, rows, field) => {
     if (!err) {
-      res.send(data);
-      console.log(`user exist in id ${id}`);
+      res.send(rows);
     } else console.log(err);
   });
 };

@@ -4,29 +4,28 @@ import FarmersData from './components/displayData/farmers_data';
 import FarmerUpdate from './components/registrationForm/FarmerUpdate';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import FarmerRegistrationForm from './components/registrationForm/FarmersForm';
+import { Route, Routes } from 'react-router-dom';
+import DisplaySingleData from './components/displayData/displaySingleData';
+ 
 //import RegistrationFormate from './components/formate/registrationFormate';
 // import OrderFOrm from './components/OrderForm/order';
-//import FarmerRegistrationForm from './components/registrationForm/FarmersForm';
+// import FarmerRegistrationForm from './components/registrationForm/FarmersForm';
 const App = () => {
   return (
-    <BrowserRouter>
-  <div className="App">
-    
-    
-       <Routes>
-        <Route path='/' element={<FarmersData />} />
-        <Route path='/update/:id' element={<FarmerUpdate />} />
+ 
+    <div className="App">
+      {/* <FarmerRegistrationForm /> */}
+      <Routes>
+        <Route path='/' element= {<FarmersData />}/>
+        <Route path="/view/:id" element={<DisplaySingleData />} />
+      </Routes>
 
-       </Routes>
-    
-    
-  {/* <FarmerRegistrationForm /> */}
-  {/* <OrderFOrm /> */}
-  {/* <RegistrationFormate typeName="Woreda" fname="First name" mname="Father name" lname="grand father name" email="Email" password
+      {/* <OrderFOrm /> */}
+      {/* <RegistrationFormate typeName="Woreda" fname="First name" mname="Father name" lname="grand father name" email="Email" password
   ="Password" user_name="User Name" phone_number="phone number" id="Id"/> */}
-  </div>
-  </BrowserRouter>)
-  ;
+    </div>
+  );
+ 
 }
 
 export default App
