@@ -68,14 +68,6 @@ const FarmersData = () => {
  
                   <Link to={`/update/ ${datas.id}`} className="btn edit">Edit</Link>
                   <button className="btn view">View</button>
- 
-                  <button className="btn edit">Edit</button>
-                  <button
-                    className="btn view"
-                  >
-                    <Link to={`/view/${datas.id}`}>View</Link>
-                  </button>
- 
                   <button
                     className="btn delete"
                     onClick={() => handleDelete(datas.id)}
