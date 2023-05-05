@@ -35,8 +35,12 @@ thead th td:last-child {
   border: none;
   border-radius: 5px;
   margin: 10px;
+ 
   cursor: pointer;
-}
+ 
+  color:white;
+  text-decoration: none;
+ }
 .edit{
   background-color: blue;
   
@@ -47,5 +51,9 @@ thead th td:last-child {
 }
 .delete{
   background-color: red;
+}
+.link{
+  color: white;
+  text-decoration: none;
 }
 

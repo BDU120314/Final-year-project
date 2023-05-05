@@ -66,12 +66,13 @@ const FarmersData = () => {
                 <td>{datas.id}</td>
                 <td>
                   <button className="btn edit">
-                    <Link to={`/update/${datas.id}`} className="btn edit">
+
+                    <Link to={`/update/${datas.id}`} className="link">
                       Edit
                     </Link>
                   </button>
                   <button className="btn view">
-                    <Link to={`/view/${datas.id}`}>View</Link>
+                    <Link to={`/view/${datas.id}`} className="link">View</Link>
                   </button>
                   <button
                     className="btn delete"
