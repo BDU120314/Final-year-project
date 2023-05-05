@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./farmers_data.css";
+import { Link } from "react-router-dom";
 const FarmersData = () => {
   const [farmersData, setFarmersData] = useState([]);
 
@@ -54,7 +55,11 @@ const FarmersData = () => {
                 <td>{datas.id}</td>
                 <td>
                   <button className="btn edit">Edit</button>
-                  <button className="btn view">View</button>
+                  <button
+                    className="btn view"
+                  >
+                    <Link to={`/view/${datas.id}`}>View</Link>
+                  </button>
                   <button
                     className="btn delete"
                     onClick={() => handleDelete(datas.id)}
