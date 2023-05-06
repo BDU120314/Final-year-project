@@ -14,17 +14,18 @@ const RegistrationFormate = ({ typeName }) => {
     rep_phone_number: "",
     id: "",
   });
-   const {
-     type_name,
-     rep_fname,
-     rep_mname,
-     rep_lname,
-     email,
-     rep_password,
-     rep_user_name,
-     rep_phone_number,
-     id,
-   } = formData;
+  
+  const {
+    woreda_name,
+    rep_fname,
+    rep_mname,
+    rep_lname,
+    email,
+    rep_password,
+    rep_user_name,
+    rep_phone_number,
+    id,
+  } = formData;
 
   const handleChange = (e) => {
     setFormData((prevState) => ({
@@ -35,30 +36,35 @@ const RegistrationFormate = ({ typeName }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-   try {
-    await axios.post(
-      "http://localhost:5000/api/v1/woreda",
-      formData
-    );
-    alert("user successfully register")
-  } catch (error) {
-    console.log(error);
-  }
- 
-      setFormData({
-       woreda_name: "",
-        rep_fname: "",
-        rep_mname: "",
-        rep_lname: "",
-        email: "",
-        rep_password: "",
-        rep_user_name: "",
-        rep_phone_number: "",
-        id: "",
-      });
-   };
-  
+    try {
+      await axios.post("http://localhost:5000/api/v1/woreda", formData);
+      alert("user successfully registered");
+    } catch (error) {
+      console.log(error);
+    }
+    setFormData({
+      woreda_name: "",
+      rep_fname: "",
+      rep_mname: "",
+      rep_lname: "",
+      email: "",
+      rep_password: "",
+      rep_user_name: "",
+      rep_phone_number: "",
+      id: "",
+    });
+  };
 
+  const validateName = (e) => {
+    if (!/^[A-Z][a-z]*$/.test(e.target.value)) {
+      e.target.setCustomValidity(
+        "እባክዎ ስምዎን በትክክል ያስገቡ"
+      );
+    } else {
+      e.target.setCustomValidity("");
+    }
+  };
+  
   return (
     <div className="formate">
       <h2>Registration Form</h2>
@@ -74,7 +80,8 @@ const RegistrationFormate = ({ typeName }) => {
             name="woreda_name"
             id="typeName"
             onChange={handleChange}
-            value={type_name}
+            value={woreda_name}
+            required
           />
         </div>
         <div className="formate_input_label">
@@ -84,7 +91,9 @@ const RegistrationFormate = ({ typeName }) => {
             name="rep_fname"
             id="fname"
             onChange={handleChange}
+            onBlur={validateName} // added onBlur event to validate rep_fname
             value={rep_fname}
+            required
           />
         </div>
         <div className="formate_input_label">
@@ -94,7 +103,9 @@ const RegistrationFormate = ({ typeName }) => {
             name="rep_mname"
             id="mname"
             onChange={handleChange}
+            onBlur={validateName} 
             value={rep_mname}
+            required
           />
         </div>
         <div className="formate_input_label">
@@ -104,12 +115,20 @@ const RegistrationFormate = ({ typeName }) => {
             name="rep_lname"
             id="lname"
             onChange={handleChange}
+            onBlur={validateName} 
             value={rep_lname}
+            required
           />
         </div>
         <div className="formate_input_label">
           <label htmlFor="email">Email</label>
-          <input type="text" name="email" id="email" value={email} onChange={handleChange} />
+          <input
+            type="text"
+            name="email"
+            id="email"
+             value={email}
+            onChange={handleChange}
+          />
         </div>
         <div className="formate_input_label">
           <label htmlFor="rep_password">Password</label>
@@ -118,7 +137,9 @@ const RegistrationFormate = ({ typeName }) => {
             name="rep_password"
             id="password"
             onChange={handleChange}
-            value={rep_password}
+            value={formData.rep_password}
+            required
+
           />
         </div>
         <div className="formate_input_label">
@@ -128,16 +149,8 @@ const RegistrationFormate = ({ typeName }) => {
             name="rep_user_name"
             id="rep_user_name"
             onChange={handleChange}
- 
             value={formData.rep_user_name}
             required
-            pattern="^[A-Z]\w*$"
-            oninvalid="this.setCustomValidity
-            ('please make first letter of your name as capital')"
-            onchange="try{setCustomValidity('')} catch(e){}"
- 
-            value={rep_user_name}
- 
           />
         </div>
         <div className="formate_input_label">
@@ -147,7 +160,9 @@ const RegistrationFormate = ({ typeName }) => {
             name="rep_phone_number"
             id="tel"
             onChange={handleChange}
-            value={rep_phone_number}
+            value={formData.rep_phone_number}
+            required
+
           />
         </div>
         <div className="formate_input_label">
@@ -157,7 +172,9 @@ const RegistrationFormate = ({ typeName }) => {
             name="id"
             id="id"
             onChange={handleChange}
-            value={id}
+            value={formData.id}
+            required
+
           />
         </div>
         <div className="buttons">
