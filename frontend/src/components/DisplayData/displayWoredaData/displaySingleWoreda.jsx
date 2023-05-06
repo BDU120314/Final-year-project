@@ -9,15 +9,12 @@ const DisplaySingleWoreda = () => {
           <thead>
             <tr>
               <th>Woreda name</th>
-              <th>First name</th>
-              <th>Middle name</th>
-              <th>Birth_date</th>
+              <th>Rep_First name</th>
+              <th>Rep_Middle name</th>
               <th>Email</th>
-              <th>Address</th>
-              <th>Phone_number</th>
-              <th>Land amount</th>
-              <th>User name</th>
-              <th>password</th>
+              <th>Rep_Phone_number</th>
+              <th>Rep_User name</th>
+              <th>Rep_password</th>
               <th>Id</th>
             </tr>
           </thead>
