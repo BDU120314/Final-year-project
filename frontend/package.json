@@ -7,7 +7,11 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.4.0",
+ 
+    "cookie-parser": "^1.4.6",
+ 
     "eslint-plugin-react-hooks": "^5.0.0-canary-aef7ce554-20230503",
+ 
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.11.1",

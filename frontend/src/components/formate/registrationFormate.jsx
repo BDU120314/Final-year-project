@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import "./formate.css";
 import axios from "axios";
+
+
+
 const RegistrationFormate = ({ typeName }) => {
   const [formData, setFormData] = useState({
     woreda_name: "",
@@ -14,7 +17,7 @@ const RegistrationFormate = ({ typeName }) => {
     id: "",
   });
    const {
-     woreda_name,
+     type_name,
      rep_fname,
      rep_mname,
      rep_lname,
@@ -25,19 +28,25 @@ const RegistrationFormate = ({ typeName }) => {
      id,
    } = formData;
 
-   const handleChange = (e) => {
-     const { name, value } = e.target;
-     setFormData((prevState) => ({
-       ...prevState,
-       [name]: value,
-     }));
-   };
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
    try {
-    await  axios.post("url", formData);
-      alert("user succssfully register");
+    await axios.post(
+      "http://localhost:5000/api/v1/woreda",
+      formData
+    );
+    alert("user successfully register")
+  } catch (error) {
+    console.log(error);
+  }
+ 
       setFormData({
        woreda_name: "",
         rep_fname: "",
@@ -49,16 +58,14 @@ const RegistrationFormate = ({ typeName }) => {
         rep_phone_number: "",
         id: "",
       });
-   } catch (error) {
-    console.log(error)
-   }
-  };
+   };
+  
 
   return (
    
     <div className="formate">
       <h2>Registration Form</h2>
-      <form action="" className="formate_form" onSubmit={handleSubmit}>
+      <form action="farmer-registration-form" className="formate_form" onSubmit={handleSubmit}>
         <div className="formate_input_label">
           <label htmlFor="typeName">{typeName}</label>
           <input
@@ -66,14 +73,14 @@ const RegistrationFormate = ({ typeName }) => {
             name="woreda_name"
             id="typeName"
             onChange={handleChange}
-            value={woreda_name}
+            value={type_name}
           />
         </div>
         <div className="formate_input_label">
           <label htmlFor="fname">First Name</label>
           <input
             type="text"
-            name="rep_fname"
+            name="fname"
             id="fname"
             onChange={handleChange}
             value={rep_fname}
@@ -83,7 +90,7 @@ const RegistrationFormate = ({ typeName }) => {
           <label htmlFor="mname">Middle Name</label>
           <input
             type="text"
-            name="rep_mname"
+            name="mName"
             id="mname"
             onChange={handleChange}
             value={rep_mname}
@@ -93,7 +100,7 @@ const RegistrationFormate = ({ typeName }) => {
           <label htmlFor="lname">Last Name</label>
           <input
             type="text"
-            name="rep_lname"
+            name="lName"
             id="lname"
             onChange={handleChange}
             value={rep_lname}
@@ -101,13 +108,7 @@ const RegistrationFormate = ({ typeName }) => {
         </div>
         <div className="formate_input_label">
           <label htmlFor="email">Email</label>
-          <input
-            type="text"
-            name="email"
-            id="email"
-            onChange={handleChange}
-            value={email}
-          />
+          <input type="text" name="email" id="email"  value={formData.email}/>
         </div>
         <div className="formate_input_label">
           <label htmlFor="password">Password</label>
@@ -116,7 +117,7 @@ const RegistrationFormate = ({ typeName }) => {
             name="rep_password"
             id="password"
             onChange={handleChange}
-            value={rep_password}
+            value={formData.rep_password}
           />
         </div>
         <div className="formate_input_label">
@@ -126,7 +127,7 @@ const RegistrationFormate = ({ typeName }) => {
             name="rep_user_name"
             id="username"
             onChange={handleChange}
-            value={rep_user_name}
+            value={formData.rep_user_name}
           />
         </div>
         <div className="formate_input_label">
@@ -136,7 +137,7 @@ const RegistrationFormate = ({ typeName }) => {
             name="rep_phone_number"
             id="tel"
             onChange={handleChange}
-            value={rep_phone_number}
+            value={ formData.rep_phone_number}
           />
         </div>
         <div className="formate_input_label">
@@ -146,7 +147,7 @@ const RegistrationFormate = ({ typeName }) => {
             name="id"
             id="id"
             onChange={handleChange}
-            value={id}
+            value={formData.id}
           />
         </div>
         <div className="buttons">
