@@ -68,16 +68,6 @@ const FarmersData = () => {
 
                 <td>
  
-                  <button className="btn edit">
-
-                    <Link to={`/update/${datas.id}`} className="link">
-                      Edit
-                    </Link>
-                  </button>
-                  <button className="btn view">
-                    <Link to={`/view/${datas.id}`} className="link">View</Link>
-                  </button>
- 
                   <Link to={`/update/${datas.id}`} className="link">
                     <button className="btn edit">Edit</button>
                   </Link>

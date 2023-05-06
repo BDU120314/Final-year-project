@@ -17,17 +17,19 @@ const App = () => {
     <div className="App">
       {/* <FarmerRegistrationForm /> */}
       <Routes>
-        <Route path="/" element={<FarmersData />} />
+        <Route path="/" element={RegistrationFormate} />
+        {/* <Route path="/" element={<FarmersData />} />
         <Route path="/view/:id" element={<DisplaySingleData />} />
 
         <Route  path='/update/:id' element={<FarmerUpdate />}/>
  
-        <Route path="/update/:id" element={<FarmerUpdate />} />
+        <Route path="/update/:id" element={<FarmerUpdate />} /> */}
  
       </Routes>
 
       {/* <OrderFOrm /> */}
       <RegistrationFormate typeName="Woreda" />
+
     </div>
   );
  
