@@ -1,9 +1,9 @@
 import React from 'react'
 import './App.css'
-import FarmersData from './components/displayData/farmers_data';
+import FarmersData from './components/displayFarmersData/farmers_data';
 import { Route, Routes } from 'react-router-dom';
-import DisplaySingleData from './components/displayData/displaySingleData';
-import FarmerUpdate from './components/displayData/farmerUpdate';
+import DisplaySingleData from './components/displayFarmersData/displaySingleData';
+import FarmerUpdate from './components/displayFarmersData/farmerUpdate';
 import RegistrationFormate from './components/formate/registrationFormate';
 // import OrderFOrm from './components/OrderForm/order';
 // import FarmerRegistrationForm from './components/registrationForm/FarmersForm';

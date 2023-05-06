@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../registrationForm/farmers.css";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 
 function FarmerUpdate() {
@@ -20,13 +20,15 @@ function FarmerUpdate() {
   });
 
   const { id } = useParams();
+   const navigate = useNavigate();
 
-  useEffect(() => {
-    axios.get(`http://localhost:5000/api/v1/farmers/${id}`).then((res) => {
-      setFormData(res.data[0]);
-      console.log(formData);
-    });
-  }, [formData]);
+useEffect(() => {
+  axios.get(`http://localhost:5000/api/v1/farmers/${id}`).then((res) => {
+    setFormData(res.data[0]);
+    console.log(res.data[0]);
+  });
+}, [id, setFormData]);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -35,16 +37,19 @@ function FarmerUpdate() {
         `http://localhost:5000/api/v1/farmers/update/${id}`,
         formData
       );
+      navigate("/");
       console.log(response);
     } catch (error) {
-      console.log(error);
+      alert(error)
     }
   };
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
+ const handleChange = (e) => {
+   setFormData((prevState) => ({
+     ...prevState,
+     [e.target.name]: e.target.value,
+   }));
+ };
   return (
     <div className="farmers">
       <div>
@@ -89,7 +94,7 @@ function FarmerUpdate() {
             type="date"
             id="birth_date"
             name="birth_date"
-            value={formData.birth_date}
+            value={formData.birth_date || ""}
             onChange={handleChange}
             required
           />

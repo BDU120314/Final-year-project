@@ -3,7 +3,7 @@ import "./formate.css";
 import axios from "axios";
 const RegistrationFormate = ({ typeName }) => {
   const [formData, setFormData] = useState({
-    type_name: "",
+    woreda_name: "",
     rep_fname: "",
     rep_mname: "",
     rep_lname: "",
@@ -14,7 +14,7 @@ const RegistrationFormate = ({ typeName }) => {
     id: "",
   });
    const {
-     type_name,
+     woreda_name,
      rep_fname,
      rep_mname,
      rep_lname,
@@ -25,12 +25,13 @@ const RegistrationFormate = ({ typeName }) => {
      id,
    } = formData;
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
+   const handleChange = (e) => {
+     const { name, value } = e.target;
+     setFormData((prevState) => ({
+       ...prevState,
+       [name]: value,
+     }));
+   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,7 +39,7 @@ const RegistrationFormate = ({ typeName }) => {
     await  axios.post("url", formData);
       alert("user succssfully register");
       setFormData({
-        type_name: "",
+       woreda_name: "",
         rep_fname: "",
         rep_mname: "",
         rep_lname: "",
@@ -62,17 +63,17 @@ const RegistrationFormate = ({ typeName }) => {
           <label htmlFor="typeName">{typeName}</label>
           <input
             type="text"
-            name="typename"
+            name="woreda_name"
             id="typeName"
             onChange={handleChange}
-            value={type_name}
+            value={woreda_name}
           />
         </div>
         <div className="formate_input_label">
           <label htmlFor="fname">First Name</label>
           <input
             type="text"
-            name="fname"
+            name="rep_fname"
             id="fname"
             onChange={handleChange}
             value={rep_fname}
@@ -82,7 +83,7 @@ const RegistrationFormate = ({ typeName }) => {
           <label htmlFor="mname">Middle Name</label>
           <input
             type="text"
-            name="mName"
+            name="rep_mname"
             id="mname"
             onChange={handleChange}
             value={rep_mname}
@@ -92,7 +93,7 @@ const RegistrationFormate = ({ typeName }) => {
           <label htmlFor="lname">Last Name</label>
           <input
             type="text"
-            name="lName"
+            name="rep_lname"
             id="lname"
             onChange={handleChange}
             value={rep_lname}
@@ -112,7 +113,7 @@ const RegistrationFormate = ({ typeName }) => {
           <label htmlFor="password">Password</label>
           <input
             type="text"
-            name="password"
+            name="rep_password"
             id="password"
             onChange={handleChange}
             value={rep_password}
@@ -122,7 +123,7 @@ const RegistrationFormate = ({ typeName }) => {
           <label htmlFor="username">User Name</label>
           <input
             type="text"
-            name="userName"
+            name="rep_user_name"
             id="username"
             onChange={handleChange}
             value={rep_user_name}
@@ -132,7 +133,7 @@ const RegistrationFormate = ({ typeName }) => {
           <label htmlFor="tel">Phone Number</label>
           <input
             type="text"
-            name="phone"
+            name="rep_phone_number"
             id="tel"
             onChange={handleChange}
             value={rep_phone_number}
