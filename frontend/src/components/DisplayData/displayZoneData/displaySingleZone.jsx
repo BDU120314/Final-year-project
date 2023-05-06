@@ -4,11 +4,11 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import '../displayFarmersData/farmer.css'
 
-const DisplaySingleWoreda = () => {
+const DisplaySingleZone = () => {
   const [data, setData] = useState([]);
   const { id } = useParams();
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/v1/woreda/${id}`).then((res) => {
+    axios.get(`http://localhost:5000/api/v1/zone/${id}`).then((res) => {
       setData(res.data);
       console.log(data);
     });
@@ -20,7 +20,7 @@ const DisplaySingleWoreda = () => {
         <table>
           <thead>
             <tr>
-              <th>Woreda name</th>
+              <th>Zone name</th>
               <th>Rep_First name</th>
               <th>Rep_Middle name</th>
               <th>Email</th>
@@ -55,4 +55,4 @@ const DisplaySingleWoreda = () => {
   );
 };
 
-export default DisplaySingleWoreda;
+export default DisplaySingleZone;

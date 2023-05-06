@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import "./formate.css";
 import axios from "axios";
 
-const RegistrationFormate = ({ typeName }) => {
+const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
   const [formData, setFormData] = useState({
-    woreda_name: "",
+    [dataBaseColumn]: "",
     rep_fname: "",
     rep_mname: "",
     rep_lname: "",
@@ -14,10 +14,11 @@ const RegistrationFormate = ({ typeName }) => {
     rep_phone_number: "",
     id: "",
   });
-  
+   
+ 
   const {
-    woreda_name,
-    rep_fname,
+    [dataBaseColumn]: columnValue,
+     rep_fname,
     rep_mname,
     rep_lname,
     email,
@@ -36,15 +37,19 @@ const RegistrationFormate = ({ typeName }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      await axios.post("http://localhost:5000/api/v1/woreda", formData);
-      alert("user successfully registered");
+    try { 
+      await axios.post(
+        `http://localhost:5000/api/v1/${typeName.toLowerCase()}`,
+        formData
+      );
+      alert("User successfully registered");
     } catch (error) {
       console.log(error);
     }
+
     setFormData({
-      woreda_name: "",
-      rep_fname: "",
+      [dataBaseColumn]: "",
+       rep_fname: "",
       rep_mname: "",
       rep_lname: "",
       email: "",
@@ -74,15 +79,15 @@ const RegistrationFormate = ({ typeName }) => {
         onSubmit={handleSubmit}
       >
         <div className="formate_input_label">
-          <label htmlFor="typeName">{typeName}</label>
+          <label htmlFor={dataBaseColumn}>{typeName}</label>
           <input
             type="text"
-            name="woreda_name"
-            id="typeName"
+            name={dataBaseColumn}
+            id={dataBaseColumn}
             onChange={handleChange}
-            value={woreda_name}
-            required
-          />
+ 
+            value={columnValue}
+           />
         </div>
         <div className="formate_input_label">
           <label htmlFor="fname">First Name</label>
@@ -126,8 +131,9 @@ const RegistrationFormate = ({ typeName }) => {
             type="text"
             name="email"
             id="email"
-             value={email}
-            onChange={handleChange}
+ 
+            value={email}
+             onChange={handleChange}
           />
         </div>
         <div className="formate_input_label">

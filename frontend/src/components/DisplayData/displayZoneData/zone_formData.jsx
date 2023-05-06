@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "./farmers_data.css";
+import "../displayFarmersData/farmers_data.css";
 import { Link } from "react-router-dom";
-const FarmersData = () => {
-  const [farmersData, setFarmersData] = useState([]);
+const ZoneData = () => {
+  const [zoneData, setZoneData] = useState([]);
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:5000/api/v1/farmers/delete/${id}`)
+      .delete(`http://localhost:5000/api/v1/woreda/delete/${id}`)
       .then((response) => {
-        setFarmersData(farmersData.filter((item) => item.id !== id));
+        setZoneData(zoneData.filter((item) => item.id !== id));
         console.log(`deleted user id :${id}`);
       })
       .catch((error) => {
@@ -18,15 +18,15 @@ const FarmersData = () => {
   };
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/v1/farmers")
+      .get("http://localhost:5000/api/v1/woreda")
       .then((response) => {
-        setFarmersData(response.data);
-        console.log(farmersData);
+        setZoneData(response.data);
+        console.log(zoneData);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, [farmersData]);
+  }, [zoneData]);
 
   return (
     <div className="container">
@@ -39,22 +39,23 @@ const FarmersData = () => {
             <th>Email Address</th>
             <th>Phone Number</th>
             <th>User Name</th>
+            <th>Woreda Name</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          {farmersData.map((datas) => {
+          {zoneData.map((datas) => {
             return (
               <tr key={datas.id}>
                 <td>{datas.id}</td>
-                <td>{datas.fname} </td>
-                <td>{datas.mname}</td>
+                <td>{datas.rep_fname} </td>
+                <td>{datas.rep_mname}</td>
                 <td>{datas.email}</td>
-                <td>{datas.phone_number}</td>
-                <td>{datas.user_name}</td>
+                <td>{datas.rep_phone_number}</td>
+                <td>{datas.rep_user_name}</td>
+                <td>{datas.woreda_name}</td>
 
                 <td>
- 
                   <Link to={`/update/${datas.id}`} className="link">
                     <button className="btn edit">Edit</button>
                   </Link>
@@ -62,7 +63,7 @@ const FarmersData = () => {
                   <Link to={`/view/${datas.id}`} className="link">
                     <button className="btn view">View</button>{" "}
                   </Link>
- 
+
                   <button
                     className="btn delete"
                     onClick={() => handleDelete(datas.id)}
@@ -79,4 +80,4 @@ const FarmersData = () => {
   );
 };
 
-export default FarmersData;
+export default ZoneData;
