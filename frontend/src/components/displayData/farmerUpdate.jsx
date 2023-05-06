@@ -1,6 +1,8 @@
 import React, { useState } from "react";
- import "../registrationForm/farmers.css";
+import "../registrationForm/farmers.css";
 import axios from "axios";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 
 function FarmerUpdate() {
   const [formData, setFormData] = useState({
@@ -17,34 +19,30 @@ function FarmerUpdate() {
     id: "",
   });
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const { id } = useParams();
+
+  useEffect(() => {
+    axios.get(`http://localhost:5000/api/v1/farmers/${id}`).then((res) => {
+      setFormData(res.data[0]);
+      console.log(formData);
+    });
+  });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/v1/farmers",
+      const response = await axios.put(
+        `http://localhost:5000/api/v1/farmers/update/${id}`,
         formData
       );
       console.log(response);
     } catch (error) {
       console.log(error);
     }
-    setFormData({
-      fname: "",
-      mname: "",
-      lname: "",
-      birth_date: "",
-      email: "",
-      address: "",
-      phone_number: "",
-      land_amount: "",
-      user_name: "",
-      password: "",
-      id: "",
-    });
+  };
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   return (
@@ -54,7 +52,7 @@ function FarmerUpdate() {
       </div>
       <form className="farmer-registration-form" onSubmit={handleSubmit}>
         <div className="label_input">
-          <label htmlFor="fname">First Name:</label>
+          <label htmlFor="fname">First Name</label>
           <input
             type="text"
             id="fname"
@@ -65,7 +63,7 @@ function FarmerUpdate() {
           />
         </div>
         <div className="label_input">
-          <label htmlFor="mname">Middle Name:</label>
+          <label htmlFor="mname">Middle Name</label>
           <input
             type="text"
             id="mname"
@@ -75,7 +73,7 @@ function FarmerUpdate() {
           />
         </div>
         <div className="label_input">
-          <label htmlFor="lname">Last Name:</label>
+          <label htmlFor="lname">Last Name</label>
           <input
             type="text"
             id="lname"
@@ -86,7 +84,7 @@ function FarmerUpdate() {
           />
         </div>
         <div className="label_input">
-          <label htmlFor="birth_date">Birth Date:</label>
+          <label htmlFor="birth_date">Birth Date</label>
           <input
             type="date"
             id="birth_date"
@@ -97,7 +95,7 @@ function FarmerUpdate() {
           />
         </div>
         <div className="label_input">
-          <label htmlFor="email">Email:</label>
+          <label htmlFor="email">Email</label>
           <input
             type="email"
             id="email"
@@ -108,7 +106,7 @@ function FarmerUpdate() {
           />
         </div>
         <div className="label_input">
-          <label htmlFor="address">Address :</label>
+          <label htmlFor="address">Address</label>
           <input
             id="address"
             name="address"
@@ -118,7 +116,7 @@ function FarmerUpdate() {
           />
         </div>
         <div className="label_input">
-          <label htmlFor="phone_number">Tel phone :</label>
+          <label htmlFor="phone_number">Tel phone</label>
           <input
             type="tel"
             id="phone_number"
@@ -129,7 +127,7 @@ function FarmerUpdate() {
           />
         </div>
         <div className="label_input">
-          <label htmlFor="land_amount">Land NO :</label>
+          <label htmlFor="land_amount">Land NO </label>
           <input
             type="number"
             id="land_amount"
@@ -140,7 +138,7 @@ function FarmerUpdate() {
           />
         </div>
         <div className="label_input">
-          <label htmlFor="user_name">Username:</label>
+          <label htmlFor="user_name">Username</label>
           <input
             type="text"
             id="user_name"
@@ -151,7 +149,7 @@ function FarmerUpdate() {
           />
         </div>
         <div className="label_input">
-          <label htmlFor="password">Password:</label>
+          <label htmlFor="password">Password</label>
           <input
             type="password"
             id="password"
@@ -162,7 +160,7 @@ function FarmerUpdate() {
           />
         </div>
         <div className="label_input">
-          <label htmlFor="id">ID No:</label>
+          <label htmlFor="id">ID No</label>
           <input
             type="text"
             id="id"
@@ -172,7 +170,7 @@ function FarmerUpdate() {
             required
           />
         </div>
-        <button type="submit">Register</button>
+        <button type="submit">update</button>
       </form>
     </div>
   );

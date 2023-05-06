@@ -54,11 +54,13 @@ const FarmersData = () => {
                 <td>{datas.user_name}</td>
                 <td>{datas.id}</td>
                 <td>
-                  <Link to={`/update/${datas.id}`} className="btn edit">
-                    Edit
-                  </Link>
+                  <button className="btn edit">
+                    <Link to={`/update/${datas.id}`} className="link">
+                      Edit
+                    </Link>
+                  </button>
                   <button className="btn view">
-                    <Link to={`/view/${datas.id}`}>View</Link>
+                    <Link to={`/view/${datas.id}`} className="link">View</Link>
                   </button>
                   <button
                     className="btn delete"
