@@ -23,11 +23,11 @@ function FarmerRegistrationForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
+      await axios.post(
         "http://localhost:5000/api/v1/farmers",
         formData
       );
-      console.log(response);
+      alert("user successfully register")
     } catch (error) {
       console.log(error);
     }

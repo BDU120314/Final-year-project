@@ -4,7 +4,7 @@ import FarmersData from './components/displayData/farmers_data';
 import { Route, Routes } from 'react-router-dom';
 import DisplaySingleData from './components/displayData/displaySingleData';
 import FarmerUpdate from './components/displayData/farmerUpdate';
-//import RegistrationFormate from './components/formate/registrationFormate';
+import RegistrationFormate from './components/formate/registrationFormate';
 // import OrderFOrm from './components/OrderForm/order';
 // import FarmerRegistrationForm from './components/registrationForm/FarmersForm';
 const App = () => {
@@ -18,8 +18,7 @@ const App = () => {
       </Routes>
 
       {/* <OrderFOrm /> */}
-      {/* <RegistrationFormate typeName="Woreda" fname="First name" mname="Father name" lname="grand father name" email="Email" password
-  ="Password" user_name="User Name" phone_number="phone number" id="Id"/> */}
+      <RegistrationFormate typeName="Woreda" />
     </div>
   );
 }
