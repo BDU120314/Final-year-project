@@ -98,6 +98,10 @@ const RegistrationFormate = ({ typeName }) => {
             id="username"
             onChange={handleChange}
             value={formData.rep_user_name}
+            required
+            pattern="^[A-Z]\w*$"
+            onInvalid={e => e.target.setCustomValidity('Please make the first letter of your name capital')}
+            onChange={e => e.target.setCustomValidity('')}
           />
         </div>
         <div className="formate_input_label">
