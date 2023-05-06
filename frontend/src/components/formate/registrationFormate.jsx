@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import "./formate.css";
 import axios from "axios";
 
-
-
 const RegistrationFormate = ({ typeName }) => {
   const [formData, setFormData] = useState({
     woreda_name: "",
@@ -16,11 +14,23 @@ const RegistrationFormate = ({ typeName }) => {
     rep_phone_number: "",
     id: "",
   });
-  
- 
+   const {
+     type_name,
+     rep_fname,
+     rep_mname,
+     rep_lname,
+     email,
+     rep_password,
+     rep_user_name,
+     rep_phone_number,
+     id,
+   } = formData;
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
   };
 
   const handleSubmit = async (e) => {
@@ -50,69 +60,94 @@ const RegistrationFormate = ({ typeName }) => {
   
 
   return (
-   
     <div className="formate">
       <h2>Registration Form</h2>
-      <form action="farmer-registration-form" className="formate_form" onSubmit={handleSubmit}>
+      <form
+        action="farmer-registration-form"
+        className="formate_form"
+        onSubmit={handleSubmit}
+      >
         <div className="formate_input_label">
           <label htmlFor="typeName">{typeName}</label>
           <input
             type="text"
-            name="typename"
+            name="woreda_name"
             id="typeName"
             onChange={handleChange}
-            value={formData.woreda}
+            value={type_name}
           />
         </div>
         <div className="formate_input_label">
-          <label htmlFor="rep_fname">Firstname</label>
-          <input type="text" name="rep_fname" id="rep_fname" value={formData.rep_fname} />
+          <label htmlFor="fname">First Name</label>
+          <input
+            type="text"
+            name="rep_fname"
+            id="fname"
+            onChange={handleChange}
+            value={rep_fname}
+          />
         </div>
         <div className="formate_input_label">
-          <label htmlFor="mname"> Middlename</label>
-          <input type="text" name="mName" id="mname" value={formData.rep_mname} />
+          <label htmlFor="mname">Middle Name</label>
+          <input
+            type="text"
+            name="rep_mname"
+            id="mname"
+            onChange={handleChange}
+            value={rep_mname}
+          />
         </div>
         <div className="formate_input_label">
-          <label htmlFor="lname">Lastname</label>
-          <input type="text" name="lName" id="lname"  value={formData.rep_lname}/>
+          <label htmlFor="lname">Last Name</label>
+          <input
+            type="text"
+            name="rep_lname"
+            id="lname"
+            onChange={handleChange}
+            value={rep_lname}
+          />
         </div>
         <div className="formate_input_label">
           <label htmlFor="email">Email</label>
-          <input type="text" name="email" id="email"  value={formData.email}/>
+          <input type="text" name="email" id="email" value={email} onChange={handleChange} />
         </div>
         <div className="formate_input_label">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="rep_password">Password</label>
           <input
             type="text"
-            name="password"
+            name="rep_password"
             id="password"
             onChange={handleChange}
-            value={formData.rep_password}
+            value={rep_password}
           />
         </div>
         <div className="formate_input_label">
           <label htmlFor="username">User Name</label>
           <input
             type="text"
-            name="userName"
-            id="username"
+            name="rep_user_name"
+            id="rep_user_name"
             onChange={handleChange}
+ 
             value={formData.rep_user_name}
             required
             pattern="^[A-Z]\w*$"
             oninvalid="this.setCustomValidity
             ('please make first letter of your name as capital')"
             onchange="try{setCustomValidity('')} catch(e){}"
+ 
+            value={rep_user_name}
+ 
           />
         </div>
         <div className="formate_input_label">
           <label htmlFor="tel">Phone Number</label>
           <input
             type="text"
-            name="phone"
+            name="rep_phone_number"
             id="tel"
             onChange={handleChange}
-            value={ formData.rep_phone_number}
+            value={rep_phone_number}
           />
         </div>
         <div className="formate_input_label">
@@ -122,7 +157,7 @@ const RegistrationFormate = ({ typeName }) => {
             name="id"
             id="id"
             onChange={handleChange}
-            value={formData.id}
+            value={id}
           />
         </div>
         <div className="buttons">

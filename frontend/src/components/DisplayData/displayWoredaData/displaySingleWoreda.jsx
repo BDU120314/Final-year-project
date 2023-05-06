@@ -3,33 +3,29 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "./farmer.css";
-const DisplaySingleData = (props) => {
+const DisplaySingleWoreda = () => {
   const [data, setData] = useState([]);
   const { id } = useParams();
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/v1/farmers/${id}`).then((res) => {
+    axios.get(`http://localhost:5000/api/v1/woreda/${id}`).then((res) => {
       setData(res.data);
       console.log(data);
     });
   });
-
   return (
     <div>
       <div className="farmer">
-        <h2>Detail information of farmers</h2>
+        <h2>Detail information of woreda</h2>
         <table>
           <thead>
             <tr>
-              <th>First name</th>
-              <th>Middle name</th>
-              <th>Last name</th>
-              <th>Birth_date</th>
+              <th>Woreda name</th>
+              <th>Rep_First name</th>
+              <th>Rep_Middle name</th>
               <th>Email</th>
-              <th>Address</th>
-              <th>Phone_number</th>
-              <th>Land amount</th>
-              <th>User name</th>
-              <th>password</th>
+              <th>Rep_Phone_number</th>
+              <th>Rep_User name</th>
+              <th>Rep_password</th>
               <th>Id</th>
             </tr>
           </thead>
@@ -58,4 +54,4 @@ const DisplaySingleData = (props) => {
   );
 };
 
-export default DisplaySingleData;
+export default DisplaySingleWoreda;
