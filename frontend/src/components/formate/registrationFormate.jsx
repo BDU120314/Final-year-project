@@ -69,20 +69,20 @@ const RegistrationFormate = ({ typeName }) => {
           />
         </div>
         <div className="formate_input_label">
-          <label htmlFor="fname">{fname}</label>
-          <input type="text" name="fname" id="fname" />
+          <label htmlFor="fname">Firstname</label>
+          <input type="text" name="fname" id="fname" value={rep_fname} />
         </div>
         <div className="formate_input_label">
-          <label htmlFor="mname">{mname}</label>
-          <input type="text" name="mName" id="mname" />
+          <label htmlFor="mname"> Middlename</label>
+          <input type="text" name="mName" id="mname" value={rep_mname} />
         </div>
         <div className="formate_input_label">
-          <label htmlFor="lname">{lname}</label>
-          <input type="text" name="lName" id="lname" />
+          <label htmlFor="lname">Lastname</label>
+          <input type="text" name="lName" id="lname"  value={rep_lname}/>
         </div>
         <div className="formate_input_label">
           <label htmlFor="email">{email}</label>
-          <input type="text" name="email" id="email" />
+          <input type="text" name="email" id="email"  value={eamil}/>
         </div>
         <div className="formate_input_label">
           <label htmlFor="password">Password</label>
