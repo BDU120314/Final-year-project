@@ -45,12 +45,13 @@ const FarmersData = () => {
       <table>
         <thead>
           <tr>
+            <th>ID</th>
             <th>First NAme</th>
             <th>Middle Name</th>
             <th>Email Address</th>
             <th>Phone Number</th>
             <th>User Name</th>
-            <th>ID</th>
+
             <th>Action</th>
           </tr>
         </thead>
@@ -58,13 +59,15 @@ const FarmersData = () => {
           {farmersData.map((datas) => {
             return (
               <tr key={datas.id}>
+                <td>{datas.id}</td>
                 <td>{datas.fname} </td>
                 <td>{datas.mname}</td>
                 <td>{datas.email}</td>
                 <td>{datas.phone_number}</td>
                 <td>{datas.user_name}</td>
-                <td>{datas.id}</td>
+
                 <td>
+ 
                   <button className="btn edit">
 
                     <Link to={`/update/${datas.id}`} className="link">
@@ -74,6 +77,15 @@ const FarmersData = () => {
                   <button className="btn view">
                     <Link to={`/view/${datas.id}`} className="link">View</Link>
                   </button>
+ 
+                  <Link to={`/update/${datas.id}`} className="link">
+                    <button className="btn edit">Edit</button>
+                  </Link>
+
+                  <Link to={`/view/${datas.id}`} className="link">
+                    <button className="btn view">View</button>{" "}
+                  </Link>
+ 
                   <button
                     className="btn delete"
                     onClick={() => handleDelete(datas.id)}

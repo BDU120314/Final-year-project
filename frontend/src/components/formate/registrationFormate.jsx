@@ -1,60 +1,128 @@
-import React from 'react'
-import './formate.css'
-const RegistrationFormate = ({typeName, fname, mname, lname, email, password, user_name, phone_number, id}) => {
+import React, { useState } from "react";
+import "./formate.css";
+import axios from "axios";
+const RegistrationFormate = ({ typeName }) => {
+  const [formData, setFormData] = useState({
+    type_name: "",
+    rep_fname: "",
+    rep_mname: "",
+    rep_lname: "",
+    email: "",
+    rep_password: "",
+    rep_user_name: "",
+    rep_phone_number: "",
+    id: "",
+  });
+   const {
+     type_name,
+     rep_fname,
+     rep_mname,
+     rep_lname,
+     email,
+     rep_password,
+     rep_user_name,
+     rep_phone_number,
+     id,
+   } = formData;
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+   try {
+    await  axios.post("url", formData);
+      alert("user succssfully register");
+      setFormData({
+        type_name: "",
+        rep_fname: "",
+        rep_mname: "",
+        rep_lname: "",
+        email: "",
+        rep_password: "",
+        rep_user_name: "",
+        rep_phone_number: "",
+        id: "",
+      });
+   } catch (error) {
+    console.log(error)
+   }
+  };
+
   return (
+   
     <div className="formate">
       <h2>Registration Form</h2>
-      <form action="" className="formate_form">
+      <form action="" className="formate_form" onSubmit={handleSubmit}>
         <div className="formate_input_label">
           <label htmlFor="typeName">{typeName}</label>
-          <input type="text" name="typename" id="typeName" />
+          <input
+            type="text"
+            name="typename"
+            id="typeName"
+            onChange={handleChange}
+            value={type_name}
+          />
         </div>
         <div className="formate_input_label">
           <label htmlFor="fname">{fname}</label>
-          <input type="text" name="fname" id="fname" 
-            pattern="^[A-Z]\w*$"
-            oninvalid="this.setCustomValidity
-            ('please make first letter of your name as capital')"
-            onchange="try{setCustomValidity('')} catch(e){}"
-          />
+          <input type="text" name="fname" id="fname" />
         </div>
         <div className="formate_input_label">
           <label htmlFor="mname">{mname}</label>
-          <input type="text" name="mName" id="mname" 
-            pattern="^[A-Z]\w*$"
-            oninvalid="this.setCustomValidity
-            ('please make first letter of your name as capital')"
-            onchange="try{setCustomValidity('')} catch(e){}"/>
+          <input type="text" name="mName" id="mname" />
         </div>
         <div className="formate_input_label">
           <label htmlFor="lname">{lname}</label>
-          <input type="text" name="lName" id="lname" 
-            pattern="^[A-Z]\w*$"
-            oninvalid="this.setCustomValidity
-            ('please make first letter of your name as capital')"
-            onchange="try{setCustomValidity('')} catch(e){}"/>
+          <input type="text" name="lName" id="lname" />
         </div>
         <div className="formate_input_label">
           <label htmlFor="email">{email}</label>
-          <input type="text" name="email" id="email" 
-           oninvalid="this.setCustomValidity ('please inter the valid email')" onchange="try{setCustomValidity('')} catch(e){}"
+          <input type="text" name="email" id="email" />
+        </div>
+        <div className="formate_input_label">
+          <label htmlFor="password">Password</label>
+          <input
+            type="text"
+            name="password"
+            id="password"
+            onChange={handleChange}
+            value={rep_password}
           />
         </div>
         <div className="formate_input_label">
-          <label htmlFor="password">{password}</label>
-          <input type="text" name="password" id="password" />
+          <label htmlFor="username">User Name</label>
+          <input
+            type="text"
+            name="userName"
+            id="username"
+            onChange={handleChange}
+            value={rep_user_name}
+          />
         </div>
         <div className="formate_input_label">
-          <label htmlFor="username">{user_name}</label>
-          <input type="text" name="userName" id="username" />
+          <label htmlFor="tel">Phone Number</label>
+          <input
+            type="text"
+            name="phone"
+            id="tel"
+            onChange={handleChange}
+            value={rep_phone_number}
+          />
         </div>
         <div className="formate_input_label">
-          <label htmlFor="tel">{phone_number}</label>
-          <input type="text" name="phone" id="tel" />
-        </div>
-        <div className="formate_input_label">
-          <label htmlFor="id">{id}</label>
-          <input type="text" name="id" id="id" />
+          <label htmlFor="id">ID</label>
+          <input
+            type="text"
+            name="id"
+            id="id"
+            onChange={handleChange}
+            value={id}
+          />
         </div>
         <div className="buttons">
           <button type="submit">Register</button>
@@ -62,6 +130,6 @@ const RegistrationFormate = ({typeName, fname, mname, lname, email, password, us
       </form>
     </div>
   );
-}
+};
 
-export default RegistrationFormate
+export default RegistrationFormate;

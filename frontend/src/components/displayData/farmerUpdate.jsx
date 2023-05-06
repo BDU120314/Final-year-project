@@ -26,7 +26,7 @@ function FarmerUpdate() {
       setFormData(res.data[0]);
       console.log(formData);
     });
-  });
+  }, [formData]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
