@@ -1,6 +1,17 @@
-import React from 'react'
-
+import axios from "axios";
+import React, { useState } from "react";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import "./farmer.css";
 const DisplaySingleWoreda = () => {
+  const [data, setData] = useState([]);
+  const { id } = useParams();
+  useEffect(() => {
+    axios.get(`http://localhost:5000/api/v1/woreda/${id}`).then((res) => {
+      setData(res.data);
+      console.log(data);
+    });
+  });
   return (
     <div>
       <div className="farmer">
@@ -41,6 +52,6 @@ const DisplaySingleWoreda = () => {
       </div>
     </div>
   );
-}
+};
 
-export default DisplaySingleWoreda
+export default DisplaySingleWoreda;

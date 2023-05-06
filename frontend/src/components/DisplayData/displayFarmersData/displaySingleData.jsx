@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "./farmer.css";
-const DisplaySingleData = (props) => {
+const DisplaySingleData = () => {
   const [data, setData] = useState([]);
   const { id } = useParams();
   useEffect(() => {
