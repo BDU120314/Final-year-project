@@ -16,17 +16,17 @@ const FarmersData = () => {
         console.log(error);
       });
   };
-  const handleUpdate = (id) => {
-    axios
-      .put(`http://localhost:5000/api/v1/farmers/update/${id}`)
-      .then((response) => {
-        setFarmersData(farmersData.filter((item) => item.id !== id));
-        console.log(`deleted user id :${id}`);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+  // const handleUpdate = (id) => {
+  //   axios
+  //     .put(`http://localhost:5000/api/v1/farmers/update/${id}`)
+  //     .then((response) => {
+  //       setFarmersData(farmersData.filter((item) => item.id !== id));
+  //       console.log(`deleted user id :${id}`);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // };
 
   useEffect(() => {
     axios

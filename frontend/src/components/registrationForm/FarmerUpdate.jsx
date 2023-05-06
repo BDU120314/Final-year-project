@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./farmers.css";
 import axios from "axios";
+
 function FarmerUpdate() {
   const [formData, setFormData] = useState({
     fname: "",
@@ -24,7 +25,7 @@ function FarmerUpdate() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/v1/farmers",
+        "http://localhost:5000/api/v1/farmers/update/:id",
         formData
       );
       console.log(response);

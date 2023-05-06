@@ -5,7 +5,7 @@ import FarmersData from './components/displayData/farmers_data';
 //import FarmerRegistrationForm from './components/registrationForm/FarmersForm';
 import { Route, Routes } from 'react-router-dom';
 import DisplaySingleData from './components/displayData/displaySingleData';
-import FarmerUpdate from './components/registrationForm/FarmerUpdate';
+// import FarmerUpdate from './components/registrationForm/FarmerUpdate';
 import FarmerUpdate from './components/displayData/farmerUpdate';
 //import RegistrationFormate from './components/formate/registrationFormate';
 // import OrderFOrm from './components/OrderForm/order';
