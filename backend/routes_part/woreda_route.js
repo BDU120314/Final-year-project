@@ -3,12 +3,12 @@ const express = require("express");
 const db = require("../config/connection_db");
 const { CreateWoreda, getAllWoreda, DeleteWoreda, UpdateWoreda } = require("../controllers/woreda_controlers");
 const { GetSingleFarmer } = require("../controllers/farmers_controller");
-const routers = express.Router();
+const woreda_router = express.Router();
 
-routers.post("/", CreateWoreda);
-routers.get("/", getAllWoreda);
-routers.get("/:id", GetSingleFarmer);
-routers.put("/update/:id", UpdateWoreda);
-routers.delete("/delete/:id", DeleteWoreda);
+woreda_router.post("/", CreateWoreda);
+woreda_router.get("/", getAllWoreda);
+woreda_router.get("/:id", GetSingleFarmer);
+woreda_router.put("/update/:id", UpdateWoreda);
+woreda_router.delete("/delete/:id", DeleteWoreda);
 
-module.exports = routers
+module.exports = woreda_router
