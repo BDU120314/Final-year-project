@@ -15,11 +15,9 @@ function FarmerRegistrationForm() {
     password: "",
     id: "",
   });
-
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -45,7 +43,6 @@ function FarmerRegistrationForm() {
       id: "",
     });
   };
-
   return (
     <div className="farmers">
       <div>
@@ -176,5 +173,4 @@ function FarmerRegistrationForm() {
     </div>
   );
 }
-
 export default FarmerRegistrationForm;

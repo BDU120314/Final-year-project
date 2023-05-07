@@ -3,7 +3,6 @@ import "../registrationForm/farmers.css";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
-
 function FarmerUpdate() {
   const [formData, setFormData] = useState({
     fname: "",
@@ -18,18 +17,14 @@ function FarmerUpdate() {
     password: "",
     id: "",
   });
-
   const { id } = useParams();
-   const navigate = useNavigate();
-
-useEffect(() => {
-  axios.get(`http://localhost:5000/api/v1/farmers/${id}`).then((res) => {
-    setFormData(res.data[0]);
-    console.log(res.data[0]);
-  });
-}, [id, setFormData]);
-
-
+  const navigate = useNavigate();
+  useEffect(() => {
+    axios.get(`http://localhost:5000/api/v1/farmers/${id}`).then((res) => {
+      setFormData(res.data[0]);
+      console.log(res.data[0]);
+    });
+  }, [id, setFormData]);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -40,16 +35,15 @@ useEffect(() => {
       navigate("/");
       console.log(response);
     } catch (error) {
-      alert(error)
+      alert(error);
     }
   };
-
- const handleChange = (e) => {
-   setFormData((prevState) => ({
-     ...prevState,
-     [e.target.name]: e.target.value,
-   }));
- };
+  const handleChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
   return (
     <div className="farmers">
       <div>
@@ -180,5 +174,4 @@ useEffect(() => {
     </div>
   );
 }
-
 export default FarmerUpdate;

@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import "./formate.css";
 import axios from "axios";
 
-const RegistrationFormate = ({ typeName }) => {
+const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
   const [formData, setFormData] = useState({
-    woreda_name: "",
+    [dataBaseColumn]: "",
     rep_fname: "",
     rep_mname: "",
     rep_lname: "",
@@ -14,17 +14,18 @@ const RegistrationFormate = ({ typeName }) => {
     rep_phone_number: "",
     id: "",
   });
-   const {
-     type_name,
-     rep_fname,
-     rep_mname,
-     rep_lname,
-     email,
-     rep_password,
-     rep_user_name,
-     rep_phone_number,
-     id,
-   } = formData;
+
+  const {
+    [dataBaseColumn]: columnValue,
+    rep_fname,
+    rep_mname,
+    rep_lname,
+    email,
+    rep_password,
+    rep_user_name,
+    rep_phone_number,
+    id,
+  } = formData;
 
   const handleChange = (e) => {
     setFormData((prevState) => ({
@@ -35,29 +36,28 @@ const RegistrationFormate = ({ typeName }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-   try {
-    await axios.post(
-      "http://localhost:5000/api/v1/woreda",
-      formData
-    );
-    alert("user successfully register")
-  } catch (error) {
-    console.log(error);
-  }
- 
-      setFormData({
-       woreda_name: "",
-        rep_fname: "",
-        rep_mname: "",
-        rep_lname: "",
-        email: "",
-        rep_password: "",
-        rep_user_name: "",
-        rep_phone_number: "",
-        id: "",
-      });
-   };
-  
+    try {
+      await axios.post(
+        `http://localhost:5000/api/v1/${typeName.toLowerCase()}`,
+        formData
+      );
+      alert("User successfully registered");
+    } catch (error) {
+      console.log(error);
+    }
+
+    setFormData({
+      [dataBaseColumn]: "",
+      rep_fname: "",
+      rep_mname: "",
+      rep_lname: "",
+      email: "",
+      rep_password: "",
+      rep_user_name: "",
+      rep_phone_number: "",
+      id: "",
+    });
+  };
 
   return (
     <div className="formate">
@@ -68,13 +68,13 @@ const RegistrationFormate = ({ typeName }) => {
         onSubmit={handleSubmit}
       >
         <div className="formate_input_label">
-          <label htmlFor="typeName">{typeName}</label>
+          <label htmlFor={dataBaseColumn}>{typeName}</label>
           <input
             type="text"
-            name="woreda_name"
-            id="typeName"
+            name={dataBaseColumn}
+            id={dataBaseColumn}
             onChange={handleChange}
-            value={type_name}
+            value={columnValue}
           />
         </div>
         <div className="formate_input_label">
@@ -109,7 +109,13 @@ const RegistrationFormate = ({ typeName }) => {
         </div>
         <div className="formate_input_label">
           <label htmlFor="email">Email</label>
-          <input type="text" name="email" id="email" value={email} onChange={handleChange} />
+          <input
+            type="text"
+            name="email"
+            id="email"
+            value={email}
+            onChange={handleChange}
+          />
         </div>
         <div className="formate_input_label">
           <label htmlFor="rep_password">Password</label>
