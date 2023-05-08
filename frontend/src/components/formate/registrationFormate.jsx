@@ -139,11 +139,11 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
         <div className="formate_input_label">
           <label htmlFor="rep_password">Password</label>
           <input
-            type="text"
+            type="password"
             name="rep_password"
             id="password"
             onChange={handleChange}
-            value={formData.rep_password}
+            value={rep_password}
             required
 
           />
@@ -155,7 +155,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
             name="rep_user_name"
             id="rep_user_name"
             onChange={handleChange}
-            value={formData.rep_user_name}
+            value={ rep_user_name}
             required
           />
         </div>
@@ -166,7 +166,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
             name="rep_phone_number"
             id="tel"
             onChange={handleChange}
-            value={formData.rep_phone_number}
+            value={rep_phone_number}
             required
 
           />
@@ -178,7 +178,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
             name="id"
             id="id"
             onChange={handleChange}
-            value={formData.id}
+            value={id}
             required
 
           />

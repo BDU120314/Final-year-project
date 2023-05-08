@@ -1,12 +1,12 @@
 import React from "react";
 import RegistrationFormate from "../../formate/registrationFormate";
 
-const AdminRegistration_form = () => {
+const AdminRegistrationForm = () => {
   return (
     <div>
-      <RegistrationFormate typeName="Kebele" dataBaseColumn="kebele_name" />
+      <RegistrationFormate typeName="admin" dataBaseColumn="kebele_name" />
     </div>
   );
 };
 
-export default AdminRegistration_form;
+export default AdminRegistrationForm;

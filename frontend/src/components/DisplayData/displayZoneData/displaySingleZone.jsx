@@ -2,8 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import '../displayFarmersData/farmer.css'
-
+ import '../css/farmer.css'
 const DisplaySingleZone = () => {
   const [data, setData] = useState([]);
   const { id } = useParams();
@@ -34,18 +33,15 @@ const DisplaySingleZone = () => {
             {data.map((datas) => {
               return (
                 <tr key={datas.id}>
-                  <td>{datas.fname}</td>
-                  <td>{datas.mname}</td>
-                  <td>{datas.lname}</td>
-                  <td>{datas.birth_date}</td>
-                  <td>{datas.email}</td>
-                  <td>{datas.address}</td>
-                  <td>{datas.phone_number}</td>
-                  <td>{datas.land_amount}</td>
-                  <td>{datas.user_name}</td>
-                  <td>{datas.password}</td>
-                  <td>{datas.id}</td>
-                </tr>
+                  <td>{datas.zone_name}</td>
+                  <td>{datas.rep_fname}</td>
+                  <td>{datas.rep_mname}</td>
+                  <td>{datas.rep_lname}</td>
+                   <td>{datas.email}</td>
+                   <td>{datas.rep_phone_number}</td>
+                   <td>{datas.rep_user_name}</td>
+                  <td>{datas.rep_password}</td>
+                 </tr>
               );
             })}
           </tbody>

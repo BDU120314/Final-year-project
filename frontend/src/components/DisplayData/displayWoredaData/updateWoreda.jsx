@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import "../registrationForm/farmers.css";
+import "../css/farmers.css";
+
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 
-function FarmerUpdate() {
+function WoredaUpdate() {
   const [formData, setFormData] = useState({
     woreda_name: "",
     rep_fname: "",
@@ -50,14 +51,14 @@ function FarmerUpdate() {
   return (
     <div className="farmers">
       <div>
-        <h2>Farmers registration form</h2>
+        <h2>Woreda Modification Form</h2>
       </div>
       <form className="farmer-registration-form" onSubmit={handleSubmit}>
         <div className="label_input">
           <label htmlFor="woredaName">First Name</label>
           <input
             type="text"
-            id="woredaName"
+            id="woreda_name"
             name="woreda_name"
             value={formData.woreda_name}
             onChange={handleChange}
@@ -91,7 +92,7 @@ function FarmerUpdate() {
             type="text"
             id="lname"
             name="rep_lname"
-            value={formData.lname}
+            value={formData.rep_lname}
             onChange={handleChange}
             required
           />
@@ -158,4 +159,4 @@ function FarmerUpdate() {
   );
 }
 
-export default FarmerUpdate;
+export default WoredaUpdate;

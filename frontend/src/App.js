@@ -1,22 +1,18 @@
 import React from 'react'
 import './App.css'
+import {  Router, Route, Routes} from "react-router-dom";
+import LandAdminForm1 from './components/DisplayData/displayLandAdmin/LandAdminForm';
+import UpdateLandAdmin from './components/DisplayData/displayLandAdmin/UpdateLandAdmin';
+import SingleLandAdmin from './components/DisplayData/displayLandAdmin/SingleLandAdmin';
+import Home from './pages/Home';
+ 
+ 
 
-import WoredaData from './components/DisplayData/displayWoredaData/woreda_formData';
 const App = () => {
   return (
-    <div className="App">
-      <WoredaData />
-      {/* <Routes> */}
-      {/* <Route path="/" element={RegistrationFormate} /> */}
-      {/* <Route path="/" element={<FarmersData />} />
-        <Route path="/view/:id" element={<DisplaySingleData />} />
-
-        <Route  path='/update/:id' element={<FarmerUpdate />}/>
- 
-        <Route path="/update/:id" element={<FarmerUpdate />} /> */}
-
-      {/* </Routes> */}
-    </div>
+    <div className="App"> 
+    <Home />
+      </div>
   );
  
 }

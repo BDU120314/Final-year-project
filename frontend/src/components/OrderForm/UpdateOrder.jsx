@@ -1,46 +1,39 @@
 import React, { useState } from "react";
-import "../css/farmers.css";
+import "./order.css";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
-
-function ZoneUpdate() {
+function UpdateOrder() {
   const [formData, setFormData] = useState({
-    zone_name: "",
-    rep_fname: "",
-    rep_mname: "",
-    rep_lname: "",
-    email: "",
-    rep_password: "",
-    rep_user_name: "",
-    rep_phone_number: "",
-    id: "",
+    fname: "",
+    mname: "",
+    woreda_name: "",
+    cluster_name: "",
+    farmer_id: "", 
+    input_type: "",
+    amount: "",
   });
-
   const { id } = useParams();
   const navigate = useNavigate();
-
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/v1/zone/${id}`).then((res) => {
+    axios.get(`http://localhost:5000/api/v1/order/${id}`).then((res) => {
       setFormData(res.data[0]);
       console.log(res.data[0]);
     });
   }, [id, setFormData]);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.put(
-        `http://localhost:5000/api/v1/zone/update/${id}`,
+        `http://localhost:5000/api/v1/order/update/${id}`,
         formData
       );
-      navigate("/");
+      navigate("/OrderDisplayForm");
       console.log(response);
     } catch (error) {
       alert(error);
     }
   };
-
   const handleChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
@@ -48,29 +41,18 @@ function ZoneUpdate() {
     }));
   };
   return (
-    <div className="farmers">
+    <div className="orders">
       <div>
-        <h2>Zone Modification Form</h2>
+        <h2>Order Modification Form</h2>
       </div>
       <form className="farmer-registration-form" onSubmit={handleSubmit}>
-        <div className="label_input">
-          <label htmlFor="zone_name">First Name</label>
-          <input
-            type="text"
-            id="zonename"
-            name="zone_name"
-            value={formData.zone_name}
-            onChange={handleChange}
-            required
-          />
-        </div>
         <div className="label_input">
           <label htmlFor="fname">First Name</label>
           <input
             type="text"
             id="fname"
             name="fname"
-            value={formData.rep_fname}
+            value={formData.fname}
             onChange={handleChange}
             required
           />
@@ -81,81 +63,67 @@ function ZoneUpdate() {
             type="text"
             id="mname"
             name="mname"
-            value={formData.rep_mname}
+            value={formData.mname}
             onChange={handleChange}
           />
         </div>
         <div className="label_input">
-          <label htmlFor="lname">Last Name</label>
+          <label htmlFor="woreda_name">Woreda Name</label>
           <input
             type="text"
-            id="lname"
-            name="rep_lname"
-            value={formData.rep_lname}
+            id="woreda_name"
+            name="woreda_name"
+            value={formData.woreda_name}
             onChange={handleChange}
             required
           />
         </div>
         <div className="label_input">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        
-        <div className="label_input">
-          <label htmlFor="phone_number">Tel phone</label>
-          <input
-            type="tel"
-            id="phone_number"
-            name="phone_number"
-            value={formData.rep_phone_number}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="label_input">
-          <label htmlFor="user_name">Username</label>
+          <label htmlFor="birth_date">Cluster Name</label>
           <input
             type="text"
-            id="user_name"
-            name="user_name"
-            value={formData.rep_user_name}
+            id="cluster_name"
+            name="cluster_name"
+            value={formData.cluster_name}
             onChange={handleChange}
             required
           />
         </div>
         <div className="label_input">
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={formData.rep_password}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="label_input">
-          <label htmlFor="id">ID No</label>
+          <label htmlFor="farmer_id">Farmer Id</label>
           <input
             type="text"
-            id="id"
-            name="id"
-            value={formData.id}
+            id="farmer_id"
+            name="farmer_id"
+            value={formData.farmer_id}
             onChange={handleChange}
             required
           />
         </div>
+        <div className="label_input">
+          <label htmlFor="inputs">Input Type</label>
+          <input list="input_type" id="inputs" name="input_type" />
+          <datalist id="input_type" value={formData.input_type}>
+            <option value="Seed"></option>
+            <option value="DAP"></option>
+            <option value="UREA"></option>
+            <option value="Chemical"></option>
+          </datalist>
+        </div>
+        <div className="label_input">
+          <label htmlFor="amount">Amount</label>
+          <input
+            type="number"
+            id="amount"
+            name="amount"
+            value={formData.amount}
+            onChange={handleChange}
+            required
+          />
+        </div> 
         <button type="submit">update</button>
       </form>
     </div>
   );
 }
-
-export default ZoneUpdate;
+export default UpdateOrder;
