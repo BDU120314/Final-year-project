@@ -1,11 +1,11 @@
 import React from 'react'
 import './App.css'
-import ZoneRegistrationForm from './components/registrationForm/zone_form/zone_form';
+import Home from './pages/Home';
 const App = () => {
   return (
     <div className="App">
   
-      <ZoneRegistrationForm />
+     <Home />
       
     </div>
   );
