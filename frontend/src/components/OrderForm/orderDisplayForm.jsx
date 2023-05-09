@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "../displayFarmersData/farmers_data.css";
+import "./farmers_data.css";
 import { Link } from "react-router-dom";
-const ZoneData = () => {
+const OrderDisplayForm = () => {
   const [zoneData, setZoneData] = useState([]);
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:5000/api/v1/zone/delete/${id}`)
+      .delete(`http://localhost:5000/api/v1/order/delete/${id}`)
       .then((response) => {
         setZoneData(zoneData.filter((item) => item.id !== id));
         console.log(`deleted user id :${id}`);
@@ -18,7 +18,7 @@ const ZoneData = () => {
   };
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/v1/zone")
+      .get("http://localhost:5000/api/v1/order")
       .then((response) => {
         setZoneData(response.data);
         console.log(zoneData);
@@ -36,11 +36,11 @@ const ZoneData = () => {
             <th>ID</th>
             <th>First NAme</th>
             <th>Middle Name</th>
-            <th>Email Address</th>
-            <th>Phone Number</th>
-            <th>User Name</th>
-            <th>Zone Name</th>
-            <th>Action</th>
+            <th>Woreda Name</th>
+            <th>Cluster Name</th>
+            <th>Input Type</th>
+            <th>Amount</th>
+            <th>Farmer Id</th>
           </tr>
         </thead>
         <tbody>
@@ -48,13 +48,13 @@ const ZoneData = () => {
             return (
               <tr key={datas.id}>
                 <td>{datas.id}</td>
-                <td>{datas.rep_fname} </td>
-                <td>{datas.rep_mname}</td>
-                <td>{datas.email}</td>
-                <td>{datas.rep_phone_number}</td>
-                <td>{datas.rep_user_name}</td>
-                <td>{datas.zone_name}</td>
-
+                <td>{datas.fname} </td>
+                <td>{datas.mname}</td>
+                <td>{datas.woreda_name}</td>
+                <td>{datas.cluster_name}</td>
+                <td>{datas.input_type}</td>
+                <td>{datas.amount}</td>
+                <td>{datas.farmer_id}</td>
                 <td>
                   <Link to={`/update/${datas.id}`} className="link">
                     <button className="btn edit">Edit</button>
@@ -63,7 +63,6 @@ const ZoneData = () => {
                   <Link to={`/view/${datas.id}`} className="link">
                     <button className="btn view">View</button>{" "}
                   </Link>
-
                   <button
                     className="btn delete"
                     onClick={() => handleDelete(datas.id)}
@@ -80,4 +79,4 @@ const ZoneData = () => {
   );
 };
 
-export default ZoneData;
+export default OrderDisplayForm;

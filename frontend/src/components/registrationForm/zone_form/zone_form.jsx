@@ -4,7 +4,7 @@ import RegistrationFormate from "../../formate/registrationFormate";
 const ZoneRegistrationForm = () => {
   return (
     <div>
-      <RegistrationFormate typeName="zone" dataBaseColumn="zone_name" />
+      <RegistrationFormate typeName="Zone" dataBaseColumn="zone_name" />
     </div>
   );
 };

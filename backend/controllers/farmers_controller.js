@@ -1,5 +1,7 @@
 const db = require("../config/connection_db");
 
+
+ 
 // for creating a farmer
 
 const CreateFarmers = (req, res) => {
@@ -106,6 +108,7 @@ const DeleteFarmers = (req, res) => {
     return res.json({ Status: "Success" });
   });
 };
+
 
 module.exports = {
   CreateFarmers,

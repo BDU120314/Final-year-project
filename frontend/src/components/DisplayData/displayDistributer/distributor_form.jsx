@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../displayFarmersData/farmers_data.css";
 import { Link } from "react-router-dom";
-const ZoneData = () => {
-  const [zoneData, setZoneData] = useState([]);
+const DistributorForm = () => {
+  const [woredaData, setWoredData] = useState([]);
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:5000/api/v1/zone/delete/${id}`)
+      .delete(`http://localhost:5000/api/v1/distributor/delete/${id}`)
       .then((response) => {
-        setZoneData(zoneData.filter((item) => item.id !== id));
+        setWoredData(woredaData.filter((item) => item.id !== id));
         console.log(`deleted user id :${id}`);
       })
       .catch((error) => {
@@ -18,15 +18,15 @@ const ZoneData = () => {
   };
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/v1/zone")
+      .get("http://localhost:5000/api/v1/distributor")
       .then((response) => {
-        setZoneData(response.data);
-        console.log(zoneData);
+        setWoredData(response.data);
+        console.log(woredaData);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, [zoneData]);
+  }, [woredaData]);
 
   return (
     <div className="container">
@@ -39,12 +39,12 @@ const ZoneData = () => {
             <th>Email Address</th>
             <th>Phone Number</th>
             <th>User Name</th>
-            <th>Zone Name</th>
+            <th>Cluster Name</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          {zoneData.map((datas) => {
+          {woredaData.map((datas) => {
             return (
               <tr key={datas.id}>
                 <td>{datas.id}</td>
@@ -53,7 +53,8 @@ const ZoneData = () => {
                 <td>{datas.email}</td>
                 <td>{datas.rep_phone_number}</td>
                 <td>{datas.rep_user_name}</td>
-                <td>{datas.zone_name}</td>
+                <td>{datas.cluster_name}</td>
+
 
                 <td>
                   <Link to={`/update/${datas.id}`} className="link">
@@ -80,4 +81,4 @@ const ZoneData = () => {
   );
 };
 
-export default ZoneData;
+export default DistributorForm;

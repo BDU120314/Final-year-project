@@ -14,10 +14,11 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
     rep_phone_number: "",
     id: "",
   });
-
+   
+ 
   const {
     [dataBaseColumn]: columnValue,
-    rep_fname,
+     rep_fname,
     rep_mname,
     rep_lname,
     email,
@@ -36,7 +37,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
+    try { 
       await axios.post(
         `http://localhost:5000/api/v1/${typeName.toLowerCase()}`,
         formData
@@ -48,7 +49,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
 
     setFormData({
       [dataBaseColumn]: "",
-      rep_fname: "",
+       rep_fname: "",
       rep_mname: "",
       rep_lname: "",
       email: "",
@@ -59,6 +60,16 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
     });
   };
 
+  const validateName = (e) => {
+    if (!/^[A-Z][a-z]*$/.test(e.target.value)) {
+      e.target.setCustomValidity(
+        "እባክዎ ስምዎን በትክክል ያስገቡ"
+      );
+    } else {
+      e.target.setCustomValidity("");
+    }
+  };
+  
   return (
     <div className="formate">
       <h2>Registration Form</h2>
@@ -74,8 +85,9 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
             name={dataBaseColumn}
             id={dataBaseColumn}
             onChange={handleChange}
+ 
             value={columnValue}
-          />
+           />
         </div>
         <div className="formate_input_label">
           <label htmlFor="fname">First Name</label>
@@ -84,7 +96,9 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
             name="rep_fname"
             id="fname"
             onChange={handleChange}
+            onBlur={validateName} // added onBlur event to validate rep_fname
             value={rep_fname}
+            required
           />
         </div>
         <div className="formate_input_label">
@@ -94,7 +108,9 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
             name="rep_mname"
             id="mname"
             onChange={handleChange}
+            onBlur={validateName} 
             value={rep_mname}
+            required
           />
         </div>
         <div className="formate_input_label">
@@ -104,7 +120,9 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
             name="rep_lname"
             id="lname"
             onChange={handleChange}
+            onBlur={validateName} 
             value={rep_lname}
+            required
           />
         </div>
         <div className="formate_input_label">
@@ -113,18 +131,21 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
             type="text"
             name="email"
             id="email"
+ 
             value={email}
-            onChange={handleChange}
+             onChange={handleChange}
           />
         </div>
         <div className="formate_input_label">
           <label htmlFor="rep_password">Password</label>
           <input
-            type="text"
+            type="password"
             name="rep_password"
             id="password"
             onChange={handleChange}
             value={rep_password}
+            required
+
           />
         </div>
         <div className="formate_input_label">
@@ -134,7 +155,8 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
             name="rep_user_name"
             id="rep_user_name"
             onChange={handleChange}
-            value={rep_user_name}
+            value={ rep_user_name}
+            required
           />
         </div>
         <div className="formate_input_label">
@@ -145,6 +167,8 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
             id="tel"
             onChange={handleChange}
             value={rep_phone_number}
+            required
+
           />
         </div>
         <div className="formate_input_label">
@@ -155,6 +179,8 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
             id="id"
             onChange={handleChange}
             value={id}
+            required
+
           />
         </div>
         <div className="buttons">

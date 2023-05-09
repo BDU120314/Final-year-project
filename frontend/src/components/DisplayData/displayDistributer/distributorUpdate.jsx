@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import "../css/farmers.css";
+
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 
-function ZoneUpdate() {
+function DistributorUpdate() {
   const [formData, setFormData] = useState({
-    zone_name: "",
+    distributor_name: "",
     rep_fname: "",
     rep_mname: "",
     rep_lname: "",
@@ -21,7 +22,7 @@ function ZoneUpdate() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/v1/zone/${id}`).then((res) => {
+    axios.get(`http://localhost:5000/api/v1/distributor/${id}`).then((res) => {
       setFormData(res.data[0]);
       console.log(res.data[0]);
     });
@@ -31,7 +32,7 @@ function ZoneUpdate() {
     e.preventDefault();
     try {
       const response = await axios.put(
-        `http://localhost:5000/api/v1/zone/update/${id}`,
+        `http://localhost:5000/api/v1/distributor/update/${id}`,
         formData
       );
       navigate("/");
@@ -50,16 +51,16 @@ function ZoneUpdate() {
   return (
     <div className="farmers">
       <div>
-        <h2>Zone Modification Form</h2>
+        <h2>Distributor Modification Form</h2>
       </div>
       <form className="farmer-registration-form" onSubmit={handleSubmit}>
         <div className="label_input">
-          <label htmlFor="zone_name">First Name</label>
+          <label htmlFor="cluster_Name">Cluster Name</label>
           <input
             type="text"
-            id="zonename"
-            name="zone_name"
-            value={formData.zone_name}
+            id="cluster_name"
+            name="cluster_name"
+            value={formData.cluster_name}
             onChange={handleChange}
             required
           />
@@ -158,4 +159,4 @@ function ZoneUpdate() {
   );
 }
 
-export default ZoneUpdate;
+export default DistributorUpdate;

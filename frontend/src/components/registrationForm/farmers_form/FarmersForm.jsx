@@ -58,6 +58,7 @@ function FarmerRegistrationForm() {
             value={formData.fname}
             onChange={handleChange}
             required
+            
           />
         </div>
         <div className="label_input">

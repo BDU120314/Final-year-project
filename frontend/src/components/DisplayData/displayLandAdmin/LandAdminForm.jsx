@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../displayFarmersData/farmers_data.css";
 import { Link } from "react-router-dom";
-const ZoneData = () => {
-  const [zoneData, setZoneData] = useState([]);
+const  LandAdminForm1 = () => {
+  const [kebeleData, setKebeleData] = useState([]);
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:5000/api/v1/zone/delete/${id}`)
+      .delete(`http://localhost:5000/api/v1/admin/delete/${id}`)
       .then((response) => {
-        setZoneData(zoneData.filter((item) => item.id !== id));
+        setKebeleData(kebeleData.filter((item) => item.id !== id));
         console.log(`deleted user id :${id}`);
       })
       .catch((error) => {
@@ -18,43 +18,42 @@ const ZoneData = () => {
   };
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/v1/zone")
+      .get("http://localhost:5000/api/v1/admin")
       .then((response) => {
-        setZoneData(response.data);
-        console.log(zoneData);
+        setKebeleData(response.data);
+        console.log(kebeleData);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, [zoneData]);
+  }, [kebeleData]);
 
   return (
     <div className="container">
       <table>
         <thead>
           <tr>
-            <th>ID</th>
+            <th>Kebele Name</th>
             <th>First NAme</th>
             <th>Middle Name</th>
             <th>Email Address</th>
             <th>Phone Number</th>
             <th>User Name</th>
-            <th>Zone Name</th>
+            <th>ID</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          {zoneData.map((datas) => {
+          {kebeleData.map((datas) => {
             return (
-              <tr key={datas.id}>
+              <tr key={datas.id} className="bg-green-500">
+                <td>{datas.kebele_name}</td>
                 <td>{datas.id}</td>
                 <td>{datas.rep_fname} </td>
                 <td>{datas.rep_mname}</td>
                 <td>{datas.email}</td>
                 <td>{datas.rep_phone_number}</td>
                 <td>{datas.rep_user_name}</td>
-                <td>{datas.zone_name}</td>
-
                 <td>
                   <Link to={`/update/${datas.id}`} className="link">
                     <button className="btn edit">Edit</button>
@@ -80,4 +79,4 @@ const ZoneData = () => {
   );
 };
 
-export default ZoneData;
+export default  LandAdminForm1;
