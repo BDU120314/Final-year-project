@@ -1,11 +1,13 @@
 import React from 'react'
 import './App.css'
-
-import WoredaData from './components/DisplayData/displayWoredaData/woreda_formData';
+import ZoneRegistrationForm from './components/registrationForm/zone_form/zone_form';
+import Login from './pages/Login';
 const App = () => {
   return (
     <div className="App">
-      <WoredaData />
+      {/* <Login /> */}
+      {/* <WoredaData /> */}
+      <ZoneRegistrationForm />
       {/* <Routes> */}
       {/* <Route path="/" element={RegistrationFormate} /> */}
       {/* <Route path="/" element={<FarmersData />} />

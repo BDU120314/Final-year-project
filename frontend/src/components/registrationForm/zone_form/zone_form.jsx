@@ -1,7 +1,7 @@
 import React from "react";
 import RegistrationFormate from "../../formate/registrationFormate";
 
-const ZoneRegistration_form = () => {
+const ZoneRegistrationForm = () => {
   return (
     <div>
       <RegistrationFormate typeName="zone" dataBaseColumn="zone_name" />
@@ -9,4 +9,4 @@ const ZoneRegistration_form = () => {
   );
 };
 
-export default ZoneRegistration_form;
+export default ZoneRegistrationForm;
