@@ -5,7 +5,7 @@ import { BsFillMicFill } from "react-icons/bs";
 
 const Home = () => {
   return (
-    <div className="flex flex-col bg-gray-50 h-screen ">
+    <div className="flex flex-col min-h-screen bg-gray-50">
       <header className="bg-gray-200 shadow-md text-black h-[80px] flex justify-between items-center px-5 max-w-full">
         <div className="flex justify-center items-center">
           <img
@@ -26,10 +26,9 @@ const Home = () => {
             <div className="absolute inset-y-0 left-0 flex items-center pl-4">
               <FaSearch />
             </div>
-            
           </div>
         </div>
-        <div className="flex justify-between items-center flex-5 ">
+        <div className="flex justify-between items-center flex-5">
           <ul className="flex justify-between items-center gap-10 ">
             <Link to="/home">
               <li>Home</li>
@@ -48,19 +47,59 @@ const Home = () => {
       </header>
 
       {/* //main part */}
-      <main>
-        <div>
-          <img src="" alt="" />
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Repudiandae officiis perspiciatis aperiam, vel cum labore, corporis
-            nihil quasi repellat id natus commodi ipsa voluptas distinctio
-            blanditiis. Obcaecati a labore placeat.
-          </p>
+      <main className="flex-col shadow-md text-black   flex justify-between items-center px-5 max-w-full">
+        <div className="flex justify-center items-center">
+          <div className="mr-12">
+            <img src="logo.jpg" alt="ardmos" />
+            <p>
+             Posted Date
+            </p>
+            <p>
+              Post Tittle
+            </p>
+          </div> 
+          <div>
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni
+              sequi quae, porro impedit sunt molestias vel. Error omnis alias
+              inventore a, nam facere fuga ut reprehenderit tempore
+              necessitatibus ex quia?
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. A tenetur 
+              iusto odio hic fugit vero ut, odit, neque modi ratione accusamus explicabo 
+              exercitationem sequi ea 
+              temporibus totam, reiciendis perferendis. Facilis!
+            </p>
+          </div>
         </div>
       </main>
+
       {/* //footer */}
-      <footer></footer>
+
+      <div className="flex-none mt-auto">
+        <footer className="bg-gray-900 h-[100px] flex justify-between items-center px-5 max-w-full">
+          <ul className="justify-between items-center gap-10 mb-8 p-25 ml-[300px]">
+            <Link to="/home">
+              <li>Privacy Policy</li>
+            </Link>
+            <Link to="/about">
+              <li>About</li>
+            </Link>
+            <Link to="/contact">
+              <li>Contact</li>
+            </Link>
+          </ul>
+
+          <ul className="pr-16">
+            <h3>Social Media</h3>
+            <Link to="/contact">
+              <li>Facebook</li>
+            </Link>
+            <Link to="/login">
+              <li>Twitter</li>
+            </Link>
+          </ul>
+        </footer>
+      </div>
     </div>
   );
 };
