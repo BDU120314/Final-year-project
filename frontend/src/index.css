@@ -13,4 +13,9 @@ body {
  overflow-y: auto;
  overflow-x:hidden
 }
+.brand {
+  display: inline-block;
+  vertical-align: middle;
+}
+
 
