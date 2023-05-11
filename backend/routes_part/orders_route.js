@@ -1,5 +1,4 @@
 const express = require("express");
-const db = require("../config/connection_db");
 const { AddOrder, getAllOrders, GetSingleOrder, UpdateOrder, DeleteOrder } = require("../controllers/order_controller");
 const order_route = express.Router();
 
