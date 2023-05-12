@@ -1,31 +1,28 @@
 import React from "react";
+import images from "./Photo/images.jpg";
+import download from "./Photo/download.jpg";
+import urea from "./Photo/urea.jpg";
+import chemical_fertilizer from "./Photo/chemical_fertilizer.jpg";
 
 const Main = () => {
   return (
     <div>
       <div class="container p-6 px-6 mx-auto bg-white dark:bg-gray-800">
         <div class="mb-16 text-center">
-          <h2 class="text-base font-semibold tracking-wide text-indigo-600 uppercase">
-            Features
+          <h2 class="  font-semibold tracking-wide text-indigo-600 uppercase text-3xl">
+            እንኳን ወደ አማራ ክልል የግብርና ግብዓት ፎርም በደህና መጡ
           </h2>
-          <p class="mt-2 text-3xl font-extrabold leading-8 tracking-tight text-gray-900 dark:text-white sm:text-4xl">
-            A better way to live
-          </p>
+          <p class="mt-2 text-3xl font-extrabold leading-8 tracking-tight text-gray-900 dark:text-white sm:text-4xl"></p>
         </div>
         <div class="flex flex-wrap my-12 dark:text-white">
           <div class="w-full p-8 border-b md:w-1/2 md:border-r lg:w-1/3">
             <div class="flex items-center mb-6">
-              <svg
-                width="20"
-                height="20"
-                fill="currentColor"
-                class="w-6 h-6 text-indigo-500"
-                viewBox="0 0 1792 1792"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M491 1536l91-91-235-235-91 91v107h128v128h107zm523-928q0-22-22-22-10 0-17 7l-542 542q-7 7-7 17 0 22 22 22 10 0 17-7l542-542q7-7 7-17zm-54-192l416 416-832 832h-416v-416zm683 96q0 53-37 90l-166 166-416-416 166-165q36-38 90-38 53 0 91 38l235 234q37 39 37 91z"></path>
-              </svg>
-              <div class="ml-4 text-xl">Increase sales</div>
+              <img
+                src={images}
+                alt="New"
+                class="h-[100px] w-[100px] rounded-md"
+              />
+              <div class="ml-4 text-xl">Pesti Side </div>
             </div>
             <p class="leading-loose text-gray-500 dark:text-gray-200 text-md">
               Receive more sales by selling across multple sales channels
@@ -34,17 +31,7 @@ const Main = () => {
           </div>
           <div class="w-full p-8 border-b md:w-1/2 lg:w-1/3 lg:border-r">
             <div class="flex items-center mb-6">
-              <svg
-                width="20"
-                height="20"
-                fill="currentColor"
-                class="w-6 h-6 text-indigo-500"
-                viewBox="0 0 1792 1792"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M491 1536l91-91-235-235-91 91v107h128v128h107zm523-928q0-22-22-22-10 0-17 7l-542 542q-7 7-7 17 0 22 22 22 10 0 17-7l542-542q7-7 7-17zm-54-192l416 416-832 832h-416v-416zm683 96q0 53-37 90l-166 166-416-416 166-165q36-38 90-38 53 0 91 38l235 234q37 39 37 91z"></path>
-              </svg>
-              <div class="ml-4 text-xl">Overlays</div>
+              <div class="ml-4 text-xl">Agrochemicals</div>
             </div>
             <p class="leading-loose text-gray-500 dark:text-gray-200 text-md">
               Apply beautiful overlays to every product image distributed
@@ -53,17 +40,8 @@ const Main = () => {
           </div>
           <div class="w-full p-8 border-b md:w-1/2 md:border-r lg:w-1/3 lg:border-r-0">
             <div class="flex items-center mb-6">
-              <svg
-                width="20"
-                height="20"
-                fill="currentColor"
-                class="w-6 h-6 text-indigo-500"
-                viewBox="0 0 1792 1792"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M491 1536l91-91-235-235-91 91v107h128v128h107zm523-928q0-22-22-22-10 0-17 7l-542 542q-7 7-7 17 0 22 22 22 10 0 17-7l542-542q7-7 7-17zm-54-192l416 416-832 832h-416v-416zm683 96q0 53-37 90l-166 166-416-416 166-165q36-38 90-38 53 0 91 38l235 234q37 39 37 91z"></path>
-              </svg>
-              <div class="ml-4 text-xl">Control</div>
+              <img src={download} alt="New" class="h-[100px] w-[100px]" />
+              <div class="ml-4 text-xl">Organic Fertilizer</div>
             </div>
             <p class="leading-loose text-gray-500 dark:text-gray-200 text-md">
               Apply filters and control which products to sell on each sales
@@ -72,17 +50,9 @@ const Main = () => {
           </div>
           <div class="w-full p-8 border-b md:w-1/2 lg:w-1/3 lg:border-r lg:border-b-0">
             <div class="flex items-center mb-6">
-              <svg
-                width="20"
-                height="20"
-                fill="currentColor"
-                class="w-6 h-6 text-indigo-500"
-                viewBox="0 0 1792 1792"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M491 1536l91-91-235-235-91 91v107h128v128h107zm523-928q0-22-22-22-10 0-17 7l-542 542q-7 7-7 17 0 22 22 22 10 0 17-7l542-542q7-7 7-17zm-54-192l416 416-832 832h-416v-416zm683 96q0 53-37 90l-166 166-416-416 166-165q36-38 90-38 53 0 91 38l235 234q37 39 37 91z"></path>
-              </svg>
-              <div class="ml-4 text-xl">Mapping</div>
+            <img src={chemical_fertilizer} alt="" class="h-[100px] w-[100px] rounded-md" />
+
+              <div class="ml-4 text-xl">Chemical Fertilizer</div>
             </div>
             <p class="leading-loose text-gray-500 dark:text-gray-200 text-md">
               Map product categories with each sales channels&#x27; own
@@ -91,24 +61,15 @@ const Main = () => {
           </div>
           <div class="w-full p-8 border-b md:w-1/2 md:border-r md:border-b-0 lg:w-1/3 lg:border-b-0">
             <div class="flex items-center mb-6">
-              <svg
-                width="20"
-                height="20"
-                fill="currentColor"
-                class="w-6 h-6 text-indigo-500"
-                viewBox="0 0 1792 1792"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M491 1536l91-91-235-235-91 91v107h128v128h107zm523-928q0-22-22-22-10 0-17 7l-542 542q-7 7-7 17 0 22 22 22 10 0 17-7l542-542q7-7 7-17zm-54-192l416 416-832 832h-416v-416zm683 96q0 53-37 90l-166 166-416-416 166-165q36-38 90-38 53 0 91 38l235 234q37 39 37 91z"></path>
-              </svg>
-              <div class="ml-4 text-xl">Fill the missing</div>
+              <img src={urea} alt="" class="h-[100px] w-[100px] rounded-md" />
+              <div class="ml-4 text-xl"> Organic Farming</div>
             </div>
             <p class="leading-loose text-gray-500 dark:text-gray-200 text-md">
               Modify products with extra properties and achieve the maximum
               output for each installed sales channel.
             </p>
           </div>
-          <div class="w-full p-8 md:w-1/2 lg:w-1/3">
+          {/* <div class="w-full p-8 md:w-1/2 lg:w-1/3">
             <div class="flex items-center mb-6">
               <svg
                 width="20"
@@ -126,10 +87,10 @@ const Main = () => {
               Build unique product titles and descriptions instead of spending
               days manually editing each product.
             </p>
-          </div>
+          </div> */}
         </div>
       </div>
-      <section>
+      {/* <section>
         <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
           <div class="max-w-3xl">
             <h2 class="text-3xl font-bold sm:text-4xl">
@@ -142,7 +103,7 @@ const Main = () => {
             <div class="relative h-64 overflow-hidden sm:h-80 lg:h-full">
               <img
                 alt="Party"
-                src="https://images.unsplash.com/photo-1496843916299-590492c751f4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1771&q=80"
+                src={images}
                 class="absolute inset-0 h-full w-full object-cover"
               />
             </div>
@@ -171,7 +132,7 @@ const Main = () => {
         </div>
       </section>
       <section>
-        <div class="mx-auto max-w-screen-2xl px-4 py-16 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-screen-2xl px-4 py-16 sm:px-6 lg:px-8 ">
           <div class="grid grid-cols-1 lg:h-screen lg:grid-cols-2">
             <div class="relative z-10 lg:py-16">
               <div class="relative h-64 sm:h-80 lg:h-full">
@@ -525,7 +486,7 @@ const Main = () => {
             </blockquote>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };
