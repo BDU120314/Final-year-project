@@ -21,7 +21,7 @@ app.use("/api/v1/farmers", router);
 app.use("/api/v1/woreda", woreda_router);
 app.use("/api/v1/zone", zone_router);
 app.use("/api/v1/distributor", distributor_router);
-app.use("/api/v1/admin", land_admin_router);
+app.use("/api/v1/kebele", land_admin_router);
 app.use("/api/v1/order", order_route);
 app.use("/api/v1/report", report_route)
 app.use("/api/v1/login", Login_Route)

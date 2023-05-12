@@ -39,7 +39,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
     e.preventDefault();
     try { 
       await axios.post(
-        `http://localhost:5000/api/v1/${typeName.toLowerCase()}`,
+        `http://localhost:5001/api/v1/${typeName.toLowerCase()}`,
         formData
       );
       alert("User successfully registered");
