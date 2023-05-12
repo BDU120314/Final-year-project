@@ -103,7 +103,7 @@ const Login = () => {
       // Assuming the backend sends a response with a status property indicating success
       if (statusCode === 200 && role === "Farmer") {
         console.log("logged in successfully");
-        navigate("/");
+        navigate("/dashboard");
       } else if (statusCode === 401) {
         // Unauthorized login
        setError("Invalid email or password");

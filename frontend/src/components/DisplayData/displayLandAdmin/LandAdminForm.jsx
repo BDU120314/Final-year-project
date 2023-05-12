@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "../displayFarmersData/farmers_data.css";
 import { Link } from "react-router-dom";
 const  LandAdminForm1 = () => {
   const [kebeleData, setKebeleData] = useState([]);
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:5000/api/v1/admin/delete/${id}`)
+      .delete(`http://localhost:5001/api/v1/admin/delete/${id}`)
       .then((response) => {
         setKebeleData(kebeleData.filter((item) => item.id !== id));
         console.log(`deleted user id :${id}`);
@@ -18,7 +17,7 @@ const  LandAdminForm1 = () => {
   };
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/v1/admin")
+      .get("http://localhost:5001/api/v1/admin")
       .then((response) => {
         setKebeleData(response.data);
         console.log(kebeleData);
@@ -29,42 +28,48 @@ const  LandAdminForm1 = () => {
   }, [kebeleData]);
 
   return (
-    <div className="container">
-      <table>
-        <thead>
+    <div className="flex justify-center items-center px-5 ">
+      <table className="table-auto w-full">
+        <thead className="bg-gray-100">
           <tr>
-            <th>Kebele Name</th>
-            <th>First NAme</th>
-            <th>Middle Name</th>
-            <th>Email Address</th>
-            <th>Phone Number</th>
-            <th>User Name</th>
-            <th>ID</th>
-            <th>Action</th>
+            <th className="px-4 py-2">ID</th>
+            <th className="px-4 py-2">First NAme</th>
+            <th className="px-4 py-2">Middle Name</th>
+            <th className="px-4 py-2">Email Address</th>
+            <th className="px-4 py-2">Phone Number</th>
+            <th className="px-4 py-2">User Name</th>
+            <th className="px-4 py-2">Kebele Name</th>
+            <th className="px-4 py-2 w-auto">Action</th>
           </tr>
         </thead>
         <tbody>
           {kebeleData.map((datas) => {
             return (
               <tr key={datas.id} className="bg-green-500">
-                <td>{datas.kebele_name}</td>
-                <td>{datas.id}</td>
-                <td>{datas.rep_fname} </td>
-                <td>{datas.rep_mname}</td>
-                <td>{datas.email}</td>
-                <td>{datas.rep_phone_number}</td>
-                <td>{datas.rep_user_name}</td>
-                <td>
-                  <Link to={`/update/${datas.id}`} className="link">
-                    <button className="btn edit">Edit</button>
+                <td className="border px-4 py-2">{datas.id}</td>
+                <td className="border px-4 py-2">{datas.rep_fname} </td>
+                <td className="border px-4 py-2">{datas.rep_mname}</td>
+                <td className="border px-4 py-2">{datas.email}</td>
+                <td className="border px-4 py-2">{datas.rep_phone_number}</td>
+                <td className="border  py-2">{datas.user_name}</td>
+                <td className="border px-4 py-2">{datas.kebele_name}</td>
+                <td className="w-auto-2 flex justify-center items-center gap-2 py-2 px-4">
+                  <Link
+                    to={`/update/${datas.id}`}
+                    className="px-2 bg-blue-700 rounded-sm"
+                  >
+                    Edit
                   </Link>
 
-                  <Link to={`/view/${datas.id}`} className="link">
+                  <Link
+                    to={`/view/${datas.id}`}
+                    className="px-2 bg-gray-300 rounded-sm"
+                  >
                     <button className="btn view">View</button>{" "}
                   </Link>
 
                   <button
-                    className="btn delete"
+                    className="bg-red-400"
                     onClick={() => handleDelete(datas.id)}
                   >
                     Delete
