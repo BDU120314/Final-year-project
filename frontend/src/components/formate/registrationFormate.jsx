@@ -9,8 +9,8 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
     rep_mname: "",
     rep_lname: "",
     email: "",
-    rep_password: "",
-    rep_user_name: "",
+   password: "",
+    user_name: "",
     rep_phone_number: "",
     id: "",
   });
@@ -22,8 +22,8 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
     rep_mname,
     rep_lname,
     email,
-    rep_password,
-    rep_user_name,
+   password,
+    user_name,
     rep_phone_number,
     id,
   } = formData;
@@ -53,8 +53,8 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
       rep_mname: "",
       rep_lname: "",
       email: "",
-      rep_password: "",
-      rep_user_name: "",
+     password: "",
+      user_name: "",
       rep_phone_number: "",
       id: "",
     });
@@ -137,13 +137,13 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
           />
         </div>
         <div className="formate_input_label">
-          <label htmlFor="rep_password">Password</label>
+          <label htmlFor="password">password</label>
           <input
             type="password"
-            name="rep_password"
+            name="password"
             id="password"
             onChange={handleChange}
-            value={rep_password}
+            value={password}
             required
 
           />
@@ -152,10 +152,10 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
           <label htmlFor="username">User Name</label>
           <input
             type="text"
-            name="rep_user_name"
-            id="rep_user_name"
+            name="user_name"
+            id="user_name"
             onChange={handleChange}
-            value={ rep_user_name}
+            value={user_name}
             required
           />
         </div>

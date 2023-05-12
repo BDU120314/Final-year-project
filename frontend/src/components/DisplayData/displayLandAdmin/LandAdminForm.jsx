@@ -6,7 +6,7 @@ const  LandAdminForm1 = () => {
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:5001/api/v1/admin/delete/${id}`)
+      .delete(`http://localhost:5001/api/v1/kebele/delete/${id}`)
       .then((response) => {
         setKebeleData(kebeleData.filter((item) => item.id !== id));
         console.log(`deleted user id :${id}`);
@@ -17,7 +17,7 @@ const  LandAdminForm1 = () => {
   };
   useEffect(() => {
     axios
-      .get("http://localhost:5001/api/v1/admin")
+      .get("http://localhost:5001/api/v1/kebele")
       .then((response) => {
         setKebeleData(response.data);
         console.log(kebeleData);
@@ -45,7 +45,7 @@ const  LandAdminForm1 = () => {
         <tbody>
           {kebeleData.map((datas) => {
             return (
-              <tr key={datas.id} className="bg-green-500">
+              <tr key={datas.id} className="bg-gray-300">
                 <td className="border px-4 py-2">{datas.id}</td>
                 <td className="border px-4 py-2">{datas.rep_fname} </td>
                 <td className="border px-4 py-2">{datas.rep_mname}</td>
@@ -55,14 +55,13 @@ const  LandAdminForm1 = () => {
                 <td className="border px-4 py-2">{datas.kebele_name}</td>
                 <td className="w-auto-2 flex justify-center items-center gap-2 py-2 px-4">
                   <Link
-                    to={`/update/${datas.id}`}
+                    to={`/dashboard/manageland/update/${datas.id}`}
                     className="px-2 bg-blue-700 rounded-sm"
                   >
                     Edit
                   </Link>
 
-                  <Link
-                    to={`/view/${datas.id}`}
+                  <Link to={`/view/${datas.id}`}
                     className="px-2 bg-gray-300 rounded-sm"
                   >
                     <button className="btn view">View</button>{" "}

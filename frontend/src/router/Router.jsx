@@ -8,6 +8,7 @@ import About from "../pages/About";
 import AdminRegistrationForm from "../components/registrationForm/admin_form/admin_form";
 import Orders from "../dashboard/WoredaAdmin/Orders";
 import LandAdminForm1 from "../components/DisplayData/displayLandAdmin/LandAdminForm";
+import UpdateLandAdmin from "../components/DisplayData/displayLandAdmin/UpdateLandAdmin";
 const Router = () => {
   return (
     <div>
@@ -16,7 +17,12 @@ const Router = () => {
           <Route path="/" element={<Home />} />
           <Route path="/dashboard" element={<Dash />}>
             <Route index element={<Orders />} />
-            <Route path="/dashboard/manageland" element={<LandAdminForm1 />} />
+            <Route path="/dashboard/manageland" element={<LandAdminForm1 />}>
+              <Route
+                path={"/dashboard/manageland/update/:id"}
+                element={<UpdateLandAdmin />}
+              />
+            </Route>
             <Route
               path="/dashboard/register"
               element={<AdminRegistrationForm />}

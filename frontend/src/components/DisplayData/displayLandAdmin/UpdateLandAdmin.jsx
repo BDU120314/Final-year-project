@@ -12,8 +12,8 @@ function UpdateLandAdmin() {
     rep_mname: "",
     rep_lname: "",
     email: "",
-    rep_password: "",
-    rep_user_name: "",
+    password: "",
+    user_name: "",
     rep_phone_number: "",
     id: "",
   });
@@ -22,7 +22,7 @@ function UpdateLandAdmin() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/v1/admin/${id}`).then((res) => {
+    axios.get(`http://localhost:5000/api/v1/kebele/${id}`).then((res) => {
       setFormData(res.data[0]);
       console.log(res.data[0]);
     });
@@ -32,10 +32,10 @@ function UpdateLandAdmin() {
     e.preventDefault();
     try {
       const response = await axios.put(
-        `http://localhost:5000/api/v1/admin/update/${id}`,
+        `http://localhost:5000/api/v1/kebele/update/${id}`,
         formData
       );
-      navigate("/");
+      navigate("/dashboard/manageland");
       console.log(response);
     } catch (error) {
       alert(error);
@@ -125,8 +125,8 @@ function UpdateLandAdmin() {
           <input
             type="text"
             id="user_name"
-            name="rep_user_name"
-            value={formData.rep_user_name}
+            name="user_name"
+            value={formData.user_name}
             onChange={handleChange}
             required
           />
@@ -136,8 +136,8 @@ function UpdateLandAdmin() {
           <input
             type="password"
             id="password"
-            name="rep_password"
-            value={formData.rep_password}
+            name="password"
+            value={formData.password}
             onChange={handleChange}
             required
           />
