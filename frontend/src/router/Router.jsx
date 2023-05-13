@@ -8,6 +8,8 @@ import About from "../pages/About";
 import AdminRegistrationForm from "../components/registrationForm/admin_form/admin_form";
 import Orders from "../dashboard/WoredaAdmin/Orders";
 import LandAdminForm1 from "../components/DisplayData/displayLandAdmin/LandAdminForm";
+import UpdateLandAdmin from "../components/DisplayData/displayLandAdmin/UpdateLandAdmin";
+import SingleLandAdmin from "../components/DisplayData/displayLandAdmin/SingleLandAdmin";
 const Router = () => {
   return (
     <div>
@@ -17,6 +19,15 @@ const Router = () => {
           <Route path="/dashboard" element={<Dash />}>
             <Route index element={<Orders />} />
             <Route path="/dashboard/manageland" element={<LandAdminForm1 />} />
+            <Route
+              path="/dashboard/manageland/update/:id"
+              element={<UpdateLandAdmin />}
+            />
+            <Route
+              path="/dashboard/manageland/view/:id"
+              element={<SingleLandAdmin />}
+            />
+
             <Route
               path="/dashboard/register"
               element={<AdminRegistrationForm />}

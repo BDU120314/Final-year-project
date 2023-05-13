@@ -7,7 +7,7 @@ const SingleLandAdmin = () => {
   const [data, setData] = useState([]);
   const { id } = useParams();
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/v1/admin/${id}`).then((res) => {
+    axios.get(`http://localhost:5001/api/v1/kebele/${id}`).then((res) => {
       setData(res.data);
       console.log(data);
     });
