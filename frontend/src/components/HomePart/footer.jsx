@@ -2,26 +2,23 @@ import React from "react";
 
 const Foooter = () => {
   return (
-    <footer class="bg-white dark:bg-gray-800 pt-4 pb-8 xl:pt-8">
+    <footer class="bg-gray-700 dark:bg-gray-800 pt-4 pb-8 xl:pt-8">
       <div class="max-w-screen-lg px-4 mx-auto text-gray-400 xl:max-w-screen-xl sm:px-6 md:px-8 dark:text-gray-300">
         <ul class="flex flex-wrap justify-center pb-8 text-lg font-light">
           <li class="w-1/2 md:w-1/3 lg:w-1/3">
             <div class="text-center">
               <h2 class="text-gray-500 dark:text-gray-200 text-md uppercase mb-4">
-                Components
+               Contacts
               </h2>
               <ul>
                 <li class="mb-4 transition-colors duration-200 hover:text-gray-800 dark:hover:text-white">
-                  <a href="#">Elements</a>
+                  <a href="#">0582206822</a>
                 </li>
                 <li class="mb-4 transition-colors duration-200 hover:text-gray-800 dark:hover:text-white">
-                  <a href="#">Forms</a>
+                  <a href="#">amagabureau@gmail.com</a>
                 </li>
                 <li class="mb-4 transition-colors duration-200 hover:text-gray-800 dark:hover:text-white">
-                  <a href="#">Commerces</a>
-                </li>
-                <li class="mb-4 transition-colors duration-200 hover:text-gray-800 dark:hover:text-white">
-                  <a href="#">Navigation</a>
+                  <a href="#">Found Around Grand Building</a>
                 </li>
               </ul>
             </div>
@@ -29,11 +26,11 @@ const Foooter = () => {
           <li class="w-1/2 md:w-1/3 lg:w-1/3">
             <div class="text-center">
               <h2 class="text-gray-500 dark:text-gray-200 text-md uppercase mb-4">
-                Contacts
+               Social Media
               </h2>
               <ul>
                 <li class="mb-4 transition-colors duration-200 hover:text-gray-800 dark:hover:text-white">
-                  <a href="#">Github</a>
+                  <a href="#">telegram</a>
                 </li>
                 <li class="mb-4 transition-colors duration-200 hover:text-gray-800 dark:hover:text-white">
                   <a href="#">Facebook</a>
@@ -50,26 +47,23 @@ const Foooter = () => {
           <li class="w-1/2 md:w-1/3 lg:w-1/3">
             <div class="text-center">
               <h2 class="text-gray-500 dark:text-gray-200 text-md uppercase mb-4">
-                Customization
+               Site Navigation
               </h2>
               <ul>
                 <li class="mb-4 transition-colors duration-200 hover:text-gray-800 dark:hover:text-white">
-                  <a href="#">Settings</a>
+                  <a href="#">About Us</a>
                 </li>
                 <li class="mb-4 transition-colors duration-200 hover:text-gray-800 dark:hover:text-white">
-                  <a href="#">Themes</a>
+                  <a href="#">Contact Us</a>
                 </li>
                 <li class="mb-4 transition-colors duration-200 hover:text-gray-800 dark:hover:text-white">
-                  <a href="#">Plugins</a>
-                </li>
-                <li class="mb-4 transition-colors duration-200 hover:text-gray-800 dark:hover:text-white">
-                  <a href="#">LinkedIn</a>
+                  <a href="#">Privacy Policy</a>
                 </li>
               </ul>
             </div>
           </li>
         </ul>
-        <div class="pt-8 flex border-t border-gray-200 max-w-xs mx-auto items-center justify-between">
+        {/* <div class="pt-8 flex border-t border-gray-200 max-w-xs mx-auto items-center justify-between">
           <a href="#">
             <svg
               width="20"
@@ -130,7 +124,11 @@ const Foooter = () => {
               <path d="M1551 1476q15-6 26-3t11 17.5-15 33.5q-13 16-44 43.5t-95.5 68-141 74-188 58-229.5 24.5q-119 0-238-31t-209-76.5-172.5-104-132.5-105-84-87.5q-8-9-10-16.5t1-12 8-7 11.5-2 11.5 4.5q192 117 300 166 389 176 799 90 190-40 391-135zm207-115q11 16 2.5 69.5t-28.5 102.5q-34 83-85 124-17 14-26 9t0-24q21-45 44.5-121.5t6.5-98.5q-5-7-15.5-11.5t-27-6-29.5-2.5-35 0-31.5 2-31 3-22.5 2q-6 1-13 1.5t-11 1-8.5 1-7 .5h-10l-3-.5-2-1.5-1.5-3q-6-16 47-40t103-30q46-7 108-1t76 24zm-394-443q0 31 13.5 64t32 58 37.5 46 33 32l13 11-227 224q-40-37-79-75.5t-58-58.5l-19-20q-11-11-25-33-38 59-97.5 102.5t-127.5 63.5-140 23-137.5-21-117.5-65.5-83-113-31-162.5q0-84 28-154t72-116.5 106.5-83 122.5-57 130-34.5 119.5-18.5 99.5-6.5v-127q0-65-21-97-34-53-121-53-6 0-16.5 1t-40.5 12-56 29.5-56 59.5-48 96l-294-27q0-60 22-119t67-113 108-95 151.5-65.5 190.5-24.5q100 0 181 25t129.5 61.5 81 83 45 86 12.5 73.5v589zm-672 21q0 86 70 133 66 44 139 22 84-25 114-123 14-45 14-101v-162q-59 2-111 12t-106.5 33.5-87 71-32.5 114.5z"></path>
             </svg>
           </a>
-        </div>
+        </div> */}
+              <div className="container mx-auto flex justify-between items-center">
+        <p className="text-sm">© 2023 For Bahir Dar University. All rights reserved.</p>
+        <p className="text-sm">Designed and built by Bit 4th Year IT Student</p>
+      </div>
       </div>
     </footer>
   );

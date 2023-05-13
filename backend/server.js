@@ -9,9 +9,17 @@ const land_admin_router = require("./routes_part/land_admin_route");
 const order_route = require("./routes_part/orders_route");
 const report_route = require("./routes_part/report_route");
 const Login_Route = require("./routes_part/login_route");
+const cookieParser = require("cookie-parser");
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cookieParser());
+app.use(cors(
+{
+  origin: ["http://localhost:3000"],
+  methods: ["POST, GET"],
+  credentials: true
+}
+));
 const PORT = process.env.PORT || 5001;
 app.use(bodyparser.json());
 //middleware

@@ -15,6 +15,7 @@ const CreateAdmin = (req, res) => {
 
   const sql =
     "INSERT INTO `land-admin` (kebele_name, rep_fname, rep_mname, rep_lname, user_name, email, password, rep_phone_number, id) VALUES (?,?,?,?,?,?,?,?,?)";
+
   db.query(
     sql,
     [
@@ -56,7 +57,6 @@ const GetSingleAdmin = (req, res) => {
   });
 };
 
-
 //for updating
 
 const UpdateAdmin = (req, res) => {
@@ -95,7 +95,6 @@ const UpdateAdmin = (req, res) => {
     }
   );
 };
-
 
 const DeleteAdmin = (req, res) => {
   const id = req.params.id;

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-const  LandAdminForm1 = () => {
+const LandAdminForm1 = () => {
   const [kebeleData, setKebeleData] = useState([]);
 
   const handleDelete = (id) => {
@@ -84,4 +84,4 @@ const  LandAdminForm1 = () => {
   );
 };
 
-export default  LandAdminForm1;
+export default LandAdminForm1;

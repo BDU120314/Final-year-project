@@ -10,19 +10,20 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
     rep_lname: "",
     email: "",
     password: "",
+
     user_name: "",
     rep_phone_number: "",
     id: "",
   });
-   
- 
+
   const {
     [dataBaseColumn]: columnValue,
-     rep_fname,
+    rep_fname,
     rep_mname,
     rep_lname,
     email,
     password,
+
     user_name,
     rep_phone_number,
     id,
@@ -37,7 +38,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try { 
+    try {
       await axios.post(
         `http://localhost:5001/api/v1/${typeName.toLowerCase()}`,
         formData
@@ -49,11 +50,13 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
 
     setFormData({
       [dataBaseColumn]: "",
-       rep_fname: "",
+      rep_fname: "",
       rep_mname: "",
       rep_lname: "",
       email: "",
+
       password: "",
+
       user_name: "",
       rep_phone_number: "",
       id: "",
@@ -62,14 +65,12 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
 
   const validateName = (e) => {
     if (!/^[A-Z][a-z]*$/.test(e.target.value)) {
-      e.target.setCustomValidity(
-        "እባክዎ ስምዎን በትክክል ያስገቡ"
-      );
+      e.target.setCustomValidity("እባክዎ ስምዎን በትክክል ያስገቡ");
     } else {
       e.target.setCustomValidity("");
     }
   };
-  
+
   return (
     <div className="formate">
       <h2>Registration Form</h2>
@@ -85,9 +86,8 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
             name={dataBaseColumn}
             id={dataBaseColumn}
             onChange={handleChange}
- 
             value={columnValue}
-           />
+          />
         </div>
         <div className="formate_input_label">
           <label htmlFor="fname">First Name</label>
@@ -108,7 +108,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
             name="rep_mname"
             id="mname"
             onChange={handleChange}
-            onBlur={validateName} 
+            onBlur={validateName}
             value={rep_mname}
             required
           />
@@ -120,7 +120,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
             name="rep_lname"
             id="lname"
             onChange={handleChange}
-            onBlur={validateName} 
+            onBlur={validateName}
             value={rep_lname}
             required
           />
@@ -131,13 +131,13 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
             type="text"
             name="email"
             id="email"
- 
             value={email}
-             onChange={handleChange}
+            onChange={handleChange}
           />
         </div>
         <div className="formate_input_label">
           <label htmlFor="password">Password</label>
+
           <input
             type="password"
             name="password"
@@ -145,7 +145,6 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
             onChange={handleChange}
             value={password}
             required
-
           />
         </div>
         <div className="formate_input_label">
@@ -155,7 +154,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
             name="user_name"
             id="user_name"
             onChange={handleChange}
-            value={ user_name}
+            value={user_name}
             required
           />
         </div>
@@ -168,7 +167,6 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
             onChange={handleChange}
             value={rep_phone_number}
             required
-
           />
         </div>
         <div className="formate_input_label">
@@ -180,7 +178,6 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
             onChange={handleChange}
             value={id}
             required
-
           />
         </div>
         <div className="buttons">

@@ -4,7 +4,7 @@ var db = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "",
-  database:"armdos",
+  database:"armdos(1)",
   multipleStatements: true,
 });
 db.connect((err) => {

@@ -23,6 +23,7 @@ function UpdateLandAdmin() {
 
   useEffect(() => {
     axios.get(`http://localhost:5001/api/v1/kebele/${id}`).then((res) => {
+
       setFormData(res.data[0]);
       console.log(res.data[0]);
     });

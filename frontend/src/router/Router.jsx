@@ -10,6 +10,7 @@ import Orders from "../dashboard/WoredaAdmin/Orders";
 import LandAdminForm1 from "../components/DisplayData/displayLandAdmin/LandAdminForm";
 import UpdateLandAdmin from "../components/DisplayData/displayLandAdmin/UpdateLandAdmin";
 import SingleLandAdmin from "../components/DisplayData/displayLandAdmin/SingleLandAdmin";
+
 const Router = () => {
   return (
     <div>
@@ -18,7 +19,12 @@ const Router = () => {
           <Route path="/" element={<Home />} />
           <Route path="/dashboard" element={<Dash />}>
             <Route index element={<Orders />} />
-            <Route path="/dashboard/manageland" element={<LandAdminForm1 />} />
+            <Route path="/dashboard/manageland" element={<LandAdminForm1 />}>
+              <Route
+                path={"/dashboard/manageland/update/:id"}
+                element={<UpdateLandAdmin />}
+              />
+            </Route>
             <Route
               path="/dashboard/manageland/update/:id"
               element={<UpdateLandAdmin />}
