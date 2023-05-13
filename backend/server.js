@@ -13,13 +13,7 @@ const cookieParser = require("cookie-parser");
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors(
-{
-  origin: ["http://localhost:3000"],
-  methods: ["POST, GET"],
-  credentials: true
-}
-));
+app.use(cors());
 const PORT = process.env.PORT || 5001;
 app.use(bodyparser.json());
 //middleware

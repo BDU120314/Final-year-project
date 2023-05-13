@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+
 const LandAdminForm1 = () => {
   const [kebeleData, setKebeleData] = useState([]);
 
@@ -15,17 +16,18 @@ const LandAdminForm1 = () => {
         console.log(error);
       });
   };
+
   useEffect(() => {
     axios
       .get("http://localhost:5001/api/v1/kebele")
       .then((response) => {
         setKebeleData(response.data);
-        console.log(kebeleData);
+        console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, [kebeleData]);
+  }, []);
 
   return (
     <div className="flex justify-center items-center px-5 ">
@@ -51,18 +53,19 @@ const LandAdminForm1 = () => {
                 <td className="border px-4 py-2">{datas.rep_mname}</td>
                 <td className="border px-4 py-2">{datas.email}</td>
                 <td className="border px-4 py-2">{datas.rep_phone_number}</td>
+                <td className="border px-4 py-2">{datas.password}</td>
                 <td className="border  py-2">{datas.user_name}</td>
                 <td className="border px-4 py-2">{datas.kebele_name}</td>
-                <td className="w-auto-2 flex justify-center items-center gap-2 py-2 px-4">
+                <td className="w-auto flex justify-center items-center gap-2 py-2 px-4">
                   <Link
-                    to={`/dashboard/manageland/update/${datas.id}`}
+                    to={`/dashboard_woreda/manageland/update/${datas.id}`}
                     className="px-2 bg-blue-700 rounded-sm"
                   >
                     Edit
                   </Link>
 
                   <Link
-                    to={`/dashboard/manageland/view/${datas.id}`}
+                    to={`/dashboard_woreda/manageland/view/${datas.id}`}
                     className="px-2 bg-gray-300 rounded-sm"
                   >
                     <button>View</button>

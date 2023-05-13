@@ -6,6 +6,23 @@ const LoginUsers = async (req, res) => {
   try {
     let sql;
     switch (role) {
+      case "Region_Admin":
+        sql = "SELECT * FROM user WHERE user_name = ? AND password = ?";
+        await db.query(sql, [user_name, password], (error, result) => {
+          if (result.length > 0) {
+            const id = result[0].id
+            // const token = jwt.sign({id}), "jwtSecretKey", {expiresIn:10000}
+            return res
+              .status(200)
+              .json({ message: "Admin is Login successful" });
+          } else {
+            // console.log("user is not found");
+            return res
+              .status(401)
+              .json({ error: "Invalid user_name email or password" });
+          }
+        });
+        break;
       case "Farmer":
         sql = "SELECT * FROM farmers WHERE user_name = ? AND password = ?";
         await db.query(sql, [user_name, password], (error, result) => {

@@ -1,15 +1,33 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Dash from "../dashboard/Dash";
+ 
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Contact from "../pages/Contact";
 import About from "../pages/About";
+import Dash from "../dashboard/Dash";
+import DashZone from "../dashboard1/Dash";
+ import Orders from "../dashboard/WoredaAdmin/Orders"
+  
 import AdminRegistrationForm from "../components/registrationForm/admin_form/admin_form";
-import Orders from "../dashboard/WoredaAdmin/Orders";
-import LandAdminForm1 from "../components/DisplayData/displayLandAdmin/LandAdminForm";
-import UpdateLandAdmin from "../components/DisplayData/displayLandAdmin/UpdateLandAdmin";
 import SingleLandAdmin from "../components/DisplayData/displayLandAdmin/SingleLandAdmin";
+import UpdateLandAdmin from "../components/DisplayData/displayLandAdmin/UpdateLandAdmin"
+import LandAdminForm1 from "../components/DisplayData/displayLandAdmin/LandAdminForm"
+import WoredaRegistration_form from "../components/registrationForm/woreda_form/woreda_form";
+import DisplaySingleWoreda from "../components/DisplayData/displayWoredaData/displaySingleWoreda";
+import WoredaUpdate from "../components/DisplayData/displayWoredaData/updateWoreda";
+import WoredaData from "../components/DisplayData/displayWoredaData/woreda_formData";
+import DashRegion from "../dashboardDirectoriet/Dash";
+import ZoneData from "../components/DisplayData/displayZoneData/zone_formData";
+import DisplaySingleZone from "../components/DisplayData/displayZoneData/displaySingleZone";
+import ZoneUpdate from "../components/DisplayData/displayZoneData/updateZone";
+import ZoneRegistrationForm from "../components/registrationForm/zone_form/zone_form";
+import DashLandAdmin from "../dashboardLandAdmin/Dash";
+import FarmersData from "../components/DisplayData/displayFarmersData/farmers_data";
+import FarmerUpdate from "../components/DisplayData/displayFarmersData/farmerUpdate";
+import DisplaySingleData from "../components/DisplayData/displayFarmersData/displaySingleData";
+import FarmerRegistrationForm from "../components/registrationForm/farmers_form/FarmersForm";
+ 
 
 const Router = () => {
   return (
@@ -17,29 +35,86 @@ const Router = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/dashboard" element={<Dash />}>
-            <Route index element={<Orders />} />
-            <Route path="/dashboard/manageland" element={<LandAdminForm1 />}>
+          <Route path="/dashboard_woreda" element={<Dash />}>
+            <Route index element={< Orders />} />
+            <Route path="/dashboard_woreda/manageland" element={<LandAdminForm1 />} />
               <Route
-                path={"/dashboard/manageland/update/:id"}
+                path={"/dashboard_woreda/manageland/update/:id"}
                 element={<UpdateLandAdmin />}
               />
-            </Route>
             <Route
-              path="/dashboard/manageland/update/:id"
-              element={<UpdateLandAdmin />}
-            />
-            <Route
-              path="/dashboard/manageland/view/:id"
+              path="/dashboard_woreda/manageland/view/:id"
               element={<SingleLandAdmin />}
             />
 
             <Route
-              path="/dashboard/register"
+              path="/dashboard_woreda/register"
               element={<AdminRegistrationForm />}
             />
-            <Route path="/dashboard/orders" element={<Orders />} />
+            <Route path="/dashboard_woreda/orders" element={<Orders />} />
           </Route>
+
+
+//routes to zone
+          <Route path="/zone_dashboard" element={<DashZone />}>
+            <Route index element={<Orders />} />
+            <Route path="/zone_dashboard/manageland" element={<WoredaData />} />
+              <Route
+                path={"/zone_dashboard/manageland/update/:id"}
+                element={<WoredaUpdate />}
+              />
+            <Route
+              path="/zone_dashboard/manageland/view/:id"
+              element={<DisplaySingleWoreda />}
+            />
+
+            <Route
+              path="/zone_dashboard/register"
+              element={<WoredaRegistration_form />}
+            />
+            <Route path="/zone_dashboard/orders" element={<Orders />} />
+          </Route>
+
+          //Region Route
+          <Route path="/region_dashboard" element={<DashRegion />}>
+            <Route index element={<Orders />} />
+            <Route path="/region_dashboard/manage_zone" element={<ZoneData />} />
+              <Route
+                path={"/region_dashboard/manage_zone/update/:id"}
+                element={<ZoneUpdate />}
+              />
+            <Route
+              path="/region_dashboard/manage_zone/view/:id"
+              element={<DisplaySingleZone />}
+            />
+
+            <Route
+              path="/region_dashboard/register"
+              element={<ZoneRegistrationForm />}
+            />
+            <Route path="/region_dashboard/orders" element={<Orders />} />
+          </Route>
+
+          //land admin routes
+          <Route path="/landadmin_dashboard" element={<DashLandAdmin />}>
+            <Route index element={<Orders />} />
+            <Route path="/landadmin_dashboard/manage_farmers" element={<FarmersData />} />
+              <Route
+                path={"/landadmin_dashboard/manage_farmers/update/:id"}
+                element={<FarmerUpdate />}
+              />
+            <Route
+              path="/landadmin_dashboard/manage_farmers/view/:id"
+              element={<DisplaySingleData />}
+            />
+
+            <Route
+              path="/landadmin_dashboard/register"
+              element={<FarmerRegistrationForm />}
+            />
+            <Route path="/landadmin_dashboard/FarmersData" element={<FarmersData />} />
+          </Route>
+
           <Route path="/login" element={<Login />} />
 
           <Route path="/about" element={<About />} />

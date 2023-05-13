@@ -7,7 +7,7 @@ const DisplaySingleData = () => {
   const [data, setData] = useState([]);
   const { id } = useParams();
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/v1/farmers/${id}`).then((res) => {
+    axios.get(`http://localhost:5001/api/v1/farmers/${id}`).then((res) => {
       setData(res.data);
       console.log(data);
     });

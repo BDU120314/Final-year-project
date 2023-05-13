@@ -7,7 +7,7 @@ const Navbar = ({ fixed }) => {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   return (
     <>
-      <nav className="fixed w-screen flex flex-wrap items-center lg:h-[60px] justify-between bg-white mb-1">
+      <nav className="fixed w-screen flex flex-wrap items-center lg:h-[60px] justify-between bg-gray-500 mb-1">
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
           <div className="w-full relative flex justify-between items-center lg:w-auto lg:static lg:block lg:justify-start">
             <Link

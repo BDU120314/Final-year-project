@@ -7,7 +7,7 @@ const FarmersData = () => {
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:5000/api/v1/farmers/delete/${id}`)
+      .delete(`http://localhost:5001/api/v1/farmers/delete/${id}`)
       .then((response) => {
         setFarmersData(farmersData.filter((item) => item.id !== id));
         console.log(`deleted user id :${id}`);
@@ -18,7 +18,7 @@ const FarmersData = () => {
   };
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/v1/farmers")
+      .get("http://localhost:5001/api/v1/farmers")
       .then((response) => {
         setFarmersData(response.data);
         console.log(farmersData);
@@ -55,11 +55,11 @@ const FarmersData = () => {
 
                 <td>
  
-                  <Link to={`/update/${datas.id}`} className="link">
+                  <Link to={`landadmin_dashboard/manage_farmers/update/${datas.id}`} className="link">
                     <button className="btn edit">Edit</button>
                   </Link>
 
-                  <Link to={`/view/${datas.id}`} className="link">
+                  <Link to={`landadmin_dashboard/manage_farmers/view/${datas.id}`} className="link">
                     <button className="btn view">View</button>{" "}
                   </Link>
  

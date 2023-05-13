@@ -12,8 +12,8 @@ function WoredaUpdate() {
     rep_mname: "",
     rep_lname: "",
     email: "",
-    rep_password: "",
-    rep_user_name: "",
+    password: "",
+    user_name: "",
     rep_phone_number: "",
     id: "",
   });
@@ -22,7 +22,7 @@ function WoredaUpdate() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/v1/woreda/${id}`).then((res) => {
+    axios.get(`http://localhost:5001/api/v1/woreda/${id}`).then((res) => {
       setFormData(res.data[0]);
       console.log(res.data[0]);
     });
@@ -32,10 +32,10 @@ function WoredaUpdate() {
     e.preventDefault();
     try {
       const response = await axios.put(
-        `http://localhost:5000/api/v1/woreda/update/${id}`,
+        `http://localhost:5001/api/v1/woreda/update/${id}`,
         formData
       );
-      navigate("/");
+      navigate("/zone_dashboard/manageland");
       console.log(response);
     } catch (error) {
       alert(error);
@@ -126,7 +126,7 @@ function WoredaUpdate() {
             type="text"
             id="user_name"
             name="user_name"
-            value={formData.rep_user_name}
+            value={formData.user_name}
             onChange={handleChange}
             required
           />
@@ -137,7 +137,7 @@ function WoredaUpdate() {
             type="password"
             id="password"
             name="password"
-            value={formData.rep_password}
+            value={formData.password}
             onChange={handleChange}
             required
           />
@@ -153,7 +153,7 @@ function WoredaUpdate() {
             required
           />
         </div>
-        <button type="submit">update</button>
+        <button type="submit">Update</button>
       </form>
     </div>
   );

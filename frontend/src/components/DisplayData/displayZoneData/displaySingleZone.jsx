@@ -7,7 +7,7 @@ const DisplaySingleZone = () => {
   const [data, setData] = useState([]);
   const { id } = useParams();
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/v1/zone/${id}`).then((res) => {
+    axios.get(`http://localhost:5001/api/v1/zone/${id}`).then((res) => {
       setData(res.data);
       console.log(data);
     });
@@ -39,8 +39,8 @@ const DisplaySingleZone = () => {
                   <td>{datas.rep_lname}</td>
                    <td>{datas.email}</td>
                    <td>{datas.rep_phone_number}</td>
-                   <td>{datas.rep_user_name}</td>
-                  <td>{datas.rep_password}</td>
+                   <td>{datas.user_name}</td>
+                  <td>{datas.password}</td>
                  </tr>
               );
             })}

@@ -7,7 +7,7 @@ const ZoneData = () => {
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:5000/api/v1/zone/delete/${id}`)
+      .delete(`http://localhost:5001/api/v1/zone/delete/${id}`)
       .then((response) => {
         setZoneData(zoneData.filter((item) => item.id !== id));
         console.log(`deleted user id :${id}`);
@@ -18,7 +18,7 @@ const ZoneData = () => {
   };
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/v1/zone")
+      .get("http://localhost:5001/api/v1/zone")
       .then((response) => {
         setZoneData(response.data);
         console.log(zoneData);
@@ -51,16 +51,16 @@ const ZoneData = () => {
                 <td>{datas.rep_fname} </td>
                 <td>{datas.rep_mname}</td>
                 <td>{datas.email}</td>
-                <td>{datas.rep_phone_number}</td>
-                <td>{datas.rep_user_name}</td>
+                <td>{datas.phone_number}</td>
+                <td>{datas.user_name}</td>
                 <td>{datas.zone_name}</td>
 
                 <td>
-                  <Link to={`/update/${datas.id}`} className="link">
+                  <Link to={`/region_dashboard/manage_zone/update/${datas.id}`} className="link">
                     <button className="btn edit">Edit</button>
                   </Link>
 
-                  <Link to={`/view/${datas.id}`} className="link">
+                  <Link to={`/region_dashboard/manage_zone/view/${datas.id}`} className="link">
                     <button className="btn view">View</button>{" "}
                   </Link>
 

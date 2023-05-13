@@ -8,7 +8,7 @@ const DisplaySingleWoreda = () => {
   const [data, setData] = useState([]);
   const { id } = useParams();
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/v1/woreda/${id}`).then((res) => {
+    axios.get(`http://localhost:5001/api/v1/woreda/${id}`).then((res) => {
       setData(res.data);
       console.log(data);
     });
@@ -39,7 +39,7 @@ const DisplaySingleWoreda = () => {
                   <td>{datas.rep_mname}</td> 
                   <td>{datas.rep_email}</td>
                   <td>{datas.rep_phone_number}</td>
-                  <td>{datas.rep_user_name}</td>
+                  <td>{datas.user_name}</td>
                   <td>{datas.password}</td>
                   <td>{datas.id}</td>
                 </tr>

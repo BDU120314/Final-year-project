@@ -103,7 +103,7 @@ const Login = () => {
       // Assuming the backend sends a response with a status property indicating success
       if (statusCode === 200 && role === "Farmer") {
         console.log("logged in successfully");
-        navigate("/dashboard");
+        navigate("/dashboard_woreda");
       } else if (statusCode === 401) {
         // Unauthorized login
        setError("Invalid email or password");
@@ -114,7 +114,7 @@ const Login = () => {
       //////admin of land
       if (statusCode === 200 && role === "Land_Admin") {
         console.log("logged in successfully");
-        navigate("/contact");
+        navigate("/landadmin_dashboard");
       } else if (statusCode === 401) {
         // Unauthorized login
         setError("Invalid email or password");
@@ -125,7 +125,7 @@ const Login = () => {
       /////admin of woreda
       if (statusCode === 200 && role === "Woreda_Admin") {
         console.log("logged in successfully");
-        navigate("/about");
+        navigate("/dashboard_woreda");
       } else if (statusCode === 401) {
         // Unauthorized login
         setError("Invalid email or password");
@@ -137,7 +137,7 @@ const Login = () => {
 
       if (statusCode === 200 && role === "Zone_Admin") {
         console.log("logged in successfully");
-        navigate("/");
+        navigate("/zone_dashboard");
       } else if (statusCode === 401) {
         // Unauthorized login
         setError("Invalid email or password");
@@ -149,7 +149,7 @@ const Login = () => {
 
       if (statusCode === 200 && role === "Region_Admin") {
         console.log("logged in successfully");
-        navigate("/");
+        navigate("/region_dashboard");
       } else if (statusCode === 401) {
         // Unauthorized login
         setError("Invalid email or password");

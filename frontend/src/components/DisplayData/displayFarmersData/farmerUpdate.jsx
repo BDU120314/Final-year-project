@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../registrationForm/farmers.css";
+import "./farmer.css";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
@@ -20,7 +20,7 @@ function FarmerUpdate() {
   const { id } = useParams();
   const navigate = useNavigate();
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/v1/farmers/${id}`).then((res) => {
+    axios.get(`http://localhost:5001/api/v1/farmers/${id}`).then((res) => {
       setFormData(res.data[0]);
       console.log(res.data[0]);
     });
@@ -29,7 +29,7 @@ function FarmerUpdate() {
     e.preventDefault();
     try {
       const response = await axios.put(
-        `http://localhost:5000/api/v1/farmers/update/${id}`,
+        `http://localhost:5001/api/v1/farmers/update/${id}`,
         formData
       );
       navigate("/");

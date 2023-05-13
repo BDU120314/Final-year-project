@@ -11,8 +11,8 @@ function ZoneUpdate() {
     rep_mname: "",
     rep_lname: "",
     email: "",
-    rep_password: "",
-    rep_user_name: "",
+    password: "",
+    user_name: "",
     rep_phone_number: "",
     id: "",
   });
@@ -21,7 +21,7 @@ function ZoneUpdate() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/v1/zone/${id}`).then((res) => {
+    axios.get(`http://localhost:5001/api/v1/zone/${id}`).then((res) => {
       setFormData(res.data[0]);
       console.log(res.data[0]);
     });
@@ -31,7 +31,7 @@ function ZoneUpdate() {
     e.preventDefault();
     try {
       const response = await axios.put(
-        `http://localhost:5000/api/v1/zone/update/${id}`,
+        `http://localhost:5001/api/v1/zone/update/${id}`,
         formData
       );
       navigate("/");
@@ -125,7 +125,7 @@ function ZoneUpdate() {
             type="text"
             id="user_name"
             name="user_name"
-            value={formData.rep_user_name}
+            value={formData.user_name}
             onChange={handleChange}
             required
           />
@@ -136,7 +136,7 @@ function ZoneUpdate() {
             type="password"
             id="password"
             name="password"
-            value={formData.rep_password}
+            value={formData.password}
             onChange={handleChange}
             required
           />

@@ -6,15 +6,15 @@ const CreateZone = (req, res) => {
     rep_fname,
     rep_mname,
     rep_lname,
-    rep_user_name,
+    user_name,
     email,
-    rep_password,
+   password,
     rep_phone_number,
     id,
   } = req.body;
 
   const sql =
-    "INSERT INTO zone (zone_name, rep_fname,rep_mname, rep_lname,rep_user_name, email,rep_password,rep_phone_number,id) VALUES (?,?,?,?,?,?,?,?,?)";
+    "INSERT INTO zone (zone_name, rep_fname,rep_mname, rep_lname,user_name, email,rep_password,rep_phone_number,id) VALUES (?,?,?,?,?,?,?,?,?)";
   db.query(
     sql,
     [
@@ -22,9 +22,9 @@ const CreateZone = (req, res) => {
       rep_fname,
       rep_mname,
       rep_lname,
-      rep_user_name,
+      user_name,
       email,
-      rep_password,
+     password,
       rep_phone_number,
       id,
     ],
@@ -65,13 +65,13 @@ const UpdateZone = (req, res) => {
     rep_fname,
     rep_mname,
     rep_lname,
-    rep_user_name,
+    user_name,
     email,
-    rep_password,
+   password,
     rep_phone_number,
   } = req.body;
 
-  const sql = `UPDATE zone SET zone_name =?, rep_fname =?, rep_mname = ?, rep_lname = ?, rep_user_name=?, email = ?, rep_password = ?,  rep_phone_number = ? WHERE id = ${id}`;
+  const sql = `UPDATE zone SET zone_name =?, rep_fname =?, rep_mname = ?, rep_lname = ?, user_name=?, email = ?,password = ?,  rep_phone_number = ? WHERE id = ${id}`;
   db.query(
     sql,
     [
@@ -79,9 +79,9 @@ const UpdateZone = (req, res) => {
       rep_fname,
       rep_mname,
       rep_lname,
-      rep_user_name,
+      user_name,
       email,
-      rep_password,
+     password,
       rep_phone_number,
     ],
     (error, result) => {

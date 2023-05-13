@@ -7,7 +7,7 @@ const WoredaData = () => {
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:5000/api/v1/woreda/delete/${id}`)
+      .delete(`http://localhost:5001/api/v1/woreda/delete/${id}`)
       .then((response) => {
         setWoredData(woredaData.filter((item) => item.id !== id));
         console.log(`deleted user id :${id}`);
@@ -18,7 +18,7 @@ const WoredaData = () => {
   };
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/v1/woreda")
+      .get("http://localhost:5001/api/v1/woreda")
       .then((response) => {
         setWoredData(response.data);
         console.log(woredaData);
@@ -52,25 +52,25 @@ const WoredaData = () => {
                 <td>{datas.rep_mname}</td>
                 <td>{datas.email}</td>
                 <td>{datas.rep_phone_number}</td>
-                <td>{datas.rep_user_name}</td>
+                <td>{datas.user_name}</td>
                 <td>{datas.woreda_name}</td>
 
 
-                <td>
-                  <Link to={`/update/${datas.id}`} className="link">
-                    <button className="btn edit">Edit</button>
+                <td className="w-auto flex justify-center items-center gap-2 py-2 px-4">
+                  <Link to={`/zone_dashboard/manageland/update/${datas.id}`} className="link">
+                    <button className="bg-blue-700 h-8 w-16">Edit</button>
                   </Link>
 
-                  <Link to={`/view/${datas.id}`} className="link">
-                    <button className="btn view">View</button>{" "}
+                  <Link to={`/zone_dashboard/manageland/view/${datas.id}`} className="link">
+                    <button className="h-8 bg-white text-black w-16">View</button>{" "}
                   </Link>
-
                   <button
-                    className="btn delete"
+                    className="bg-red-600 h-8"
                     onClick={() => handleDelete(datas.id)}
                   >
                     Delete
                   </button>
+ 
                 </td>
               </tr>
             );

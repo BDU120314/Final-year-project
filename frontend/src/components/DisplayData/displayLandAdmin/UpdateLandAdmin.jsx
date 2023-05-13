@@ -15,7 +15,7 @@ function UpdateLandAdmin() {
     password: "",
     user_name: "",
     rep_phone_number: "",
-    id: "",
+     
   });
 
   const { id } = useParams();
@@ -143,17 +143,7 @@ function UpdateLandAdmin() {
             required
           />
         </div>
-        <div className="label_input">
-          <label htmlFor="id">ID No</label>
-          <input
-            type="text"
-            id="id"
-            name="id"
-            value={formData.id}
-            onChange={handleChange}
-            required
-          />
-        </div>
+ 
         <button type="submit">update</button>
       </form>
     </div>
