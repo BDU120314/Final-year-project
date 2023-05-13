@@ -1,30 +1,21 @@
-import React, { useState } from "react";
-import { Navigate } from "react-router-dom";
+// Logout.js
 
-const LogoutButton = () => {
-  const [loggedOut, setLoggedOut] = useState(false);
+import React from "react";
 
-  const handleLogout = () => {
-    // Perform logout operation
-    fetch("/logout")
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.success) {
-          setLoggedOut(true);
-        }
-      });
+const Logout = ({ handleLogout }) => {
+  const handleLogoutClick = () => {
+    // Remove the token from local storage
+    localStorage.removeItem("token");
+
+    // Call the handleLogout function passed from the parent component
+    handleLogout();
   };
-
-  if (loggedOut) {
-    return <Navigate to="/" />;
-  }
 
   return (
     <div>
-      <h2>Logout</h2>
-      <button onClick={handleLogout}>Logout</button>
+      <button onClick={handleLogoutClick}>Logout</button>
     </div>
   );
 };
 
-export default LogoutButton;
+export default Logout;

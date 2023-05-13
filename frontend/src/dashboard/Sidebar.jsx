@@ -9,7 +9,7 @@ import {
 import { Link } from "react-router-dom";
 const Sidebar = () => {
   return (
-    <div className="bg-blue-400 h-screen px-[25px] fixed top-0 left-0">
+    <div className="bg-green-400 h-screen px-[25px] fixed top-0 left-0">
       <div className="px-[10px] py-[30px] flex justify-center items-center border-b-[1px] border-[#EDEDED]/[0.3]">
         <h1 className=" text-white text-[15px] leading-5 font-extrabold cursor-pointer">
           Admin Panel
@@ -89,7 +89,7 @@ const Sidebar = () => {
           <FaChevronRight color="white" />
         </div> */}
       </div>
-      <div className="flex items-center justify-center gap-3 bg-red-200 h-12 mt-[100px] rounded-md cursor-pointer">
+      <div className="flex items-center justify-center gap-3 bg-red-200 h-12 mt-[100px] rounded-md cursor-pointer" >
         <FiLogOut color="white" fontSize={28} />
         <p className="text-white text-[18px] leading-5">LogOut</p>
       </div>

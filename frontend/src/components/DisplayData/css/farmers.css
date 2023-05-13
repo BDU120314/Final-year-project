@@ -22,7 +22,7 @@
   
 }
 
-button {
+/* button {
   margin-top: 15px 0 40px 0;
   padding: 8px;
   background-color: #067109;
@@ -34,4 +34,4 @@ button {
 button:hover {
   background-color: hsl(122, 85%, 53%);
   cursor: pointer;
-}
+} */
