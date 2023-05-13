@@ -28,10 +28,10 @@ const LoginUsers = async (req, res) => {
         await db.query(sql, [user_name, password], (error, result) => {
           if (result.length > 0) {
             const id = result[0].id
-            // const token = jwt.sign({id}), "jwtSecretKey", {expiresIn:10000}
+            const token = jwt.sign({id}, "jwtSecretKey", {expiresIn:10000})
             return res
               .status(200)
-              .json({ message: "farmer is Login successful" });
+              .json({ message: "farmer is Login successful", token, result });
           } else {
             // console.log("user is not found");
             return res

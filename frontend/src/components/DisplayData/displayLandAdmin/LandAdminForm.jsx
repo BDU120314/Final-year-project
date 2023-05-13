@@ -47,7 +47,7 @@ const LandAdminForm1 = () => {
         <tbody>
           {kebeleData.map((datas) => {
             return (
-              <tr key={datas.id} className="bg-gray-300">
+              <tr key={datas.id} className="bg-gray-100/{0-4}">
                 <td className="border px-4 py-2">{datas.id}</td>
                 <td className="border px-4 py-2">{datas.rep_fname} </td>
                 <td className="border px-4 py-2">{datas.rep_mname}</td>
@@ -65,8 +65,10 @@ const LandAdminForm1 = () => {
                   </Link>
 
                   <Link
-                    to={`/dashboard_woreda/manageland/view/${datas.id}`}
+                     to={`/dashboard_woreda/manageland/view/${datas.id}`}
                     className="px-2 bg-gray-300 rounded-sm"
+ 
+ 
                   >
                     <button>View</button>
                   </Link>

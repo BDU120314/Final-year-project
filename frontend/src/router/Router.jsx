@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
  
 import Home from "../pages/Home";
@@ -11,6 +11,7 @@ import DashZone from "../dashboard1/Dash";
   
 import AdminRegistrationForm from "../components/registrationForm/admin_form/admin_form";
 import SingleLandAdmin from "../components/DisplayData/displayLandAdmin/SingleLandAdmin";
+ 
 import UpdateLandAdmin from "../components/DisplayData/displayLandAdmin/UpdateLandAdmin"
 import LandAdminForm1 from "../components/DisplayData/displayLandAdmin/LandAdminForm"
 import WoredaRegistration_form from "../components/registrationForm/woreda_form/woreda_form";
@@ -28,13 +29,17 @@ import FarmerUpdate from "../components/DisplayData/displayFarmersData/farmerUpd
 import DisplaySingleData from "../components/DisplayData/displayFarmersData/displaySingleData";
 import FarmerRegistrationForm from "../components/registrationForm/farmers_form/FarmersForm";
  
+ 
+ 
 
 const Router = () => {
+
   return (
     <div>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
+ 
           <Route path="/dashboard_woreda" element={<Dash />}>
             <Route index element={< Orders />} />
             <Route path="/dashboard_woreda/manageland" element={<LandAdminForm1 />} />
@@ -44,6 +49,7 @@ const Router = () => {
               />
             <Route
               path="/dashboard_woreda/manageland/view/:id"
+ 
               element={<SingleLandAdmin />}
             />
 

@@ -44,9 +44,10 @@ function UpdateLandAdmin() {
   };
 
   const handleChange = (e) => {
+    const {name, value} =e.target
     setFormData((prevState) => ({
       ...prevState,
-      [e.target.name]: e.target.value,
+      [name]: value,
     }));
   };
   return (
@@ -56,7 +57,7 @@ function UpdateLandAdmin() {
       </div>
       <form className="farmer-registration-form" onSubmit={handleSubmit}>
         <div className="label_input">
-          <label htmlFor="kebele_name">First Name</label>
+          <label htmlFor="kebele_name">Kebele Name</label>
           <input
             type="text"
             id="kebele_name"

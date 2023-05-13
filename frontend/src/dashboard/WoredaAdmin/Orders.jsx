@@ -23,7 +23,7 @@ const Orders = () => {
   return (
     <div className="flex justify-center items-center px-5 ">
       <table className="table-auto w-full">
-        <thead className="bg-gray-100">
+        <thead className="bg-gray-200/50">
           <tr>
             <th className="px-4 py-2">#</th>
             <th className="px-4 py-2">Farmer_ID</th>
@@ -33,10 +33,10 @@ const Orders = () => {
             <th className="px-4 py-2">Amount</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="bg-gray-50">
           {orderData.map((order, index) => {
             return (
-              <tr key={order.farmers_id}>
+              <tr key={order.id}>
                 <td className="border px-4 py-2">{index + 1}</td>
                 <td className="border px-4 py-2">{order.farmers_id}</td>
                 <td className="border px-4 py-2">{order.fname}</td>

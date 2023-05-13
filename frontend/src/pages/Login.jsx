@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
 import axios from "axios";
 
 const Login = () => {
@@ -32,29 +31,6 @@ const Login = () => {
       [name]: value,
     }));
   };
-  // const handleUsernameChange = (e) => {
-  //   const { value } = e.target;
-  //   setFormData((prevState) => ({
-  //     ...prevState,
-  //     user_name: value,
-  //   }));
-  // };
-
-  // const handlePasswordChange = (e) => {
-  //   const { value } = e.target;
-  //   setFormData((prevState) => ({
-  //     ...prevState,
-  //     password: value,
-
-  //   }));
-  // };
-  // const handleRoleChange = (e) => {
-  //   const { value } = e.target;
-  //   setFormData((prevState) => ({
-  //     ...prevState,
-  //     role: value,
-  //   }));
-  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -74,7 +50,7 @@ const Login = () => {
       setError("");
       return;
     } else if (user_name.length === 0) {
-      setUsernameError("Please enter a user_name");
+      setUsernameError("Please enter a username");
       setPasswordError("");
       setError("");
       return;
@@ -100,83 +76,54 @@ const Login = () => {
       );
 
       const statusCode = response.status;
-      // Assuming the backend sends a response with a status property indicating success
-      if (statusCode === 200 && role === "Farmer") {
-        console.log("logged in successfully");
-        navigate("/dashboard_woreda");
+ 
+      if (statusCode === 200) {
+        console.log("Logged in successfully");
+        const token = response.data.token;
+        localStorage.setItem("token", token);
+      
+        switch (role) {
+          case "Farmer":
+            navigate("/dashboard");
+            break;
+          case "Land_Admin":
+            navigate("/contact");
+            break;
+          case "Woreda_Admin":
+            navigate("/about");
+            break;
+          case "Zone_Admin":
+            navigate("/");
+            break;
+          case "Region_Admin":
+            navigate("/");
+            break;
+          case "Distributor":
+            navigate("/");
+            break;
+          default:
+            setError("Invalid role");
+            break;
+        }
       } else if (statusCode === 401) {
-        // Unauthorized login
-       setError("Invalid email or password");
-      } else {
-        // Other status codes
-        setError("An error occurred");
-      }
-      //////admin of land
-      if (statusCode === 200 && role === "Land_Admin") {
-        console.log("logged in successfully");
-        navigate("/landadmin_dashboard");
-      } else if (statusCode === 401) {
-        // Unauthorized login
         setError("Invalid email or password");
       } else {
-        // Other status codes
-        setError("An error occurred");
-      }
-      /////admin of woreda
-      if (statusCode === 200 && role === "Woreda_Admin") {
-        console.log("logged in successfully");
-        navigate("/dashboard_woreda");
-      } else if (statusCode === 401) {
-        // Unauthorized login
-        setError("Invalid email or password");
-      } else {
-        // Other status codes
-        setError("An error occurred");
-      }
-      ////// zone admin
-
-      if (statusCode === 200 && role === "Zone_Admin") {
-        console.log("logged in successfully");
-        navigate("/zone_dashboard");
-      } else if (statusCode === 401) {
-        // Unauthorized login
-        setError("Invalid email or password");
-      } else {
-        // Other status codes
-        setError("An error occurred");
-      }
-      //////region admin
-
-      if (statusCode === 200 && role === "Region_Admin") {
-        console.log("logged in successfully");
-        navigate("/region_dashboard");
-      } else if (statusCode === 401) {
-        // Unauthorized login
-        setError("Invalid email or password");
-      } else {
-        // Other status codes
-        setError("An error occurred");
-      }
-      //////distributor
-      if (statusCode === 200 && role === "Distributor") {
-        console.log("logged in successfully");
-        navigate("/");
-      } else if (statusCode === 401) {
-        // Unauthorized login
-        setError("Invalid email or password");
-      } else {
-        // Other status codes
+ 
         setError("An error occurred");
       }
     } catch (error) {
-      // Handle error
       console.log("Error:", error);
     }
   };
   return (
     <div
       className="flex justify-center items-center h-[100vh] overflow-hidden w-[100vw]"
-      style={{ backgroundImage: `url("login.jpg")`, backgroundSize:"cover", backgroundRepeat: "no-repeat", backgroundPosition:"center" }}
+      style={{
+        backgroundImage: `url("login.jpg")`,
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+      }}
     >
       <div className="w-[400px] flex justify-center flex-col items-center  max-w-md p-8 space-y-3 rounded-xl bg-gray-600 text-white">
         <h1 className="text-2xl font-bold text-center">Login</h1>
@@ -250,7 +197,7 @@ const Login = () => {
 
           <button
             type="submit"
-            className="block text-center w-full  rounded-sm dark:text-gray-900 dark:bg-green-400"
+            className="block text-center w-full  rounded-sm dark:text-gray-900b bg-green-400"
           >
             Login
           </button>

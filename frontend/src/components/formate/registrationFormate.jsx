@@ -72,116 +72,136 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
   };
 
   return (
-    <div className="formate">
-      <h2>Registration Form</h2>
+    <div className="flex justify-center items-center bg-gray-100 p-6 flex-col">
+      <h2 className="text-black font-extrabold leading-10 py-[25px]">
+        Registration Form
+      </h2>
       <form
         action="farmer-registration-form"
-        className="formate_form"
+        className="flex flex-col bg-gray-200"
         onSubmit={handleSubmit}
       >
-        <div className="formate_input_label">
-          <label htmlFor={dataBaseColumn}>{typeName}</label>
-          <input
-            type="text"
-            name={dataBaseColumn}
-            id={dataBaseColumn}
-            onChange={handleChange}
-            value={columnValue}
-          />
+        <div className="flex justify-center items-center gap-10  py-[15px] px-[15px]">
+          <div className="flex items-left flex-col justify-left ">
+            <label htmlFor={dataBaseColumn}>{typeName}</label>
+            <input
+              type="text"
+              name={dataBaseColumn}
+              id={dataBaseColumn}
+              onChange={handleChange}
+              value={columnValue}
+              className="w-[350px] h-10 pl-5 rounded-lg"
+            />
+          </div>
+          <div className="flex items-start  justify-lefft flex-col">
+            <label htmlFor="fname">First Name</label>
+            <input
+              type="text"
+              name="rep_fname"
+              id="fname"
+              onChange={handleChange}
+              onBlur={validateName} // added onBlur event to validate rep_fname
+              value={rep_fname}
+              required
+              className="w-[350px] h-10 pl-5 rounded-lg"
+            />
+          </div>
         </div>
-        <div className="formate_input_label">
-          <label htmlFor="fname">First Name</label>
-          <input
-            type="text"
-            name="rep_fname"
-            id="fname"
-            onChange={handleChange}
-            onBlur={validateName} // added onBlur event to validate rep_fname
-            value={rep_fname}
-            required
-          />
+        <div className="flex justify-center items-center gap-10  py-[15px]">
+          <div className="flex items-left flex-col justify-left ">
+            <label htmlFor="mname">Mid_Name</label>
+            <input
+              type="text"
+              name="rep_mname"
+              id="mname"
+              onChange={handleChange}
+              onBlur={validateName}
+              value={rep_mname}
+              required
+              className="w-[350px] h-10 pl-5 rounded-lg"
+            />
+          </div>
+          <div className="flex items-left flex-col justify-left ">
+            <label htmlFor="lname">Last Name</label>
+            <input
+              type="text"
+              name="rep_lname"
+              id="lname"
+              onChange={handleChange}
+              onBlur={validateName}
+              value={rep_lname}
+              required
+              className="w-[350px] h-10 pl-5 rounded-lg"
+            />
+          </div>
         </div>
-        <div className="formate_input_label">
-          <label htmlFor="mname">Middle Name</label>
-          <input
-            type="text"
-            name="rep_mname"
-            id="mname"
-            onChange={handleChange}
-            onBlur={validateName}
-            value={rep_mname}
-            required
-          />
+        <div className="flex justify-center items-center gap-10  py-[15px]">
+          <div className="flex justify-left flex-col">
+            <label htmlFor="email">Email</label>
+            <input
+              type="text"
+              name="email"
+              id="email"
+              value={email}
+              onChange={handleChange}
+              className="w-[350px] h-10 pl-5 rounded-lg"
+            />
+          </div>
+          <div className="flex justify-left flex-col">
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              onChange={handleChange}
+              value={password}
+              required
+              className="w-[350px] h-10 pl-5 rounded-lg"
+            />
+          </div>
         </div>
-        <div className="formate_input_label">
-          <label htmlFor="lname">Last Name</label>
-          <input
-            type="text"
-            name="rep_lname"
-            id="lname"
-            onChange={handleChange}
-            onBlur={validateName}
-            value={rep_lname}
-            required
-          />
+        <div className="flex justify-center items-center gap-10  py-[15px]">
+          <div className="flex justify-left flex-col">
+            <label htmlFor="username">User Name</label>
+            <input
+              type="text"
+              name="user_name"
+              id="user_name"
+              onChange={handleChange}
+              value={user_name}
+              required
+              className="w-[350px] h-10 pl-5 rounded-lg"
+            />
+          </div>
+          <div className="flex justify-left flex-col">
+            <label htmlFor="tel">Phone Number</label>
+            <input
+              type="text"
+              name="rep_phone_number"
+              id="tel"
+              onChange={handleChange}
+              value={rep_phone_number}
+              required
+              className="w-[350px] h-10 pl-5 rounded-lg"
+            />
+          </div>
         </div>
-        <div className="formate_input_label">
-          <label htmlFor="email">Email</label>
-          <input
-            type="text"
-            name="email"
-            id="email"
-            value={email}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="formate_input_label">
-          <label htmlFor="password">Password</label>
-
-          <input
-            type="password"
-            name="password"
-            id="password"
-            onChange={handleChange}
-            value={password}
-            required
-          />
-        </div>
-        <div className="formate_input_label">
-          <label htmlFor="username">User Name</label>
-          <input
-            type="text"
-            name="user_name"
-            id="user_name"
-            onChange={handleChange}
-            value={user_name}
-            required
-          />
-        </div>
-        <div className="formate_input_label">
-          <label htmlFor="tel">Phone Number</label>
-          <input
-            type="text"
-            name="rep_phone_number"
-            id="tel"
-            onChange={handleChange}
-            value={rep_phone_number}
-            required
-          />
-        </div>
-        <div className="formate_input_label">
-          <label htmlFor="id">ID</label>
-          <input
-            type="text"
-            name="id"
-            id="id"
-            onChange={handleChange}
-            value={id}
-            required
-          />
-        </div>
-        <div className="buttons">
-          <button type="submit">Register</button>
+        <div className="flex justify-center items-center gap-10">
+          <div className="flex justify-left flex-col">
+            <label htmlFor="id">ID</label>
+            <input
+              type="text"
+              name="id"
+              id="id"
+              onChange={handleChange}
+              value={id}
+              required
+              className="w-[350px] h-10 pl-5 rounded-lg "
+            />
+          </div>
+          <div className=" h-10 flex items-center justify-center my-6 w-[350px] bg-48px bg-green-400 ">
+            <button className="text-center" type="submit">Register</button>
+          </div>
         </div>
       </form>
     </div>
