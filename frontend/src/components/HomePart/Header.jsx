@@ -7,8 +7,8 @@ const Navbar = ({ fixed }) => {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   return (
     <>
-      <nav className="fixed w-screen flex flex-wrap items-center lg:h-[60px] justify-between bg-gray-500 mb-1">
-        <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
+      <nav className="fixed w-screen  bg-gray-300 shadow-lg">
+        <div className=" px-4 mx-auto flex flex-wrap items-center justify-between">
           <div className="w-full relative flex justify-between items-center lg:w-auto lg:static lg:block lg:justify-start">
             <Link
               to="/"
@@ -24,7 +24,7 @@ const Navbar = ({ fixed }) => {
               </div>
             </Link>
             <button
-              className="text-black cursor-pointer absolute  top-[-40px] right-[-75px] text-3xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent  lg:hidden outline-none focus:outline-none h-full flex justify-center items-center"
+              className="text-black cursor-pointer absolute  top-0 right-10 text-3xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent  lg:hidden outline-none focus:outline-none h-full flex justify-center items-center"
               type="button"
               onClick={() => setNavbarOpen(!navbarOpen)}
             >

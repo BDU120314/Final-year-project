@@ -29,9 +29,9 @@ const ZoneData = () => {
   }, [zoneData]);
 
   return (
-    <div className="container">
-      <table>
-        <thead>
+<div className="flex justify-center items-center px-5 ">
+      <table className="table-auto w-full">
+        <thead className="bg-gray-100">
           <tr>
             <th>ID</th>
             <th>First NAme</th>

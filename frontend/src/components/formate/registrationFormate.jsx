@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./formate.css";
+// import "./formate.css";
 import axios from "axios";
 
 const RegistrationFormate = ({ typeName, dataBaseColumn }) => {

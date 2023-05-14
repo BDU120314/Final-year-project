@@ -87,16 +87,16 @@ const Login = () => {
             navigate("/dashboard");
             break;
           case "Land_Admin":
-            navigate("/contact");
+            navigate("/landadmin_dashboard");
             break;
           case "Woreda_Admin":
-            navigate("/about");
+            navigate("/dashboard_woreda");
             break;
           case "Zone_Admin":
-            navigate("/");
+            navigate("/zone_dashboard");
             break;
           case "Region_Admin":
-            navigate("/");
+            navigate("/region_dashboard");
             break;
           case "Distributor":
             navigate("/");

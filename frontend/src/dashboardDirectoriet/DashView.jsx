@@ -2,7 +2,7 @@ import React from 'react'
 import { FaSearch, FaRegBell, FaEnvelope } from "react-icons/fa";
 const DashView = () => {
   return (
-    <div className="flex justify-between items-center bg-gray-600 shadow-lg h-[70px] px-[25px] fixed top-0 right-0 left-[178px]">
+    <div className="flex justify-between items-center bg-gray-100 shadow-lg h-[70px] px-[25px] fixed top-0 right-0 left-[178px]">
       <div className="flex items-center rounded-[5px]">
         <input
           type="text"

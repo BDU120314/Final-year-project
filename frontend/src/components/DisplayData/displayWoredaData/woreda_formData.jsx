@@ -29,9 +29,9 @@ const WoredaData = () => {
   }, [woredaData]);
 
   return (
-    <div className="container">
-      <table>
-        <thead>
+<div className="flex justify-center items-center px-5 ">
+      <table className="table-auto w-full">
+        <thead className="bg-gray-100">
           <tr>
             <th>ID</th>
             <th>First NAme</th>
@@ -65,7 +65,7 @@ const WoredaData = () => {
                     <button className="h-8 bg-white text-black w-16">View</button>{" "}
                   </Link>
                   <button
-                    className="bg-red-600 h-8"
+                    className="bg-red-400 h-8"
                     onClick={() => handleDelete(datas.id)}
                   >
                     Delete
@@ -77,6 +77,7 @@ const WoredaData = () => {
           })}
         </tbody>
       </table>
+      
     </div>
   );
 };

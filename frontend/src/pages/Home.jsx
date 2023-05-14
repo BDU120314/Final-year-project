@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <div className="flex flex-col bg-gray-50 h-screen">
       <Navbar />
-      <main className="mt-[60px]">
+      <main className="mt-[100px]">
         <Main />
       </main>
       <Foooter />

@@ -6,8 +6,8 @@ import chemical_fertilizer from "./Photo/chemical_fertilizer.jpg";
 
 const Main = () => {
   return (
-    <div className="m-0">
-      <div class=" flex container p-6 px-6 mx-auto bg-gray-500 dark:bg-gray-800">
+    <div className=" ">
+      <div class="  ">
         <div class="mb-16 text-center">
           <h2 class="  font-semibold tracking-wide text-indigo-600 uppercase text-3xl">
             እንኳን ወደ አማራ ክልል የግብርና ግብዓት ፎርም በደህና መጡ
