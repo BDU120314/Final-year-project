@@ -5,13 +5,13 @@ import Navbar from "../components/HomePart/Header";
 
 const Home = () => {
   return (
-    <div className="flex flex-col bg-gray-50 h-screen">
+    <div className="flex flex-col bg-gray-50 h-screen overflow-x-hidden w-[100vw]">
       <Navbar />
-      <main className="mt-[60px]">
+      <main className="mt-[60px] ">
         <Main />
       </main>
       <Foooter />
-</div>
+    </div>
   );
 };
 

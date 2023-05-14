@@ -1,6 +1,7 @@
 import React from 'react'
 import { FaSearch, FaRegBell, FaEnvelope } from "react-icons/fa";
-const DashView = () => {
+import { Link } from 'react-router-dom';
+const DashView = (props) => {
   return (
     <div className="flex justify-between items-center shadow-lg h-[70px] px-[25px] fixed top-0 right-0 left-[178px]">
       <div className="flex items-center rounded-[5px]">
@@ -15,13 +16,19 @@ const DashView = () => {
       </div>
       <div className="flex items-center gap-4 relative ">
         <div className="flex items-center gap-[25px] border-r-[1px] pr-6">
+          <Link
+            to="/dashboard/register"
+            className="bg-blue-400 flex justify-center items-centerh-[30px] px-4 rounded-md"
+          >
+            Add Admin
+          </Link>
           <FaRegBell />
           <FaEnvelope />
         </div>
         <div className="flex items-center gap-3 relative">
-          <p color='white'>Chachu</p>
-          <div className="w-[50px] h-[50px] rounded-full bg-[#4E73DF]" >
-            <img src="logo.jpg" alt="logo"  />
+          <p color="white">Chachu</p>
+          <div className="w-[50px] h-[50px] rounded-full bg-[#4E73DF]">
+            <img src="logo.jpg" alt="logo" />
           </div>
         </div>
       </div>

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./formate.css";
 import axios from "axios";
 
 const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
@@ -90,7 +89,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
               id={dataBaseColumn}
               onChange={handleChange}
               value={columnValue}
-              className="w-[350px] h-10 pl-5 rounded-lg"
+              className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
             />
           </div>
           <div className="flex items-start  justify-lefft flex-col">
@@ -100,10 +99,10 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
               name="rep_fname"
               id="fname"
               onChange={handleChange}
-              onBlur={validateName} // added onBlur event to validate rep_fname
+              onBlur={validateName} 
               value={rep_fname}
               required
-              className="w-[350px] h-10 pl-5 rounded-lg"
+              className=" outline-none w-[350px] h-10 pl-5 rounded-lg"
             />
           </div>
         </div>
@@ -118,7 +117,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
               onBlur={validateName}
               value={rep_mname}
               required
-              className="w-[350px] h-10 pl-5 rounded-lg"
+              className=" outline-none w-[350px] h-10 pl-5 rounded-lg"
             />
           </div>
           <div className="flex items-left flex-col justify-left ">
@@ -131,7 +130,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
               onBlur={validateName}
               value={rep_lname}
               required
-              className="w-[350px] h-10 pl-5 rounded-lg"
+              className=" outline-none w-[350px] h-10 pl-5 rounded-lg"
             />
           </div>
         </div>
@@ -144,7 +143,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
               id="email"
               value={email}
               onChange={handleChange}
-              className="w-[350px] h-10 pl-5 rounded-lg"
+              className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
             />
           </div>
           <div className="flex justify-left flex-col">
@@ -156,7 +155,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
               onChange={handleChange}
               value={password}
               required
-              className="w-[350px] h-10 pl-5 rounded-lg"
+              className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
             />
           </div>
         </div>
@@ -170,7 +169,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
               onChange={handleChange}
               value={user_name}
               required
-              className="w-[350px] h-10 pl-5 rounded-lg"
+              className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
             />
           </div>
           <div className="flex justify-left flex-col">
@@ -182,7 +181,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
               onChange={handleChange}
               value={rep_phone_number}
               required
-              className="w-[350px] h-10 pl-5 rounded-lg"
+              className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
             />
           </div>
         </div>
@@ -196,11 +195,13 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
               onChange={handleChange}
               value={id}
               required
-              className="w-[350px] h-10 pl-5 rounded-lg "
+              className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
             />
           </div>
           <div className=" h-10 flex items-center justify-center my-6 w-[350px] bg-48px bg-green-400 ">
-            <button className="text-center" type="submit">Register</button>
+            <button className="text-center" type="submit">
+              Register
+            </button>
           </div>
         </div>
       </form>

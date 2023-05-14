@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Dash from "../dashboard/Dash";
 import Home from "../pages/Home";
@@ -10,51 +10,9 @@ import Orders from "../dashboard/WoredaAdmin/Orders";
 import LandAdminForm1 from "../components/DisplayData/displayLandAdmin/LandAdminForm";
 import UpdateLandAdmin from "../components/DisplayData/displayLandAdmin/UpdateLandAdmin";
 import SingleLandAdmin from "../components/DisplayData/displayLandAdmin/SingleLandAdmin";
-import axios from "axios";
-import Logout from "../pages/logout";
-
-const Router = () => {
-
- const [loggedIn, setLoggedIn] = useState(false);
-
- const handleLogin = () => {
-   setLoggedIn(true);
- };
-
- const handleLogout = () => {
-   setLoggedIn(false);
- };
-
- const checkToken = async () => {
-   const token = localStorage.getItem("token");
-   if (token) {
-     try {
-       // Verify the token on the server side
-       const response = await axios.get(
-         "http://localhost:5001/api/v1/protected",
-         {
-           headers: { Authorization: token },
-         }
-       );
-
-       // If the token is valid, set the logged in state to true
-       if (response.status === 200) {
-         setLoggedIn(true);
-       }
-     } catch (error) {
-       console.error(error);
-       // Handle token verification error
-     }
-   }
- };
-
- // Check token on app load
- useEffect(() => {
-   checkToken();
- }, []);
 
 
-
+  const Router = () => {
   return (
     <div>
       <BrowserRouter>
