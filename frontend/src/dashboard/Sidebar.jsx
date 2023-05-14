@@ -79,15 +79,6 @@ const Sidebar = () => {
             </a>
           </nav>
         </details>
-        {/* <div className="flex justify-between items-center gap-[10px] py-[15px] cursor-pointer">
-          <div className="flex items-center gap-[10px]">
-            <FaWrench color="white" />
-            <p className="text-white text-[14px] leading-5 font-normal">
-              Report
-            </p>
-          </div>
-          <FaChevronRight color="white" />
-        </div> */}
       </div>
       <div className="flex items-center justify-center gap-3 bg-red-200 h-12 mt-[100px] rounded-md cursor-pointer" >
         <FiLogOut color="white" fontSize={28} />

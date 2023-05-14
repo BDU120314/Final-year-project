@@ -197,7 +197,7 @@ const Login = () => {
 
           <button
             type="submit"
-            className="block text-center w-full  rounded-sm dark:text-gray-900b bg-green-400"
+            className="block text-center w-full h-10  rounded-sm dark:text-gray-900b bg-green-400"
           >
             Login
           </button>
