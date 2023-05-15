@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "../css/farmers.css";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";

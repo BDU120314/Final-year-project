@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import "./farmer.css";
 const DisplaySingleData = () => {
   const [data, setData] = useState([]);
   const { id } = useParams();
@@ -34,9 +33,12 @@ const DisplaySingleData = () => {
             </tr>
           </thead>
           <tbody>
-            {data.map((datas) => {
+            {data.map((datas, index) => {
               return (
-                <tr key={datas.id}>
+                <tr
+                  key={datas.id}
+                  className={index % 2 === 0 ? "bg-gray-200" : "bg-white"}
+                >
                   <td>{datas.fname}</td>
                   <td>{datas.mname}</td>
                   <td>{datas.lname}</td>

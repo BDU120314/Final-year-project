@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
- import '../css/farmer.css'
 const DisplaySingleZone = () => {
   const [data, setData] = useState([]);
   const { id } = useParams();

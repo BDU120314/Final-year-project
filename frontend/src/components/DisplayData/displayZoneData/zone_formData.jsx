@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "../displayFarmersData/farmers_data.css";
 import { Link } from "react-router-dom";
 const ZoneData = () => {
   const [zoneData, setZoneData] = useState([]);
@@ -44,9 +43,12 @@ const ZoneData = () => {
           </tr>
         </thead>
         <tbody>
-          {zoneData.map((datas) => {
+          {zoneData.map((datas, index) => {
             return (
-              <tr key={datas.id}>
+              <tr
+                key={datas.id}
+                className={index % 2 === 0 ? "bg-gray-200" : "bg-white"}
+              >
                 <td>{datas.id}</td>
                 <td>{datas.rep_fname} </td>
                 <td>{datas.rep_mname}</td>
