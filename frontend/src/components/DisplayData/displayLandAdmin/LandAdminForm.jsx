@@ -1,33 +1,31 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
-const LandAdminForm1 = () => {
-  const [kebeleData, setKebeleData] = useState([]);
-
+ 
+const LandAdminForm1 = ({ kebeleData, setKebeleData }) => {
   const handleDelete = (id) => {
     axios
       .delete(`http://localhost:5001/api/v1/kebele/delete/${id}`)
       .then((response) => {
         setKebeleData(kebeleData.filter((item) => item.id !== id));
-        console.log(`deleted user id :${id}`);
       })
       .catch((error) => {
         console.log(error);
       });
   };
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:5001/api/v1/kebele")
-      .then((response) => {
-        setKebeleData(response.data);
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+  
+  // useEffect(() => {
+  //   axios
+  //     .get("http://localhost:5001/api/v1/kebele")
+  //     .then((response) => {
+  //       setKebeleData(response.data);
+  //       console.log(kebeleData);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }, [kebeleData]);
 
   return (
     <div className="flex justify-center items-center px-5 ">
@@ -45,9 +43,12 @@ const LandAdminForm1 = () => {
           </tr>
         </thead>
         <tbody>
-          {kebeleData.map((datas) => {
+          {kebeleData.map((datas, index) => {
             return (
-              <tr key={datas.id} className="bg-gray-100/{0-4}">
+              <tr
+                key={datas.id}
+                className={index % 2 === 0 ? "bg-gray-200" : "bg-white"}
+              >
                 <td className="border px-4 py-2">{datas.id}</td>
                 <td className="border px-4 py-2">{datas.rep_fname} </td>
                 <td className="border px-4 py-2">{datas.rep_mname}</td>

@@ -36,7 +36,10 @@ const Orders = () => {
         <tbody className="bg-gray-50">
           {orderData.map((order, index) => {
             return (
-              <tr key={order.id}>
+              <tr
+                key={order.id}
+                className={index % 2 === 0 ? "bg-gray-200" : "bg-white"}
+              >
                 <td className="border px-4 py-2">{index + 1}</td>
                 <td className="border px-4 py-2">{order.farmers_id}</td>
                 <td className="border px-4 py-2">{order.fname}</td>

@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
- 
+import axios from "axios";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Contact from "../pages/Contact";
@@ -11,6 +11,7 @@ import DashZone from "../DashboardZone/Dash";
   
 import AdminRegistrationForm from "../components/registrationForm/admin_form/admin_form";
 import SingleLandAdmin from "../components/DisplayData/displayLandAdmin/SingleLandAdmin";
+
 import UpdateLandAdmin from "../components/DisplayData/displayLandAdmin/UpdateLandAdmin"
 import LandAdminForm1 from "../components/DisplayData/displayLandAdmin/LandAdminForm"
 import WoredaRegistration_form from "../components/registrationForm/woreda_form/woreda_form";
@@ -38,25 +39,72 @@ import FarmerRegistrationForm from "../components/registrationForm/farmers_form/
 
   const Router = () => {
  
+ 
+
+
+
+  const Router = () => {
+
+ const [kebeleData, setKebeleData] = useState([]);
+   const [filteredData, setFilteredData] = useState([]);
+
+ useEffect(() => {
+   axios
+     .get("http://localhost:5001/api/v1/kebele")
+     .then((response) => {
+       setKebeleData(response.data);
+     })
+     .catch((error) => {
+       console.log(error);
+     });
+ }, [kebeleData]);
+
+  const handleSearch = (searchQuery) => {
+    if (searchQuery === "") {
+      setFilteredData([]);
+    } else {
+    const filteredData = kebeleData.filter((admin) => {
+      // Modify the following conditions based on your data structure and desired properties
+      return (
+        admin.rep_fname.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        admin.rep_lname.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        admin.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        admin.id.toString().includes(searchQuery) // Example: filtering based on an age property
+      );
+    });
+    setFilteredData(filteredData);
+  }
+}
+ 
   return (
     <div>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
  
-          <Route path="/dashboard_woreda" element={<Dash />}>
-            <Route index element={< Orders />} />
-            <Route path="/dashboard_woreda/manageland" element={<LandAdminForm1 />} />
-              <Route
-                path={"/dashboard_woreda/manageland/update/:id"}
-                element={<UpdateLandAdmin />}
-              />
+  
+          <Route path="/dashboard_woreda" element={<Dash onSearch={handleSearch} />}>
+            <Route index element={<Orders />} />
+            <Route
+              path="/dashboard_woreda/manageland"
+              element={
+                <LandAdminForm1
+                  kebeleData={
+                    filteredData.length > 0 ? filteredData : kebeleData
+                  }
+                  setKebeleData={setKebeleData}
+                />
+              }
+            ></Route>
+            <Route
+              path={"/dashboard_woreda/manageland/update/:id"}
+              element={<UpdateLandAdmin />}
+            />
             <Route
               path="/dashboard_woreda/manageland/view/:id"
  
               element={<SingleLandAdmin />}
             />
-
             <Route
               path="/dashboard_woreda/register"
               element={<AdminRegistrationForm />}
@@ -126,7 +174,6 @@ import FarmerRegistrationForm from "../components/registrationForm/farmers_form/
           </Route>
 
           <Route path="/login" element={<Login />} />
-
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
@@ -134,5 +181,5 @@ import FarmerRegistrationForm from "../components/registrationForm/farmers_form/
     </div>
   );
 };
-
+  }
 export default Router;

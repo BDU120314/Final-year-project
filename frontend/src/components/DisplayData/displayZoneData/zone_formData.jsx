@@ -43,8 +43,9 @@ const ZoneData = () => {
           </tr>
         </thead>
         <tbody>
-          {zoneData.map((datas) => {
+          {zoneData.map((datas, index) => {
             return (
+ 
               <tr key={datas.id} className="bg-gray-100/{0-4}">
                 <td className="border px-4 py-2">{datas.id}</td>
                 <td className="border px-4 py-2">{datas.rep_fname} </td>
@@ -53,7 +54,18 @@ const ZoneData = () => {
                 <td className="border px-4 py-2">{datas.phone_number}</td>
                 <td className="border px-4 py-2">{datas.user_name}</td>
                 <td className="border px-4 py-2">{datas.zone_name}</td>
-
+ 
+              
+                key={datas.id}
+                className={index % 2 === 0 ? "bg-gray-200" : "bg-white"}
+              
+                <td>{datas.id}</td>
+                <td>{datas.rep_fname} </td>
+                <td>{datas.rep_mname}</td>
+                <td>{datas.email}</td>
+                <td>{datas.rep_phone_number}</td>
+                <td>{datas.rep_user_name}</td>
+                <td>{datas.zone_name}</td>
                 <td className="w-auto flex justify-center items-center gap-2 py-2 px-4">
                   <Link
                     to={`/region_dashboard/manage_zone/update/${datas.id}`}
@@ -78,7 +90,8 @@ const ZoneData = () => {
                 </td>
               </tr>
             );
-          })}
+          }
+          )}
         </tbody>
       </table>
     </div>

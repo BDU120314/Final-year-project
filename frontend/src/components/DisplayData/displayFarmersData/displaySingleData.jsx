@@ -35,9 +35,12 @@ const DisplaySingleData = () => {
             </tr>
           </thead>
           <tbody className="bg-gray-50">
-            {data.map((datas) => {
+            {data.map((datas, index) => {
               return (
-                <tr key={datas.id}>
+                <tr
+                key={datas.id}
+                className={index % 2 === 0 ? "bg-gray-200" : "bg-white"}
+              >
                   <td className="border px-4 py-2">{datas.fname}</td>
                   <td className="border px-4 py-2">{datas.mname}</td>
                   <td className="border px-4 py-2">{datas.lname}</td>
