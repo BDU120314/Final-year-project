@@ -28,7 +28,10 @@ const ZoneData = () => {
   }, [zoneData]);
 
   return (
+    <div>
+    <input type="search" className="search" placeholder="search zone here" />
     <div className="flex justify-center items-center px-5 ">
+      
       <table className="table-auto w-full">
         <thead className="bg-gray-100">
           <tr>
@@ -81,6 +84,7 @@ const ZoneData = () => {
           })}
         </tbody>
       </table>
+    </div>
     </div>
   );
 };
