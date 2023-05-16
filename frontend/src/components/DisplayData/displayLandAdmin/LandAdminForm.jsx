@@ -65,16 +65,14 @@ const LandAdminForm1 = () => {
                   </Link>
 
                   <Link
-                     to={`/dashboard_woreda/manageland/view/${datas.id}`}
+                    to={`/dashboard_woreda/manageland/view/${datas.id}`}
                     className="px-2 bg-gray-300 rounded-sm"
- 
- 
                   >
                     <button>View</button>
                   </Link>
 
                   <button
-                    className="bg-red-400"
+                    className="bg-red-400 rounded-sm"
                     onClick={() => handleDelete(datas.id)}
                   >
                     Delete

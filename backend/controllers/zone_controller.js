@@ -14,7 +14,7 @@ const CreateZone = (req, res) => {
   } = req.body;
 
   const sql =
-    "INSERT INTO zone (zone_name, rep_fname,rep_mname, rep_lname,user_name, email,rep_password,rep_phone_number,id) VALUES (?,?,?,?,?,?,?,?,?)";
+    "INSERT INTO zone (zone_name, rep_fname,rep_mname, rep_lname,user_name, email,password,rep_phone_number,id) VALUES (?,?,?,?,?,?,?,?,?)";
   db.query(
     sql,
     [

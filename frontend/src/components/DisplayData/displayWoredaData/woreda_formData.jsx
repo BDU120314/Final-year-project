@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "../displayFarmersData/farmers_data.css";
 import { Link } from "react-router-dom";
 const WoredaData = () => {
   const [woredaData, setWoredData] = useState([]);
@@ -29,55 +28,57 @@ const WoredaData = () => {
   }, [woredaData]);
 
   return (
-<div className="flex justify-center items-center px-5 ">
+    <div className="flex justify-center items-center px-5 ">
       <table className="table-auto w-full">
         <thead className="bg-gray-100">
           <tr>
-            <th>ID</th>
-            <th>First NAme</th>
-            <th>Middle Name</th>
-            <th>Email Address</th>
-            <th>Phone Number</th>
-            <th>User Name</th>
-            <th>Woreda Name</th>
-            <th>Action</th>
+            <th className="px-4 py-2">ID</th>
+            <th className="px-4 py-2">First NAme</th>
+            <th className="px-4 py-2">Middle Name</th>
+            <th className="px-4 py-2">Email Address</th>
+            <th className="px-4 py-2">Phone Number</th>
+            <th className="px-4 py-2">User Name</th>
+            <th className="px-4 py-2">Woreda Name</th>
+            <th className="px-4 py-2 w-auto">Action</th>
           </tr>
         </thead>
         <tbody>
           {woredaData.map((datas) => {
             return (
-              <tr key={datas.id}>
-                <td>{datas.id}</td>
-                <td>{datas.rep_fname} </td>
-                <td>{datas.rep_mname}</td>
-                <td>{datas.email}</td>
-                <td>{datas.rep_phone_number}</td>
-                <td>{datas.user_name}</td>
-                <td>{datas.woreda_name}</td>
-
-
+              <tr key={datas.id} className="bg-gray-100/{0-4}">
+                <td className="border px-4 py-2">{datas.id}</td>
+                <td className="border px-4 py-2">{datas.rep_fname} </td>
+                <td className="border px-4 py-2">{datas.rep_mname}</td>
+                <td className="border px-4 py-2">{datas.email}</td>
+                <td className="border px-4 py-2">{datas.rep_phone_number}</td>
+                <td className="border px-4 py-2">{datas.user_name}</td>
+                <td className="border px-4 py-2">{datas.woreda_name}</td>
                 <td className="w-auto flex justify-center items-center gap-2 py-2 px-4">
-                  <Link to={`/zone_dashboard/manageland/update/${datas.id}`} className="link">
-                    <button className="bg-blue-700 h-8 w-16">Edit</button>
+                  <Link
+                    to={`/zone_dashboard/manageland/update/${datas.id}`}
+                    className="px-2 bg-blue-700 rounded-sm"
+                  >
+                    Edit
                   </Link>
 
-                  <Link to={`/zone_dashboard/manageland/view/${datas.id}`} className="link">
-                    <button className="h-8 bg-white text-black w-16">View</button>{" "}
+                  <Link
+                    to={`/zone_dashboard/manageland/view/${datas.id}`}
+                    className="px-2 bg-gray-300 rounded-sm"
+                  >
+                    <button>View</button>
                   </Link>
                   <button
-                    className="bg-red-400 h-8"
+                    className="bg-red-400 rounded-sm"
                     onClick={() => handleDelete(datas.id)}
                   >
                     Delete
                   </button>
- 
                 </td>
               </tr>
             );
           })}
         </tbody>
       </table>
-      
     </div>
   );
 };

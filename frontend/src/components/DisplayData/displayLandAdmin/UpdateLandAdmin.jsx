@@ -33,7 +33,7 @@ function UpdateLandAdmin() {
         `http://localhost:5001/api/v1/kebele/update/${id}`,
         formData
       );
-      navigate("/dashboard/manageland");
+      navigate("/dashboard_woreda/manageland");
       console.log(response);
     } catch (error) {
       alert(error);
@@ -175,7 +175,7 @@ function UpdateLandAdmin() {
           </div>
           <div className="flex justify-center items-center">
             <button
-              className="w-[350px] h-10 bg-green-400 rounded-md"
+              className="w-[350px] h-10 bg-blue-400 rounded-3xl mt-[20px]"
               type="submit"
             >
               update

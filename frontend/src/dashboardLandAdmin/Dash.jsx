@@ -1,6 +1,6 @@
 import React from 'react'
 import Sidebar from './Sidebar'
-import DashView from './DashView'
+import DashView from '../DashboardWoreda/DashView'
 import { Outlet } from 'react-router-dom'
 
 const DashLandAdmin = () => {
@@ -10,7 +10,7 @@ const DashLandAdmin = () => {
         <Sidebar />
       </div>
       <div className="basis-[86%] border">
-        <DashView />
+        <DashView username="Chale" links="/landadmin_dashboard/register " />
         <div className='mt-[70px]'>
           <Outlet></Outlet>
         </div>

@@ -12,13 +12,16 @@ const Foooter = () => {
               </h2>
               <ul>
                 <li class="mb-4 transition-colors duration-200 hover:text-gray-800 dark:hover:text-white">
-                  <a href="#">0582206822</a>
+                  Tele:<a href="#">058 220 5856/058 226 5501</a>
                 </li>
                 <li class="mb-4 transition-colors duration-200 hover:text-gray-800 dark:hover:text-white">
-                  <a href="#">amagabureau@gmail.com</a>
+                  FAX:<a href="#">058 220 1510</a>
                 </li>
                 <li class="mb-4 transition-colors duration-200 hover:text-gray-800 dark:hover:text-white">
-                  <a href="#">Found Around Grand Building</a>
+                  Email:<a href="#">agri@amhara.gov.et</a>
+                </li>
+                <li class="mb-4 transition-colors duration-200 hover:text-gray-800 dark:hover:text-white">
+                 Location: <a href="#">Found Around Grand Building</a>
                 </li>
               </ul>
             </div>
@@ -30,10 +33,10 @@ const Foooter = () => {
               </h2>
               <ul>
                 <li class="mb-4 transition-colors duration-200 hover:text-gray-800 dark:hover:text-white">
-                  <a href="#">telegram</a>
+                  <a href="https://t.me/AmharaBureauofAgriculter">telegram</a>
                 </li>
                 <li class="mb-4 transition-colors duration-200 hover:text-gray-800 dark:hover:text-white">
-                  <a href="#">Facebook</a>
+                  <a href="https://www.facebook.com/search/top?q=amhara%20agricultural%20bureau">Facebook</a>
                 </li>
                 <li class="mb-4 transition-colors duration-200 hover:text-gray-800 dark:hover:text-white">
                   <a href="#">Twitter</a>

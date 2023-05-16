@@ -8,8 +8,8 @@ const Navbar = ({ fixed }) => {
   return (
     <>
  
-      <nav className="fixed w-screen shadow-lg flex flex-wrap items-center lg:h-[60px] justify-between bg-white mb-1">
-        <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
+      <nav className="fixed w-screen shadow-lg flex flex-wrap items-center lg:h-[100px] justify-between bg-white mb-1">
+        <div className="px-4 w-screen flex flex-wrap items-center justify-between">
           <div className="w-full relative flex justify-between items-center lg:w-auto lg:static lg:block lg:justify-start">
             <Link
               to="/"
@@ -26,7 +26,7 @@ const Navbar = ({ fixed }) => {
             </Link>
             <button
  
-              className="text-black cursor-pointer absolute  top-[0px] right-[10px] text-3xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent  lg:hidden outline-none focus:outline-none h-full flex justify-center items-center"
+              className="text-black cursor-pointer absolute  top-[0px] right-[0px] text-3xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent  lg:hidden outline-none focus:outline-none h-full flex justify-center items-center"
  
               type="button"
               onClick={() => setNavbarOpen(!navbarOpen)}

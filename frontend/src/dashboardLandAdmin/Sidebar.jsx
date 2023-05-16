@@ -9,10 +9,10 @@ import {
 import { Link } from "react-router-dom";
 const Sidebar = () => {
   return (
-    <div className="bg-blue-400 h-screen px-[25px] fixed top-0 left-0">
-      <div className="px-[10px] py-[30px] flex justify-center items-center border-b-[1px] border-[#EDEDED]/[0.3]">
+    <div className="bg-green-400 h-screen px-[33px] fixed top-0 left-0">
+      <div className="px-[10px] py-[35px] flex justify-center items-center border-b-[1px] border-[#EDEDED]/[0.3]">
         <h1 className=" text-white text-[15px] leading-5 font-extrabold cursor-pointer">
-        Land Admin Panel
+        Land Admin
         </h1>
       </div>
       <div className=" flex gap-[15px] items-center py-5 border-b-[1px] border-[#EDEDED]/[0.3]">

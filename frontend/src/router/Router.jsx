@@ -5,9 +5,9 @@ import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Contact from "../pages/Contact";
 import About from "../pages/About";
-import Dash from "../dashboard/Dash";
-import DashZone from "../dashboard1/Dash";
- import Orders from "../dashboard/WoredaAdmin/Orders"
+import Dash from "../DashboardWoreda/Dash";
+import DashZone from "../DashboardZone/Dash";
+ import Orders from "../DashboardWoreda/WoredaAdmin/Orders"
   
 import AdminRegistrationForm from "../components/registrationForm/admin_form/admin_form";
 import SingleLandAdmin from "../components/DisplayData/displayLandAdmin/SingleLandAdmin";
@@ -17,12 +17,12 @@ import WoredaRegistration_form from "../components/registrationForm/woreda_form/
 import DisplaySingleWoreda from "../components/DisplayData/displayWoredaData/displaySingleWoreda";
 import WoredaUpdate from "../components/DisplayData/displayWoredaData/updateWoreda";
 import WoredaData from "../components/DisplayData/displayWoredaData/woreda_formData";
-import DashRegion from "../dashboardDirectoriet/Dash";
+import DashRegion from "../DashboardDirectoriet/Dash";
 import ZoneData from "../components/DisplayData/displayZoneData/zone_formData";
 import DisplaySingleZone from "../components/DisplayData/displayZoneData/displaySingleZone";
 import ZoneUpdate from "../components/DisplayData/displayZoneData/updateZone";
 import ZoneRegistrationForm from "../components/registrationForm/zone_form/zone_form";
-import DashLandAdmin from "../dashboardLandAdmin/Dash";
+import DashLandAdmin from "../DashboardLandAdmin/Dash";
 import FarmersData from "../components/DisplayData/displayFarmersData/farmers_data";
 import FarmerUpdate from "../components/DisplayData/displayFarmersData/farmerUpdate";
 import DisplaySingleData from "../components/DisplayData/displayFarmersData/displaySingleData";

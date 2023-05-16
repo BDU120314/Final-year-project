@@ -10,7 +10,7 @@ const Dash = () => {
         <Sidebar />
       </div>
       <div className="basis-[86%] border">
-        <DashView />
+        <DashView username="endeaby" links = "/dashboard_woreda/register" />
         <div className='mt-[70px]'>
           <Outlet></Outlet>
         </div>

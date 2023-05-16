@@ -9,7 +9,6 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
     rep_lname: "",
     email: "",
     password: "",
-
     user_name: "",
     rep_phone_number: "",
     id: "",
@@ -22,7 +21,6 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
     rep_lname,
     email,
     password,
-
     user_name,
     rep_phone_number,
     id,
@@ -53,9 +51,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
       rep_mname: "",
       rep_lname: "",
       email: "",
-
       password: "",
-
       user_name: "",
       rep_phone_number: "",
       id: "",
@@ -71,7 +67,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
   };
 
   return (
-    <div className="flex justify-center items-center bg-gray-100 p-6 flex-col">
+    <div className="flex justify-center items-center bg-gray-100 p-0 flex-col">
       <h2 className="text-black font-extrabold leading-10 py-[25px]">
         Registration Form
       </h2>
@@ -199,7 +195,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
             />
           </div>
           <div className=" h-10 flex items-center justify-center my-6 w-[350px] bg-48px bg-green-400 ">
-            <button className="text-center" type="submit">
+            <button className="text-center bg-green-400" type="submit">
               Register
             </button>
           </div>

@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
- import '../css/farmer.css'
 const DisplaySingleZone = () => {
   const [data, setData] = useState([]);
   const { id } = useParams();
@@ -14,34 +13,36 @@ const DisplaySingleZone = () => {
   });
   return (
     <div>
-      <div className="farmer">
-        <h2>Detail information of woreda</h2>
-        <table>
-          <thead>
+      <div className="flex justify-center flex-col items-center px-5">
+        <h2 className="text-[18px] text-gray-700 py-[25px] font-bold leading-6">
+          Detail information of woreda
+        </h2>
+        <table className="table-auto w-full">
+          <thead className="bg-gray-300/50">
             <tr>
-              <th>Zone name</th>
-              <th>Rep_First name</th>
-              <th>Rep_Middle name</th>
-              <th>Email</th>
-              <th>Rep_Phone_number</th>
-              <th>Rep_User name</th>
-              <th>Rep_password</th>
-              <th>Id</th>
+<th className="px-4 py-2">Zone name</th>
+<th className="px-4 py-2">Rep_First name</th>
+<th className="px-4 py-2">Rep_Middle name</th>
+<th className="px-4 py-2">Email</th>
+<th className="px-4 py-2">Rep_Phone_number</th>
+<th className="px-4 py-2">Rep_User name</th>
+<th className="px-4 py-2">Rep_password</th>
+<th className="px-4 py-2">Id</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="bg-gray-50">
             {data.map((datas) => {
               return (
                 <tr key={datas.id}>
-                  <td>{datas.zone_name}</td>
-                  <td>{datas.rep_fname}</td>
-                  <td>{datas.rep_mname}</td>
-                  <td>{datas.rep_lname}</td>
-                   <td>{datas.email}</td>
-                   <td>{datas.rep_phone_number}</td>
-                   <td>{datas.user_name}</td>
-                  <td>{datas.password}</td>
-                 </tr>
+                  <td className="border px-4 py-2">{datas.zone_name}</td>
+                  <td className="border px-4 py-2">{datas.rep_fname}</td>
+                  <td className="border px-4 py-2">{datas.rep_mname}</td>
+                  <td className="border px-4 py-2">{datas.rep_lname}</td>
+                  <td className="border px-4 py-2">{datas.email}</td>
+                  <td className="border px-4 py-2">{datas.rep_phone_number}</td>
+                  <td className="border px-4 py-2">{datas.user_name}</td>
+                  <td className="border px-4 py-2">{datas.password}</td>
+                </tr>
               );
             })}
           </tbody>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import "./farmers.css";
 import axios from "axios";
+
 function FarmerRegistrationForm() {
   const [formData, setFormData] = useState({
     fname: "",
@@ -15,163 +15,190 @@ function FarmerRegistrationForm() {
     password: "",
     id: "",
   });
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(
-        "http://localhost:5001/api/v1/farmers",
-        formData
-      );
-      alert("user successfully register")
+      await axios.post("http://localhost:5001/api/v1/farmers", formData);
+      alert("User successfully registered.");
+      e.target.reset();
     } catch (error) {
       console.log(error);
     }
-    setFormData({
-      fname: "",
-      mname: "",
-      lname: "",
-      birth_date: "",
-      email: "",
-      address: "",
-      phone_number: "",
-      land_amount: "",
-      user_name: "",
-      password: "",
-      id: "",
-    });
   };
+
   return (
-    <div className="farmers">
+    <div className="flex justify-center items-center bg-gray-100 p-0 flex-col">
       <div>
-        <h2>Farmers registration form</h2>
+        <h2 className="text-black font-extrabold leading-10 py-25">
+          Farmers Registration Form
+        </h2>
       </div>
-      <form className="farmer-registration-form" onSubmit={handleSubmit}>
-        <div className="label_input">
-          <label htmlFor="fname">First Name:</label>
-          <input
-            type="text"
-            id="fname"
-            name="fname"
-            value={formData.fname}
-            onChange={handleChange}
-            required
-            
-          />
+      <form
+        action="farmer-registration-form"
+        className="flex flex-col bg-gray-200"
+        onSubmit={handleSubmit}
+      >
+        <div className="flex justify-center items-center gap-10 py-[15px] px-[15px]">
+          <div className="flex items-left flex-col justify-left ">
+            <label htmlFor="fname">First Name:</label>
+            <input
+              type="text"
+              id="fname"
+              name="fname"
+              value={formData.fname}
+              onChange={handleChange}
+              className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
+              required
+            />
+          </div>
+          <div className="flex items-start justify-left flex-col">
+            <label htmlFor="mname">Middle Name:</label>
+            <input
+              type="text"
+              id="mname"
+              name="mname"
+              value={formData.mname}
+              onChange={handleChange}
+              className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
+            />
+          </div>
         </div>
-        <div className="label_input">
-          <label htmlFor="mname">Middle Name:</label>
-          <input
-            type="text"
-            id="mname"
-            name="mname"
-            value={formData.mname}
-            onChange={handleChange}
-          />
+        <div className="flex justify-center items-center gap-10 py-[15px] px-[15px]">
+          <div className="flex items-left flex-col justify-left">
+            <label htmlFor="lname">Last Name:</label>
+            <input
+              type="text"
+              id="lname"
+              name="lname"
+              value={formData.lname}
+              onChange={handleChange}
+              className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
+              required
+            />
+          </div>
+          <div className="flex items-start justify-left flex-col w-350">
+            <label htmlFor="birth_date">Birth Date:</label>
+            <input
+              type="date"
+              id="birth_date"
+              name="birth_date"
+              value={formData.birth_date}
+              onChange={handleChange}
+              className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
+              required
+            />
+          </div>
         </div>
-        <div className="label_input">
-          <label htmlFor="lname">Last Name:</label>
-          <input
-            type="text"
-            id="lname"
-            name="lname"
-            value={formData.lname}
-            onChange={handleChange}
-            required
-          />
+
+        <div
+          className="flex justify-center items-center gap-10 py-15 px
+-15"
+        >
+          <div className="flex items-start justify-left flex-col">
+            <label htmlFor="email">Email:</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
+              required
+            />
+          </div>
+          <div className="flex items-start justify-left flex-col">
+            <label htmlFor="address">Address:</label>
+            <input
+              id="address"
+              name="address"
+              value={formData.address}
+              onChange={handleChange}
+              className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
+              required
+            />
+          </div>
         </div>
-        <div className="label_input">
-          <label htmlFor="birth_date">Birth Date:</label>
-          <input
-            type="date"
-            id="birth_date"
-            name="birth_date"
-            value={formData.birth_date}
-            onChange={handleChange}
-            required
-          />
+        <div className="flex justify-center items-center gap-10 py-[15px] px-[15px]">
+          <div className="flex items-start justify-left flex-col">
+            <label htmlFor="phone_number">Telephone:</label>
+            <input
+              type="tel"
+              id="phone_number"
+              name="phone_number"
+              value={formData.phone_number}
+              onChange={handleChange}
+              className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
+              required
+            />
+          </div>
+          <div className="flex items-start justify-left flex-col">
+            <label htmlFor="land_amount">Land Amount:</label>
+            <input
+              type="number"
+              id="land_amount"
+              name="land_amount"
+              value={formData.land_amount}
+              onChange={handleChange}
+              className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
+              required
+            />
+          </div>
         </div>
-        <div className="label_input">
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
+
+        <div className="flex justify-center items-center gap-10 py-[15px] px-[15px]">
+          <div className="flex items-start justify-left flex-col">
+            <label htmlFor="user_name">Username:</label>
+            <input
+              type="text"
+              id="user_name"
+              name="user_name"
+              value={formData.user_name}
+              onChange={handleChange}
+              className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
+              required
+            />
+          </div>
+          <div className="flex items-start justify-left flex-col">
+            <label htmlFor="password">Password:</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
+              required
+            />
+          </div>
         </div>
-        <div className="label_input">
-          <label htmlFor="address">Address :</label>
-          <input
-            id="address"
-            name="address"
-            value={formData.address}
-            onChange={handleChange}
-            required
-          />
+
+        <div className="flex justify-center items-center gap-10 py-[15px] px-[15px]">
+          <div className="flex items-start justify-left flex-col">
+            <label htmlFor="id">ID No:</label>
+            <input
+              type="text"
+              id="id"
+              name="id"
+              value={formData.id}
+              onChange={handleChange}
+              className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
+              required
+            />
+          </div>
+          <div className=" h-10 flex items-center justify-center my-6 w-[350px] bg-48px bg-green-400 ">
+            <button className="text-center bg-green-400" type="submit">
+              Register
+            </button>
+          </div>
         </div>
-        <div className="label_input">
-          <label htmlFor="phone_number">Tel phone :</label>
-          <input
-            type="tel"
-            id="phone_number"
-            name="phone_number"
-            value={formData.phone_number}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="label_input">
-          <label htmlFor="land_amount">Land NO :</label>
-          <input
-            type="number"
-            id="land_amount"
-            name="land_amount"
-            value={formData.land_amount}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="label_input">
-          <label htmlFor="user_name">Username:</label>
-          <input
-            type="text"
-            id="user_name"
-            name="user_name"
-            value={formData.user_name}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="label_input">
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="label_input">
-          <label htmlFor="id">ID No:</label>
-          <input
-            type="text"
-            id="id"
-            name="id"
-            value={formData.id}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <button type="submit">Register</button>
       </form>
     </div>
   );
 }
+
 export default FarmerRegistrationForm;
