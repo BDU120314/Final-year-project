@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
  
 const LandAdminForm1 = ({ kebeleData, setKebeleData }) => {
+  
   const handleDelete = (id) => {
     axios
       .delete(`http://localhost:5001/api/v1/kebele/delete/${id}`)

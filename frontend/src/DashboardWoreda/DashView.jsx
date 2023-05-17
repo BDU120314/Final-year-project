@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { FaSearch, FaRegBell, FaEnvelope } from "react-icons/fa";
 import { Link } from 'react-router-dom';
  
-const DashView = ({ onSearch }) => {
+const DashView = ({ onSearch, username, links }) => {
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleInputChange = (e) => {

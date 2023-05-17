@@ -28,22 +28,8 @@ import FarmersData from "../components/DisplayData/displayFarmersData/farmers_da
 import FarmerUpdate from "../components/DisplayData/displayFarmersData/farmerUpdate";
 import DisplaySingleData from "../components/DisplayData/displayFarmersData/displaySingleData";
 import FarmerRegistrationForm from "../components/registrationForm/farmers_form/FarmersForm";
- 
- 
- 
-
- 
-
- 
-
-
-  const Router = () => {
- 
- 
-
-
-
-  const Router = () => {
+import LogoutButton from "../pages/logout";
+ const Router = () => {
 
  const [kebeleData, setKebeleData] = useState([]);
    const [filteredData, setFilteredData] = useState([]);
@@ -67,7 +53,7 @@ import FarmerRegistrationForm from "../components/registrationForm/farmers_form/
       // Modify the following conditions based on your data structure and desired properties
       return (
         admin.rep_fname.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        admin.rep_lname.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        admin.user_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         admin.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
         admin.id.toString().includes(searchQuery) // Example: filtering based on an age property
       );
@@ -81,9 +67,8 @@ import FarmerRegistrationForm from "../components/registrationForm/farmers_form/
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
- 
-  
-          <Route path="/dashboard_woreda" element={<Dash onSearch={handleSearch} />}>
+          <Route path="/logout" element={<LogoutButton />} />
+          {/* <Route path="/dashboard_woreda" element={<Dash onSearch={handleSearch} />}>
             <Route index element={<Orders />} />
             <Route
               path="/dashboard_woreda/manageland"
@@ -175,11 +160,10 @@ import FarmerRegistrationForm from "../components/registrationForm/farmers_form/
 
           <Route path="/login" element={<Login />} />
           <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route path="/contact" element={<Contact />} /> */}
         </Routes>
       </BrowserRouter>
     </div>
   );
 };
-  }
 export default Router;

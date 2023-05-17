@@ -10,6 +10,7 @@ const order_route = require("./routes_part/orders_route");
 const report_route = require("./routes_part/report_route");
 const Login_Route = require("./routes_part/login_route");
 const cookieParser = require("cookie-parser");
+const Logout_Route = require("./routes_part/logout");
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
@@ -19,6 +20,7 @@ app.use(bodyparser.json());
 //middleware
 
 //route/
+ 
 app.use("/api/v1/farmers", router);
 app.use("/api/v1/woreda", woreda_router);
 app.use("/api/v1/zone", zone_router);
