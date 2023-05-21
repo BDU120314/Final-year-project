@@ -2,31 +2,39 @@ const db = require("../config/connection_db");
 
 const CreateDistributor = (req, res) => {
   const {
-    cluster_name,
-    rep_fname,
-    rep_mname,
-    rep_lname,
-    rep_user_name,
-    email,
-    rep_password,
-    rep_phone_number,
     id,
+    // cluster_name,
+    fname,
+    mname,
+    lname,
+    gender,
+    email,
+     phone_number,
+    user_name,
+    password,
+    zone_id,
+    woreda_id,
+    kebele_id,
   } = req.body;
-
+ const role_id=0;
   const sql =
-    "INSERT INTO distributor (cluster_name, rep_fname,rep_mname, rep_lname,rep_user_name, email,rep_password,rep_phone_number,id) VALUES (?,?,?,?,?,?,?,?,?)";
+  `INSERT INTO representatives (id, fname, mname, lname,gender, email,phone_number, user_name, password,zone_id,woreda_id,kebele_id, role_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,${role_id} )`;
   db.query(
     sql,
     [
-     cluster_name,
-      rep_fname,
-      rep_mname,
-      rep_lname,
-      rep_user_name,
-      email,
-      rep_password,
-      rep_phone_number,
       id,
+    //  cluster_name,
+     fname,
+     mname,
+     lname,
+     gender,
+     email,
+      phone_number,
+     user_name,
+     password,
+     zone_id,
+     woreda_id,
+     kebele_id,
     ],
     (error, result) => {
       if (!error) {
@@ -62,27 +70,27 @@ const UpdateDistributor = (req, res) => {
   const id = req.params.id;
   const {
     cluster_name,
-    rep_fname,
-    rep_mname,
-    rep_lname,
-    rep_user_name,
+    fname,
+    mname,
+    lname,
+    user_name,
     email,
-    rep_password,
-    rep_phone_number,
+    password,
+    phone_number,
   } = req.body;
 
-  const sql = `UPDATE distributor SET cluster_name =?, rep_fname =?, rep_mname = ?, rep_lname = ?, rep_user_name=?, email = ?, rep_password = ?,  rep_phone_number = ? WHERE id = ${id}`;
+  const sql = `UPDATE distributor SET cluster_name =?, fname =?, mname = ?, lname = ?, user_name=?, email = ?, password = ?,  phone_number = ? WHERE id = ${id}`;
   db.query(
     sql,
     [
       cluster_name, 
-      rep_fname,
-      rep_mname,
-      rep_lname,
-      rep_user_name,
+      fname,
+      mname,
+      lname,
+      user_name,
       email,
-      rep_password,
-      rep_phone_number,
+      password,
+      phone_number,
     ],
     (error, result) => {
       if (error) {

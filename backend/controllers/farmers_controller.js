@@ -6,35 +6,37 @@ const db = require("../config/connection_db");
 
 const CreateFarmers = (req, res) => {
   const {
+    id,
     fname,
     mname,
     lname,
     birth_date,
+    gender,
+    land_by_ha,
     email,
-    address,
     phone_number,
-    land_amount,
     user_name,
     password,
-    id,
+   kebele_id,
   } = req.body;
-
+const role_id=1;
   const sql =
-    "INSERT INTO farmers (fname, mname, lname, birth_date, email, address, phone_number, land_amount, user_name,password, id) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+    `INSERT INTO farmers (id, fname, mname, lname, birth_date, gender, land_by_ha, email, phone_number, user_name,password, kebele_id,role_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,${role_id})`;
   db.query(
     sql,
     [
+      id,
       fname,
       mname,
       lname,
       birth_date,
+      gender,
+      land_by_ha,
       email,
-      address,
       phone_number,
-      land_amount,
       user_name,
       password,
-      id,
+     kebele_id,
     ],
     (error, result) => {
       if (!error) {
@@ -78,15 +80,15 @@ const UpdateFarmer = (req, res) => {
     mname,
     lname,
     birth_date,
+    gender,
+    land_by_ha,
     email,
-    address,
     phone_number,
-    land_amount,
     user_name,
     password,
   } = req.body;
 
-  const sql = `UPDATE farmers SET fname ='${fname}', mname = '${mname}', lname = '${lname}', birth_date = '${birth_date}', email = '${email}', address = '${address}',  phone_number = '${phone_number}', land_amount = '${land_amount}', user_name = '${user_name}', password = '${password}' WHERE id = ${id}`;
+  const sql = `UPDATE farmers SET fname ='${fname}', mname = '${mname}', lname = '${lname}', birth_date = '${birth_date}', land_by_ha = '${land_by_ha}', gender='${gender}', email = '${email}', phone_number = '${phone_number}', user_name = '${user_name}', password = '${password}' WHERE id = ${id}`;
   db.query(sql, (error, result) => {
     if (error) {
       console.error(error);

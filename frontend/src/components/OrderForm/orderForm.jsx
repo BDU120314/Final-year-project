@@ -1,16 +1,14 @@
 import React, { useState } from "react";
-
-import "./order.css";
+ import Foooter from "../HomePart/footer";
 import axios from "axios";
 function OrderForm() {
   const [formData, setFormData] = useState({
-    fname: " ",
-    mname: " ",
+    farmer_fname: " ",
+    farmer_mname: " ",
     input_type: " ",
     amount: " ",
-    cluster_name: " ",
-    woreda_name: " ",
-    farmers_id: " ",
+    kebele_id: " ",
+    farmer_id: " ",
   });
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -18,54 +16,62 @@ function OrderForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/v1/order", formData);
+      await axios.post("http://localhost:5001/api/v1/order", formData);
       alert("user successfully register");
     } catch (error) {
       console.log(error);
     }
     setFormData({
-      fname: " ",
-      mname: " ",
+      farmer_fname: " ",
+      farmer_mname: " ",
       input_type: " ",
       amount: " ",
-      cluster_name: " ",
-      woreda_name: " ",
-      farmers_id: " ",
+     kebele_id: " ",
+      farmer_id: " ",
     });
   };
   return (
-    <div className="orders">
-      <div>
-        <h2>Order form for farmers</h2>
+    <div> 
+    <div className="flex justify-center items-center bg-gray-100 p-0 flex-col mb-0 mt-0">
+      <div className="mt-0">
+        <h2 className="text-black font-extrabold leading-10 py-25">Order form for farmers</h2>
       </div>
-      <form className="farmer-registration-form" onSubmit={handleSubmit}>
-        <div className="label_input">
-          <label htmlFor="firstName">First name </label>
+      <form 
+     action="farmer-registration-form"
+     className="flex flex-col items-cente bg-gray-200 w-[800px]"
+     onSubmit={handleSubmit}
+   >
+        <div className="flex items-start justify-left flex-col ml-56 ">
+          <label htmlFor="farmer_fname">First name </label>
           <input
             type="text"
-            name="fname"
-            id="firstName"
-            value={formData.fname}
+            name="farmer_fname"
+            id="farmer_fname"
+            value={formData.farmer_fname}
             onChange={handleChange}
+             className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
             required
           />
         </div>
 
-        <div className="label_input">
-          <label htmlFor="middle name">Father name </label>
+        <div className="flex items-start justify-left flex-col ml-56 ">
+          <label htmlFor="farmer_mname">Father name </label>
           <input
             type="text"
-            name="mname"
-            id="middle name"
-            value={formData.mname}
+            name="farmer_mname"
+            id="farmer_mname"
+            value={formData.farmer_mname}
             onChange={handleChange}
+             className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
             required
           />
         </div>
 
-        <div className="label_input">
-          <label htmlFor="inputs">Input Type</label>
-          <input list="input_type" id="inputs" name="input_type" />
+        <div className="flex items-start justify-left flex-col ml-56 ">
+          <label htmlFor="input_type">Input Type</label>
+          <input list="input_type" id="inputs" name="input_type"
+           className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
+          />
           <datalist id="input_type">
             <option value="Seed"></option>
             <option value="DAP"></option>
@@ -74,58 +80,55 @@ function OrderForm() {
           </datalist>
         </div>
 
-        <div className="label_input">
+        <div className="flex items-start justify-left flex-col ml-56 ">
           <label htmlFor="amount">Amount </label>
           <input
             type="number"
-            id="id"
+            id="amount"
             name="amount"
             value={formData.amount}
             onChange={handleChange}
+             className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
             required
           />
         </div>
 
-        <div className="label_input">
-          <label htmlFor="cluster_name">ጉድኝት</label>
-          <input
-            type="text"
-            id="cluster"
-            name="cluster_name"
-            value={formData.cluster_name}
-            onChange={handleChange}
-            required
-          />
-        </div>
 
-        <div className="label_input">
-          <label htmlFor="woreda_name">Woreda Name</label>
-          <input
-            type="text"
-            id="woreda"
-            name="woreda_name"
-            value={formData.woreda_name}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className="label_input">
-          <label htmlFor="farmers_id">ID </label>
+        <div className="flex items-start justify-left flex-col ml-56 ">
+          <label htmlFor="kebele_id">Kebele Id</label>
           <input
             type="number"
-            id="id"
-            name="farmers_id"
-            value={formData.farmers_id}
+            id="kebele_id"
+            name="kebele_id"
+            value={formData.kebele_id}
             onChange={handleChange}
-            required
+             className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
+             
           />
         </div>
 
-        <div className="buttons">
-          <button type="submit">Order</button>
+        <div className="flex items-start justify-left flex-col ml-56 ">
+          <label htmlFor="farmer_id">ID </label>
+          <input
+            type="text"
+            id="farmer_id"
+            name="farmer_id"
+            value={formData.farmer_id}
+            onChange={handleChange}
+             className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
+            
+          />
+        </div>
+
+        <div className=" ">
+        <button className="ml-72 h-10 flex items-center justify-center my-6 w-[150px] bg-48px  rounded-2xl text-center bg-green-400 " type="submit">
+              እዘዝ
+            </button>
         </div>
       </form>
+      
+    </div>
+    <Foooter />
     </div>
   );
 }

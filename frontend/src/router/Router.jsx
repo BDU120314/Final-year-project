@@ -28,6 +28,11 @@ import FarmersData from "../components/DisplayData/displayFarmersData/farmers_da
 import FarmerUpdate from "../components/DisplayData/displayFarmersData/farmerUpdate";
 import DisplaySingleData from "../components/DisplayData/displayFarmersData/displaySingleData";
 import FarmerRegistrationForm from "../components/registrationForm/farmers_form/FarmersForm";
+import DistributorForm from "../components/DisplayData/displayDistributer/distributor_form";
+import DistributorUpdate from "../components/DisplayData/displayDistributer/distributorUpdate";
+import DisplaySingleDistributor from "../components/DisplayData/displayFarmersData/displaySingleData";
+import DistributorRegistrationForm from "../components/registrationForm/distributor_form/distributor_form";
+import OrderForm from "../components/OrderForm/orderForm";
 import LogoutButton from "../pages/logout";
  const Router = () => {
 
@@ -66,9 +71,10 @@ import LogoutButton from "../pages/logout";
     <div>
       <BrowserRouter>
         <Routes>
+           
           <Route path="/" element={<Home />} />
           <Route path="/logout" element={<LogoutButton />} />
-          {/* <Route path="/dashboard_woreda" element={<Dash onSearch={handleSearch} />}>
+          <Route path="/dashboard_woreda" element={<Dash onSearch={handleSearch} />}>
             <Route index element={<Orders />} />
             <Route
               path="/dashboard_woreda/manageland"
@@ -132,9 +138,24 @@ import LogoutButton from "../pages/logout";
             />
 
             <Route
-              path="/region_dashboard/register"
+              path="/region_dashboard/register_zone"
               element={<ZoneRegistrationForm />}
             />
+            <Route path="/region_dashboard/manage_distributor" element={<DistributorForm />} />
+              <Route
+                path={"/region_dashboard/manage_distributor/update/:id"}
+                element={<DistributorUpdate />}
+              />
+            <Route
+              path="/region_dashboard/manage_distributor/view/:id"
+              element={<DisplaySingleDistributor />}
+            />
+
+            <Route
+              path="/region_dashboard/register_distributor"
+              element={<DistributorRegistrationForm />}
+            />
+            
             <Route path="/region_dashboard/orders" element={<Orders />} />
           </Route>
 
@@ -160,7 +181,7 @@ import LogoutButton from "../pages/logout";
 
           <Route path="/login" element={<Login />} />
           <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} /> */}
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </BrowserRouter>
     </div>

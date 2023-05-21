@@ -3,17 +3,18 @@ import axios from "axios";
 
 function FarmerRegistrationForm() {
   const [formData, setFormData] = useState({
+    id: "",
     fname: "",
     mname: "",
     lname: "",
     birth_date: "",
+    gender: " ",
+    land_by_ha: " ",
     email: "",
-    address: "",
     phone_number: "",
-    land_amount: "",
     user_name: "",
     password: "",
-    id: "",
+    kebele_id: " ",
   });
 
   const handleChange = (e) => {
@@ -44,6 +45,18 @@ function FarmerRegistrationForm() {
         onSubmit={handleSubmit}
       >
         <div className="flex justify-center items-center gap-10 py-[15px] px-[15px]">
+          <div className="flex items-start justify-left flex-col">
+            <label htmlFor="id">ID No:</label>
+            <input
+              type="text"
+              id="id"
+              name="id"
+              value={formData.id}
+              onChange={handleChange}
+              className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
+              required
+            />
+          </div>
           <div className="flex items-left flex-col justify-left ">
             <label htmlFor="fname">First Name:</label>
             <input
@@ -56,6 +69,9 @@ function FarmerRegistrationForm() {
               required
             />
           </div>
+        </div>
+
+        <div className="flex justify-center items-center gap-10 py-[15px] px-[15px]">
           <div className="flex items-start justify-left flex-col">
             <label htmlFor="mname">Middle Name:</label>
             <input
@@ -67,8 +83,6 @@ function FarmerRegistrationForm() {
               className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
             />
           </div>
-        </div>
-        <div className="flex justify-center items-center gap-10 py-[15px] px-[15px]">
           <div className="flex items-left flex-col justify-left">
             <label htmlFor="lname">Last Name:</label>
             <input
@@ -81,6 +95,9 @@ function FarmerRegistrationForm() {
               required
             />
           </div>
+        </div>
+
+        <div className="flex justify-center items-center gap-10 py-15 px-15">
           <div className="flex items-start justify-left flex-col w-350">
             <label htmlFor="birth_date">Birth Date:</label>
             <input
@@ -93,30 +110,39 @@ function FarmerRegistrationForm() {
               required
             />
           </div>
+          <div className="flex items-start justify-left flex-col">
+            <label htmlFor="gender">Gender:</label>
+            <input
+              id="gender"
+              name="gender"
+              value={formData.gender}
+              onChange={handleChange}
+              className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
+              required
+            />
+          </div>
         </div>
 
-        <div
-          className="flex justify-center items-center gap-10 py-15 px
--15"
-        >
-          <div className="flex items-start justify-left flex-col">
+        <div className="flex justify-center items-center gap-10 py-15 px-15">
+        <div className="flex items-start justify-left flex-col">
+            <label htmlFor="land_by_ha">Land Amount:</label>
+            <input
+              type="number"
+              id="land_by_ha"
+              name="land_by_ha"
+              value={formData.land_by_ha}
+              onChange={handleChange}
+              className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
+              required
+            />
+          </div>
+        <div className="flex items-start justify-left flex-col">
             <label htmlFor="email">Email:</label>
             <input
               type="email"
               id="email"
               name="email"
               value={formData.email}
-              onChange={handleChange}
-              className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
-              required
-            />
-          </div>
-          <div className="flex items-start justify-left flex-col">
-            <label htmlFor="address">Address:</label>
-            <input
-              id="address"
-              name="address"
-              value={formData.address}
               onChange={handleChange}
               className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
               required
@@ -137,22 +163,7 @@ function FarmerRegistrationForm() {
             />
           </div>
           <div className="flex items-start justify-left flex-col">
-            <label htmlFor="land_amount">Land Amount:</label>
-            <input
-              type="number"
-              id="land_amount"
-              name="land_amount"
-              value={formData.land_amount}
-              onChange={handleChange}
-              className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
-              required
-            />
-          </div>
-        </div>
-
-        <div className="flex justify-center items-center gap-10 py-[15px] px-[15px]">
-          <div className="flex items-start justify-left flex-col">
-            <label htmlFor="user_name">Username:</label>
+            <label htmlFor="user_name">User Name</label>
             <input
               type="text"
               id="user_name"
@@ -163,6 +174,9 @@ function FarmerRegistrationForm() {
               required
             />
           </div>
+        </div>
+
+        <div className="flex justify-center items-center gap-10 py-[15px] px-[15px]">
           <div className="flex items-start justify-left flex-col">
             <label htmlFor="password">Password:</label>
             <input
@@ -175,23 +189,24 @@ function FarmerRegistrationForm() {
               required
             />
           </div>
-        </div>
-
-        <div className="flex justify-center items-center gap-10 py-[15px] px-[15px]">
+          
           <div className="flex items-start justify-left flex-col">
-            <label htmlFor="id">ID No:</label>
+            <label htmlFor="kebele_id">Kebele Id:</label>
             <input
-              type="text"
-              id="id"
-              name="id"
-              value={formData.id}
+              type="number"
+              id="kebele_id"
+              name="kebele_id"
+              value={formData.kebele_id}
               onChange={handleChange}
               className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
               required
             />
           </div>
-          <div className=" h-10 flex items-center justify-center my-6 w-[350px] bg-48px bg-green-400 ">
-            <button className="text-center bg-green-400" type="submit">
+        </div>
+
+        <div className="flex justify-center items-center gap-10 py-[15px] px-[15px]">
+          <div className=" h-10 flex items-center justify-center my-6 w-[150px] bg-48px bg-green-400 rounded-2xl">
+            <button className="text-center bg-green-400 " type="submit">
               Register
             </button>
           </div>

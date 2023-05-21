@@ -1,7 +1,7 @@
 import React from "react";
 import RegistrationFormate from "../../formate/registrationFormate";
 
-const DistributorRegistration_form = () => {
+const DistributorRegistrationForm = () => {
   return (
     <div>
       <RegistrationFormate typeName="Cluster" dataBaseColumn="cluster_name" />
@@ -9,4 +9,4 @@ const DistributorRegistration_form = () => {
   );
 };
 
-export default DistributorRegistration_form;
+export default DistributorRegistrationForm;
