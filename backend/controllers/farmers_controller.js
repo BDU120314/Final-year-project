@@ -1,10 +1,10 @@
 const db = require("../config/connection_db");
-
+const bcrypt = require("bcrypt");
 
  
 // for creating a farmer
 
-const CreateFarmers = (req, res) => {
+const CreateFarmers = async (req, res) => {
   const {
     id,
     fname,
@@ -20,6 +20,7 @@ const CreateFarmers = (req, res) => {
    kebele_id,
   } = req.body;
 const role_id=1;
+const encryptedPassword = await bcrypt.hash(password, 10)
   const sql =
     `INSERT INTO farmers (id, fname, mname, lname, birth_date, gender, land_by_ha, email, phone_number, user_name,password, kebele_id,role_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,${role_id})`;
   db.query(
@@ -35,8 +36,8 @@ const role_id=1;
       email,
       phone_number,
       user_name,
-      password,
-     kebele_id,
+      encryptedPassword,
+      kebele_id,
     ],
     (error, result) => {
       if (!error) {

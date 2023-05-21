@@ -1,7 +1,7 @@
 import React from 'react'
 import RegistrationFormate from '../../formate/registrationFormate'
 
-const WoredaRegistration_form = () => {
+const WoredaRegistrationForm = () => {
   return (
     <div>
       <RegistrationFormate typeName="Woreda" dataBaseColumn ="woreda_name" />
@@ -9,4 +9,4 @@ const WoredaRegistration_form = () => {
   );
 }
 
-export default WoredaRegistration_form
+export default WoredaRegistrationForm

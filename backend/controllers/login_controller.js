@@ -1,13 +1,16 @@
 const db = require("../config/connection_db");
 const jwt = require("jsonwebtoken")
+const bcrypt = require('bcrypt');
 const LoginUsers = async (req, res) => {
   const { user_name, password, role } = req.body;
+
+  const encryptedPassword = await bcrypt.hash(password, 10);
 
   try {
     let sql;
     switch (role) {
       case "Region_Admin":
-        sql = "SELECT * FROM user WHERE user_name = ? AND password = ?";
+        sql = "SELECT * FROM users WHERE user_name = ? AND password = ?";
         await db.query(sql, [user_name, password], (error, result) => {
           if (result.length > 0) {
             const id = result[0].id
@@ -24,11 +27,13 @@ const LoginUsers = async (req, res) => {
         });
         break;
       case "Farmer":
-        sql = "SELECT * FROM farmers WHERE user_name = ? AND password = ?";
-        await db.query(sql, [user_name, password], (error, result) => {
+        sql = "SELECT * FROM users WHERE user_name = ? AND password = ?";
+        await db.query(sql, [user_name, encryptedPassword], (error, result) => {
           if (result.length > 0) {
-            const id = result[0].id
-            const token = jwt.sign({id}, "jwtSecretKey", {expiresIn:10000})
+            const id = result[0].id;
+            const token = jwt.sign({ id }, "jwtSecretKey", {
+              expiresIn: 10000,
+            });
             return res
               .status(200)
               .json({ message: "farmer is Login successful", token, result });
@@ -41,7 +46,7 @@ const LoginUsers = async (req, res) => {
         });
         break;
       case "Land_Admin":
-        sql = "SELECT * FROM `land-admin` WHERE user_name = ? AND password = ?";
+        sql = "SELECT * FROM `users` WHERE user_name = ? AND password = ?";
         result = await db.query(sql, [user_name, password], (error, result) => {
           if (result.length > 0) {
             return res
@@ -57,7 +62,7 @@ const LoginUsers = async (req, res) => {
         });
         break;
       case "Woreda_Admin":
-        sql = "SELECT * FROM woreda WHERE user_name = ? AND password = ?";
+        sql = "SELECT * FROM users WHERE user_name = ? AND password = ?";
         result = await db.query(sql, [user_name, password], (error, result) => {
           if (result.length > 0) {
             return res
@@ -73,7 +78,7 @@ const LoginUsers = async (req, res) => {
         });
         break;
       case "Zone_Admin":
-        sql = "SELECT * FROM zone WHERE user_name = ? AND password = ?";
+        sql = "SELECT * FROM users WHERE user_name = ? AND password = ?";
         result = await db.query(sql, [user_name, password], (error, result) => {
           if (result.length > 0) {
             return res
@@ -89,7 +94,7 @@ const LoginUsers = async (req, res) => {
         });
         break;
       case "Distributor":
-        sql = "SELECT * FROM distributor WHERE user_name = ? AND password = ?";
+        sql = "SELECT * FROM users WHERE user_name = ? AND password = ?";
         result = await db.query(sql, [user_name, password], (error, result) => {
           if (result.length > 0) {
             return res

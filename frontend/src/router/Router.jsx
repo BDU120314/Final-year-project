@@ -14,16 +14,16 @@ import SingleLandAdmin from "../components/DisplayData/displayLandAdmin/SingleLa
 
 import UpdateLandAdmin from "../components/DisplayData/displayLandAdmin/UpdateLandAdmin"
 import LandAdminForm1 from "../components/DisplayData/displayLandAdmin/LandAdminForm"
-import WoredaRegistration_form from "../components/registrationForm/woreda_form/woreda_form";
+import WoredaRegistrationForm from "../components/registrationForm/woreda_form/woreda_form";
 import DisplaySingleWoreda from "../components/DisplayData/displayWoredaData/displaySingleWoreda";
 import WoredaUpdate from "../components/DisplayData/displayWoredaData/updateWoreda";
 import WoredaData from "../components/DisplayData/displayWoredaData/woreda_formData";
-import DashRegion from "../DashboardDirectoriet/Dash";
+import DashRegion from "../dashboardDirectoriet/DashRegion";
 import ZoneData from "../components/DisplayData/displayZoneData/zone_formData";
 import DisplaySingleZone from "../components/DisplayData/displayZoneData/displaySingleZone";
 import ZoneUpdate from "../components/DisplayData/displayZoneData/updateZone";
 import ZoneRegistrationForm from "../components/registrationForm/zone_form/zone_form";
-import DashLandAdmin from "../DashboardLandAdmin/Dash";
+import DashLandAdmin from "../dashboardLandAdmin/DashLandAdmin";
 import FarmersData from "../components/DisplayData/displayFarmersData/farmers_data";
 import FarmerUpdate from "../components/DisplayData/displayFarmersData/farmerUpdate";
 import DisplaySingleData from "../components/DisplayData/displayFarmersData/displaySingleData";
@@ -32,8 +32,6 @@ import DistributorForm from "../components/DisplayData/displayDistributer/distri
 import DistributorUpdate from "../components/DisplayData/displayDistributer/distributorUpdate";
 import DisplaySingleDistributor from "../components/DisplayData/displayFarmersData/displaySingleData";
 import DistributorRegistrationForm from "../components/registrationForm/distributor_form/distributor_form";
-import OrderForm from "../components/OrderForm/orderForm";
-import LogoutButton from "../pages/logout";
  const Router = () => {
 
  const [kebeleData, setKebeleData] = useState([]);
@@ -73,7 +71,6 @@ import LogoutButton from "../pages/logout";
         <Routes>
            
           <Route path="/" element={<Home />} />
-          <Route path="/logout" element={<LogoutButton />} />
           <Route path="/dashboard_woreda" element={<Dash onSearch={handleSearch} />}>
             <Route index element={<Orders />} />
             <Route
@@ -102,9 +99,6 @@ import LogoutButton from "../pages/logout";
             />
             <Route path="/dashboard_woreda/orders" element={<Orders />} />
           </Route>
-
-
-//routes to zone
           <Route path="/zone_dashboard" element={<DashZone />}>
             <Route index element={<Orders />} />
             <Route path="/zone_dashboard/manageland" element={<WoredaData />} />
@@ -119,12 +113,11 @@ import LogoutButton from "../pages/logout";
 
             <Route
               path="/zone_dashboard/register"
-              element={<WoredaRegistration_form />}
+              element={<WoredaRegistrationForm />}
             />
             <Route path="/zone_dashboard/orders" element={<Orders />} />
           </Route>
 
-          //Region Route
           <Route path="/region_dashboard" element={<DashRegion />}>
             <Route index element={<Orders />} />
             <Route path="/region_dashboard/manage_zone" element={<ZoneData />} />
@@ -159,7 +152,6 @@ import LogoutButton from "../pages/logout";
             <Route path="/region_dashboard/orders" element={<Orders />} />
           </Route>
 
-          //land admin routes
           <Route path="/landadmin_dashboard" element={<DashLandAdmin />}>
             <Route index element={<Orders />} />
             <Route path="/landadmin_dashboard/manage_farmers" element={<FarmersData />} />
