@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "../css/farmers.css";
 
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
@@ -22,7 +21,7 @@ function DistributorUpdate() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/v1/distributor/${id}`).then((res) => {
+    axios.get(`http://localhost:5001/api/v1/distributor/${id}`).then((res) => {
       setFormData(res.data[0]);
       console.log(res.data[0]);
     });
@@ -32,7 +31,7 @@ function DistributorUpdate() {
     e.preventDefault();
     try {
       const response = await axios.put(
-        `http://localhost:5000/api/v1/distributor/update/${id}`,
+        `http://localhost:5001/api/v1/distributor/update/${id}`,
         formData
       );
       navigate("/");

@@ -35,7 +35,7 @@ const Sidebar = () => {
           </summary>
           <nav aria-label="Teams Nav" class="mt-2 flex flex-col ">
             <Link
-              to="/region_dashboard/register"
+              to="/region_dashboard/register_zone"
               class="flex items-center gap-2 rounded-lg px-4 py-2 text-white"
             >
               <span class="text-sm font-medium"> Register Zone</span>

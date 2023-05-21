@@ -2,32 +2,40 @@ const db = require("../config/connection_db");
 
 const CreateAdmin = (req, res) => {
   const {
-    kebele_name,
-    rep_fname,
-    rep_mname,
-    rep_lname,
-    user_name,
-    email,
-    password,
-    rep_phone_number,
     id,
+   // kebele_name,
+    fname,
+    mname,
+    lname,
+    gender,
+    email,
+     phone_number,
+    user_name,
+    password,
+    zone_id,
+    woreda_id,
+    kebele_id,
   } = req.body;
-
+const role_id=5;
   const sql =
-    "INSERT INTO `land-admin` (kebele_name, rep_fname, rep_mname, rep_lname, user_name, email, password, rep_phone_number, id) VALUES (?,?,?,?,?,?,?,?,?)";
+    `INSERT INTO representatives (id, fname, mname, lname,gender, email,phone_number, user_name, password,zone_id,woreda_id,kebele_id, role_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,${role_id} )`;
 
   db.query(
     sql,
     [
-      kebele_name,
-      rep_fname,
-      rep_mname,
-      rep_lname,
-      user_name,
-      email,
-      password,
-      rep_phone_number,
       id,
+     // kebele_name,
+      fname,
+      mname,
+      lname,
+      gender,
+      email,
+       phone_number,
+      user_name,
+      password,
+      zone_id,
+      woreda_id,
+      kebele_id,
     ],
     (error, result) => {
       if (!error) {

@@ -2,31 +2,39 @@ const db = require("../config/connection_db");
 
 const CreateZone = (req, res) => {
   const {
-    zone_name,
-    rep_fname,
-    rep_mname,
-    rep_lname,
-    user_name,
-    email,
-   password,
-    rep_phone_number,
     id,
+   // zone_name,
+    fname,
+    mname,
+    lname,
+    gender,
+    email,
+    phone_number,
+    user_name,
+    password,
+    zone_id,
+    woreda_id,
+    kebele_id,
   } = req.body;
-
+ const role_id=3;
   const sql =
-    "INSERT INTO zone (zone_name, rep_fname,rep_mname, rep_lname,user_name, email,password,rep_phone_number,id) VALUES (?,?,?,?,?,?,?,?,?)";
+  `INSERT INTO representatives (id,fname, mname,lname,gender, email,phone_number, user_name, password,zone_id,woreda_id,kebele_id, role_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,${role_id} )`;
   db.query(
     sql,
     [
-      zone_name,
-      rep_fname,
-      rep_mname,
-      rep_lname,
-      user_name,
-      email,
-     password,
-      rep_phone_number,
       id,
+      // zone_name,
+      fname,
+      mname,
+      lname,
+      gender,
+      email,
+      phone_number,
+      user_name,
+      password,
+      zone_id,
+      woreda_id,
+      kebele_id,
     ],
     (error, result) => {
       if (!error) {

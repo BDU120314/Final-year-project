@@ -4,27 +4,27 @@ const db = require("../config/connection_db");
 
 const AddOrder = (req, res) => {
   const {
-    fname,
-    mname, 
-    woreda_name,
-    cluster_name,
-    farmers_id,
+    id,
+    farmer_fname,
+    farmer_mname,  
     input_type,
-    amount
+    amount,
+    kebele_id,
+    farmer_id,
   } = req.body;
 
   const sql =
-    "INSERT INTO orders (fname, mname, woreda_name, cluster_name, farmers_id,input_type, amount) VALUES (?,?,?,?,?,?,?)";
+    "INSERT INTO orders (id, farmer_fname, farmer_mname,input_type, amount, kebele_id, farmer_id) VALUES (?,?,?,?,?,?,?)";
   db.query(
     sql,
     [
-      fname,
-      mname, 
-      woreda_name,
-      cluster_name,
-      farmers_id,
+      id,
+      farmer_fname,
+      farmer_mname,  
       input_type,
-      amount
+      amount,
+      kebele_id,
+      farmer_id,
     ],
     (error, result) => {
       if (!error) {
@@ -64,8 +64,8 @@ const GetSingleOrder = (req, res) => {
 const UpdateOrder = (req, res) => {
   const id = req.params.id;
   const {
-    fname,
-    mname, 
+    farmer_fname,
+    farmer_mname, 
     woreda_name,
     cluster_name,
     farmers_id,
@@ -73,11 +73,11 @@ const UpdateOrder = (req, res) => {
     amount
   } = req.body;
 
-  const sql = `UPDATE orders SET fname =?, mname = ?, woreda_name=?, cluster_name = ?, farmers_id =?, input_type=? , amount = ? WHERE id = ${id}`;
+  const sql = `UPDATE orders SET farmer_fname =?, mname = ?, woreda_name=?, cluster_name = ?, farmers_id =?, input_type=? , amount = ? WHERE id = ${id}`;
   db.query(sql,
            [
-            fname,
-            mname, 
+            farmer_fname,
+            farmer_mname, 
            woreda_name,
            cluster_name,
             farmers_id ,

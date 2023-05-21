@@ -27,14 +27,12 @@ import FarmersData from "../components/DisplayData/displayFarmersData/farmers_da
 import FarmerUpdate from "../components/DisplayData/displayFarmersData/farmerUpdate";
 import DisplaySingleData from "../components/DisplayData/displayFarmersData/displaySingleData";
 import FarmerRegistrationForm from "../components/registrationForm/farmers_form/FarmersForm";
+import DistributorForm from "../components/DisplayData/displayDistributer/distributor_form";
+import DistributorUpdate from "../components/DisplayData/displayDistributer/distributorUpdate";
+import DisplaySingleDistributor from "../components/DisplayData/displayFarmersData/displaySingleData";
+import DistributorRegistrationForm from "../components/registrationForm/distributor_form/distributor_form";
+import OrderForm from "../components/OrderForm/orderForm";
  
- 
- 
-
- 
-
- 
-
 
   const Router = () => {
  
@@ -42,6 +40,7 @@ import FarmerRegistrationForm from "../components/registrationForm/farmers_form/
     <div>
       <BrowserRouter>
         <Routes>
+           
           <Route path="/" element={<Home />} />
  
           <Route path="/dashboard_woreda" element={<Dash />}>
@@ -99,9 +98,24 @@ import FarmerRegistrationForm from "../components/registrationForm/farmers_form/
             />
 
             <Route
-              path="/region_dashboard/register"
+              path="/region_dashboard/register_zone"
               element={<ZoneRegistrationForm />}
             />
+            <Route path="/region_dashboard/manage_distributor" element={<DistributorForm />} />
+              <Route
+                path={"/region_dashboard/manage_distributor/update/:id"}
+                element={<DistributorUpdate />}
+              />
+            <Route
+              path="/region_dashboard/manage_distributor/view/:id"
+              element={<DisplaySingleDistributor />}
+            />
+
+            <Route
+              path="/region_dashboard/register_distributor"
+              element={<DistributorRegistrationForm />}
+            />
+            
             <Route path="/region_dashboard/orders" element={<Orders />} />
           </Route>
 
