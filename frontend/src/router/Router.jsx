@@ -22,7 +22,7 @@ import ZoneData from "../components/DisplayData/displayZoneData/zone_formData";
 import DisplaySingleZone from "../components/DisplayData/displayZoneData/displaySingleZone";
 import ZoneUpdate from "../components/DisplayData/displayZoneData/updateZone";
 import ZoneRegistrationForm from "../components/registrationForm/zone_form/zone_form";
-import DashLandAdmin from "../DashboardLandAdmin/Dash";
+import DashLandAdmin from "../dashboardLandAdmin/Dash";
 import FarmersData from "../components/DisplayData/displayFarmersData/farmers_data";
 import FarmerUpdate from "../components/DisplayData/displayFarmersData/farmerUpdate";
 import DisplaySingleData from "../components/DisplayData/displayFarmersData/displaySingleData";
