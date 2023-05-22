@@ -37,7 +37,7 @@ const Login = () => {
     e.preventDefault();
 
     // Check if user_name and password fields are filled
-    if (!user_name || !password) {
+    if (!user_name ||!password) {
       setError("Please fill in all fields");
       setPasswordError("");
       setUsernameError("");
@@ -45,25 +45,14 @@ const Login = () => {
     }
 
     // Checking user_name
-    if (user_name.length < 2 || user_name.length > 30) {
+    if (user_name.length < 2 ||  user_name.length > 30) {
       setUsernameError("Username must be between 2 and 30 characters");
       setPasswordError("");
       setError("");
       return;
-    } else if (user_name.length === 0) {
-      setUsernameError("Please enter a username");
-      setPasswordError("");
-      setError("");
-      return;
     }
-
     // Check password length
-    if (password.length === 0) {
-      setPasswordError("Please enter a password");
-      setUsernameError("");
-      setError("");
-      return;
-    } else if (password.length < 8 || password.length > 21) {
+    if (password.length < 6 || password.length > 21) {
       setPasswordError("Password must be between 8 and 21 characters");
       setUsernameError("");
       setError("");
@@ -75,17 +64,22 @@ const Login = () => {
         "http://localhost:5001/api/v1/login",
         formData
       );
-
       const statusCode = response.status;
- 
+      const Role = response.data.role;
+
+
       if (statusCode === 200) {
-        console.log("Logged in successfully");
-        const token = response.data.token;
-        localStorage.setItem("token", token);
-      
-        switch (role) {
+        console.log(response.message);
+        // const token = response.data.token;
+        // localStorage.setItem("token", token);
+
+        switch (Role) {
           case "Farmer":
+<<<<<<< HEAD
             navigate("/landadmin_dashboard");
+=======
+            navigate("/farmerorder");
+>>>>>>> Trial
             break;
           case "Land_Admin":
             navigate("/landadmin_dashboard");
@@ -109,7 +103,6 @@ const Login = () => {
       } else if (statusCode === 401) {
         setError("Invalid email or password");
       } else {
- 
         setError("An error occurred");
       }
     } catch (error) {
@@ -120,16 +113,14 @@ const Login = () => {
     <div
       className="flex justify-center items-center h-[100vh] overflow-hidden w-[100vw]"
       style={{
-        backgroundImage: `url("login.jpg")`,
-        backgroundSize: "cover",
+        // backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
       }}
     >
       <div className="w-[400px] flex justify-center flex-col items-center  max-w-md p-8 space-y-3 rounded-xl bg-gray-600 text-white">
         <h1 className="text-2xl font-bold text-center">Login</h1>
-
-        {error && <p className="text-red-400">{error}</p>}
+{error && <p className="text-red-400">{error}</p>}
         <form
           onSubmit={handleSubmit}
           className="space-y-6 ng-untouched ng-pristine ng-valuser_name "
@@ -207,5 +198,4 @@ const Login = () => {
     </div>
   );
 };
-
 export default Login;
