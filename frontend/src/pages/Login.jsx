@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
+
 const Login = () => {
   const [formData, setFormData] = useState({
     user_name: "",
@@ -84,7 +85,7 @@ const Login = () => {
       
         switch (role) {
           case "Farmer":
-            navigate("/dashboard");
+            navigate("/landadmin_dashboard");
             break;
           case "Land_Admin":
             navigate("/landadmin_dashboard");
