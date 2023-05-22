@@ -31,41 +31,29 @@ const ZoneData = () => {
     <div className="flex justify-center items-center px-5 ">
       <table className="table-auto w-full">
         <thead className="bg-gray-100">
-          <tr>
+        <tr>
             <th className="px-4 py-2">ID</th>
-            <th className="px-4 py-2">First NAme</th>
+            <th className="px-4 py-2">First Name</th>
             <th className="px-4 py-2">Middle Name</th>
             <th className="px-4 py-2">Email Address</th>
             <th className="px-4 py-2">Phone Number</th>
             <th className="px-4 py-2">User Name</th>
-            <th className="px-4 py-2">Zone Name</th>
             <th className="px-4 py-2 w-auto">Action</th>
           </tr>
         </thead>
         <tbody>
           {zoneData.map((datas, index) => {
             return (
- 
-              <tr key={datas.id} className="bg-gray-100/{0-4}">
-                <td className="border px-4 py-2">{datas.id}</td>
-                <td className="border px-4 py-2">{datas.rep_fname} </td>
-                <td className="border px-4 py-2">{datas.rep_mname}</td>
-                <td className="border px-4 py-2">{datas.email}</td>
-                <td className="border px-4 py-2">{datas.phone_number}</td>
-                <td className="border px-4 py-2">{datas.user_name}</td>
-                <td className="border px-4 py-2">{datas.zone_name}</td>
- 
-              
+              <tr
                 key={datas.id}
                 className={index % 2 === 0 ? "bg-gray-200" : "bg-white"}
-              
-                <td>{datas.id}</td>
-                <td>{datas.rep_fname} </td>
-                <td>{datas.rep_mname}</td>
-                <td>{datas.email}</td>
-                <td>{datas.rep_phone_number}</td>
-                <td>{datas.rep_user_name}</td>
-                <td>{datas.zone_name}</td>
+              >
+                <td className="border px-4 py-2">{datas.id}</td>
+                <td className="border px-4 py-2">{datas.fname} </td>
+                <td className="border px-4 py-2">{datas.mname}</td>
+                <td className="border px-4 py-2">{datas.email}</td>
+                <td className="border px-4 py-2">{datas.phone_number}</td>
+                <td className="border  py-2">{datas.user_name}</td>
                 <td className="w-auto flex justify-center items-center gap-2 py-2 px-4">
                   <Link
                     to={`/region_dashboard/manage_zone/update/${datas.id}`}

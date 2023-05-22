@@ -80,7 +80,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
         onSubmit={handleSubmit}
       >
         <div className="flex justify-center items-center gap-10  py-[15px] px-[15px]">
-          <div className="flex items-left flex-col justify-left ">
+          {/* <div className="flex items-left flex-col justify-left ">
             <label htmlFor={dataBaseColumn}>{typeName}</label>
             <input
               type="text"
@@ -90,7 +90,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
               value={columnValue}
               className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
             />
-          </div>
+          </div> */}
           <div className="flex items-start  justify-lefft flex-col">
             <label htmlFor="fname">First Name</label>
             <input
@@ -107,7 +107,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
         </div>
         <div className="flex justify-center items-center gap-10  py-[15px]">
           <div className="flex items-left flex-col justify-left ">
-            <label htmlFor="mname">Mid_Name</label>
+            <label htmlFor="mname">Midle Name</label>
             <input
               type="text"
               name="mname"
@@ -136,15 +136,12 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
         <div className="flex justify-center items-center gap-10  py-[15px]">
           <div className="flex items-left flex-col justify-left ">
             <label htmlFor="gender">Gender</label>
-            <input
-              type="text"
-              name="gender"
-              id="gender"
-              onChange={handleChange}
-              value={gender}
-              required
-              className=" outline-none w-[350px] h-10 pl-5 rounded-lg"
-            />
+            <input list="gender" name="gender"  id="sex" className=" outline-none w-[350px] h-10 pl-5 rounded-lg" />   
+              <datalist id="gender">
+              <option value="Male"></option>
+              <option value="Female"></option>
+            </datalist>
+            
           </div>
           <div className="flex justify-left flex-col">
             <label htmlFor="email">Email</label>
@@ -185,15 +182,14 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
           </div>
         </div>
         <div className="flex justify-center items-center gap-10">
-          <div className="flex justify-left flex-col">
-            <label htmlFor="id">ID</label>
+          <div className="flex items-left flex-col justify-left ">
+            <label htmlFor={dataBaseColumn}>{typeName}</label>
             <input
-              type="text"
-              name="id"
-              id="id"
+              type="number"
+              name={dataBaseColumn}
+              id={dataBaseColumn}
               onChange={handleChange}
-              value={id}
-              required
+              value={columnValue}
               className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
             />
           </div>

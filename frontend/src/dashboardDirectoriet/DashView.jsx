@@ -18,7 +18,7 @@ const DashView = () => {
       <div className="flex items-center gap-4 relative ">
       <div className="flex items-center gap-[25px] border-r-[1px] pr-6">
           <Link
-            to="/region_dashboard/register"
+            to="/region_dashboard/register_zone"
             className="bg-blue-400 flex justify-center items-centerh-[30px] px-4 rounded-md"
           >
             Add Zone
@@ -37,4 +37,4 @@ const DashView = () => {
   );
 }
  
-export default DashView
+export default DashView;

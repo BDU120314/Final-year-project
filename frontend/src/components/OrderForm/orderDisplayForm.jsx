@@ -82,6 +82,7 @@ const OrderDisplayForm = () => {
         </tbody>
       </table>
     </div>
+    
   );
 };
 

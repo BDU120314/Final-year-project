@@ -5,15 +5,16 @@ import { useEffect } from "react";
 
 function UpdateLandAdmin() {
   const [formData, setFormData] = useState({
-    kebele_name: "",
-    rep_fname: "",
-    rep_mname: "",
-    rep_lname: "",
+    id: "",
+    fname: "",
+    mname: "",
+    lname: "",
+    gender: "",
     email: "",
+    phone_number: "",
     password: "",
     user_name: "",
-    rep_phone_number: "",
-     
+    kebele_id: " "
   });
 
   const { id } = useParams();
@@ -55,12 +56,12 @@ function UpdateLandAdmin() {
       <form className=" bg-gray-200" onSubmit={handleSubmit}>
         <div className="flex justify-center items-center gap-10  py-[15px] px-[15px]">
           <div className="flex items-left flex-col justify-left ">
-            <label htmlFor="kebele_name">Kebele Name</label>
+            <label htmlFor="id">Kebele Name</label>
             <input
-              type="text"
-              id="kebele_name"
-              name="kebele_name"
-              value={formData.kebele_name}
+              type="number"
+              id="id"
+              name="id"
+              value={formData.id}
               onChange={handleChange}
               required
               className="w-[350px] h-10 outline-none pl-5 rounded-lg"
@@ -71,8 +72,8 @@ function UpdateLandAdmin() {
             <input
               type="text"
               id="fname"
-              name="rep_fname"
-              value={formData.rep_fname}
+              name="fname"
+              value={formData.fname}
               onChange={handleChange}
               required
               className="w-[350px] h-10 outline-none pl-5 rounded-lg"
@@ -85,19 +86,19 @@ function UpdateLandAdmin() {
             <input
               type="text"
               id="mname"
-              name="rep_mname"
-              value={formData.rep_mname}
+              name="mname"
+              value={formData.mname}
               onChange={handleChange}
               className="w-[350px] h-10 pl-5 rounded-lg  outline-none "
             />
           </div>
           <div className="flex items-left flex-col justify-left ">
-            <label htmlFor="rep_lname">Last Name</label>
+            <label htmlFor="lname">Last Name</label>
             <input
               type="text"
-              id="rep_lname"
-              name="rep_lname"
-              value={formData.rep_lname}
+              id="lname"
+              name="lname"
+              value={formData.lname}
               onChange={handleChange}
               required
               className="w-[350px] h-10 outline-none pl-5 rounded-lg"
@@ -124,8 +125,8 @@ function UpdateLandAdmin() {
             <input
               type="tel"
               id="phone_number"
-              name="rep_phone_number"
-              value={formData.rep_phone_number}
+              name="phone_number"
+              value={formData.phone_number}
               onChange={handleChange}
               required
               className="w-[350px] h-10 outline-none pl-5 rounded-lg"
@@ -162,12 +163,12 @@ function UpdateLandAdmin() {
 
         <div className="flex justify-center items-center gap-10  py-[15px] px-[15px]">
           <div className="flex items-left flex-col justify-left ">
-            <label htmlFor="id">ID No</label>
+            <label htmlFor="kebele_id">Kebele Id</label>
             <input
-              type="text"
+              type="number"
               id="id"
-              name="id"
-              value={formData.id}
+              name="kebele_id"
+              value={formData.kebele_id}
               onChange={handleChange}
               required
               className="w-[350px] h-10 outline-none pl-5 rounded-lg"

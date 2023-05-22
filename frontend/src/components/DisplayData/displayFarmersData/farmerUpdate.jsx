@@ -104,6 +104,32 @@ function FarmerUpdate() {
 
         <div className="flex justify-center items-center gap-10  py-[15px] px-[15px]">
           <div className="flex items-left flex-col justify-left ">
+            <label htmlFor="gender">Gender</label>
+            <input
+              type="text"
+              id="gender"
+              name="gender"
+              value={formData.gender}
+              onChange={handleChange}
+              className="w-[350px] h-10 outline-none pl-5 rounded-lg"
+              required
+            />
+          </div>
+          <div className="flex items-left flex-col justify-left ">
+            <label htmlFor="land_by_ha">Land Amount</label>
+            <input
+              type="number"
+              id="land_by_ha"
+              name="land_by_ha"
+              value={formData.land_by_ha}
+              onChange={handleChange}
+              className="w-[350px] h-10 outline-none pl-5 rounded-lg"
+              required
+            />
+          </div>
+        </div>
+        <div className="flex justify-center items-center gap-10  py-[15px] px-[15px]">
+          <div className="flex items-left flex-col justify-left ">
             <label htmlFor="email">Email</label>
             <input
               type="email"
@@ -116,38 +142,12 @@ function FarmerUpdate() {
             />
           </div>
           <div className="flex items-left flex-col justify-left ">
-            <label htmlFor="address">Address</label>
-            <input
-              id="address"
-              name="address"
-              value={formData.address}
-              onChange={handleChange}
-              className="w-[350px] h-10 outline-none pl-5 rounded-lg"
-              required
-            />
-          </div>
-        </div>
-
-        <div className="flex justify-center items-center gap-10  py-[15px] px-[15px]">
-          <div className="flex items-left flex-col justify-left ">
             <label htmlFor="phone_number">Tel phone</label>
             <input
               type="tel"
               id="phone_number"
               name="phone_number"
               value={formData.phone_number}
-              onChange={handleChange}
-              className="w-[350px] h-10 outline-none pl-5 rounded-lg"
-              required
-            />
-          </div>
-          <div className="flex items-left flex-col justify-left ">
-            <label htmlFor="land_amount">Land NO </label>
-            <input
-              type="number"
-              id="land_amount"
-              name="land_amount"
-              value={formData.land_amount}
               onChange={handleChange}
               className="w-[350px] h-10 outline-none pl-5 rounded-lg"
               required

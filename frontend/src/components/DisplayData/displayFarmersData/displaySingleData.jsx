@@ -25,10 +25,10 @@ const DisplaySingleDistributor = () => {
               <th className="px-4 py-2">Middle name</th>
               <th className="px-4 py-2">Last name</th>
               <th className="px-4 py-2">Birth_date</th>
-              <th className="px-4 py-2">Email</th>
-              <th className="px-4 py-2">Address</th>
-              <th className="px-4 py-2">Phone_number</th>
+              <th className="px-4 py-2">gender</th>
               <th className="px-4 py-2">Land amount</th>
+              <th className="px-4 py-2">Email</th>
+              <th className="px-4 py-2">Phone_number</th>
               <th className="px-4 py-2">User name</th>
               <th className="px-4 py-2">password</th>
               <th className="px-4 py-2">Id</th>
@@ -45,13 +45,13 @@ const DisplaySingleDistributor = () => {
                   <td className="border px-4 py-2">{datas.mname}</td>
                   <td className="border px-4 py-2">{datas.lname}</td>
                   <td className="border px-4 py-2">{datas.birth_date}</td>
+                  <td className="border px-4 py-2">{datas.gender}</td>
+                  <td className="border px-4 py-2">{datas.land_by_ha}</td>
                   <td className="border px-4 py-2">{datas.email}</td>
-                  <td className="border px-4 py-2">{datas.address}</td>
                   <td className="border px-4 py-2">{datas.phone_number}</td>
-                  <td className="border px-4 py-2">{datas.land_amount}</td>
                   <td className="border px-4 py-2">{datas.user_name}</td>
                   <td className="border px-4 py-2">{datas.password}</td>
-                  <td className="border px-4 py-2">{datas.id}</td>
+                  <td className="border px-4 py-2">{datas.kebele_id}</td> 
                 </tr>
               );
             })}

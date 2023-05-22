@@ -13,43 +13,47 @@ const DisplaySingleDistributor = () => {
     });
   });
   return (
-    <div>
-      <div className="farmer">
-        <h2>Detail information of a Distributor</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Cluster name</th>
-              <th>Rep_First name</th>
-              <th>Rep_Middle name</th>
-              <th>Rep_Last name</th>
-              <th>Email</th>
-              <th>Rep_Phone_number</th>
-              <th>Rep_User name</th>
-              <th>Rep_password</th>
-              <th>Id</th>
+<div className="flex justify-center flex-col items-center px-5">
+        <h2 className="text-[18px] text-gray-700 py-[25px] font-bold leading-6">
+          Detail information of Distributor
+        </h2>
+        <table className="table-auto w-full">
+          <thead className="bg-gray-300/50">
+          <tr>
+              <th className="px-4 py-2">Id</th>
+              <th className="px-4 py-2">First name</th>
+              <th className="px-4 py-2">Lastname</th>
+              <th className="px-4 py-2">Middle name</th>
+              <th className="px-4 py-2">Gende</th>
+              <th className="px-4 py-2">Email</th>
+              <th className="px-4 py-2">Phone_number</th>
+              <th className="px-4 py-2">User name</th>
+              <th className="px-4 py-2">password</th>
+              <th className="px-4 py-2">Kebele Id</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="bg-gray-50">
             {data.map((datas) => {
               return (
                 <tr key={datas.id}>
-                    <td>{datas.cluster_name}</td>
-                  <td>{datas.rep_fname}</td>
-                  <td>{datas.rep_mname}</td>
-                  <td>{datas.rep_lname}</td> 
-                  <td>{datas.email}</td>
-                  <td>{datas.rep_phone_number}</td>
-                  <td>{datas.user_name}</td>
-                  <td>{datas.password}</td>
-                  <td>{datas.id}</td>
+                  <td className="border px-4 py-2">{datas.id}</td>
+                  <td className="border px-4 py-2">{datas.fname}</td>
+                  <td className="border px-4 py-2">{datas.mname}</td>
+                  <td className="border px-4 py-2">{datas.lname}</td>
+                  <td className="border px-4 py-2">{datas.gender}</td>
+                  <td className="border px-4 py-2">{datas.email}</td>
+                  <td className="border px-4 py-2">{datas.phone_number}</td>
+                  <td className="border px-4 py-2">{datas.user_name}</td>
+                  <td className="border px-4 py-2">{datas.password}</td>
+                  <td className="border px-4 py-2">{datas.kebele_id}</td>
                 </tr>
               );
             })}
           </tbody>
         </table>
       </div>
-    </div>
+    
+
   );
 };
 

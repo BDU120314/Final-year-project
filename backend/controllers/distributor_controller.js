@@ -47,7 +47,7 @@ const CreateDistributor = (req, res) => {
 };
 
 const getAllDistributor = (req, res) => {
-  db.query("SELECT * FROM distributor", (err, rows, fields) => {
+  db.query("SELECT * FROM representative where role_id=6", (err, rows, fields) => {
     if (!err) {
       res.send(rows);
     } else console.log(err);
@@ -56,7 +56,7 @@ const getAllDistributor = (req, res) => {
 
 const GetSingleDistributor = (req, res) => {
   const id = req.params.id;
-  const sql = `SELECT * FROM distributor where id = "${id}"`;
+  const sql = `SELECT * FROM representative where id = "${id}"`;
   db.query(sql, (err, rows, field) => {
     if (!err) {
       res.send(rows);
@@ -69,28 +69,28 @@ const GetSingleDistributor = (req, res) => {
 const UpdateDistributor = (req, res) => {
   const id = req.params.id;
   const {
-    cluster_name,
     fname,
     mname,
     lname,
-    user_name,
+    gender,
     email,
-    password,
     phone_number,
+    user_name,
+    password,
   } = req.body;
 
-  const sql = `UPDATE distributor SET cluster_name =?, fname =?, mname = ?, lname = ?, user_name=?, email = ?, password = ?,  phone_number = ? WHERE id = ${id}`;
+  const sql = `UPDATE representative SET fname='${fname}', mname='${mname}', lname='${lname}',gender='${gender}', email='${email}',phone_number='${phone_number}' , user_name='${user_name}', password='${password}' WHERE id=${id}`;
   db.query(
     sql,
     [
-      cluster_name, 
       fname,
       mname,
       lname,
-      user_name,
+      gender,
       email,
-      password,
       phone_number,
+      user_name,
+      password,
     ],
     (error, result) => {
       if (error) {

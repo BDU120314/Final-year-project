@@ -110,21 +110,23 @@ function FarmerRegistrationForm() {
               required
             />
           </div>
-          <div className="flex items-start justify-left flex-col">
-            <label htmlFor="gender">Gender:</label>
+          <div className="flex items-left flex-col justify-left ">
+            <label htmlFor="gender">Gender</label>
             <input
-              id="gender"
+              list="gender"
               name="gender"
-              value={formData.gender}
-              onChange={handleChange}
-              className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
-              required
+              id="sex"
+              className=" outline-none w-[350px] h-10 pl-5 rounded-lg"
             />
+            <datalist id="gender">
+              <option value="Male"></option>
+              <option value="Female"></option>
+            </datalist>
           </div>
         </div>
 
         <div className="flex justify-center items-center gap-10 py-15 px-15">
-        <div className="flex items-start justify-left flex-col">
+          <div className="flex items-start justify-left flex-col">
             <label htmlFor="land_by_ha">Land Amount:</label>
             <input
               type="number"
@@ -136,7 +138,7 @@ function FarmerRegistrationForm() {
               required
             />
           </div>
-        <div className="flex items-start justify-left flex-col">
+          <div className="flex items-start justify-left flex-col">
             <label htmlFor="email">Email:</label>
             <input
               type="email"
@@ -189,7 +191,7 @@ function FarmerRegistrationForm() {
               required
             />
           </div>
-          
+
           <div className="flex items-start justify-left flex-col">
             <label htmlFor="kebele_id">Kebele Id:</label>
             <input

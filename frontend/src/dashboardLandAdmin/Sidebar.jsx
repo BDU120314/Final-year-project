@@ -41,7 +41,7 @@ const Sidebar = () => {
               <span class="text-sm font-medium"> Register Farmer</span>
             </Link>
             <Link
-              to="/landadmin_dashboard/manage_farmers"
+              to="/landadmin_dashboard"
               class="flex items-center gap-2  hover:bg-green-800 rounded-lg px-4 py-2 text-white"
             >
               <span class="text-sm font-medium"> Manage Farmer </span>

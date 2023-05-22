@@ -16,9 +16,9 @@ const CreateZone = (req, res) => {
     woreda_id,
     kebele_id,
   } = req.body;
- const role_id=3;
+ const role_id=4;
   const sql =
-  `INSERT INTO representatives (id,fname, mname,lname,gender, email,phone_number, user_name, password,zone_id,woreda_id,kebele_id, role_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,${role_id} )`;
+  `INSERT INTO representative (id,fname, mname,lname,gender, email,phone_number, user_name, password,zone_id,woreda_id,kebele_id, role_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,${role_id} )`;
   db.query(
     sql,
     [
@@ -47,7 +47,7 @@ const CreateZone = (req, res) => {
 };
 
 const getAllZone = (req, res) => {
-  db.query("SELECT * FROM zone", (err, rows, fields) => {
+  db.query("SELECT * FROM representative Where role_id=4", (err, rows, fields) => {
     if (!err) {
       res.send(rows);
     } else console.log(err);
@@ -56,7 +56,7 @@ const getAllZone = (req, res) => {
 
 const GetSingleZone = (req, res) => {
   const id = req.params.id;
-  const sql = `SELECT * FROM zone where id = "${id}"`;
+  const sql = `SELECT * FROM representative where id = "${id}"`;
   db.query(sql, (err, rows, field) => {
     if (!err) {
       res.send(rows);
@@ -69,28 +69,28 @@ const GetSingleZone = (req, res) => {
 const UpdateZone = (req, res) => {
   const id = req.params.id;
   const {
-    zone_name,
-    rep_fname,
-    rep_mname,
-    rep_lname,
-    user_name,
+    fname,
+    mname,
+    lname,
+    gender,
     email,
-   password,
-    rep_phone_number,
+    phone_number,
+    user_name,
+    password,
   } = req.body;
 
-  const sql = `UPDATE zone SET zone_name =?, rep_fname =?, rep_mname = ?, rep_lname = ?, user_name=?, email = ?,password = ?,  rep_phone_number = ? WHERE id = ${id}`;
+  const sql = `UPDATE representative SET fname='${fname}', mname='${mname}', lname='${lname}',gender='${gender}', email='${email}',phone_number='${phone_number}' , user_name='${user_name}', password='${password}' WHERE id=${id}`;
   db.query(
     sql,
     [
-      zone_name,
-      rep_fname,
-      rep_mname,
-      rep_lname,
-      user_name,
+      fname,
+      mname,
+      lname,
+      gender,
       email,
-     password,
-      rep_phone_number,
+      phone_number,
+      user_name,
+      password,
     ],
     (error, result) => {
       if (error) {

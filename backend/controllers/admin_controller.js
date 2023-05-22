@@ -9,16 +9,16 @@ const CreateAdmin = (req, res) => {
     lname,
     gender,
     email,
-     phone_number,
+    phone_number,
     user_name,
     password,
     zone_id,
     woreda_id,
     kebele_id,
   } = req.body;
-const role_id=5;
+const role_id=2;
   const sql =
-    `INSERT INTO representatives (id, fname, mname, lname,gender, email,phone_number, user_name, password,zone_id,woreda_id,kebele_id, role_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,${role_id} )`;
+    `INSERT INTO representative (id, fname, mname, lname,gender, email,phone_number, user_name, password,zone_id,woreda_id,kebele_id, role_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,${role_id} )`;
 
   db.query(
     sql,
@@ -30,7 +30,7 @@ const role_id=5;
       lname,
       gender,
       email,
-       phone_number,
+      phone_number,
       user_name,
       password,
       zone_id,
@@ -48,7 +48,7 @@ const role_id=5;
 };
 
 const getAllAdmin = (req, res) => {
-  db.query("SELECT * FROM `land-admin`", (err, rows, fields) => {
+  db.query("SELECT * FROM representative where role_id=2", (err, rows, fields) => {
     if (!err) {
       res.send(rows);
     } else console.log(err);
@@ -57,7 +57,7 @@ const getAllAdmin = (req, res) => {
 
 const GetSingleAdmin = (req, res) => {
   const id = req.params.id;
-  const sql = `SELECT * FROM \`land-admin\` where id = "${id}"`;
+  const sql = `SELECT * FROM representative where id = "${id}"`;
   db.query(sql, (err, rows, field) => {
     if (!err) {
       res.send(rows);
@@ -70,28 +70,28 @@ const GetSingleAdmin = (req, res) => {
 const UpdateAdmin = (req, res) => {
   const id = req.params.id;
   const {
-    kebele_name,
-    rep_fname,
-    rep_mname,
-    rep_lname,
-    user_name,
+    fname,
+    mname,
+    lname,
+    gender,
     email,
+    phone_number,
+    user_name,
     password,
-    rep_phone_number,
   } = req.body;
 
-  const sql = `UPDATE \`land-admin\` SET kebele_name=?, rep_fname=?, rep_mname=?, rep_lname=?, user_name=?, email=?, password=?, rep_phone_number=? WHERE id=${id}`;
+  const sql = `UPDATE representative SET fname='${fname}', mname='${mname}', lname='${lname}',gender='${gender}', email='${email}',phone_number='${phone_number}' , user_name='${user_name}', password='${password}' WHERE id=${id}`;
   db.query(
     sql,
     [
-      kebele_name,
-      rep_fname,
-      rep_mname,
-      rep_lname,
-      user_name,
+      fname,
+      mname,
+      lname,
+      gender,
       email,
+      phone_number,
+      user_name,
       password,
-      rep_phone_number,
     ],
     (error, result) => {
       if (error) {

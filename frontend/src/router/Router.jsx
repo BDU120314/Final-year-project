@@ -18,7 +18,7 @@ import WoredaRegistrationForm from "../components/registrationForm/woreda_form/w
 import DisplaySingleWoreda from "../components/DisplayData/displayWoredaData/displaySingleWoreda";
 import WoredaUpdate from "../components/DisplayData/displayWoredaData/updateWoreda";
 import WoredaData from "../components/DisplayData/displayWoredaData/woreda_formData";
-import DashRegion from "../dashboardDirectoriet/DashRegion";
+import DashRegion from "../DashboardDirectoriet/DashRegion";
 import ZoneData from "../components/DisplayData/displayZoneData/zone_formData";
 import DisplaySingleZone from "../components/DisplayData/displayZoneData/displaySingleZone";
 import ZoneUpdate from "../components/DisplayData/displayZoneData/updateZone";
@@ -32,6 +32,7 @@ import DistributorForm from "../components/DisplayData/displayDistributer/distri
 import DistributorUpdate from "../components/DisplayData/displayDistributer/distributorUpdate";
 import DisplaySingleDistributor from "../components/DisplayData/displayFarmersData/displaySingleData";
 import DistributorRegistrationForm from "../components/registrationForm/distributor_form/distributor_form";
+import OrderForm from "../components/OrderForm/orderForm";
  const Router = () => {
 
  const [kebeleData, setKebeleData] = useState([]);
@@ -153,8 +154,8 @@ import DistributorRegistrationForm from "../components/registrationForm/distribu
           </Route>
 
           <Route path="/landadmin_dashboard" element={<DashLandAdmin />}>
-            <Route index element={<Orders />} />
-            <Route path="/landadmin_dashboard/manage_farmers" element={<FarmersData />} />
+            <Route index element={<FarmersData />} />
+            <Route path="/landadmin_dashboard" element={<FarmersData />} />
               <Route
                 path={"/landadmin_dashboard/manage_farmers/update/:id"}
                 element={<FarmerUpdate />}
@@ -174,6 +175,7 @@ import DistributorRegistrationForm from "../components/registrationForm/distribu
           <Route path="/login" element={<Login />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/farmerorder" element={<OrderForm />}/>
         </Routes>
       </BrowserRouter>
     </div>

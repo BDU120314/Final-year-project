@@ -39,7 +39,7 @@ const LandAdminForm1 = ({ kebeleData, setKebeleData }) => {
             <th className="px-4 py-2">Email Address</th>
             <th className="px-4 py-2">Phone Number</th>
             <th className="px-4 py-2">User Name</th>
-            <th className="px-4 py-2">Kebele Name</th>
+            <th className="px-4 py-2">Kebele Id</th>
             <th className="px-4 py-2 w-auto">Action</th>
           </tr>
         </thead>
@@ -51,13 +51,12 @@ const LandAdminForm1 = ({ kebeleData, setKebeleData }) => {
                 className={index % 2 === 0 ? "bg-gray-200" : "bg-white"}
               >
                 <td className="border px-4 py-2">{datas.id}</td>
-                <td className="border px-4 py-2">{datas.rep_fname} </td>
-                <td className="border px-4 py-2">{datas.rep_mname}</td>
+                <td className="border px-4 py-2">{datas.fname} </td>
+                <td className="border px-4 py-2">{datas.mname}</td>
                 <td className="border px-4 py-2">{datas.email}</td>
-                <td className="border px-4 py-2">{datas.rep_phone_number}</td>
-                <td className="border px-4 py-2">{datas.password}</td>
+                <td className="border px-4 py-2">{datas.phone_number}</td>
                 <td className="border  py-2">{datas.user_name}</td>
-                <td className="border px-4 py-2">{datas.kebele_name}</td>
+                <td className="border px-4 py-2">{datas.kebele_id}</td>
                 <td className="w-auto flex justify-center items-center gap-2 py-2 px-4">
                   <Link
                     to={`/dashboard_woreda/manageland/update/${datas.id}`}
