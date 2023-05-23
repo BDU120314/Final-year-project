@@ -12,7 +12,6 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
     phone_number: "",
     user_name: "",
     password: "",
-    id: "",
   });
 
   const {
@@ -25,7 +24,6 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
     phone_number,
     user_name,
     password,
-    id,
   } = formData;
 
   const handleChange = (e) => {
@@ -57,7 +55,6 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
       phone_number: "",
       user_name: "",
       password: "",
-      id: "",
     });
   };
 
@@ -185,7 +182,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
           </div>
         </div>
         <div className="flex justify-center items-center gap-10">
-          <div className="flex justify-left flex-col">
+          {/* <div className="flex justify-left flex-col">
             <label htmlFor="id">ID</label>
             <input
               type="text"
@@ -196,7 +193,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
               required
               className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
             />
-          </div>
+          </div> */}
           <div className="flex justify-left flex-col">
             <label htmlFor="password">Password</label>
             <input
@@ -209,8 +206,8 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
               className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
             />
           </div>
-        </div>
-        <div className="flex justify-center items-center gap-10">
+          {/* </div>
+        <div className="flex justify-center items-center gap-10"> */}
           <div className=" h-10 flex items-center justify-center my-6 w-[200px] bg-48px bg-green-400 rounded-2xl">
             <button className="text-center bg-green-400" type="submit">
               Register

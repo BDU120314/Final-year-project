@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-const DisplaySingleDistributor = () => {
+const DisplaySingleData = () => {
   const [data, setData] = useState([]);
   const { id } = useParams();
   useEffect(() => {
@@ -62,4 +62,4 @@ const DisplaySingleDistributor = () => {
   );
 };
 
-export default DisplaySingleDistributor;
+export default DisplaySingleData;

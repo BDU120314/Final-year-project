@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-
 const Login = () => {
   const [formData, setFormData] = useState({
     user_name: "",
@@ -50,20 +49,9 @@ const Login = () => {
       setPasswordError("");
       setError("");
       return;
-    } else if (user_name.length === 0) {
-      setUsernameError("Please enter a username");
-      setPasswordError("");
-      setError("");
-      return;
     }
-
     // Check password length
-    if (password.length === 0) {
-      setPasswordError("Please enter a password");
-      setUsernameError("");
-      setError("");
-      return;
-    } else if (password.length < 8 || password.length > 21) {
+    if (password.length < 6 || password.length > 21) {
       setPasswordError("Password must be between 8 and 21 characters");
       setUsernameError("");
       setError("");
@@ -75,17 +63,18 @@ const Login = () => {
         "http://localhost:5001/api/v1/login",
         formData
       );
-
       const statusCode = response.status;
- 
+      const Role = response.data.role;
+
+
       if (statusCode === 200) {
-        console.log("Logged in successfully");
-        const token = response.data.token;
-        localStorage.setItem("token", token);
-      
-        switch (role) {
+        console.log(response.message);
+        // const token = response.data.token;
+        // localStorage.setItem("token", token);
+
+        switch (Role) {
           case "Farmer":
-            navigate("/landadmin_dashboard");
+            navigate("/farmerorder");
             break;
           case "Land_Admin":
             navigate("/landadmin_dashboard");
@@ -109,7 +98,6 @@ const Login = () => {
       } else if (statusCode === 401) {
         setError("Invalid email or password");
       } else {
- 
         setError("An error occurred");
       }
     } catch (error) {

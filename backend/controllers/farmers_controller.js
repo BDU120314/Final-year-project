@@ -1,7 +1,6 @@
-const db = require("../config/connection_db");
+const db = require("../config/connection_db.js");
 const bcrypt = require("bcrypt");
 
- 
 // for creating a farmer
 
 const CreateFarmers = async (req, res) => {
@@ -17,12 +16,12 @@ const CreateFarmers = async (req, res) => {
     phone_number,
     user_name,
     password,
-   kebele_id,
+    kebele_id,
   } = req.body;
-const role_id=1;
-const encryptedPassword = await bcrypt.hash(password, 10)
-  const sql =
-    `INSERT INTO farmers (id, fname, mname, lname, birth_date, gender, land_by_ha, email, phone_number, user_name,password, kebele_id,role_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,${role_id})`;
+
+  const role_id = 1;
+
+  const sql = `INSERT INTO farmers (id, fname, mname, lname, birth_date, gender, land_by_ha, email, phone_number, user_name,password, kebele_id, role_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   db.query(
     sql,
     [
@@ -36,14 +35,16 @@ const encryptedPassword = await bcrypt.hash(password, 10)
       email,
       phone_number,
       user_name,
-      encryptedPassword,
+      password,
       kebele_id,
+      role_id,
     ],
     (error, result) => {
       if (!error) {
-        console.log("Data added successfully!");
+        console.log("farmer register successfully!");
       } else {
-        console.log(error.message);
+        console.error(error);
+        res.status(500).json({ message: "Error registering farmer" });
       }
     }
   );
@@ -59,9 +60,8 @@ const getAllFarmers = (req, res) => {
   });
 };
 
-
 //for getting single farmers
-  
+
 const GetSingleFarmer = (req, res) => {
   const id = req.params.id;
   const sql = `SELECT * FROM farmers where id = "${id}"`;
@@ -111,7 +111,6 @@ const DeleteFarmers = (req, res) => {
     return res.json({ Status: "Success" });
   });
 };
-
 
 module.exports = {
   CreateFarmers,

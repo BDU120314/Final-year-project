@@ -6,10 +6,10 @@ import { Outlet } from 'react-router-dom'
 const DashLandAdmin = () => {
   return (
     <div className="flex ">
-      <div className="basis-[14%] h-[100vh] border">
+      <div className="basis-[16%] h-[100vh] border">
         <Sidebar />
       </div>
-      <div className="basis-[86%] border">
+      <div className="basis-[84%] border">
         <DashView username="Chale" links="/landadmin_dashboard/register " />
         <div className='mt-[70px]'>
           <Outlet></Outlet>

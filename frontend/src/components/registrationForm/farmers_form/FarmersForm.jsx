@@ -25,7 +25,6 @@ function FarmerRegistrationForm() {
     e.preventDefault();
     try {
       await axios.post("http://localhost:5001/api/v1/farmers", formData);
-      alert("User successfully registered.");
       e.target.reset();
     } catch (error) {
       console.log(error);
@@ -124,7 +123,7 @@ function FarmerRegistrationForm() {
         </div>
 
         <div className="flex justify-center items-center gap-10 py-15 px-15">
-        <div className="flex items-start justify-left flex-col">
+          <div className="flex items-start justify-left flex-col">
             <label htmlFor="land_by_ha">Land Amount:</label>
             <input
               type="number"
@@ -136,7 +135,7 @@ function FarmerRegistrationForm() {
               required
             />
           </div>
-        <div className="flex items-start justify-left flex-col">
+          <div className="flex items-start justify-left flex-col">
             <label htmlFor="email">Email:</label>
             <input
               type="email"
@@ -189,7 +188,7 @@ function FarmerRegistrationForm() {
               required
             />
           </div>
-          
+
           <div className="flex items-start justify-left flex-col">
             <label htmlFor="kebele_id">Kebele Id:</label>
             <input

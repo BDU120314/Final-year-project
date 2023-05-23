@@ -3,34 +3,31 @@ const db = require("../config/connection_db");
 const CreateAdmin = (req, res) => {
   const {
     id,
-   // kebele_name,
     fname,
     mname,
     lname,
     gender,
     email,
-     phone_number,
+    phone_number,
     user_name,
     password,
     zone_id,
     woreda_id,
     kebele_id,
   } = req.body;
-const role_id=5;
-  const sql =
-    `INSERT INTO representatives (id, fname, mname, lname,gender, email,phone_number, user_name, password,zone_id,woreda_id,kebele_id, role_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,${role_id} )`;
+  const role_id = 2;
+  const sql = `INSERT INTO representative(id, fname, mname, lname,gender, email,phone_number, user_name, password,zone_id,woreda_id,kebele_id, role_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,${role_id} )`;
 
   db.query(
     sql,
     [
       id,
-     // kebele_name,
       fname,
       mname,
       lname,
       gender,
       email,
-       phone_number,
+      phone_number,
       user_name,
       password,
       zone_id,
@@ -48,7 +45,7 @@ const role_id=5;
 };
 
 const getAllAdmin = (req, res) => {
-  db.query("SELECT * FROM `land-admin`", (err, rows, fields) => {
+  db.query("SELECT * FROM users ", (err, rows, fields) => {
     if (!err) {
       res.send(rows);
     } else console.log(err);
@@ -57,7 +54,7 @@ const getAllAdmin = (req, res) => {
 
 const GetSingleAdmin = (req, res) => {
   const id = req.params.id;
-  const sql = `SELECT * FROM \`land-admin\` where id = "${id}"`;
+  const sql = `SELECT * FROM \`users\` where id = "${id}"`;
   db.query(sql, (err, rows, field) => {
     if (!err) {
       res.send(rows);
@@ -80,7 +77,7 @@ const UpdateAdmin = (req, res) => {
     rep_phone_number,
   } = req.body;
 
-  const sql = `UPDATE \`land-admin\` SET kebele_name=?, rep_fname=?, rep_mname=?, rep_lname=?, user_name=?, email=?, password=?, rep_phone_number=? WHERE id=${id}`;
+  const sql = `UPDATE \`represantative\` SET kebele_name=?, rep_fname=?, rep_mname=?, rep_lname=?, user_name=?, email=?, password=?, rep_phone_number=? WHERE id=${id}`;
   db.query(
     sql,
     [
@@ -106,7 +103,7 @@ const UpdateAdmin = (req, res) => {
 
 const DeleteAdmin = (req, res) => {
   const id = req.params.id;
-  const sql = `DELETE FROM \`land-admin\` WHERE id=${id}`;
+  const sql = `DELETE FROM \`users\` WHERE id=${id}`;
   db.query(sql, (err, result) => {
     if (err) {
       res.send(err.message);
