@@ -1,3 +1,5 @@
+// for creating a farmer
+
 const db = require("../config/connection_db.js");
 const bcrypt = require("bcrypt");
 
@@ -21,33 +23,51 @@ const CreateFarmers = async (req, res) => {
 
   const role_id = 1;
 
-  const sql = `INSERT INTO farmers (id, fname, mname, lname, birth_date, gender, land_by_ha, email, phone_number, user_name,password, kebele_id, role_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)`;
-  db.query(
-    sql,
-    [
-      id,
-      fname,
-      mname,
-      lname,
-      birth_date,
-      gender,
-      land_by_ha,
-      email,
-      phone_number,
-      user_name,
-      password,
-      kebele_id,
-      role_id,
-    ],
-    (error, result) => {
-      if (!error) {
-        console.log("farmer register successfully!");
-      } else {
-        console.error(error);
-        res.status(500).json({ message: "Error registering farmer" });
-      }
+  const sql = `INSERT INTO farmers (id, fname, mname, lname, birth_date, gender, land_by_ha, email, phone_number, user_name, password, kebele_id, role_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)`;
+
+  // Check if the kebele_id exists in the kebeles table
+  const kebeleSql = `SELECT id FROM kebeles WHERE id = ?`;
+  db.query(kebeleSql, [kebele_id], (err, kebeleResult) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ message: "Error creating farmer" });
     }
-  );
+
+    if (kebeleResult.length === 0) {
+      return res.status(400).json({ message: "Invalid kebele_id" });
+    }
+
+    // Kebele_id exists, proceed with the farmer creation
+    db.query(
+      sql,
+      [
+        id,
+        fname,
+        mname,
+        lname,
+        birth_date,
+        gender,
+        land_by_ha,
+        email,
+        phone_number,
+        user_name,
+        password,
+        kebele_id,
+        role_id,
+      ],
+      (error, result) => {
+        if (!error) {
+          console.log("Farmer registered successfully!");
+          return res
+            .status(200)
+            .json({ message: "Farmer registered successfully!" });
+        } else {
+          console.error(error);
+          return res.status(500).json({ message: "Error registering farmer" });
+        }
+      }
+    );
+  });
 };
 
 //for getting all farmers

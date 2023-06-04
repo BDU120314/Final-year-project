@@ -15,7 +15,7 @@ const DashView = ({ onSearch, username, links }) => {
     onSearch(searchQuery);
   };
   return (
-    <div className="flex justify-between items-center shadow-lg h-[70px] px-[25px] fixed top-0 right-0 left-[174px]">
+    <div className="flex bg-[#f7f7f7] justify-between items-center shadow-lg h-[70px] px-[25px] fixed top-0 right-0 left-[70%]">
  
       <div className="flex items-center rounded-[5px]">
         <form

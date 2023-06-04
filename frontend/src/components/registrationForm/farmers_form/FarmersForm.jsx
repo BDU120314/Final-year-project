@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function FarmerRegistrationForm() {
   const [formData, setFormData] = useState({
-    id: "",
     fname: "",
     mname: "",
     lname: "",
@@ -14,8 +15,25 @@ function FarmerRegistrationForm() {
     phone_number: "",
     user_name: "",
     password: "",
-    kebele_id: " ",
   });
+
+  const [landAdmin, setLandAdmin] = useState([]);
+  const navigate = useNavigate();
+  const user = useSelector((state) => state.auth.user);
+  const LandAdmin_id = user.rep_id;
+  console.log(user);
+  console.log(LandAdmin_id);
+  useEffect(() => {
+    const fetchedData = async () => {
+      const response = await axios.get(
+        `http://localhost:5001/api/v1/representative/${LandAdmin_id}`
+      );
+      setLandAdmin(response.data);
+    };
+    fetchedData();
+  }, [LandAdmin_id]);
+
+  const kebele_id = landAdmin.length > 0 ? landAdmin[0].kebele_id : "";
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -24,8 +42,23 @@ function FarmerRegistrationForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5001/api/v1/farmers", formData);
-      e.target.reset();
+      await axios.post("http://localhost:5001/api/v1/farmers", {
+        ...formData,
+        kebele_id,
+      });
+      window.alert("Farmer successfully registered.");
+      setFormData({
+        fname: "",
+        mname: "",
+        lname: "",
+        birth_date: "",
+        gender: " ",
+        land_by_ha: " ",
+        email: "",
+        phone_number: "",
+        user_name: "",
+        password: "",
+      });
     } catch (error) {
       console.log(error);
     }
@@ -96,7 +129,7 @@ function FarmerRegistrationForm() {
           </div>
         </div>
 
-        <div className="flex justify-center items-center gap-10 py-15 px-15">
+        <div className="flex justify-center items-center gap-10 py-[15px] px-[15px]">
           <div className="flex items-start justify-left flex-col w-350">
             <label htmlFor="birth_date">Birth Date:</label>
             <input
@@ -109,16 +142,20 @@ function FarmerRegistrationForm() {
               required
             />
           </div>
-          <div className="flex items-start justify-left flex-col">
-            <label htmlFor="gender">Gender:</label>
-            <input
-              id="gender"
+          <div className="flex items-left flex-col justify-left">
+            <label htmlFor="gender">Gender</label>
+            <select
               name="gender"
+              id="gender"
               value={formData.gender}
               onChange={handleChange}
-              className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
               required
-            />
+              className="outline-none w-[350px] h-10 pl-5 rounded-lg"
+            >
+              <option value="">Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
           </div>
         </div>
 
@@ -189,9 +226,9 @@ function FarmerRegistrationForm() {
             />
           </div>
 
-          <div className="flex items-start justify-left flex-col">
+          {/* <div className="flex items-start justify-left flex-col">
             <label htmlFor="kebele_id">Kebele Id:</label>
-            <input
+            
               type="number"
               id="kebele_id"
               name="kebele_id"
@@ -200,7 +237,7 @@ function FarmerRegistrationForm() {
               className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
               required
             />
-          </div>
+          </div> */}
         </div>
 
         <div className="flex justify-center items-center gap-10 py-[15px] px-[15px]">

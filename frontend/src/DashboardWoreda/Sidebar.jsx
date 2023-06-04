@@ -6,8 +6,19 @@ import {
   FaRegSun,
   FaChevronRight,
 } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { logout } from "../redux/reducers/auth";
+
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 const Sidebar = () => {
+const dispatch =useDispatch()
+const navigate =useNavigate()
+  const isLogin = useSelector((state) => state.auth.isLogin);
+const handleLogout = () => { 
+  dispatch(logout())
+  navigate("/login");
+ }
+
   return (
     <div className="bg-green-400 h-screen px-[25px] fixed top-0 left-0">
       <div className="px-[10px] py-[30px] flex justify-center items-center border-b-[1px] border-[#EDEDED]/[0.3]">
@@ -80,10 +91,15 @@ const Sidebar = () => {
           </nav>
         </details>
       </div>
-      <div className="flex items-center justify-center gap-3 bg-red-200 h-12 mt-[100px] rounded-md cursor-pointer" >
-        <FiLogOut color="white" fontSize={28} />
-        <p className="text-white text-[18px] leading-5">LogOut</p>
-      </div>
+      {isLogin ? (
+        <div
+          onClick={handleLogout}
+          className="flex items-center justify-center gap-3 bg-red-200 h-12 mt-[100px] rounded-md cursor-pointer"
+        >
+          <FiLogOut color="white" fontSize={28} />
+          <p className="text-white text-[18px] leading-5">LogOut</p>
+        </div>
+      ) : null}
     </div>
   );
 };

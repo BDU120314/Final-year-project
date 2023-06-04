@@ -31,44 +31,102 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import DisplaySingleData from "./components/DisplayData/displayFarmersData/displaySingleData";
 import OrderForm from "./components/OrderForm/orderForm";
+import Main from "./components/HomePart/Main";
+import FarmerDashboard from "./pages/FarmerDashboard";
+import ManageAccount from "./components/farmer/ManageAccount";
+import ReportEditor from "./components/editor/ReportEditor";
+import PestiSide from "./components/pestiside/PestiSide";
+import Post from "./components/posts/Post";
 
 const App = () => {
- const [kebeleData, setKebeleData] = useState([]);
- const [filteredData, setFilteredData] = useState([]);
+  // const [kebeleData, setKebeleData] = useState([]);
+  // const [filteredData, setFilteredData] = useState([]);
 
- useEffect(() => {
-   axios
-     .get("http://localhost:5001/api/v1/kebele")
-     .then((response) => {
-       setKebeleData(response.data);
-     })
-     .catch((error) => {
-       console.log(error);
-     });
- }, [kebeleData]);
+  //  useEffect(() => {
+  //    axios
+  //      .get("http://localhost:5001/api/v1/kebele")
+  //      .then((response) => {
+  //        setKebeleData(response.data);
+  //      })
+  //      .catch((error) => {
+  //        console.log(error);
+  //      });
+  //  }, [kebeleData]);
 
- const handleSearch = (searchQuery) => {
-   if (searchQuery === "") {
-     setFilteredData([]);
-   } else {
-     const filteredData = kebeleData.filter((admin) => {
-       // Modify the following conditions based on your data structure and desired properties
-       return (
-         admin.rep_fname.toLowerCase().includes(searchQuery.toLowerCase()) ||
-         admin.user_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-         admin.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
-         admin.id.toString().includes(searchQuery) // Example: filtering based on an age property
-       );
-     });
-     setFilteredData(filteredData);
-   }
- };
+  //  const handleSearch = (searchQuery) => {
+  //    if (searchQuery === "") {
+  //      setFilteredData([]);
+  //    } else {
+  //      const filteredData = kebeleData.filter((admin) => {
+  //        // Modify the following conditions based on your data structure and desired properties
+  //        return (
+  //          admin.rep_fname.toLowerCase().includes(searchQuery.toLowerCase()) ||
+  //          admin.user_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+  //          admin.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
+  //          admin.id.toString().includes(searchQuery) // Example: filtering based on an age property
+  //        );
+  //      });
+  //      setFilteredData(filteredData);
+  //    }
+  //  };
 
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route
+        {/* home page or landing page */}
+
+        <Route path="/" element={<Home />}>
+          <Route index element={<Main />} />
+          <Route path="/postPage" element={<Post />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/pestiSide" element={<PestiSide />} />
+        </Route>
+
+        {/* farmer dashboard route */}
+
+        <Route path="/farmerDashboard" element={<FarmerDashboard />}>
+          <Route path="/farmerDashboard/order" element={<OrderForm />} />
+          <Route
+            path="/farmerDashboard/manageAccount"
+            element={<ManageAccount />}
+          />
+        </Route>
+
+        {/* land admin dashboard route */}
+
+        <Route path="/landAdminDashboard" element={<DashLandAdmin />}>
+          <Route
+            index
+            // path="/landAdminDashboard/manageFarmers"
+            element={<FarmersData />}
+          />
+          <Route
+            path={"/landAdminDashboard/manageFarmers/update/:id"}
+            element={<FarmerUpdate />}
+          />
+          <Route
+            path="/landAdminDashboard/manageFarmers/view/:id"
+            element={<DisplaySingleData />}
+          />
+
+          <Route
+            path="/landAdminDashboard/register"
+            element={<FarmerRegistrationForm />}
+          />
+          <Route
+            path="/landAdminDashboard/manageFarmers"
+            element={<FarmersData />}
+          />
+          <Route path="/landAdminDashboard/create" element={<ReportEditor />} />
+          <Route
+            path="/landAdminDashboard/manageReport"
+            element={<ReportEditor />}
+          />
+        </Route>
+
+        {/* <Route
           path="/dashboard_woreda"
           element={<Dash onSearch={handleSearch} />}
         >
@@ -174,12 +232,7 @@ const App = () => {
             path="/landadmin_dashboard/FarmersData"
             element={<FarmersData />}
           />
-        </Route>
-
-        <Route path="/login" element={<Login />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/farmerorder" element={<OrderForm />} />
+        </Route> */}
       </Routes>
     </div>
   );
