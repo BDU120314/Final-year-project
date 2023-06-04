@@ -24,7 +24,7 @@ const SingleOrder = () => {
               <th>First Name</th>
               <th>Middle Name</th>
               <th>Woreda Name</th>
-              <th>Cluster Name</th>
+              <th>Kebele Name</th>
               <th>Input Type</th>
               <th>Amount</th>
               <th>Farmer Id</th>

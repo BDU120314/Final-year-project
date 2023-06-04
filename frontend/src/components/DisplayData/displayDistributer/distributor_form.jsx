@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { GrView } from "react-icons/gr";
+import { FiEdit } from "react-icons/fi";
+import { RiDeleteBin6Line } from "react-icons/ri";
 const DistributorForm = () => {
   const [woredaData, setWoredData] = useState([]);
 
@@ -58,17 +61,18 @@ const DistributorForm = () => {
                 <td className="border px-4 py-2">{datas.kebele_id}</td>
                 <td className="w-auto flex justify-center items-center gap-2 py-2 px-4">
                   <Link to={`/region_dashboard/manage_distributor/update/${datas.id}`} className="link">
-                  <button className="px-2 bg-blue-700 rounded-sm">Edit</button>
+                  <button><FiEdit color="blue" size={20} /> Edit</button>
                   </Link>
 
                   <Link to={`/region_dashboard/manage_distributor/view/${datas.id}`} className="link">
-                  <button className="px-2 bg-gray-300 rounded-sm">View</button>{" "}
+                  <button > <GrView color="white" size={20} /> Detail</button>{" "}
                   </Link>
 
                   <button
                      className="bg-red-400"
                      onClick={() => handleDelete(datas.id)}
                   >
+                     <RiDeleteBin6Line color="red" size={20} />
                     Delete
                   </button>
                 </td>

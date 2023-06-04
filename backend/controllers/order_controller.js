@@ -3,52 +3,50 @@ const db = require("../config/connection_db");
 // for creating a farmer
 
 const AddOrder = (req, res) => {
-  const {
-    id,
-    farmer_fname,
-    farmer_mname,  
-    input_type,
-    amount,
-    kebele_id,
-    farmer_id,
-  } = req.body;
+  const { id, input_type, amount, farmer_id } = req.body;
 
   const sql =
-    "INSERT INTO orders (id, farmer_fname, farmer_mname,input_type, amount, kebele_id, farmer_id) VALUES (?,?,?,?,?,?,?)";
-  db.query(
-    sql,
-    [
-      id,
-      farmer_fname,
-      farmer_mname,  
-      input_type,
-      amount,
-      kebele_id,
-      farmer_id,
-    ],
-    (error, result) => {
-      if (!error) {
-        console.log("you ordered successfully!");
-      } else {
-        console.log(error.message);
-      }
+    "INSERT INTO orders (id, input_type, amount, farmer_id) VALUES (?,?,?,?)";
+  db.query(sql, [id, input_type, amount, farmer_id], (error, result) => {
+    if (!error) {
+      console.log("you ordered successfully!");
+    } else {
+      console.log(error.message);
     }
-  );
+  });
 };
 
 //for getting all farmers
 
 const getAllOrders = (req, res) => {
-  db.query("SELECT * FROM orders", (err, rows, fields) => {
+  db.query(`
+  SELECT o.input_type, o.amount, f.id, f.fname, f.mname, f.kebele_id
+  FROM orders AS o
+  INNER JOIN farmers AS f ON o.farmer_id = f.id
+  INNER JOIN kebeles AS k ON f.kebele_id = k.id;
+  `, (err, rows, fields) => {
     if (!err) {
       res.send(rows);
     } else console.log(err);
   });
 };
 
+// For getting the count of orders
+const getOrderCount = (req, res) => {
+  db.query('SELECT COUNT(*) AS orderCount FROM orders WHERE farmer_id=1', (err, rows, fields) => {
+    if (!err) {
+      res.send(rows[0]);
+    } else {
+      console.log(err);
+    }
+  });
+};
 
+// ...
+
+ 
 //for getting single farmers
-  
+
 const GetSingleOrder = (req, res) => {
   const id = req.params.id;
   const sql = `SELECT * FROM orders where id = "${id}"`;
@@ -63,35 +61,22 @@ const GetSingleOrder = (req, res) => {
 
 const UpdateOrder = (req, res) => {
   const id = req.params.id;
-  const {
-    farmer_fname,
-    farmer_mname, 
-    woreda_name,
-    cluster_name,
-    farmers_id,
-    input_type,
-    amount
-  } = req.body;
+  const {  input_type, amount, farmer_id } =
+    req.body;
 
-  const sql = `UPDATE orders SET farmer_fname =?, mname = ?, woreda_name=?, cluster_name = ?, farmers_id =?, input_type=? , amount = ? WHERE id = ${id}`;
-  db.query(sql,
-           [
-            farmer_fname,
-            farmer_mname, 
-           woreda_name,
-           cluster_name,
-            farmers_id ,
-            input_type,
-            amount
-           ],
-           (error, result) => {
-    if (error) {
-      console.error(error);
-      res.status(500).send(error);
-    } else {
-      res.status(200).send("Order data updated successfully");
+  const sql = `UPDATE orders SET input_type=? , amount = ?, farmer_id =?  WHERE id = ${id}`;
+  db.query(
+    sql,
+    [ input_type, amount, farmer_id],
+    (error, result) => {
+      if (error) {
+        console.error(error);
+        res.status(500).send(error);
+      } else {
+        res.status(200).send("Order data updated successfully");
+      }
     }
-  });
+  );
 };
 
 //for deleting
@@ -109,6 +94,7 @@ const DeleteOrder = (req, res) => {
 module.exports = {
   AddOrder,
   getAllOrders,
+  getOrderCount,
   GetSingleOrder,
   UpdateOrder,
   DeleteOrder,

@@ -34,7 +34,7 @@ function UpdateLandAdmin() {
         `http://localhost:5001/api/v1/kebele/update/${id}`,
         formData
       );
-      navigate("/dashboard_woreda/manageland");
+      navigate("/woreda_dashboard/manage_kebelerep");
       console.log(response);
     } catch (error) {
       alert(error);

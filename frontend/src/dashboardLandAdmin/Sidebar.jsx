@@ -1,97 +1,110 @@
-import React from "react";
-import { FiLogOut } from "react-icons/fi";
-import { GrUserAdmin } from "react-icons/gr";
-import {
-  FaTachometerAlt,
-  FaRegSun,
-  FaChevronRight,
-} from "react-icons/fa";
+import React, { useState, useEffect } from "react";
+import { FiLogOut, FiMenu, FiX } from "react-icons/fi";
 import { Link } from "react-router-dom";
+
 const Sidebar = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 1024px)");
+    setIsSmallScreen(mediaQuery.matches);
+
+    const handleScreenResize = (e) => {
+      setIsSmallScreen(e.matches);
+    };
+
+    mediaQuery.addEventListener("change", handleScreenResize);
+
+    return () => {
+      mediaQuery.removeEventListener("change", handleScreenResize);
+    };
+  }, []);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
   return (
-    <div className="bg-green-400 h-screen px-[33px] fixed top-0 left-0 ">
-      <div className="px-[10px] py-[35px] flex justify-center items-center border-b-[1px] border-[#EDEDED]/[0.3]">
-        <h1 className=" text-white text-[15px] leading-5 font-extrabold cursor-pointer">
-        Land Admin
-        </h1>
-      </div>
-      <div className=" flex gap-[15px] items-center py-5 border-b-[1px] border-[#EDEDED]/[0.3]  hover:bg-gray-800 rounded-lg">
-        <FaTachometerAlt className="text-white" />
-        <p className="text-white text-[14px] font-bold leading-5 mr-10">Dashboard</p>
-      </div>
-      <div className="pt-[15px] border-b-[1px] border-[#EDEDED]/[0.3]">
-        <p className="text-white/[0.4] text-[10px] font-extrabold leading-4">
-          INTERFACE
-        </p>
-        <details>
-          <summary class="flex cursor-pointer items-center justify-between py-2 text-white  hover:bg-green-800 rounded-lg">
-            <div class="flex items-center gap-2 ml-4 mr-2">
-              <GrUserAdmin color="white" />
-              <span class="text-sm font-bold">Farmers </span>
-            </div>
-            <span class="shrink-0 transition duration-300 group-open:-rotate-180">
-              <FaChevronRight color="white" />
-            </span>
-          </summary>
-          <nav aria-label="Teams Nav" class="mt-2 flex flex-col ">
-            <Link
-              to="/landadmin_dashboard/register"
-              class="flex items-center gap-2 hover:bg-green-800 rounded-lg px-4 py-2 text-white"
-            >
-              <span class="text-sm font-medium"> Register Farmer</span>
-            </Link>
+    <div className={`bg-green-400 px-[33px] fixed top-0 left-0
+     ${isSmallScreen && !isSidebarOpen ? 'w-24' : 'w-[220px]'}
+    ${isSmallScreen && !isSidebarOpen ? 'h-[60px]' : 'h-screen'}
+    `}>
+      {isSmallScreen && (
+        <div className="flex items-center justify-between py-[15px] border-b-[1px] border-[#EDEDED]/[0.3] rounded-2xl">
+          {/* <h1 className="text-white text-[15px] leading-5 font-extrabold cursor-pointer">
+            Land Admin
+          </h1> */}
+          {!isSidebarOpen ? (
+            <FiMenu
+              className="text-white text-3xl cursor-pointer"
+              onClick={toggleSidebar}
+            />
+          ):(
+            <FiX
+              className="text-white text-3xl cursor-pointer"
+              onClick={toggleSidebar}
+            />
+          ) }
+        </div>
+      )}
+      {!isSmallScreen || (isSmallScreen && isSidebarOpen) ? (
+        <div>
+          <div className="px-[10px] py-[35px] flex justify-center items-center border-b-[1px] border-[#EDEDED]/[0.3]">
+            <h1 className="text-white text-[15px] leading-5 font-extrabold cursor-pointer">
+              Land Admin
+            </h1>
+          </div>
+          <div className="py-5">
             <Link
               to="/landadmin_dashboard"
-              class="flex items-center gap-2  hover:bg-green-800 rounded-lg px-4 py-2 text-white"
+              className="block text-white text-[14px] py-2 px-4 hover:bg-green-800 rounded-lg"
             >
-              <span class="text-sm font-medium"> Manage Farmer </span>
+              Dashboard
             </Link>
-          </nav>
-        </details>
-       
-
- 
-
-        <details>
-          <summary class="flex cursor-pointer items-center justify-between py-2 text-white  hover:bg-green-800 rounded-lg">
-            <div class="flex items-center gap-2">
-              <GrUserAdmin color="white" />
-              <span class="text-sm font-bold">Report</span>
+            <div className="py-2">
+              <p className="text-white/[0.4] text-[10px] font-extrabold leading-4">
+                INTERFACE
+              </p>
+              <nav aria-label="Teams Nav" className="mt-2">
+                <Link
+                  to="/landadmin_dashboard/register"
+                  className="block text-white text-[14px] py-2 px-4 hover:bg-green-800 rounded-lg"
+                >
+                  Register Farmer
+                </Link>
+                <Link
+                  to="/landadmin_dashboard"
+                  className="block text-white text-[14px] py-2 px-4 hover:bg-green-800 rounded-lg"
+                >
+                  Manage Farmer
+                </Link>
+              </nav>
             </div>
-            <span class="shrink-0 transition duration-300 group-open:-rotate-180">
-              <FaChevronRight color="white" />
-            </span>
-          </summary>
-          <nav aria-label="Teams Nav" class="mt-2 flex flex-col ">
-            <Link
-              to="/landadmin_dashboard/create"
-              class="flex items-center gap-2  hover:bg-green-800 rounded-lg px-4 py-2 text-white"
-            >
-              <span class="text-sm font-medium"> Add Report</span>
-            </Link>
-            <Link
-              to="/landadmin_dashboard/manage_report"
-              class="flex items-center gap-2 hover:bg-green-800 rounded-lg px-4 py-2 text-white"
-            >
-              <span class="text-sm font-medium"> Manage Report </span>
-            </Link>
-          </nav>
-        </details>
-        {/* <div className="flex justify-between items-center gap-[10px] py-[15px] cursor-pointer">
-          <div className="flex items-center gap-[10px]">
-            <FaWrench color="white" />
-            <p className="text-white text-[14px] leading-5 font-normal">
-              Report
-            </p>
+            <div className="py-2">
+              <p className="text-white/[0.4] text-[10px] font-extrabold leading-4">
+                REPORT
+              </p>
+              <nav aria-label="Teams Nav" className="mt-2">
+                <Link
+                  to="/landadmin_dashboard/create"
+                  className="block text-white text-[14px] py-2 px-4 hover:bg-green-800 rounded-lg"
+                >
+                  Add Report
+                </Link>
+                <Link
+                  to="/landadmin_dashboard/manage_report"
+                  className="block text-white text-[14px] py-2 px-4 hover:bg-green-800 rounded-lg"
+                >
+                  Manage Report
+                </Link>
+              </nav>
+            </div>
           </div>
-          <FaChevronRight color="white" />
-        </div> */}
-      </div>
-      <div className="flex items-center justify-center gap-3 bg-red-200 h-12 mt-[100px]  hover:bg-green-800 rounded-lg cursor-pointer">
-        <FiLogOut color="white" fontSize={28} />
-        <p className="text-white text-[18px] leading-5">LogOut</p>
-      </div>
+        </div>
+      ) : null}
     </div>
   );
 };
+
 export default Sidebar;

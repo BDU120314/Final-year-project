@@ -56,14 +56,14 @@ const ZoneData = () => {
                 <td className="border  py-2">{datas.user_name}</td>
                 <td className="w-auto flex justify-center items-center gap-2 py-2 px-4">
                   <Link
-                    to={`/region_dashboard/manage_zone/update/${datas.id}`}
+                    to={`/region_dashboard/manage_zonerep/update/${datas.id}`}
                     className="px-2 bg-blue-700 rounded-sm"
                   >
                     Edit
                   </Link>
 
                   <Link
-                    to={`/region_dashboard/manage_zone/view/${datas.id}`}
+                    to={`/region_dashboard/manage_zonerep/view/${datas.id}`}
                     className="px-2 bg-gray-300 rounded-sm"
                   >
                     <button>View</button>

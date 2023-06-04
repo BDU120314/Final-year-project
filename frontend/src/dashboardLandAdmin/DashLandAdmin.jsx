@@ -10,8 +10,8 @@ const DashLandAdmin = () => {
         <Sidebar />
       </div>
       <div className="basis-[86%] border">
-        <DashView username="Chale" links="/landadmin_dashboard/register " />
-        <div className='mt-[70px]'>
+        <DashView username="Chale" links="/landadmin_dashboard/register_farmers " />
+        <div className='mt-16'>
           <Outlet></Outlet>
         </div>
       </div>

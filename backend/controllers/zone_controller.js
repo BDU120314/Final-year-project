@@ -105,7 +105,7 @@ const UpdateZone = (req, res) => {
 
 const DeleteZone = (req, res) => {
   const id = req.params.id;
-  const sql = `DELETE FROM zone WHERE id = ${id}`;
+  const sql = `DELETE FROM representative WHERE id = ${id}`;
   db.query(sql, (err, result) => {
     if (err) {
       res.send(err.message);

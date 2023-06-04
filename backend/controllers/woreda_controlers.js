@@ -20,7 +20,7 @@ const CreateWoreda = (req, res) => {
   } = req.body;
  const role_id=3;
   const sql =
-  `INSERT INTO representatives (id,fname, mname,lname,gender, email,phone_number, user_name, password,zone_id,woreda_id,kebele_id, role_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,${role_id} )`;
+  `INSERT INTO representative (id,fname, mname,lname,gender, email,phone_number, user_name, password,zone_id,woreda_id,kebele_id, role_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,${role_id} )`;
   db.query(
     sql,
     [
@@ -49,7 +49,7 @@ const CreateWoreda = (req, res) => {
 };
 
 const getAllWoreda = (req, res) => {
-  db.query(`SELECT * FROM representative WHERE  where role_id=3"`, (err, rows, fields) => {
+  db.query("SELECT * FROM representative Where role_id=3", (err, rows, fields) => {
     if (!err) {
       res.send(rows);
     } else console.log(err);
@@ -108,7 +108,7 @@ const UpdateWoreda = (req, res) => {
 
 const DeleteWoreda = (req, res) => {
   const id = req.params.id;
-  const sql = `DELETE FROM woreda WHERE id = ${id}`;
+  const sql = `DELETE FROM representative WHERE id = ${id}`;
   db.query(sql, (err, result) => {
     if (err) {
       res.send(err.message);

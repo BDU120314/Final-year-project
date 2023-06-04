@@ -31,7 +31,7 @@ function FarmerUpdate() {
         `http://localhost:5001/api/v1/farmers/update/${id}`,
         formData
       );
-      navigate("/landadmin_dashboard/manage_farmers");
+      navigate("/landadmin_dashboard");
       console.log(response);
     } catch (error) {
       alert(error);

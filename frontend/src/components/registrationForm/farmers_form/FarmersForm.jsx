@@ -25,8 +25,21 @@ function FarmerRegistrationForm() {
     e.preventDefault();
     try {
       await axios.post("http://localhost:5001/api/v1/farmers", formData);
-      alert("User successfully registered.");
-      e.target.reset();
+     window.alert("Farmer successfully registered.");
+      setFormData({
+        id: "",
+    fname: "",
+    mname: "",
+    lname: "",
+    birth_date: "",
+    gender: " ",
+    land_by_ha: " ",
+    email: "",
+    phone_number: "",
+    user_name: "",
+    password: "",
+    kebele_id: " ",
+      })
     } catch (error) {
       console.log(error);
     }
@@ -97,7 +110,7 @@ function FarmerRegistrationForm() {
           </div>
         </div>
 
-        <div className="flex justify-center items-center gap-10 py-15 px-15">
+        <div className="flex justify-center items-center gap-10 py-[15px] px-[15px]">
           <div className="flex items-start justify-left flex-col w-350">
             <label htmlFor="birth_date">Birth Date:</label>
             <input
@@ -110,18 +123,20 @@ function FarmerRegistrationForm() {
               required
             />
           </div>
-          <div className="flex items-left flex-col justify-left ">
+          <div className="flex items-left flex-col justify-left">
             <label htmlFor="gender">Gender</label>
-            <input
-              list="gender"
+            <select
               name="gender"
-              id="sex"
-              className=" outline-none w-[350px] h-10 pl-5 rounded-lg"
-            />
-            <datalist id="gender">
-              <option value="Male"></option>
-              <option value="Female"></option>
-            </datalist>
+              id="gender"
+              value={formData.gender}
+              onChange={handleChange}
+              required
+              className="outline-none w-[350px] h-10 pl-5 rounded-lg"
+            >
+              <option value="">Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
           </div>
         </div>
 

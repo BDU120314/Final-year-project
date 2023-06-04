@@ -7,7 +7,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
     fname: "",
     mname: "",
     lname: "",
-    gender: " ",
+    gender: "",
     email: "",
     phone_number: "",
     user_name: "",
@@ -25,7 +25,6 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
     phone_number,
     user_name,
     password,
-    id,
   } = formData;
 
   const handleChange = (e) => {
@@ -38,36 +37,35 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(
+      const response = await axios.post(
         `http://localhost:5001/api/v1/${typeName.toLowerCase()}`,
         formData
       );
-      alert("User successfully registered");
+      console.log("Response Status:", response.status);
+      console.log("Response Data:", response.data);
+      if (response.status === 200) {
+        alert("You Successfully Register Representative");
+        // Reset the form after successful registration
+        setFormData({
+          [dataBaseColumn]: "",
+          fname: "",
+          mname: "",
+          lname: "",
+          gender: "",
+          email: "",
+          phone_number: "",
+          user_name: "",
+          password: "",
+        });
+      } else {
+        // Handle other response statuses if needed
+        console.log("Registration failed with status:", response.status);
+      }
     } catch (error) {
-      console.log(error);
+      // Handle error response
+      console.log("Registration failed with error:", error);
     }
-
-    setFormData({
-      [dataBaseColumn]: "",
-      fname: "",
-      mname: "",
-      lname: "",
-      gender: " ",
-      email: "",
-      phone_number: "",
-      user_name: "",
-      password: "",
-      id: "",
-    });
   };
-
-  // const validateName = (e) => {
-  //   if (!/^[A-Z][a-z]*$/.test(e.target.value)) {
-  //     e.target.setCustomValidity("እባክዎ ስምዎን በትክክል ያስገቡ");
-  //   } else {
-  //     e.target.setCustomValidity("");
-  //   }
-  // };
 
   return (
     <div className="flex justify-center items-center bg-gray-100 p-0 flex-col">
@@ -80,68 +78,60 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
         onSubmit={handleSubmit}
       >
         <div className="flex justify-center items-center gap-10  py-[15px] px-[15px]">
-          {/* <div className="flex items-left flex-col justify-left ">
-            <label htmlFor={dataBaseColumn}>{typeName}</label>
-            <input
-              type="text"
-              name={dataBaseColumn}
-              id={dataBaseColumn}
-              onChange={handleChange}
-              value={columnValue}
-              className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
-            />
-          </div> */}
-          <div className="flex items-start  justify-lefft flex-col">
+          <div className="flex items-start  justify-left flex-col">
             <label htmlFor="fname">First Name</label>
             <input
               type="text"
               name="fname"
               id="fname"
               onChange={handleChange}
-              // onBlur={validateName}
               value={fname}
               required
-              className=" outline-none w-[350px] h-10 pl-5 rounded-lg"
+              className="outline-none w-[350px] h-10 pl-5 rounded-lg"
             />
           </div>
         </div>
         <div className="flex justify-center items-center gap-10  py-[15px]">
-          <div className="flex items-left flex-col justify-left ">
-            <label htmlFor="mname">Midle Name</label>
+          <div className="flex items-left flex-col justify-left">
+            <label htmlFor="mname">Middle Name</label>
             <input
               type="text"
               name="mname"
               id="mname"
               onChange={handleChange}
-              // onBlur={validateName}
               value={mname}
               required
-              className=" outline-none w-[350px] h-10 pl-5 rounded-lg"
+              className="outline-none w-[350px] h-10 pl-5 rounded-lg"
             />
           </div>
-          <div className="flex items-left flex-col justify-left ">
+          <div className="flex items-left flex-col justify-left">
             <label htmlFor="lname">Last Name</label>
             <input
               type="text"
               name="lname"
               id="lname"
               onChange={handleChange}
-              // onBlur={validateName}
               value={lname}
               required
-              className=" outline-none w-[350px] h-10 pl-5 rounded-lg"
+              className="outline-none w-[350px] h-10 pl-5 rounded-lg"
             />
           </div>
         </div>
         <div className="flex justify-center items-center gap-10  py-[15px]">
-          <div className="flex items-left flex-col justify-left ">
+          <div className="flex items-left flex-col justify-left">
             <label htmlFor="gender">Gender</label>
-            <input list="gender" name="gender"  id="sex" className=" outline-none w-[350px] h-10 pl-5 rounded-lg" />   
-              <datalist id="gender">
-              <option value="Male"></option>
-              <option value="Female"></option>
-            </datalist>
-            
+            <select
+              name="gender"
+              id="gender"
+              value={gender}
+              onChange={handleChange}
+              required
+              className="outline-none w-[350px] h-10 pl-5 rounded-lg"
+            >
+              <option value="">Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
           </div>
           <div className="flex justify-left flex-col">
             <label htmlFor="email">Email</label>
@@ -151,7 +141,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
               id="email"
               value={email}
               onChange={handleChange}
-              className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
+              className="w-[350px] h-10 pl-5 rounded-lg outline-none"
             />
           </div>
         </div>
@@ -165,7 +155,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
               onChange={handleChange}
               value={phone_number}
               required
-              className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
+              className="w-[350px] h-10 pl-5 rounded-lg outline-none"
             />
           </div>
           <div className="flex justify-left flex-col">
@@ -177,12 +167,12 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
               onChange={handleChange}
               value={user_name}
               required
-              className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
+              className="w-[350px] h-10 pl-5 rounded-lg outline-none"
             />
           </div>
         </div>
         <div className="flex justify-center items-center gap-10">
-          <div className="flex items-left flex-col justify-left ">
+          <div className="flex items-left flex-col justify-left">
             <label htmlFor={dataBaseColumn}>{typeName}</label>
             <input
               type="number"
@@ -190,7 +180,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
               id={dataBaseColumn}
               onChange={handleChange}
               value={columnValue}
-              className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
+              className="w-[350px] h-10 pl-5 rounded-lg outline-none"
             />
           </div>
           <div className="flex justify-left flex-col">
@@ -202,12 +192,12 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
               onChange={handleChange}
               value={password}
               required
-              className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
+              className="w-[350px] h-10 pl-5 rounded-lg outline-none"
             />
           </div>
         </div>
         <div className="flex justify-center items-center gap-10">
-          <div className=" h-10 flex items-center justify-center my-6 w-[200px] bg-48px bg-green-400 rounded-2xl">
+          <div className="h-10 flex items-center justify-center my-6 w-[200px] bg-green-400 rounded-2xl">
             <button className="text-center bg-green-400" type="submit">
               Register
             </button>

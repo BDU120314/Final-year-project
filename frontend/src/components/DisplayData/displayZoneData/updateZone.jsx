@@ -33,7 +33,7 @@ function ZoneUpdate() {
         `http://localhost:5001/api/v1/zone/update/${id}`,
         formData
       );
-      navigate("/region_dashboard/manage_zone");
+      navigate("/region_dashboard/manage_zonerep");
       console.log(response);
     } catch (error) {
       alert(error);

@@ -5,7 +5,7 @@ import { FaTachometerAlt, FaRegSun, FaChevronRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 const Sidebar = () => {
   return (
-    <div className="bg-blue-400 h-screen px-[35px] fixed top-0 left-0">
+    <div className="bg-blue-400 h-screen px-4 fixed top-0 left-0 ">
       <div className="px-[10px] py-[30px] flex justify-center items-center border-b-[1px] border-[#EDEDED]/[0.3]">
         <h1 className=" text-white text-[15px] leading-5 font-extrabold cursor-pointer">
           Zone Panel
@@ -21,7 +21,7 @@ const Sidebar = () => {
         </p>
         <details>
           <summary class="hover:bg-green-800 rounded-lg flex cursor-pointer items-center justify-between py-2 text-white">
-            <div class="flex items-center gap-2 ml-4 mr-2">
+            <div class="flex">
               <GrUserAdmin color="white" />
               <span class="text-sm font-bold"> Woreda </span>
             </div>
@@ -31,16 +31,41 @@ const Sidebar = () => {
           </summary>
           <nav aria-label="Teams Nav" class="mt-2 flex flex-col ">
             <Link
-              to="/zone_dashboard/register"
+              to="/zone_dashboard/register_woreda"
               class="flex items-center gap-2  hover:bg-green-800 rounded-lg px-4 py-2 text-white"
             >
               <span class="text-sm font-medium"> Register Woreda</span>
             </Link>
             <Link
-              to="/zone_dashboard/manageland"
+              to="/zone_dashboard/manage_woreda"
               class="flex items-center gap-2  hover:bg-green-800 rounded-lg px-4 py-2 text-white"
             >
               <span class="text-sm font-medium"> Manage Woreda </span>
+            </Link>
+          </nav>
+        </details>
+        <details>
+          <summary class="hover:bg-green-800 rounded-lg flex cursor-pointer items-center justify-between py-2 text-white">
+            <div class="flex">
+              <GrUserAdmin color="white" />
+              <span class="text-sm font-bold"> Woreda Representative </span>
+            </div>
+            <span class="shrink-0 transition duration-300 group-open:-rotate-180">
+              <FaChevronRight color="white" />
+            </span>
+          </summary>
+          <nav aria-label="Teams Nav" class="mt-2 flex flex-col ">
+            <Link
+              to="/zone_dashboard/register_woredarep"
+              class="flex items-center gap-2  hover:bg-green-800 rounded-lg px-4 py-2 text-white"
+            >
+              <span class="text-sm font-medium"> Register Representative</span>
+            </Link>
+            <Link
+              to="/zone_dashboard/manage_woredarep"
+              class="flex items-center gap-2  hover:bg-green-800 rounded-lg px-4 py-2 text-white"
+            >
+              <span class="text-sm font-medium"> Manage representative </span>
             </Link>
           </nav>
         </details>

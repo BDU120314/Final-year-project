@@ -1,129 +1,102 @@
-import React, { useState } from "react";
-import "./order.css";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-import { useEffect } from "react";
+import DashView from "./DashView";
+
 function UpdateOrder() {
   const [formData, setFormData] = useState({
-    fname: "",
-    mname: "",
-    woreda_name: "",
-    cluster_name: "",
-    farmer_id: "", 
     input_type: "",
     amount: "",
   });
   const { id } = useParams();
   const navigate = useNavigate();
+
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/v1/order/${id}`).then((res) => {
-      setFormData(res.data[0]);
-      console.log(res.data[0]);
-    });
-  }, [id, setFormData]);
+    axios.get(`http://localhost:5001/api/v1/order/${id}`)
+      .then((res) => {
+        setFormData((prevState) => ({
+          ...prevState,
+          input_type: res.data[0].input_type,
+          amount: res.data[0].amount,
+        }));
+        console.log(res.data[0]);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [id]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.put(
-        `http://localhost:5000/api/v1/order/update/${id}`,
+        `http://localhost:5001/api/v1/order/update/${id}`,
         formData
       );
       navigate("/OrderDisplayForm");
       console.log(response);
     } catch (error) {
-      alert(error);
+      console.error(error);
+      alert("Failed to update the order.");
     }
   };
+
   const handleChange = (e) => {
+    const { name, value } = e.target;
     setFormData((prevState) => ({
       ...prevState,
-      [e.target.name]: e.target.value,
+      [name]: value,
     }));
   };
+
   return (
-    <div className="orders">
-      <div>
-        <h2>Order Modification Form</h2>
+    <div>
+      <DashView />
+      <div className="flex flex-col justify-center items-center p-16 bg-gray-100 ">
+        <div className="text-black text-[18px] leading-6">
+          <h2>Order Modification Form</h2>
+        </div>
+        <form className="bg-gray-200" onSubmit={handleSubmit}>
+          <div className="flex justify-center items-center gap-10 py-[15px] px-[15px] h-[200px]">
+            <label htmlFor="input_type">Input Type</label>
+            <input
+              list="input_type_options"
+              id="input_type"
+              name="input_type"
+              value={formData.input_type}
+              onChange={handleChange}
+              required
+            />
+            <datalist id="input_type_options">
+              <option value="Seed" />
+              <option value="DAP" />
+              <option value="UREA" />
+              <option value="Chemical" />
+            </datalist>
+          </div>
+          <div className="flex justify-center items-center gap-10 py-[15px] px-[15px]">
+            <label htmlFor="amount">Amount</label>
+            <input
+              type="number"
+              id="amount"
+              name="amount"
+              value={formData.amount}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="flex justify-center items-center">
+            <button
+              className="w-[150px] h-10 bg-blue-400 rounded-3xl mt-[20px]"
+              type="submit"
+            >
+              Update
+            </button>
+          </div>
+        </form>
       </div>
-      <form className="farmer-registration-form" onSubmit={handleSubmit}>
-        <div className="label_input">
-          <label htmlFor="fname">First Name</label>
-          <input
-            type="text"
-            id="fname"
-            name="fname"
-            value={formData.fname}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="label_input">
-          <label htmlFor="mname">Middle Name</label>
-          <input
-            type="text"
-            id="mname"
-            name="mname"
-            value={formData.mname}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="label_input">
-          <label htmlFor="woreda_name">Woreda Name</label>
-          <input
-            type="text"
-            id="woreda_name"
-            name="woreda_name"
-            value={formData.woreda_name}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="label_input">
-          <label htmlFor="birth_date">Cluster Name</label>
-          <input
-            type="text"
-            id="cluster_name"
-            name="cluster_name"
-            value={formData.cluster_name}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="label_input">
-          <label htmlFor="farmer_id">Farmer Id</label>
-          <input
-            type="text"
-            id="farmer_id"
-            name="farmer_id"
-            value={formData.farmer_id}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="label_input">
-          <label htmlFor="inputs">Input Type</label>
-          <input list="input_type" id="inputs" name="input_type" />
-          <datalist id="input_type" value={formData.input_type}>
-            <option value="Seed"></option>
-            <option value="DAP"></option>
-            <option value="UREA"></option>
-            <option value="Chemical"></option>
-          </datalist>
-        </div>
-        <div className="label_input">
-          <label htmlFor="amount">Amount</label>
-          <input
-            type="number"
-            id="amount"
-            name="amount"
-            value={formData.amount}
-            onChange={handleChange}
-            required
-          />
-        </div> 
-        <button type="submit">update</button>
-      </form>
     </div>
   );
 }
+
 export default UpdateOrder;

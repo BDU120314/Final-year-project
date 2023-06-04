@@ -59,7 +59,7 @@ const Navbar = ({ fixed }) => {
             id="example-navbar-danger"
           >
             <ul className="flex text-black flex-col lg:flex-row list-none lg:ml-auto">
-              <li className="nav-item">
+              <li className="nav-item hover: after:bg-gray-200 rounded-md hover:bg-gray-200">
                 <Link
                   to="/"
                   className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75"
@@ -67,7 +67,7 @@ const Navbar = ({ fixed }) => {
                   Home
                 </Link>
               </li>
-              <li className="nav-item">
+              <li className="nav-item hover: after:bg-gray-200 rounded-md hover:bg-gray-200">
                 <Link
                   to="/about"
                   className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75"
@@ -75,7 +75,7 @@ const Navbar = ({ fixed }) => {
                   About
                 </Link>
               </li>
-              <li className="nav-item">
+              <li className="nav-item hover: after:bg-gray-200 rounded-md hover:bg-gray-200">
                 <Link
                   to="/contact"
                   className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75"
@@ -84,12 +84,14 @@ const Navbar = ({ fixed }) => {
                 </Link>
               </li>
               <li className="nav-item">
+                <button className="bg-green-300 hover: after:bg-gray-200 rounded-md hover:bg-gray-200">
                 <Link
                   to="/login"
                   className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75"
                 >
                   Login
                 </Link>
+                </button>
               </li>
             </ul>
           </div>

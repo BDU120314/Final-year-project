@@ -1,29 +1,20 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
-
+ import axios from "axios";
+import LoginForm from "./login_form";
 
 const Login = () => {
   const [formData, setFormData] = useState({
     user_name: "",
     password: "",
-    role: "",
   });
-  const { user_name, password, role } = formData;
+  const { user_name, password } = formData;
   const [usernameError, setUsernameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [error, setError] = useState("");
 
   const navigate = useNavigate();
-
-  const roleOptions = [
-    { value: "Farmer", label: "Farmer" },
-    { value: "Land_Admin", label: "Land_Admin" },
-    { value: "Woreda_Admin", label: "Woreda_Admin" },
-    { value: "Zone_Admin", label: "Zone_Admin" },
-    { value: "Region_Admin", label: "Region_Admin" },
-    { value: "Distributor", label: "Distributor" },
-  ];
+ 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -37,7 +28,7 @@ const Login = () => {
     e.preventDefault();
 
     // Check if user_name and password fields are filled
-    if (!user_name ||!password) {
+    if (!user_name || !password) {
       setError("Please fill in all fields");
       setPasswordError("");
       setUsernameError("");
@@ -45,14 +36,14 @@ const Login = () => {
     }
 
     // Checking user_name
-    if (user_name.length < 2 ||  user_name.length > 30) {
+    if (user_name.length < 2 || user_name.length > 30) {
       setUsernameError("Username must be between 2 and 30 characters");
       setPasswordError("");
       setError("");
       return;
     }
     // Check password length
-    if (password.length < 6 || password.length > 21) {
+    if (password.length < 8 || password.length > 21) {
       setPasswordError("Password must be between 8 and 21 characters");
       setUsernameError("");
       setError("");
@@ -65,21 +56,17 @@ const Login = () => {
         formData
       );
       const statusCode = response.status;
-      const Role = response.data.role;
-
+      const Role_id = response.data.role;
 
       if (statusCode === 200) {
         console.log(response.message);
         // const token = response.data.token;
         // localStorage.setItem("token", token);
 
-        switch (Role) {
+        switch (Role_id) {
           case "Farmer":
-<<<<<<< HEAD
-            navigate("/landadmin_dashboard");
-=======
             navigate("/farmerorder");
->>>>>>> Trial
+
             break;
           case "Land_Admin":
             navigate("/landadmin_dashboard");
@@ -110,44 +97,15 @@ const Login = () => {
     }
   };
   return (
-    <div
-      className="flex justify-center items-center h-[100vh] overflow-hidden w-[100vw]"
-      style={{
-        // backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "center",
-      }}
-    >
+    <div className="flex justify-center items-center h-[100vh] overflow-hidden w-[100vw]"
+     >
       <div className="w-[400px] flex justify-center flex-col items-center  max-w-md p-8 space-y-3 rounded-xl bg-gray-600 text-white">
         <h1 className="text-2xl font-bold text-center">Login</h1>
-{error && <p className="text-red-400">{error}</p>}
+        {error && <p className="text-red-400">{error}</p>}
         <form
           onSubmit={handleSubmit}
           className="space-y-6 ng-untouched ng-pristine ng-valuser_name "
         >
-          <div className="space-y-1 text-sm">
-            <label htmlFor="role" className="block dark:text-gray-300">
-              Role
-            </label>
-            <select
-              value={role}
-              onChange={handleChange}
-              name="role"
-              user_name="role"
-              className="w-[350px] px-4 py-3 rounded-md bg-gray-50 text-black h-10 focus:dark:border-violet-400"
-            >
-              <option value="">Select a role</option>
-              {roleOptions.map((option) => (
-                <option
-                  key={option.value}
-                  value={option.value}
-                  className="w-[370px]"
-                >
-                  {option.label}
-                </option>
-              ))}
-            </select>
-          </div>
 
           <div className="space-y-1 text-sm">
             <label htmlFor="user_name" className="block dark:text-gray-300">
@@ -198,4 +156,7 @@ const Login = () => {
     </div>
   );
 };
+// const Login = () => {
+//   return <LoginForm />;
+// };
 export default Login;

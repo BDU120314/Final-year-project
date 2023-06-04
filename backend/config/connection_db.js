@@ -5,7 +5,6 @@ var db = mysql.createConnection({
   user: "root",
   password: "",
   database:"armdos",
- 
   multipleStatements: true,
 });
 db.connect((err) => {

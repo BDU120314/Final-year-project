@@ -10,6 +10,9 @@ const order_route = require("./routes_part/orders_route");
 const report_route = require("./routes_part/report_route");
 const Login_Route = require("./routes_part/login_route");
 const cookieParser = require("cookie-parser");
+const addkebele_router = require("./routes_part/addkebele_route");
+const addworeda_route = require("./routes_part/addworeda_route");
+const addzone_route = require("./routes_part/addzone_route");
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
@@ -28,6 +31,9 @@ app.use("/api/v1/kebele", land_admin_router);
 app.use("/api/v1/order", order_route);
 app.use("/api/v1/report", report_route);
 app.use("/api/v1/login", Login_Route);
+app.use("/api/v1/addkebele",addkebele_router);
+app.use("/api/v1/addworeda",addworeda_route);
+app.use("/api/v1/addzone",addzone_route)
 
 app.listen(PORT, () => {
   console.log(`server is running on port : ${PORT} `);

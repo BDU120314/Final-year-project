@@ -59,14 +59,14 @@ const LandAdminForm1 = ({ kebeleData, setKebeleData }) => {
                 <td className="border px-4 py-2">{datas.kebele_id}</td>
                 <td className="w-auto flex justify-center items-center gap-2 py-2 px-4">
                   <Link
-                    to={`/dashboard_woreda/manageland/update/${datas.id}`}
+                    to={`/woreda_dashboard/manage_kebelerep/update/${datas.id}`}
                     className="px-2 bg-blue-700 rounded-sm"
                   >
                     Edit
                   </Link>
 
                   <Link
-                    to={`/dashboard_woreda/manageland/view/${datas.id}`}
+                    to={`/woreda_dashboard/manage_kebelerep/view/${datas.id}`}
                     className="px-2 bg-gray-300 rounded-sm"
                   >
                     <button>View</button>
