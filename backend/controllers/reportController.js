@@ -15,7 +15,7 @@ const authenticateUser = (req, res, next) => {
     // Verify and decode the JWT token
     const decoded = jwt.verify(formattedToken, "chachu");
     // Assign the user ID to req.user.id
-    req.user = { id: decoded.user_id };
+    req.user = { id: decoded.rep_id };
 
     next();
   } catch (error) {
@@ -23,20 +23,22 @@ const authenticateUser = (req, res, next) => {
   }
 };
 
-const createReport = async (req, res) => {
+const createReport =  (req, res) => {
   try {
     const { title, content } = req.body;
     const userId = req.user.id;
-
+    const date = new Date();
     const query = `
-      INSERT INTO reports (title, content, rep_id, createAt, updateAt) VALUES (?, ?, ?, NOW(), NOW())
+      INSERT INTO reports (title, content, rep_id, createAt, updateAt)
+      VALUES (?, ?, ?, ?, ?)
     `;
-    const values = [title, content, userId];
+    const values = [title, content, userId, date, date];
+    console.log("Query:", query); // Add this line to print the query to the console
+    console.log("Values:", values);
 
-    await db.query(query, values);
-    
-const reportId = await db.lastInsertId();
-
+    const result =  db.query(query, values);
+    console.log(result);
+    const reportId = result.insertId;
 
     const reportData = {
       title,
@@ -54,8 +56,7 @@ const reportId = await db.lastInsertId();
   }
 };
 
-
-const updateReport = async (req, res) => {
+const updateReport =  (req, res) => {
   const { id } = req.params;
   const { title, content } = req.body;
 
@@ -67,7 +68,7 @@ const updateReport = async (req, res) => {
     `;
     const values = [title, content, id];
 
-    await db.query(query, values);
+     db.query(query, values);
 
     res.json({ message: "Report updated successfully" });
   } catch (error) {
@@ -76,26 +77,26 @@ const updateReport = async (req, res) => {
   }
 };
 
-const getAllReports = async (req, res) => {
-  try {
-    const query = "SELECT * FROM reports";
-
-    const [rows] = await db.query(query);
-
-    res.json(rows);
-  } catch (error) {
-    console.error("Error retrieving reports", error);
-    res.status(500).json({ error: "Failed to retrieve reports" });
-  }
+const getAllReports =  (req, res) => {
+  const query = "SELECT * FROM reports";
+  db.query(query, (error, results) => {
+    if (error) {
+      console.error("Error retrieving reports:", error);
+      res.status(500).json({ error: "Error retrieving reports" });
+    } else {
+      res.status(200).json(results);
+    }
+  });
 };
-const getReportById = async (req, res) => {
+
+const getReportById =  (req, res) => {
   const { id } = req.params;
 
   try {
     const query = "SELECT * FROM reports WHERE id = ?";
     const values = [id];
 
-    const [report] = await db.query(query, values);
+    const [report] =  db.query(query, values);
 
     if (!report) {
       return res.status(404).json({ error: "Report not found" });
@@ -108,14 +109,29 @@ const getReportById = async (req, res) => {
   }
 };
 
-const deleteReport = async (req, res) => {
+// for getting all orders of a specific farmer
+const getAllReportsLandAdminId = (req, res) => {
+  const landAdminId = req.params.id;
+  const sql = "SELECT * FROM reports WHERE rep_id = ?";
+  db.query(sql, [landAdminId], (err, rows, fields) => {
+    if (!err) {
+      res.send(rows);
+    } else {
+      console.log(err);
+      res.status(500).send(err.message);
+    }
+  });
+};
+
+
+const deleteReport =  (req, res) => {
   const { id } = req.params;
 
   try {
     const query = "DELETE FROM reports WHERE id = ?";
     const values = [id];
 
-    await db.query(query, values);
+     db.query(query, values);
 
     res.status(204).end();
   } catch (error) {
@@ -131,4 +147,5 @@ module.exports = {
   updateReport,
   deleteReport,
   authenticateUser,
+  getAllReportsLandAdminId,
 };

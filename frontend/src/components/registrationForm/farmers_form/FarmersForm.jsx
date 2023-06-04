@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 function FarmerRegistrationForm() {
@@ -18,15 +18,14 @@ function FarmerRegistrationForm() {
   });
 
   const [landAdmin, setLandAdmin] = useState([]);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const user = useSelector((state) => state.auth.user);
   const LandAdmin_id = user.rep_id;
-  console.log(user);
   console.log(LandAdmin_id);
   useEffect(() => {
     const fetchedData = async () => {
       const response = await axios.get(
-        `http://localhost:5001/api/v1/representative/${LandAdmin_id}`
+        `http://localhost:5001/api/v1/kebele/${LandAdmin_id}`
       );
       setLandAdmin(response.data);
     };
@@ -34,7 +33,7 @@ function FarmerRegistrationForm() {
   }, [LandAdmin_id]);
 
   const kebele_id = landAdmin.length > 0 ? landAdmin[0].kebele_id : "";
-
+  console.log(kebele_id);
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -42,10 +41,11 @@ function FarmerRegistrationForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5001/api/v1/farmers", {
+    const response =  await axios.post("http://localhost:5001/api/v1/farmers", {
         ...formData,
         kebele_id,
       });
+      console.log(response.data)
       window.alert("Farmer successfully registered.");
       setFormData({
         fname: "",
@@ -225,19 +225,6 @@ function FarmerRegistrationForm() {
               required
             />
           </div>
-
-          {/* <div className="flex items-start justify-left flex-col">
-            <label htmlFor="kebele_id">Kebele Id:</label>
-            
-              type="number"
-              id="kebele_id"
-              name="kebele_id"
-              value={formData.kebele_id}
-              onChange={handleChange}
-              className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
-              required
-            />
-          </div> */}
         </div>
 
         <div className="flex justify-center items-center gap-10 py-[15px] px-[15px]">

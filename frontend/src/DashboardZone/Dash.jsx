@@ -1,6 +1,6 @@
 import React from 'react'
 import Sidebar from './Sidebar'
- import DashView from '../DashboardWoreda/DashView'
+ import DashView from '../DashboardWoreda/WoredaHeader'
 import { Outlet } from 'react-router-dom'
 
 const DashZone = () => {

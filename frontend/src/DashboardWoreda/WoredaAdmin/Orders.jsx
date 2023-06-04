@@ -28,7 +28,6 @@ const Orders = () => {
             <th className="px-4 py-2">#</th>
             <th className="px-4 py-2">Farmer_ID</th>
             <th className="px-4 py-2">F_Name</th>
-            <th className="px-4 py-2">Cluster_Name</th>
             <th className="px-4 py-2">Input_type</th>
             <th className="px-4 py-2">Amount</th>
           </tr>
@@ -41,9 +40,8 @@ const Orders = () => {
                 className={index % 2 === 0 ? "bg-gray-200" : "bg-white"}
               >
                 <td className="border px-4 py-2">{index + 1}</td>
-                <td className="border px-4 py-2">{order.farmers_id}</td>
-                <td className="border px-4 py-2">{order.fname}</td>
-                <td className="border px-4 py-2">{order.cluster_name}</td>
+                <td className="border px-4 py-2">{order.farmer_id}</td>
+                <td className="border px-4 py-2">{order.farmer_fname}</td>
                 <td className="border px-4 py-2">{order.input_type}</td>
                 <td className="border px-4 py-2">{order.amount}</td>
               </tr>

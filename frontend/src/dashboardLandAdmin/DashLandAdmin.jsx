@@ -1,6 +1,5 @@
 import React from 'react'
 import Sidebar from './Sidebar'
-import DashView from '../DashboardWoreda/DashView'
 import { Outlet } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 // import { useSelector } from 'react-redux'

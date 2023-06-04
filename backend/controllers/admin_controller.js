@@ -3,6 +3,7 @@ const db = require("../config/connection_db");
 const CreateAdmin = (req, res) => {
   const {
     id,
+    // kebele_name,
     fname,
     mname,
     lname,
@@ -16,12 +17,13 @@ const CreateAdmin = (req, res) => {
     kebele_id,
   } = req.body;
   const role_id = 2;
-  const sql = `INSERT INTO representative(id, fname, mname, lname,gender, email,phone_number, user_name, password,zone_id,woreda_id,kebele_id, role_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,${role_id} )`;
+  const sql = `INSERT INTO representative (id, fname, mname, lname,gender, email,phone_number, user_name, password,zone_id,woreda_id,kebele_id, role_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,${role_id} )`;
 
   db.query(
     sql,
     [
       id,
+      // kebele_name,
       fname,
       mname,
       lname,
@@ -45,16 +47,19 @@ const CreateAdmin = (req, res) => {
 };
 
 const getAllAdmin = (req, res) => {
-  db.query("SELECT * FROM users ", (err, rows, fields) => {
-    if (!err) {
-      res.send(rows);
-    } else console.log(err);
-  });
+  db.query(
+    "SELECT * FROM representative where role_id=2",
+    (err, rows, fields) => {
+      if (!err) {
+        res.send(rows);
+      } else console.log(err);
+    }
+  );
 };
 
 const GetSingleAdmin = (req, res) => {
   const id = req.params.id;
-  const sql = `SELECT * FROM \`users\` where id = "${id}"`;
+  const sql = `SELECT * FROM representative where id = "${id}"`;
   db.query(sql, (err, rows, field) => {
     if (!err) {
       res.send(rows);
@@ -67,29 +72,20 @@ const GetSingleAdmin = (req, res) => {
 const UpdateAdmin = (req, res) => {
   const id = req.params.id;
   const {
-    kebele_name,
-    rep_fname,
-    rep_mname,
-    rep_lname,
-    user_name,
+    fname,
+    mname,
+    lname,
+    gender,
     email,
+    phone_number,
+    user_name,
     password,
-    rep_phone_number,
   } = req.body;
 
-  const sql = `UPDATE \`represantative\` SET kebele_name=?, rep_fname=?, rep_mname=?, rep_lname=?, user_name=?, email=?, password=?, rep_phone_number=? WHERE id=${id}`;
+  const sql = `UPDATE representative SET fname='${fname}', mname='${mname}', lname='${lname}',gender='${gender}', email='${email}',phone_number='${phone_number}' , user_name='${user_name}', password='${password}' WHERE id=${id}`;
   db.query(
     sql,
-    [
-      kebele_name,
-      rep_fname,
-      rep_mname,
-      rep_lname,
-      user_name,
-      email,
-      password,
-      rep_phone_number,
-    ],
+    [fname, mname, lname, gender, email, phone_number, user_name, password],
     (error, result) => {
       if (error) {
         console.error(error);
@@ -103,7 +99,7 @@ const UpdateAdmin = (req, res) => {
 
 const DeleteAdmin = (req, res) => {
   const id = req.params.id;
-  const sql = `DELETE FROM \`users\` WHERE id=${id}`;
+  const sql = `DELETE FROM \`representative\` WHERE id=${id}`;
   db.query(sql, (err, result) => {
     if (err) {
       res.send(err.message);

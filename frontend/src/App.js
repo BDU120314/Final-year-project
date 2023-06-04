@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
-import Dash from "./DashboardWoreda/Dash";
 import Orders from "./DashboardWoreda/WoredaAdmin/Orders";
 import LandAdminForm1 from "./components/DisplayData/displayLandAdmin/LandAdminForm";
 import UpdateLandAdmin from "./components/DisplayData/displayLandAdmin/UpdateLandAdmin";
@@ -37,6 +35,9 @@ import ManageAccount from "./components/farmer/ManageAccount";
 import ReportEditor from "./components/editor/ReportEditor";
 import PestiSide from "./components/pestiside/PestiSide";
 import Post from "./components/posts/Post";
+import LandAdminManageAccount from "./components/landAdmin/LandAdminManageAccount";
+import WoredaDashboard from "./DashboardWoreda/WoredaDashboard";
+import ManageReportWoredaAdmin from "./DashboardWoreda/WoredaAdmin/ManageReportWoredaAdmin";
 
 const App = () => {
   // const [kebeleData, setKebeleData] = useState([]);
@@ -122,38 +123,38 @@ const App = () => {
           <Route path="/landAdminDashboard/create" element={<ReportEditor />} />
           <Route
             path="/landAdminDashboard/manageReport"
-            element={<ReportEditor />}
+            element={<LandAdminManageAccount />}
           />
         </Route>
 
-        {/* <Route
-          path="/dashboard_woreda"
-          element={<Dash onSearch={handleSearch} />}
-        >
+        {/* woreda Admin Dashboard */}
+
+        <Route path="/woredaDashboard" element={<WoredaDashboard />}>
           <Route index element={<Orders />} />
           <Route
-            path="/dashboard_woreda/manageland"
-            element={
-              <LandAdminForm1
-                kebeleData={filteredData.length > 0 ? filteredData : kebeleData}
-                setKebeleData={setKebeleData}
-              />
-            }
+            path="/woredaDashboard/manageland"
+            element={<LandAdminForm1 />}
           ></Route>
           <Route
-            path={"/dashboard_woreda/manageland/update/:id"}
+            path={"/woredaDashboard/manageland/update/:id"}
             element={<UpdateLandAdmin />}
           />
           <Route
-            path="/dashboard_woreda/manageland/view/:id"
+            path="/woredaDashboard/manageland/view/:id"
             element={<SingleLandAdmin />}
           />
           <Route
-            path="/dashboard_woreda/register"
+            path="/woredaDashboard/register"
             element={<AdminRegistrationForm />}
           />
-          <Route path="/dashboard_woreda/orders" element={<Orders />} />
+          <Route path="/woredaDashboard/orders" element={<Orders />} />
+          <Route path="/woredaDashboard/create" element={<ReportEditor />} />
+          <Route
+            path="/woredaDashboard/manageReport"
+            element={<ManageReportWoredaAdmin />}
+          />
         </Route>
+        {/*
         <Route path="/zone_dashboard" element={<DashZone />}>
           <Route index element={<Orders />} />
           <Route path="/zone_dashboard/manageland" element={<WoredaData />} />

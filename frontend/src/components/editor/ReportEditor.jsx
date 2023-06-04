@@ -10,7 +10,6 @@ const ReportForm = () => {
   const user = useSelector((state) => state.auth.user);
   const reactQuillRef = useRef(null);
   const token = user.token;
-console.log(token)
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
   };
@@ -18,50 +17,47 @@ console.log(token)
   const handleContentChange = (value) => {
     setContent(value);
   };
-const handleSubmit = async (e) => {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  const editor = reactQuillRef.current.getEditor();
-  const content = editor.root.innerHTML;
-  const plainTextContent = stripHtmlTags(content);
+    const editor = reactQuillRef.current.getEditor();
+    const content = editor.root.innerHTML;
+    const plainTextContent = stripHtmlTags(content);
 
-  // Replace "your_backend_url" with the actual URL of your backend API
-  const url = "http://localhost:5001/api/v1/report";
+    // Replace "your_backend_url" with the actual URL of your backend API
+    const url = "http://localhost:5001/api/v1/report";
 
-  try {
-    // Make a POST request to create a new report
-    const response = await axios.post(
-      url,
-      {
-        title,
-        content: plainTextContent,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
+    try {
+      // Make a POST request to create a new report
+      const response = await axios.post(
+        url,
+        {
+          title,
+          content: plainTextContent,
         },
-      }
-    );
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
-    // Handle the response if needed
-    console.log(response.data);
+      // Handle the response if needed
+      // console.log(response.data, "result after insered");
 
-    // Reset the form
-    setTitle("");
-    setContent("");
-  } catch (error) {
-    console.error("Error creating report", error);
-  }
-};
+      // Reset the form
+      setTitle("");
+      setContent("");
+    } catch (error) {
+      console.error("Error creating report", error);
+    }
+  };
 
-const stripHtmlTags = (html) => {
-  const tempDiv = document.createElement("div");
-  tempDiv.innerHTML = html;
-  return tempDiv.textContent || tempDiv.innerText || "";
-};
-
-
-
+  const stripHtmlTags = (html) => {
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = html;
+    return tempDiv.textContent || tempDiv.innerText || "";
+  };
 
   const toolbarOptions = [
     [{ header: [1, 2, 3, 4, 5, 6, false] }],

@@ -21,7 +21,7 @@ const CreateFarmers = async (req, res) => {
     kebele_id,
   } = req.body;
 
-  const role_id = 1;
+  const role_id = 5;
 
   const sql = `INSERT INTO farmers (id, fname, mname, lname, birth_date, gender, land_by_ha, email, phone_number, user_name, password, kebele_id, role_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)`;
 
