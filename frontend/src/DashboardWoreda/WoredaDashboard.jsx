@@ -1,5 +1,5 @@
 import React from 'react'
-import WoredaSideBar from "./WoredaAdmin/WoredaSideBar";
+import WoredaSideBar from "./WoredaSideBar";
 import { Outlet } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import WoredaHeader from './WoredaHeader';

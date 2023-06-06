@@ -16,29 +16,30 @@ import DistributorUpdate from "./components/DisplayData/displayDistributer/distr
 import DisplaySingleDistributor from "./components/DisplayData/displayFarmersData/displaySingleData";
 import DistributorRegistrationForm from "./components/registrationForm/distributor_form/distributor_form";
 import DashLandAdmin from "./dashboardLandAdmin/DashLandAdmin";
-import FarmersData from "./components/DisplayData/displayFarmersData/farmers_data";
+import FarmersData from "./dashboardLandAdmin/farmers_data";
 import FarmerUpdate from "./components/DisplayData/displayFarmersData/farmerUpdate";
 import FarmerRegistrationForm from "./components/registrationForm/farmers_form/FarmersForm";
 import Login from "./pages/Login";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import DisplaySingleData from "./components/DisplayData/displayFarmersData/displaySingleData";
-import OrderForm from "./components/OrderForm/orderForm";
+import OrderForm from "./components/farmer/orderForm";
 import Main from "./components/HomePart/Main";
 import FarmerDashboard from "./pages/FarmerDashboard";
-import ManageAccount from "./components/farmer/ManageAccount";
 import ReportEditor from "./components/editor/ReportEditor";
 import PestiSide from "./components/pestiside/PestiSide";
 import Post from "./components/posts/Post";
 import LandAdminManageAccount from "./components/landAdmin/LandAdminManageAccount";
 import WoredaDashboard from "./DashboardWoreda/WoredaDashboard";
-import ManageReportWoredaAdmin from "./DashboardWoreda/WoredaAdmin/ManageReportWoredaAdmin";
+import ManageReportWoredaAdmin from "./DashboardWoreda/ManageReportWoredaAdmin";
 import ZoneDashboard from "./DashboardZone/ZoneDashboard";
 import ManageReportZone from "./DashboardZone/ManageReportZone";
 import ZoneOrders from "./DashboardZone/ZoneOrders";
-import WoredaOrders from "./DashboardWoreda/WoredaAdmin/WoredaOrders";
+import WoredaOrders from "./DashboardWoreda/WoredaOrders";
 import RegionDashboard from "./dashboardDirectoriet/RegionDashboard";
 import RegionOrders from "./dashboardDirectoriet/RegionOrders";
+import ManageOrders from "./components/farmer/ManageOrders";
+import UpdateOrder from "./components/farmer/UpdateOrder";
 
 const App = () => {
   // const [kebeleData, setKebeleData] = useState([]);
@@ -92,7 +93,11 @@ const App = () => {
           <Route path="/farmerDashboard/order" element={<OrderForm />} />
           <Route
             path="/farmerDashboard/manageAccount"
-            element={<ManageAccount />}
+            element={<ManageOrders />}
+          />
+          <Route
+            path={"/farmerDashboard/manageAccount/order/update/:id"}
+            element={<UpdateOrder />}
           />
         </Route>
 

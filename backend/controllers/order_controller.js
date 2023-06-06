@@ -42,6 +42,33 @@ const AddOrder = (req, res) => {
     }
   });
 };
+// farmer can update order
+const UpdateFarmersOrder = (req, res) => {
+  const { input_type, amount, role} = req.body;
+  const order_id = req.params.id;
+let status;
+if (role === "Farmer") {
+  status = "Pending";
+} else {
+  res.status(400).send("Invalid role");
+  return;
+}
+  const sql =
+    "UPDATE orders SET input_type = ?, amount = ?, status = ? WHERE id = ?";
+  const values = [input_type, amount, status, order_id];
+
+  db.query(sql, values, (error, result) => {
+    if (!error) {
+      console.log("Order updated successfully!");
+      res.status(200).send("Order updated successfully");
+    } else {
+      console.error(error);
+      res.status(500).send(error.message);
+    }
+  });
+};
+
+
 // for getting all orders
 const getAllOrders = (req, res) => {
   db.query("SELECT * FROM orders", (err, rows, fields) => {
@@ -161,7 +188,9 @@ const UpdateOrder = (req, res) => {
   console.log(orderId, role, status);
   // Check the user's role to determine the allowed status updates
   let allowedStatuses = [];
-  if (role === "Woreda_Admin") {
+  if (role === "Farmer") {
+    allowedStatuses = ["Pending", "Rejected"];
+  } else if (role === "Woreda_Admin") {
     allowedStatuses = ["Woreda Approval", "Rejected"];
   } else if (role === "Zone_Admin") {
     allowedStatuses = ["Rejected", "Zone Approval"];
@@ -284,4 +313,5 @@ module.exports = {
   GetSingleOrder,
   UpdateOrder,
   DeleteOrder,
+  UpdateFarmersOrder,
 };

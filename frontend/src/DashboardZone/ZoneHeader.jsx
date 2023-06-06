@@ -1,16 +1,66 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { logout } from "../redux/reducers/auth";
-import logo from "../assets/logo.jpg";
+import profile from "../assets/logo.jpg";
+import axios from "axios";
 const ZoneHeader = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isLogin = useSelector((state) => state.auth.isLogin);
   const user = useSelector((state) => state.auth.user);
+  const [image, setImage] = useState(null);
+  const location = useLocation();
+  const [isUserMenuOpen, setUserMenuOpen] = useState(false);
+  const [isUploadDisabled, setUploadDisabled] = useState(true);
+  const [zoneAdmin, setZoneAdmin] = useState([]);
+
+  //fetch zoneAdmin details
+  useEffect(() => {
+    const fetchFarmerData = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:5001/api/v1/zone/${user.rep_id}`
+        );
+        setZoneAdmin(response.data);
+      } catch (error) {
+        console.error("Error fetching farmer data:", error);
+      }
+    };
+
+    fetchFarmerData();
+  }, [user.rep_id]);
+
+  //for photo selection event handler
+  const handleImageSelect = (event) => {
+    const file = event.target.files[0];
+    setImage(file);
+    setUploadDisabled(false);
+  };
+
+  //for sending request to backend including image
+  const updateUserProfileImage = async () => {
+    try {
+      const formData = new FormData();
+      formData.append("image", image);
+
+      await axios.put(
+        `http://localhost:5001/api/v1/zone/profile/${user.rep_id}`,
+        formData
+      );
+    } catch (error) {
+      console.error("Error updating profile image:", error);
+    }
+  };
+
+  //for open and close profile image update
+  function toggleUserMenu() {
+    setUserMenuOpen((prevState) => !prevState);
+  }
+
   const handleLogout = () => {
     dispatch(logout());
-    navigate("/login");
+    navigate("/");
   };
 
   return (
@@ -24,10 +74,25 @@ const ZoneHeader = () => {
             Add Admin
           </Link>
         </div>
-        <div className="flex items-center gap-3 relative">
-          <p color="white">{user && <span>{user.user_name}</span>}</p>
-          <div className="w-[50px] h-[50px] rounded-full bg-[#4E73DF]">
-            <img src={logo} alt="logo" />
+        <div
+          className={`text-lg cursor-pointer font-bold flex justify-center items-center mr-4 py-1 whitespace-nowrap capitalize text-center text-green-500  ${
+            location.pathname === "/profile" ? "text-gray-400" : ""
+          }`}
+        >
+          <span className="italic text-md text-gray-600">
+            {user && user.user_name}
+          </span>
+          <div className="flex justify-center items-center gap-[10px]">
+            <img
+              onClick={toggleUserMenu}
+              className="w-[64px] h-[64px] object-cover rounded-full "
+              src={
+                zoneAdmin[0]?.profile
+                  ? `http://localhost:5001/backend/uploads/${zoneAdmin[0]?.profile}`
+                  : profile
+              }
+              alt=""
+            />
           </div>
         </div>
         {isLogin && (
@@ -39,6 +104,40 @@ const ZoneHeader = () => {
           </div>
         )}
       </div>
+      {isUserMenuOpen && (
+        <div
+          className="z-1 absolute right-10 top-[70px] py-1  flex flex-col items-center justify-center gap-5 bg-[#f7f7f6]  rounded shadow dark:bg-gray-200 "
+          id="dropdown-user"
+        >
+          <div
+            className=" flex items-center justify-center flex-col gap-5 px-3 py-4"
+            role="none"
+          >
+            <label
+              htmlFor="image-input"
+              className="bg-gray-500 text-white  px-3 h-8 flex items-center  rounded-md cursor-pointer"
+            >
+              Choose photo
+              <input
+                type="file"
+                id="image-input"
+                className="hidden"
+                onChange={handleImageSelect}
+              />
+            </label>
+            <button
+              className="bg-green-400 rounded-md text-white px-3 h-8 cursor-pointer"
+              onClick={() => {
+                updateUserProfileImage();
+                toggleUserMenu();
+              }}
+              disabled={isUploadDisabled}
+            >
+              Change photo
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

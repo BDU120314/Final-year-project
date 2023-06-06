@@ -16,7 +16,6 @@ const DashLandAdmin = () => {
             <Sidebar />
           </div>
           <div className="basis-[83%] border">
-            {/* <DashView username="Chale" links="/landadmin_dashboard/register " /> */}
             <div className="">
               <Outlet></Outlet>
             </div>

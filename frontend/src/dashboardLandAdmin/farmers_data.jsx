@@ -48,12 +48,10 @@ const FarmersData = () => {
       .delete(`http://localhost:5001/api/v1/farmers/delete/${id}`)
       .then((response) => {
         setAccountData(accountData.filter((item) => item.id !== id));
-        console.log(`deleted user id: ${id}`);
       })
       .catch((error) => {
         console.log(error);
       });
-    console.log("deleted successfully");
   };
 
   const handleSubmit = (e) => {
@@ -77,7 +75,6 @@ const FarmersData = () => {
     if (filteredData.length === 0) {
       toast.info("No results found");
     }
-
     setFilteredData(filteredData);
   };
 
@@ -128,12 +125,12 @@ const FarmersData = () => {
             <FaSearch color="white" />
           </button>
         </form>
-        <button
+        {/* <button
           className="bg-blue-400 h-10 px-[14px] rounded-md"
           // onClick={handleReload}
         >
           <TfiReload color="white" fontSize={20} />
-        </button>
+        </button> */}
       </div>
       <div className="flex justify-center flex-col items-center px-5 ">
         <table className="table-auto w-full">

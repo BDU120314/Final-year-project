@@ -99,7 +99,6 @@ const UpdateWoreda = (req, res) => {
     }
   );
 };
-
 const DeleteWoreda = (req, res) => {
   const id = req.params.id;
   const sql = `DELETE FROM representative WHERE id = ${id}`;

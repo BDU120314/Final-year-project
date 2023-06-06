@@ -55,14 +55,14 @@ console.log(kebele_id)
   };
 
   return (
-    <div className="flex justify-center items-center h-[100vh] bg-gray-100  flex-col">
-      <div className="mt-0">
+    <div className="flex justify-center items-center -mt-20 h-[100vh]  bg-gray-100  flex-col">
+      <div className="mt-0 ">
         <h2 className="text-black font-extrabold leading-10 py-25">
           Order form for farmers
         </h2>
       </div>
       <form
-        className="flex flex-col items-center bg-gray-200 p-10 gap-10 justify-center"
+        className="flex flex-col items-center bg-gray-200  p-10 gap-10 justify-center"
         onSubmit={handleSubmit}
       >
         <div className="flex items-start justify-left flex-col ">
