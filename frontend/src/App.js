@@ -1,17 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
-import Orders from "./DashboardWoreda/WoredaAdmin/Orders";
 import LandAdminForm1 from "./components/DisplayData/displayLandAdmin/LandAdminForm";
 import UpdateLandAdmin from "./components/DisplayData/displayLandAdmin/UpdateLandAdmin";
 import SingleLandAdmin from "./components/DisplayData/displayLandAdmin/SingleLandAdmin";
 import AdminRegistrationForm from "./components/registrationForm/admin_form/admin_form";
-import DashZone from "./DashboardZone/Dash";
 import WoredaData from "./components/DisplayData/displayWoredaData/woreda_formData";
 import WoredaUpdate from "./components/DisplayData/displayWoredaData/updateWoreda";
-import DisplaySingleWoreda from "./components/DisplayData/displayWoredaData/displaySingleWoreda";
-import WoredaRegistrationForm from "./components/registrationForm/woreda_form/woreda_form";
-import DashRegion from "./dashboardDirectoriet/DashRegion";
 import ZoneData from "./components/DisplayData/displayZoneData/zone_formData";
 import ZoneUpdate from "./components/DisplayData/displayZoneData/updateZone";
 import DisplaySingleZone from "./components/DisplayData/displayZoneData/displaySingleZone";
@@ -38,6 +33,12 @@ import Post from "./components/posts/Post";
 import LandAdminManageAccount from "./components/landAdmin/LandAdminManageAccount";
 import WoredaDashboard from "./DashboardWoreda/WoredaDashboard";
 import ManageReportWoredaAdmin from "./DashboardWoreda/WoredaAdmin/ManageReportWoredaAdmin";
+import ZoneDashboard from "./DashboardZone/ZoneDashboard";
+import ManageReportZone from "./DashboardZone/ManageReportZone";
+import ZoneOrders from "./DashboardZone/ZoneOrders";
+import WoredaOrders from "./DashboardWoreda/WoredaAdmin/WoredaOrders";
+import RegionDashboard from "./dashboardDirectoriet/RegionDashboard";
+import RegionOrders from "./dashboardDirectoriet/RegionOrders";
 
 const App = () => {
   // const [kebeleData, setKebeleData] = useState([]);
@@ -130,7 +131,7 @@ const App = () => {
         {/* woreda Admin Dashboard */}
 
         <Route path="/woredaDashboard" element={<WoredaDashboard />}>
-          <Route index element={<Orders />} />
+          <Route index element={<WoredaOrders />} />
           <Route
             path="/woredaDashboard/manageland"
             element={<LandAdminForm1 />}
@@ -147,93 +148,79 @@ const App = () => {
             path="/woredaDashboard/register"
             element={<AdminRegistrationForm />}
           />
-          <Route path="/woredaDashboard/orders" element={<Orders />} />
+          <Route path="/woredaDashboard/orders" element={<WoredaOrders />} />
           <Route path="/woredaDashboard/create" element={<ReportEditor />} />
           <Route
             path="/woredaDashboard/manageReport"
             element={<ManageReportWoredaAdmin />}
           />
         </Route>
-        {/*
-        <Route path="/zone_dashboard" element={<DashZone />}>
-          <Route index element={<Orders />} />
-          <Route path="/zone_dashboard/manageland" element={<WoredaData />} />
+
+        {/* zone admin dashboard */}
+
+        <Route path="/zoneDashboard" element={<ZoneDashboard />}>
+          <Route index element={<ZoneOrders />} />
+          <Route path="/zoneDashboard/manageland" element={<WoredaData />} />
           <Route
-            path={"/zone_dashboard/manageland/update/:id"}
+            path={"/zoneDashboard/manageland/update/:id"}
             element={<WoredaUpdate />}
           />
-          <Route
-            path="/zone_dashboard/manageland/view/:id"
-            element={<DisplaySingleWoreda />}
-          />
+          <Route path="/zoneDashboard/create" element={<ReportEditor />} />
 
           <Route
-            path="/zone_dashboard/register"
-            element={<WoredaRegistrationForm />}
+            path="/zoneDashboard/manageReport"
+            element={<ManageReportZone />}
           />
-          <Route path="/zone_dashboard/orders" element={<Orders />} />
+          <Route path="/zoneDashboard/orders" element={<ZoneOrders />} />
         </Route>
 
-        <Route path="/region_dashboard" element={<DashRegion />}>
-          <Route index element={<Orders />} />
-          <Route path="/region_dashboard/manage_zone" element={<ZoneData />} />
+        {/* region admin dashboard */}
+
+        <Route path="/regionDashboard" element={<RegionDashboard />}>
+          <Route index element={<RegionOrders />} />
           <Route
-            path={"/region_dashboard/manage_zone/update/:id"}
+            path="/regionDashboard/manageZoneAdmin"
+            element={<ZoneData />}
+          />
+          <Route
+            path={"/regionDashboard/manageZoneAdmin/update/:id"}
             element={<ZoneUpdate />}
           />
           <Route
-            path="/region_dashboard/manage_zone/view/:id"
+            path="/regionDashboard/manageZoneAdmin/view/:id"
             element={<DisplaySingleZone />}
           />
 
           <Route
-            path="/region_dashboard/register_zone"
+            path="/regionDashboard/zoneAdminRegister"
             element={<ZoneRegistrationForm />}
           />
           <Route
-            path="/region_dashboard/manage_distributor"
+            path="/regionDashboard/manageDistributor"
             element={<DistributorForm />}
           />
           <Route
-            path={"/region_dashboard/manage_distributor/update/:id"}
+            path={"/regionDashboard/manageDistributor/update/:id"}
             element={<DistributorUpdate />}
           />
           <Route
-            path="/region_dashboard/manage_distributor/view/:id"
+            path="/regionDashboard/manageDistributor/view/:id"
             element={<DisplaySingleDistributor />}
           />
 
           <Route
-            path="/region_dashboard/register_distributor"
+            path="/regionDashboard/registerDistributor"
             element={<DistributorRegistrationForm />}
           />
 
-          <Route path="/region_dashboard/orders" element={<Orders />} />
+          <Route path="/regionDashboard/orders" element={<RegionOrders />} />
+          <Route path="/regionDashboard/create" element={<ReportEditor />} />
+
+          <Route
+            path="/regionDashboard/manageReport"
+            element={<ManageReportZone />}
+          />
         </Route>
-
-        <Route path="/landadmin_dashboard" element={<DashLandAdmin />}>
-          <Route index
-            path="/landadmin_dashboard/manage_farmers"
-            element={<FarmersData />}
-          />
-          <Route
-            path={"/landadmin_dashboard/manage_farmers/update/:id"}
-            element={<FarmerUpdate />}
-          />
-          <Route
-            path="/landadmin_dashboard/manage_farmers/view/:id"
-            element={<DisplaySingleData />}
-          />
-
-          <Route
-            path="/landadmin_dashboard/register"
-            element={<FarmerRegistrationForm />}
-          />
-          <Route
-            path="/landadmin_dashboard/FarmersData"
-            element={<FarmersData />}
-          />
-        </Route> */}
       </Routes>
     </div>
   );

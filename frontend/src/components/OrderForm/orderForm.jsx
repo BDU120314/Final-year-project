@@ -13,8 +13,8 @@ function OrderForm() {
   const navigate = useNavigate();
   const user = useSelector((state) => state.auth.user);
   const farmers_id = user.farmers_id;
-  console.log(user)
-  console.log(farmers_id);
+  const role = user.role
+ 
   useEffect(() => {
     const fetchedData = async () => {
       const response = await axios.get(
@@ -27,29 +27,32 @@ function OrderForm() {
 
   const fname = farmer.length > 0 ? farmer[0].fname : "";
   const mname = farmer.length > 0 ? farmer[0].mname : "";
-
+  const kebele_id = farmer.length > 0 ? farmer[0].kebele_id : "";
+console.log(kebele_id)
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
- const handleSubmit =  (e) => {
-   e.preventDefault();
-   try {
-      axios.post("http://localhost:5001/api/v1/order", {
-       fname,
-       mname,
-       input_type: formData.input_type,
-       amount,
-       farmers_id,
-     });
-     alert("Order successfully placed");
-     navigate("/farmerDashboard/manageAccount"); // Navigate after successful order
-   } catch (error) {
-     console.log(error);
-   }
- };
-
-
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post("http://localhost:5001/api/v1/order", {
+        fname,
+        mname,
+        input_type: formData.input_type,
+        amount,
+        farmers_id,
+        kebele_id,
+        role,
+      });
+      if (response.status === 200) {
+        alert("Order successfully placed");
+        navigate("/farmerDashboard/manageAccount"); // Navigate after successful order
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="flex justify-center items-center h-[100vh] bg-gray-100  flex-col">
@@ -107,3 +110,4 @@ function OrderForm() {
 }
 
 export default OrderForm;
+//remove async await

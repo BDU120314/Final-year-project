@@ -82,6 +82,16 @@ const getAllFarmers = (req, res) => {
 
 //for getting single farmers
 
+const GetallFarmerbyKebeleId = (req, res) => {
+  const id = req.params.id;
+  console.log(id)
+  const sql = `SELECT * FROM farmers where kebele_id = "${id}"`;
+  db.query(sql, (err, rows, field) => {
+    if (!err) {
+      res.send(rows);
+    } else console.log(err);
+  });
+};
 const GetSingleFarmer = (req, res) => {
   const id = req.params.id;
   const sql = `SELECT * FROM farmers where id = "${id}"`;
@@ -138,4 +148,5 @@ module.exports = {
   GetSingleFarmer,
   UpdateFarmer,
   DeleteFarmers,
+  GetallFarmerbyKebeleId,
 };

@@ -13,6 +13,7 @@ const NotFoundMiddleware = require("./not-found");
 const LoginRoute = require("./routes_part/login_route");
 const reportRouter = require("./routes_part/reportRoute");
 const postsRouter = require("./routes_part/postsRoute");
+const regionAdminRouter = require("./routes_part/region_route");
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
@@ -23,6 +24,7 @@ app.use(bodyparser.json());
 app.use("/backend/uploads", express.static(path.join(__dirname, "uploads")));
 //route
  
+app.use("/api/v1/admin", regionAdminRouter)
 app.use("/api/v1/farmers", router);
 app.use("/api/v1/woreda", woreda_router);
 app.use("/api/v1/zone", zone_router);

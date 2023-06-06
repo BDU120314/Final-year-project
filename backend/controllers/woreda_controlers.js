@@ -14,12 +14,13 @@ const CreateWoreda = (req, res) => {
     phone_number,
     user_name,
     password,
+    region_id,
     zone_id,
     woreda_id,
     kebele_id,
   } = req.body;
   const role_id = 3;
-  const sql = `INSERT INTO representative (id,fname, mname,lname,gender, email,phone_number, user_name, password,zone_id,woreda_id,kebele_id, role_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,${role_id} )`;
+  const sql = `INSERT INTO representative (id,fname, mname,lname,gender, email,phone_number, user_name, password,region_id,zone_id,woreda_id,kebele_id, role_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,${role_id} )`;
   db.query(
     sql,
     [
@@ -33,6 +34,7 @@ const CreateWoreda = (req, res) => {
       phone_number,
       user_name,
       password,
+      region_id,
       zone_id,
       woreda_id,
       kebele_id,
@@ -63,7 +65,7 @@ const GetSingleWoreda = (req, res) => {
   const sql = `SELECT * FROM representative where id = "${id}"`;
   db.query(sql, (err, rows, field) => {
     if (!err) {
-      res.send(rows);
+      res.json({rows});
     } else console.log(err);
   });
 };

@@ -5,43 +5,43 @@ import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { TfiReload } from "react-icons/tfi";
-
+import { useSelector } from "react-redux";
 
 const FarmersData = () => {
-
-
   const [accountData, setAccountData] = useState([]);
   const [formData, setFormData] = useState("");
   const [filteredData, setFilteredData] = useState([]);
+  const [admin, setAdmin] = useState([]);
+
+  const user = useSelector((state) => state.auth.user);
+//for fetching admin details
+  useEffect(() => {
+    const reperesentative = async () => {
+      const response = await axios.get(
+        `http://localhost:5001/api/v1/kebele/${user.rep_id}`
+      );
+      setAdmin(response.data);
+      console.log(response.data);
+    };
+
+    reperesentative();
+  }, [user.rep_id]);
 
   useEffect(() => {
+    const loadAccountData = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:5001/api/v1/farmers/kebele/${admin[0].kebele_id}`
+        );
+        setAccountData(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
     loadAccountData();
-  }, []);
+  }, [admin]);
 
-  const loadAccountData = async () => {
-    try {
-      const response = await axios.get("http://localhost:5001/api/v1/farmers");
-      setAccountData(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  // const loadRoleName = async () => {
-  //   try {
-  //     const response = await axios.get("http://localhost:5001/api/v1/roles");
-  //     const roleData = response.data;
-  //     const updatedAccountData = accountData.map((data) => {
-  //       const roleName = roleData.find(
-  //         (role) => role.id === data.role_id
-  //       )?.name;
-  //       return { ...data, role: roleName };
-  //     });
-  //     setAccountData(updatedAccountData);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+  
 
   const handleDelete = (id) => {
     axios
