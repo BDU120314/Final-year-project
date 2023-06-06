@@ -35,13 +35,13 @@ const Sidebar = () => {
           </summary>
           <nav aria-label="Teams Nav" class="mt-2 flex flex-col ">
             <Link
-              to="/woreda_dashboard/register_kebele"
+              to="/dashboard_woreda/register_kebele"
               class="flex items-center gap-2 px-4 py-2 text-white  hover:bg-green-500 rounded-lg"
             >
               <span class="text-sm font-medium"> Register Kebele</span>
             </Link>
             <Link
-              to="/woreda_dashboard/manage_kebele"
+              to="/dashboard_woreda/manage_kebele"
               class="flex items-center gap-2 px-4 py-2 text-white  hover:bg-green-500 rounded-lg"
             >
               <span class="text-sm font-medium"> Manage Kebele </span>
@@ -60,13 +60,13 @@ const Sidebar = () => {
           </summary>
           <nav aria-label="Teams Nav" class="mt-2 flex flex-col ">
             <Link
-              to="/woreda_dashboard/register_kebelerep"
+              to="/dashboard_woreda/register_kebelerep"
               class="flex items-center gap-2 px-4 py-2 text-white  hover:bg-green-500 rounded-lg"
             >
               <span class="text-sm font-medium"> Register representative</span>
             </Link>
             <Link
-              to="/woreda_dashboard/manage_kebelerep"
+              to="/dashboard_woreda/manage_kebelerep"
               class="flex items-center gap-2 px-4 py-2 text-white  hover:bg-green-500 rounded-lg"
             >
               <span class="text-sm font-medium"> Manage Representative </span>
@@ -77,7 +77,7 @@ const Sidebar = () => {
         <div className="flex justify-between items-center gap-2 py-2 cursor-pointer  hover:bg-green-500 rounded-lg ">
           <div className="flex items-center gap-2  ml-4 mr-2" >
             <FaRegSun color="white" />
-            <Link to="/woreda_dashboard/orders">
+            <Link to="/dashboard_woreda/orders">
               <p className="text-white text-[14px] leading-5 font-bold ">
                 Order's
               </p>

@@ -57,7 +57,7 @@ const Sidebar = () => {
           </div>
           <div className="py-5">
             <Link
-              to="/landadmin_dashboard"
+              to="/landAdminDashboard"
               className="block text-white text-[14px] py-2 px-4 hover:bg-green-800 rounded-lg"
             >
               Dashboard
@@ -68,13 +68,13 @@ const Sidebar = () => {
               </p>
               <nav aria-label="Teams Nav" className="mt-2">
                 <Link
-                  to="/landadmin_dashboard/register"
+                  to="/landAdminDashboard/register"
                   className="block text-white text-[14px] py-2 px-4 hover:bg-green-800 rounded-lg"
                 >
                   Register Farmer
                 </Link>
                 <Link
-                  to="/landadmin_dashboard"
+                  to="/landAdminDashboard"
                   className="block text-white text-[14px] py-2 px-4 hover:bg-green-800 rounded-lg"
                 >
                   Manage Farmer
@@ -87,13 +87,13 @@ const Sidebar = () => {
               </p>
               <nav aria-label="Teams Nav" className="mt-2">
                 <Link
-                  to="/landadmin_dashboard/create"
+                  to="/landAdminDashboard/create"
                   className="block text-white text-[14px] py-2 px-4 hover:bg-green-800 rounded-lg"
                 >
                   Add Report
                 </Link>
                 <Link
-                  to="/landadmin_dashboard/manage_report"
+                  to="/landAdminDashboard/manage_report"
                   className="block text-white text-[14px] py-2 px-4 hover:bg-green-800 rounded-lg"
                 >
                   Manage Report
