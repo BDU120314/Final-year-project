@@ -72,7 +72,7 @@ const Sidebar = () => {
                   className="mt-2 gap-4 items-center flex flex-col"
                 >
                   <Link
-                    to="/woredaDashboard/register_kebele"
+                    to="/woredaDashboard/addkebele"
                     className="flex items-center gap-2 hover:bg-green-300 px-[25px] hover:rounded-md py-1 text-white"
                     onClick={handleLinkItemClick}
                   >
@@ -80,7 +80,7 @@ const Sidebar = () => {
                     <span className="text-md font-medium">Add Kebele</span>
                   </Link>
                   <Link
-                    to="/woredaDashboard/manage_kebele"
+                    to="/woredaDashboard/managekebele"
                     className="flex items-center gap-2 py-1 hover:bg-green-300 px-[25px] hover:rounded-md text-white"
                     onClick={handleLinkItemClick}
                   >
@@ -241,7 +241,7 @@ const Sidebar = () => {
                       <span className="text-md font-medium">Add Kebele</span>
                     </Link>
                     <Link
-                      to="/woredaDashboard/manage_kebele"
+                      to="/woredaDashboard/managekebele"
                       className="flex items-center gap-2 py-1 hover:bg-green-300 px-[15px] hover:rounded-md text-white"
                       onClick={handleLinkItemClick}
                     >

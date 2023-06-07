@@ -1,5 +1,5 @@
 import React from "react";
-import RegistrationFormate from "../../formate/registrationFormate";
+import RegistrationFormate from "../../components/formate/registrationFormate";
 
 const AdminRegistrationForm = () => {
   return (

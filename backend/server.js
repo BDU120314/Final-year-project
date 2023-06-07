@@ -14,6 +14,9 @@ const LoginRoute = require("./routes_part/login_route");
 const reportRouter = require("./routes_part/reportRoute");
 const postsRouter = require("./routes_part/postsRoute");
 const regionAdminRouter = require("./routes_part/region_route");
+const addkebele_router = require("./routes_part/addkebele_route");
+const addworeda_route = require("./routes_part/addworeda_route");
+const addzone_route = require("./routes_part/addzone_route");
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
@@ -34,6 +37,9 @@ app.use("/api/v1/order", order_route);
 app.use("/api/v1/report", reportRouter);
 app.use("/api/v1/login", LoginRoute);
 app.use("/api/v1/posts", postsRouter);
+app.use("/api/v1/addkebele",addkebele_router);
+app.use("/api/v1/addworeda",addworeda_route);
+app.use("/api/v1/addzone",addzone_route)
 
 
 app.use(NotFoundMiddleware);

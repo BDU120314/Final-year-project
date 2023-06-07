@@ -1,35 +1,35 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
-import LandAdminForm1 from "./components/DisplayData/displayLandAdmin/LandAdminForm";
-import UpdateLandAdmin from "./components/DisplayData/displayLandAdmin/UpdateLandAdmin";
-import SingleLandAdmin from "./components/DisplayData/displayLandAdmin/SingleLandAdmin";
-import AdminRegistrationForm from "./components/registrationForm/admin_form/admin_form";
-import WoredaData from "./components/DisplayData/displayWoredaData/woreda_formData";
-import WoredaUpdate from "./components/DisplayData/displayWoredaData/updateWoreda";
-import ZoneData from "./components/DisplayData/displayZoneData/zone_formData";
-import ZoneUpdate from "./components/DisplayData/displayZoneData/updateZone";
-import DisplaySingleZone from "./components/DisplayData/displayZoneData/displaySingleZone";
-import ZoneRegistrationForm from "./components/registrationForm/zone_form/zone_form";
-import DistributorForm from "./components/DisplayData/displayDistributer/distributor_form";
-import DistributorUpdate from "./components/DisplayData/displayDistributer/distributorUpdate";
-import DisplaySingleDistributor from "./components/DisplayData/displayFarmersData/displaySingleData";
-import DistributorRegistrationForm from "./components/registrationForm/distributor_form/distributor_form";
+import LandAdminForm1 from "./DashboardWoreda/KebeleRep/LandAdminForm";
+import UpdateLandAdmin from "./DashboardWoreda/KebeleRep/UpdateLandAdmin";
+import SingleLandAdmin from "./DashboardWoreda/KebeleRep/SingleLandAdmin";
+import AdminRegistrationForm from "./DashboardWoreda/KebeleRep/registeradmin";
+import WoredaData from "./DashboardZone/WoredaRep/woreda_formData";
+import WoredaUpdate from "./DashboardZone/WoredaRep/updateWoreda";
+import ZoneData from "./dashboardDirectoriet/ZoneRep/zone_formData";
+import ZoneUpdate from "./dashboardDirectoriet/ZoneRep/updateZone";
+import DisplaySingleZone from "./dashboardDirectoriet/ZoneRep/displaySingleZone";
+import ZoneRegistrationForm from "./dashboardDirectoriet/ZoneRep/zonerepRegister";
+import DistributorForm from "./dashboardDirectoriet/displayDistributer/distributor_form";
+import DistributorUpdate from "./dashboardDirectoriet/displayDistributer/distributorUpdate";
+import DisplaySingleDistributor from "./dashboardLandAdmin/FarmersData/displaySingleData";
+import DistributorRegistrationForm from "./dashboardDirectoriet/displayDistributer/distributerRegister";
 import DashLandAdmin from "./dashboardLandAdmin/DashLandAdmin";
-import FarmersData from "./dashboardLandAdmin/farmers_data";
-import FarmerUpdate from "./components/DisplayData/displayFarmersData/farmerUpdate";
-import FarmerRegistrationForm from "./components/registrationForm/farmers_form/FarmersForm";
+import FarmersData from "./dashboardLandAdmin/FarmersData/farmers_data";
+import FarmerUpdate from "./dashboardLandAdmin/FarmersData/farmerUpdate";
+import FarmerRegistrationForm from "./dashboardLandAdmin/FarmersData/FarmersForm";
 import Login from "./pages/Login";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
-import DisplaySingleData from "./components/DisplayData/displayFarmersData/displaySingleData";
-import OrderForm from "./components/farmer/orderForm";
+import DisplaySingleData from "./dashboardLandAdmin/FarmersData/displaySingleData";
+import OrderForm from "./farmersDashboard/order/orderForm";
 import Main from "./components/HomePart/Main";
 import FarmerDashboard from "./pages/FarmerDashboard";
 import ReportEditor from "./components/editor/ReportEditor";
 import PestiSide from "./components/pestiside/PestiSide";
 import Post from "./components/posts/Post";
-import LandAdminManageAccount from "./components/landAdmin/LandAdminManageAccount";
+import LandAdminManageAccount from "./components/landAdmin/landadminmangereport";
 import WoredaDashboard from "./DashboardWoreda/WoredaDashboard";
 import ManageReportWoredaAdmin from "./DashboardWoreda/ManageReportWoredaAdmin";
 import ZoneDashboard from "./DashboardZone/ZoneDashboard";
@@ -38,8 +38,20 @@ import ZoneOrders from "./DashboardZone/ZoneOrders";
 import WoredaOrders from "./DashboardWoreda/WoredaOrders";
 import RegionDashboard from "./dashboardDirectoriet/RegionDashboard";
 import RegionOrders from "./dashboardDirectoriet/RegionOrders";
-import ManageOrders from "./components/farmer/ManageOrders";
-import UpdateOrder from "./components/farmer/UpdateOrder";
+import ManageOrders from "./farmersDashboard/order/ManageOrders";
+import UpdateOrder from "./farmersDashboard/order/UpdateOrder";
+import ZoneDisplay from "./dashboardDirectoriet/Zone/zonedisplay";
+import AddingZone from "./dashboardDirectoriet/Zone/addzone_form";
+import ModifyZone from "./dashboardDirectoriet/Zone/zonemodify";
+import SingleZone from "./dashboardDirectoriet/Zone/singlezone";
+import WoredaDisplay from "./DashboardZone/Woreda/woreda_display";
+import AddingWoreda from "./DashboardZone/Woreda/addworeda_form";
+import ModifyWoreda from "./DashboardZone/Woreda/woreda_Update";
+import DisplaySingleWoreda from "./DashboardZone/Woreda/singleworeda";
+import AddingKebele from "./DashboardWoreda/Kebele/addKebele_form";
+import KebeleDisplay from "./DashboardWoreda/Kebele/kebeledisplay";
+import ModifyKebele from "./DashboardWoreda/Kebele/kebelemodify";
+import DisplaySingleKebele from "./DashboardWoreda/Kebele/singlekebele";
 
 const App = () => {
   // const [kebeleData, setKebeleData] = useState([]);
@@ -138,9 +150,27 @@ const App = () => {
         <Route path="/woredaDashboard" element={<WoredaDashboard />}>
           <Route index element={<WoredaOrders />} />
           <Route
+            path="/woredaDashboard/addkebele"
+            element={<AddingKebele />}
+          />
+          <Route
+            path="/woredaDashboard/managekebele"
+            element={<KebeleDisplay />}
+          />
+          <Route
+            path="/woredaDashboard/managekebele/update/:id"
+            element={<ModifyKebele />}
+          />
+          <Route
+            path="/woredaDashboard/managekebele/view/:id"
+            element={<DisplaySingleKebele />}
+          />
+
+          {/* Kebele Land Admin */}
+          <Route
             path="/woredaDashboard/manageland"
             element={<LandAdminForm1 />}
-          ></Route>
+          />
           <Route
             path={"/woredaDashboard/manageland/update/:id"}
             element={<UpdateLandAdmin />}
@@ -165,6 +195,12 @@ const App = () => {
 
         <Route path="/zoneDashboard" element={<ZoneDashboard />}>
           <Route index element={<ZoneOrders />} />
+          <Route path="/zoneDashboard/addworeda" element={<AddingWoreda />} />
+          <Route path="/zoneDashboard/manageWoreda" element={<WoredaDisplay />} />
+          <Route path="/zoneDashboard/manageWoreda/update/:id" element={<ModifyWoreda />} />
+          <Route path="/zoneDashboard/manageWoreda/view/:id" element={<DisplaySingleWoreda />} />
+
+          {/* woreda representative */}
           <Route path="/zoneDashboard/manageland" element={<WoredaData />} />
           <Route
             path={"/zoneDashboard/manageland/update/:id"}
@@ -179,10 +215,24 @@ const App = () => {
           <Route path="/zoneDashboard/orders" element={<ZoneOrders />} />
         </Route>
 
+
         {/* region admin dashboard */}
 
         <Route path="/regionDashboard" element={<RegionDashboard />}>
           <Route index element={<RegionOrders />} />
+          <Route path="/regionDashboard/ZoneAdd" element={<AddingZone />} />
+          <Route path="/regionDashboard/manageZone" element={<ZoneDisplay />} />
+          <Route
+            path="/regionDashboard/manageZone/update/:id"
+            element={<ModifyZone />}
+          />
+          <Route
+            path="/regionDashboard/manageZone/view/:id"
+            element={<SingleZone />}
+          />
+
+
+          {/* zone representative */}
           <Route
             path="/regionDashboard/manageZoneAdmin"
             element={<ZoneData />}

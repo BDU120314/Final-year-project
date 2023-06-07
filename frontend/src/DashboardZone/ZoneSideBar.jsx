@@ -69,9 +69,9 @@ const ZoneSideBar = () => {
           <div className="pt-5 border-b-[1px] border-[#EDEDED]/[0.3] flex flex-col justify-start items-start gap-6">
             <div
               className={`flex cursor-pointer items-center hover:bg-green-300 pl-[15px] pr-[45px] hover:rounded-md justify-between gap-10 py-1 text-white ${
-                openLink === "landAdmin" ? "bg-green-300 rounded-md" : ""
+                openLink === "woreda" ? "bg-green-300 rounded-md" : ""
               }`}
-              onClick={() => handleLinkClick("landAdmin")}
+              onClick={() => handleLinkClick("woreda")}
             >
               <div className="flex items-center gap-2">
                 <GrUserAdmin color="white" fontSize={32} />
@@ -81,12 +81,54 @@ const ZoneSideBar = () => {
                 <FaChevronRight
                   color="white"
                   className={
-                    openLink === "landAdmin" ? "transform rotate-90" : ""
+                    openLink === "woreda" ? "transform rotate-90" : ""
                   }
                 />
               </span>
             </div>
-            {openLink === "landAdmin" && (
+            {openLink === "woreda" && (
+              <nav
+                aria-label="Farmers Nav"
+                className="mt-2 gap-4 items-center flex flex-col"
+              >
+                <Link
+                  to="/zoneDashboard/addworeda"
+                  className="flex items-center gap-2 hover:bg-green-300 px-[25px] hover:rounded-md py-1 text-white"
+                  onClick={handleLinkItemClick}
+                >
+                  <FaChevronRight className="text-green-800" fontSize={22} />
+                  <span className="text-md font-medium">Add Woreda</span>
+                </Link>
+                <Link
+                  to="/zoneDashboard/manageWoreda"
+                  className="flex items-center gap-2 py-1 hover:bg-green-300 px-[25px] hover:rounded-md text-white"
+                  onClick={handleLinkItemClick}
+                >
+                  <FaChevronRight className="text-green-800" fontSize={22} />
+                  <span className="text-md font-medium">Manage Woreda</span>
+                </Link>
+              </nav>
+            )}
+            <div
+              className={`flex cursor-pointer items-center hover:bg-green-300 pl-[15px] pr-[45px] hover:rounded-md justify-between gap-10 py-1 text-white ${
+                openLink === "woredarep" ? "bg-green-300 rounded-md" : ""
+              }`}
+              onClick={() => handleLinkClick("woredarep")}
+            >
+              <div className="flex items-center gap-2">
+                <GrUserAdmin color="white" fontSize={32} />
+                <span className="text-[16px] font-bold">Woreda Admin</span>
+              </div>
+              <span className="shrink-0 transition duration-300">
+                <FaChevronRight
+                  color="white"
+                  className={
+                    openLink === "woredarep" ? "transform rotate-90" : ""
+                  }
+                />
+              </span>
+            </div>
+            {openLink === "woredarep" && (
               <nav
                 aria-label="Farmers Nav"
                 className="mt-2 gap-4 items-center flex flex-col"
