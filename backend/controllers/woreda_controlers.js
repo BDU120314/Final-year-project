@@ -4,8 +4,6 @@ const db = require("../config/connection_db");
 
 const CreateWoreda = (req, res) => {
   const {
-    id,
-    // woreda_name,
     fname,
     mname,
     lname,
@@ -14,18 +12,13 @@ const CreateWoreda = (req, res) => {
     phone_number,
     user_name,
     password,
-    region_id,
-    zone_id,
-    woreda_id,
-    kebele_id,
+    woreda_id, 
   } = req.body;
   const role_id = 3;
-  const sql = `INSERT INTO representative (id,fname, mname,lname,gender, email,phone_number, user_name, password,region_id,zone_id,woreda_id,kebele_id, role_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,${role_id} )`;
+  const sql = `INSERT INTO representative (fname, mname,lname,gender, email,phone_number, user_name, password,woreda_id, role_id) VALUES (?,?,?,?,?,?,?,?,?,${role_id} )`;
   db.query(
     sql,
     [
-      id,
-      // woreda_name,
       fname,
       mname,
       lname,
@@ -34,10 +27,7 @@ const CreateWoreda = (req, res) => {
       phone_number,
       user_name,
       password,
-      region_id,
-      zone_id,
       woreda_id,
-      kebele_id,
     ],
     (error, result) => {
       if (!error) {
@@ -83,12 +73,13 @@ const UpdateWoreda = (req, res) => {
     phone_number,
     user_name,
     password,
+    woreda_id
   } = req.body;
 
-  const sql = `UPDATE representative SET fname='${fname}', mname='${mname}', lname='${lname}',gender='${gender}', email='${email}',phone_number='${phone_number}' , user_name='${user_name}', password='${password}' WHERE id=${id}`;
+  const sql = `UPDATE representative SET fname='${fname}', mname='${mname}', lname='${lname}',gender='${gender}', email='${email}',phone_number='${phone_number}' , user_name='${user_name}', password='${password}', woreda_id ='${woreda_id}' WHERE id=${id}`;
   db.query(
     sql,
-    [fname, mname, lname, gender, email, phone_number, user_name, password],
+    [fname, mname, lname, gender, email, phone_number, user_name, password, woreda_id],
     (error, result) => {
       if (error) {
         console.error(error);

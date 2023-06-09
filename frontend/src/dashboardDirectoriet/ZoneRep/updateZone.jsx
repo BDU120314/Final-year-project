@@ -5,14 +5,14 @@ import { useEffect } from "react";
 
 function ZoneUpdate() {
   const [formData, setFormData] = useState({
-    zone_name: "",
-    rep_fname: "",
-    rep_mname: "",
-    rep_lname: "",
+    zone_id: "",
+    fname: "",
+    mname: "",
+    lname: "",
     email: "",
     password: "",
     user_name: "",
-    rep_phone_number: "",
+    phone_number: "",
     id: "",
   });
 
@@ -21,10 +21,10 @@ function ZoneUpdate() {
 
   useEffect(() => {
     axios.get(`http://localhost:5001/api/v1/zone/${id}`).then((res) => {
+      console.log(res.data);
       setFormData(res.data[0]);
-      console.log(res.data[0]);
     });
-  }, [id, setFormData]);
+  }, [id]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,7 +33,7 @@ function ZoneUpdate() {
         `http://localhost:5001/api/v1/zone/update/${id}`,
         formData
       );
-      navigate("/region_dashboard/manage_zone");
+      navigate("/regionDashboard/manageZoneAdmin");
       console.log(response);
     } catch (error) {
       alert(error);
@@ -54,12 +54,12 @@ function ZoneUpdate() {
       <form className=" bg-gray-200" onSubmit={handleSubmit}>
         <div className="flex justify-center items-center gap-10  py-[15px] px-[15px]">
           <div className="flex items-left flex-col justify-left ">
-            <label htmlFor="zone_name">First Name</label>
+            <label htmlFor="zonename">zone ID</label>
             <input
-              type="text"
+              type="number"
               id="zonename"
-              name="zone_name"
-              value={formData.zone_name}
+              name="zone_id"
+              value={formData.zone_id}
               onChange={handleChange}
               className="w-[350px] h-10 outline-none pl-5 rounded-lg"
               required
@@ -71,7 +71,7 @@ function ZoneUpdate() {
               type="text"
               id="fname"
               name="fname"
-              value={formData.rep_fname}
+              value={formData.fname}
               onChange={handleChange}
               className="w-[350px] h-10 outline-none pl-5 rounded-lg"
               required
@@ -86,7 +86,7 @@ function ZoneUpdate() {
               type="text"
               id="mname"
               name="mname"
-              value={formData.rep_mname}
+              value={formData.mname}
               onChange={handleChange}
               className="w-[350px] h-10 outline-none pl-5 rounded-lg"
             />
@@ -96,8 +96,8 @@ function ZoneUpdate() {
             <input
               type="text"
               id="lname"
-              name="rep_lname"
-              value={formData.rep_lname}
+              name="lname"
+              value={formData.lname}
               onChange={handleChange}
               className="w-[350px] h-10 outline-none pl-5 rounded-lg"
               required
@@ -125,7 +125,7 @@ function ZoneUpdate() {
               type="tel"
               id="phone_number"
               name="phone_number"
-              value={formData.rep_phone_number}
+              value={formData.phone_number}
               onChange={handleChange}
               className="w-[350px] h-10 outline-none pl-5 rounded-lg"
               required

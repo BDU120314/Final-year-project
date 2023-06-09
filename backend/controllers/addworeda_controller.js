@@ -1,10 +1,10 @@
 const db = require("../config/connection_db");
 
 const AddWoreda = (req, res) => {
-  const { id, name } = req.body;
-  const sql = "INSERT INTO woredas (id, name) VALUES (?, ?)";
+  const { id, name, zone_id } = req.body;
+  const sql = "INSERT INTO woredas (id, name, zone_id) VALUES (?, ?, ?)";
 
-  db.query(sql, [id, name], (error, result) => {
+  db.query(sql, [id, name, zone_id], (error, result) => {
     if (!error) {
       console.log("Data added successfully!");
       res.status(200).send("Data added successfully!");
@@ -72,10 +72,33 @@ const DeleteWoreda = (req, res) => {
   });
 };
 
+const selectworedaById = (req, res) => {
+  const id = req.params.id;
+  const sql = `SELECT * FROM woredas WHERE id = ${id}`;
+
+  db.query(sql, (error, results) => {
+    if (error) {
+      console.error("Error executing query:", error);
+      res.status(500).json({ error: "An error occurred" });
+    } else {
+      // Check if a zone was found
+      if (results.length > 0) {
+        const zone = results[0]; // Assuming only one zone is returned
+        res.status(200).json(zone);
+      } else {
+        // No zone found with the given ID
+        res.status(404).json({ error: "Zone not found" });
+      }
+    }
+  });
+};
+
+
 module.exports = {
   AddWoreda,
   GetWoreda,
   GetSingleWoreda,
   UpdateWoreda,
   DeleteWoreda,
+  selectworedaById,
 };

@@ -31,7 +31,7 @@ const ZoneDisplay = () => {
   }, []);
 
   return (
-    <div className="flex justify-center items-center px-20">
+    <div className="flex justify-center items-center px-20 py-5">
       <table className="table-auto w-full">
         <thead className="bg-gray-500 sticky top-16">
           <tr>

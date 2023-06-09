@@ -24,8 +24,6 @@ const SingleZone = () => {
               <th className="px-4 py-2">Zone Name</th>
               <th className="px-4 py-2">Id</th>
               <th className="px-4 py-2">Representative full name</th>
-              {/* <th className="px-4 py-2">Lastname</th>
-              <th className="px-4 py-2">Middle name</th> */}
               <th className="px-4 py-2">Gender</th>
               <th className="px-4 py-2">Email</th>
               <th className="px-4 py-2">Phone_number</th>
@@ -36,11 +34,9 @@ const SingleZone = () => {
             {data.map((datas) => {
               return (
                 <tr key={datas.id}>
-                  <td className="border px-4 py-2">{datas.zone_name}</td>
+                  <td className="border px-4 py-2">{datas.name}</td>
                   <td className="border px-4 py-2">{datas.id}</td>
                   <td className="border px-4 py-2">{datas.fname} {datas.mname} {datas.lname}</td>
-                  {/* <td className="border px-4 py-2">{datas.mname}</td>
-                  <td className="border px-4 py-2">{datas.lname}</td> */}
                   <td className="border px-4 py-2">{datas.gender}</td>
                   <td className="border px-4 py-2">{datas.email}</td>
                   <td className="border px-4 py-2">{datas.phone_number}</td>

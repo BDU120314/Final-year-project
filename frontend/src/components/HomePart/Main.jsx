@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import images from "./Photo/images.jpg";
-import download from "./Photo/download.jpg";
-import urea from "./Photo/urea.jpg";
-import chemical_fertilizer from "./Photo/chemical_fertilizer.jpg";
+import images from "../../assets/images.jpg";
+import download from "../../assets/Photo/download.jpg";
+import urea from "../../assets/Photo/urea.jpg";
+import chemical_fertilizer from "../../assets/Photo/chemical_fertilizer.jpg";
 import green from "../../assets/Green.jpg";
 
 const Main = () => {

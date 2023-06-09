@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 function ModifyZone() {
   const [formData, setFormData] = useState({
-    zone_name: "",
+    name: "",
     id: "",
   });
 
@@ -13,11 +13,10 @@ function ModifyZone() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5001/api/v1/addzone/${id}`)
+      .get(`http://localhost:5001/api/v1/addzone/select/${id}`)
       .then((res) => {
-        if (res.data && res.data.length > 0) {
-          setFormData(res.data[0]);
-          console.log(res.data[0]);
+        if (res.data && res.data.name && res.data.id) {
+          setFormData(res.data);
         }
       })
       .catch((error) => {
@@ -32,7 +31,7 @@ function ModifyZone() {
         `http://localhost:5001/api/v1/addzone/update/${id}`,
         formData
       );
-      navigate("/region_dashboard/manage_zone");
+      navigate("/regionDashboard/managezone");
       console.log(response);
     } catch (error) {
       console.error(error);
@@ -60,7 +59,7 @@ function ModifyZone() {
               type="text"
               id="name"
               name="name"
-              value={formData && formData.name}
+              value={formData.name}
               onChange={handleChange}
               className="w-[350px] h-10 outline-none pl-5 rounded-lg"
               required
@@ -72,7 +71,7 @@ function ModifyZone() {
               type="text"
               id="id"
               name="id"
-              value={formData && formData.id}
+              value={formData.id}
               onChange={handleChange}
               className="w-[350px] h-10 outline-none pl-5 rounded-lg"
             />

@@ -64,9 +64,9 @@ const RegionHeader = () => {
   };
 
   return (
-    <div className="flex justify-end items-center bg-[#f7f7f7] shadow-lg h-[70px] fixed top-0 right-0 left-[17%]">
+    <div className="flex justify-end items-center bg-[#f7f7f7] shadow-md h-[70px] fixed top-0 right-0 left-[18%]">
       <div className="flex items-center gap-4 relative ">
-        <div className="flex items-center gap-[25px] border-r-[1px] pr-6">
+        <div className="flex items-center gap-[25px] border-r-[1px] pr-1">
           <Link
             to="/regionDashboard/zoneAdminRegister"
             className="bg-blue-400 flex justify-center items-centerh-[30px] px-4 rounded-md"
@@ -75,13 +75,10 @@ const RegionHeader = () => {
           </Link>
         </div>
         <div
-          className={`text-lg cursor-pointer font-bold flex justify-center items-center mr-4 py-1 whitespace-nowrap capitalize text-center text-green-500  ${
+          className={`text-lg cursor-pointer font-bold flex justify-center items-center mr-1 py-1 whitespace-nowrap capitalize text-center text-green-500  ${
             location.pathname === "/profile" ? "text-gray-400" : ""
           }`}
         >
-          <span className="italic text-md text-gray-600">
-            {user && user.user_name}
-          </span>
           <div className="flex justify-center items-center gap-[10px]">
             <img
               onClick={toggleUserMenu}
@@ -98,17 +95,20 @@ const RegionHeader = () => {
         {isLogin && (
           <div
             onClick={handleLogout}
-            className="flex items-center justify-center gap-3 mr-5 bg-red-200 h-8 w-[80px] rounded-md cursor-pointer"
+            className="flex items-center justify-center gap-3 mr-5  cursor-pointer"
           >
-            <p className="text-white text-18px leading-5">Logout</p>
+            <p className="text-gray-600 text-18px leading-5">Logout</p>
           </div>
         )}
       </div>
       {isUserMenuOpen && (
         <div
-          className="z-1 absolute right-10 top-[70px] py-1  flex flex-col items-center justify-center gap-5 bg-[#f7f7f6]  rounded shadow dark:bg-gray-200 "
+          className="z-1 absolute right-10 top-[70px] py-1  flex flex-col items-center justify-center gap-4 bg-[#f7f7f6]  rounded shadow dark:bg-gray-200 "
           id="dropdown-user"
         >
+          <span className="italic text-lg text-gray-900">
+            {user && user.user_name}
+          </span>
           <div
             className=" flex items-center justify-center flex-col gap-5 px-3 py-4"
             role="none"

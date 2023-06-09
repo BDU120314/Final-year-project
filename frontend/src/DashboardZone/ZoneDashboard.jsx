@@ -6,10 +6,10 @@ import ZoneHeader from "./ZoneHeader";
 const ZoneDashboard = () => {
   return (
     <div className="flex ">
-      <div className="basis-[17%] h-[100vh] border">
+      <div className="basis-[18%] h-[100vh] border">
         <ZoneSideBar />
       </div>
-      <div className="basis-[83%] border">
+      <div className="basis-[82%] border">
         <ZoneHeader />
         <div className="mt-[70px]">
           <Outlet></Outlet>

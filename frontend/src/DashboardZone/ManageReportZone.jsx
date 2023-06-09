@@ -51,13 +51,13 @@ const ManageReportZone = () => {
               <th className="px-4 py-2">{report.updateAt}</th>
               <td className="breport px-4 py-2 flex justify-center items-center gap-10">
                 <Link
-                  to={`/farmerreportdisplay/update/${report.id}`}
+                  to={`/regionDashboard/manageReport/update/${report.id}`}
                   className="px-2 bg-blue-700 rounded-sm"
                 >
                   <button className="btn edit">Edit</button>
                 </Link>
                 <Link
-                  to={`/view/${report.id}`}
+                  to={`/regionDashboard/manageReport/view/${report.id}`}
                   className="px-2 bg-gray-300 rounded-sm"
                 >
                   <button className="btn view">View</button>

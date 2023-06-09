@@ -1,16 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios"; 
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function AddingWoreda  () {
-  const [formData, setFormData] = useState({
-    name:"",
-    id: "",
-  });
+ const [formData, setFormData] = useState({
+   id: "",
+   name: "",
+ });
+ const { id, name } = formData;
+ const user = useSelector((state) => state.auth.user);
+ const navigate = useNavigate();
+ const [admin, setAdmin] = useState([]);
 
-  const { 
-    name,
-    id,
-  } = formData;
+ // fetch admin detail
+ useEffect(() => {
+   const fetchAdmins = async () => {
+     try {
+       const response = await axios.get(
+         `http://localhost:5001/api/v1/zone/${user.rep_id}`
+       );
+       setAdmin(response.data[0]);
+     } catch (error) {
+       console.log(error.message);
+     }
+   };
+
+   fetchAdmins();
+ }, [user.rep_id]);
 
   const handleChange = (e) => {
     setFormData((prevState) => ({
@@ -22,7 +39,11 @@ function AddingWoreda  () {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5001/api/v1/addworeda", formData);
+      await axios.post("http://localhost:5001/api/v1/addworeda", {
+        id,
+        name,
+        zone_id: admin.zone_id,
+      });
      window.alert("Woreda successfully registered.");
     } catch (error) {
       console.log(error);

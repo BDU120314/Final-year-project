@@ -80,9 +80,7 @@ const RegionSideBar = () => {
               <span className="shrink-0 transition duration-300">
                 <FaChevronRight
                   color="white"
-                  className={
-                    openLink === "zone" ? "transform rotate-90" : ""
-                  }
+                  className={openLink === "zone" ? "transform rotate-90" : ""}
                 />
               </span>
             </div>
@@ -201,7 +199,7 @@ const RegionSideBar = () => {
               }`}
               onClick={() => handleLinkClick("orders")}
             >
-              <Link to="/zoneDashboard/orders">
+              <Link to="/regionDashboard/orders">
                 <div className="flex items-center gap-2">
                   <GrUserAdmin color="white" fontSize={32} />
                   <span className="text-[16px] font-bold">Orders</span>

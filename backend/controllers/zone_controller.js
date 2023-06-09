@@ -2,8 +2,6 @@ const db = require("../config/connection_db");
 
 const CreateZone = (req, res) => {
   const {
-    id,
-    // zone_name,
     fname,
     mname,
     lname,
@@ -13,16 +11,14 @@ const CreateZone = (req, res) => {
     user_name,
     password,
     zone_id,
-    woreda_id,
-    kebele_id,
   } = req.body;
+
+  console.log(req.body);
   const role_id = 4;
-  const sql = `INSERT INTO representative (id,fname, mname,lname,gender, email,phone_number, user_name, password,zone_id,woreda_id,kebele_id, role_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,${role_id} )`;
+  const sql = `INSERT INTO representative (fname, mname,lname,gender, email,phone_number, user_name, password, zone_id, role_id) VALUES (?,?,?,?,?,?,?,?,?,${role_id} )`;
   db.query(
     sql,
     [
-      id,
-      // zone_name,
       fname,
       mname,
       lname,
@@ -32,8 +28,6 @@ const CreateZone = (req, res) => {
       user_name,
       password,
       zone_id,
-      woreda_id,
-      kebele_id,
     ],
     (error, result) => {
       if (!error) {
@@ -71,6 +65,7 @@ const GetSingleZone = (req, res) => {
 const UpdateZone = (req, res) => {
   const id = req.params.id;
   const {
+    zone_id,
     fname,
     mname,
     lname,
@@ -81,10 +76,20 @@ const UpdateZone = (req, res) => {
     password,
   } = req.body;
 
-  const sql = `UPDATE representative SET fname='${fname}', mname='${mname}', lname='${lname}',gender='${gender}', email='${email}',phone_number='${phone_number}' , user_name='${user_name}', password='${password}' WHERE id=${id}`;
+  const sql = `UPDATE representative SET fname='${fname}', mname='${mname}', lname='${lname}',gender='${gender}', email='${email}', phone_number='${phone_number}', user_name='${user_name}', password='${password}', zone_id ='${zone_id}' WHERE id=${id}`;
   db.query(
     sql,
-    [fname, mname, lname, gender, email, phone_number, user_name, password],
+    [
+      fname,
+      mname,
+      lname,
+      gender,
+      email,
+      phone_number,
+      user_name,
+      password,
+      zone_id,
+    ],
     (error, result) => {
       if (error) {
         console.error(error);

@@ -1,7 +1,6 @@
 import React from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineClose } from "react-icons/ai";
-// import { FaSearch } from "react-icons/fa";
 import { Link, NavLink, useLocation } from "react-router-dom";
 const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
@@ -11,7 +10,7 @@ const Navbar = () => {
     const location = useLocation();
   return (
     <>
-      <nav className="fixed w-screen shadow-lg flex flex-wrap items-center  justify-between bg-[#f7f7f7] mb-1 z-[1]">
+      <nav className="fixed w-screen shadow-md flex flex-wrap items-center  justify-between bg-[#f7f7f7] mb-1 z-[1]">
         <div className="px-4 w-screen flex flex-wrap items-center justify-between">
           <div className="w-full relative flex justify-between items-center lg:w-auto lg:static lg:block lg:justify-start">
             <Link
@@ -41,19 +40,6 @@ const Navbar = () => {
               )}
             </button>
           </div>
-          {/* <div className=" hidden lg:flex-1 lg:flex lg:justify-center lg:items-center lg:ml-60">
-            <div className="lg:relative lg:w-full lg:max-w-[500px]">
-              <input
-                className="lg:w-[450px] lg:bg-gray-200 lg:h-8 lg:pl-12 lg:pr-10 lg:rounded-lg flg:ocus:outline-none lg:focus:ring-2 lg:focus:ring-blue-500"
-                type="search"
-                name="query"
-                placeholder="Search..."
-              />
-              <div className="lg:absolute lg:inset-y-0 lg:left-0 flex lg:items-center lg:pl-4">
-                <FaSearch />
-              </div>
-            </div>
-          </div> */}
           <div
             className={
               "lg:flex flex-grow items-center" +

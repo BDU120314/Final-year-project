@@ -32,7 +32,7 @@ function ModifyWoreda() {
         `http://localhost:5001/api/v1/addworeda/update/${id}`,
         formData
       );
-      navigate("/zone_dashboard/manage_woreda");
+      navigate("/zoneDashboard/manageWoreda");
       console.log(response);
     } catch (error) {
       console.error(error);

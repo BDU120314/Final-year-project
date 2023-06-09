@@ -4,15 +4,17 @@ const AddKebele = (req, res) => {
   const {
      id,
     kebele_name, 
+    woreda_id
   } = req.body; 
   const sql =
-    "INSERT INTO kebeles (id,kebele_name ) VALUES (?,?)";
+    "INSERT INTO kebeles (id,kebele_name, woreda_id ) VALUES (?,?,?)";
 
   db.query(
     sql,
     [
       id,
-     kebele_name,  
+     kebele_name,
+     woreda_id  
     ],
     (error, result) => {
       if (!error) {
@@ -86,10 +88,33 @@ const DeleteKebele = (req, res) => {
   });
 };
 
+const selectkebeleById = (req, res) => {
+  const id = req.params.id;
+  const sql = `SELECT * FROM kebeles WHERE id = ${id}`;
+
+  db.query(sql, (error, results) => {
+    if (error) {
+      console.error("Error executing query:", error);
+      res.status(500).json({ error: "An error occurred" });
+    } else {
+      // Check if a zone was found
+      if (results.length > 0) {
+        const zone = results[0]; // Assuming only one zone is returned
+        res.status(200).json(zone);
+      } else {
+        // No zone found with the given ID
+        res.status(404).json({ error: "Zone not found" });
+      }
+    }
+  });
+};
+
+
 module.exports = {
   AddKebele,
   GetKebele,
   GetSingleKebele,
   UpdateKebele,
   DeleteKebele,
+  selectkebeleById,
 };

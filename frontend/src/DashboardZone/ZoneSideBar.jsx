@@ -16,6 +16,7 @@ const ZoneSideBar = () => {
   //fetch zone admin details
   useEffect(() => {
     const fetchAdminDetails = async () => {
+      // localStorage.setItem(value :user.rep_id)
       try {
         const response = await axios.get(
           `http://localhost:5001/api/v1/zone/${id}`
@@ -80,9 +81,7 @@ const ZoneSideBar = () => {
               <span className="shrink-0 transition duration-300">
                 <FaChevronRight
                   color="white"
-                  className={
-                    openLink === "woreda" ? "transform rotate-90" : ""
-                  }
+                  className={openLink === "woreda" ? "transform rotate-90" : ""}
                 />
               </span>
             </div>
@@ -142,7 +141,7 @@ const ZoneSideBar = () => {
                   <span className="text-md font-medium">Register Admin</span>
                 </Link>
                 <Link
-                  to="/zoneDashboard/manageland"
+                  to="/zoneDashboard/manageworedaAdmin"
                   className="flex items-center gap-2 py-1 hover:bg-green-300 px-[25px] hover:rounded-md text-white"
                   onClick={handleLinkItemClick}
                 >

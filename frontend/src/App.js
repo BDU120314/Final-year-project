@@ -52,39 +52,9 @@ import AddingKebele from "./DashboardWoreda/Kebele/addKebele_form";
 import KebeleDisplay from "./DashboardWoreda/Kebele/kebeledisplay";
 import ModifyKebele from "./DashboardWoreda/Kebele/kebelemodify";
 import DisplaySingleKebele from "./DashboardWoreda/Kebele/singlekebele";
+import WoredaRegistrationForm from "./DashboardZone/WoredaRep/woredarepRegister";
 
 const App = () => {
-  // const [kebeleData, setKebeleData] = useState([]);
-  // const [filteredData, setFilteredData] = useState([]);
-
-  //  useEffect(() => {
-  //    axios
-  //      .get("http://localhost:5001/api/v1/kebele")
-  //      .then((response) => {
-  //        setKebeleData(response.data);
-  //      })
-  //      .catch((error) => {
-  //        console.log(error);
-  //      });
-  //  }, [kebeleData]);
-
-  //  const handleSearch = (searchQuery) => {
-  //    if (searchQuery === "") {
-  //      setFilteredData([]);
-  //    } else {
-  //      const filteredData = kebeleData.filter((admin) => {
-  //        // Modify the following conditions based on your data structure and desired properties
-  //        return (
-  //          admin.rep_fname.toLowerCase().includes(searchQuery.toLowerCase()) ||
-  //          admin.user_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-  //          admin.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
-  //          admin.id.toString().includes(searchQuery) // Example: filtering based on an age property
-  //        );
-  //      });
-  //      setFilteredData(filteredData);
-  //    }
-  //  };
-
   return (
     <div>
       <Routes>
@@ -149,10 +119,7 @@ const App = () => {
 
         <Route path="/woredaDashboard" element={<WoredaDashboard />}>
           <Route index element={<WoredaOrders />} />
-          <Route
-            path="/woredaDashboard/addkebele"
-            element={<AddingKebele />}
-          />
+          <Route path="/woredaDashboard/addkebele" element={<AddingKebele />} />
           <Route
             path="/woredaDashboard/managekebele"
             element={<KebeleDisplay />}
@@ -196,14 +163,24 @@ const App = () => {
         <Route path="/zoneDashboard" element={<ZoneDashboard />}>
           <Route index element={<ZoneOrders />} />
           <Route path="/zoneDashboard/addworeda" element={<AddingWoreda />} />
-          <Route path="/zoneDashboard/manageWoreda" element={<WoredaDisplay />} />
-          <Route path="/zoneDashboard/manageWoreda/update/:id" element={<ModifyWoreda />} />
-          <Route path="/zoneDashboard/manageWoreda/view/:id" element={<DisplaySingleWoreda />} />
+          <Route
+            path="/zoneDashboard/manageWoreda"
+            element={<WoredaDisplay />}
+          />
+          <Route
+            path="/zoneDashboard/manageWoreda/update/:id"
+            element={<ModifyWoreda />}
+          />
+          <Route
+            path="/zoneDashboard/manageWoreda/view/:id"
+            element={<DisplaySingleWoreda />}
+          />
 
           {/* woreda representative */}
-          <Route path="/zoneDashboard/manageland" element={<WoredaData />} />
+          <Route path="/zoneDashboard/register" element ={<WoredaRegistrationForm />} />
+          <Route path="/zoneDashboard/manageworedaAdmin" element={<WoredaData />} />
           <Route
-            path={"/zoneDashboard/manageland/update/:id"}
+            path={"/zoneDashboard/manageworedaAdmin/update/:id"}
             element={<WoredaUpdate />}
           />
           <Route path="/zoneDashboard/create" element={<ReportEditor />} />
@@ -214,7 +191,6 @@ const App = () => {
           />
           <Route path="/zoneDashboard/orders" element={<ZoneOrders />} />
         </Route>
-
 
         {/* region admin dashboard */}
 
@@ -230,7 +206,6 @@ const App = () => {
             path="/regionDashboard/manageZone/view/:id"
             element={<SingleZone />}
           />
-
 
           {/* zone representative */}
           <Route

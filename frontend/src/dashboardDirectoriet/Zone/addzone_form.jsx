@@ -1,16 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function AddingZone() {
   const [formData, setFormData] = useState({
-    name: "",
     id: "",
+    name: "",
   });
-
+const { id, name } = formData;
+  const user = useSelector((state) => state.auth.user);
   const navigate = useNavigate();
+ const [admin, setAdmin] = useState([]);
+  
 
-  const { name, id } = formData;
+  // fetch admin detail
+  useEffect(() => {
+    const fetchAdmins = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:5001/api/v1/admin/${user.rep_id}`
+        );
+        setAdmin(response.data[0]);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+
+    fetchAdmins();
+  }, [user.rep_id]);
 
   const handleChange = (e) => {
     setFormData((prevState) => ({
@@ -18,11 +36,15 @@ function AddingZone() {
       [e.target.name]: e.target.value,
     }));
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5001/api/v1/addzone", formData);
+      console.log(admin.region_id);
+      await axios.post("http://localhost:5001/api/v1/addzone", {
+        id,
+        name,
+        region_id: admin.region_id,
+      });
       window.alert("Zone successfully registered.");
       navigate("/region_dashboard/register_zonerep");
     } catch (error) {
@@ -49,7 +71,7 @@ function AddingZone() {
               name="name"
               id="name"
               onChange={handleChange}
-              value={formData.name}
+              value={name}
               required
               className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
             />
@@ -61,7 +83,7 @@ function AddingZone() {
               name="id"
               id="id"
               onChange={handleChange}
-              value={formData.id}
+              value={id}
               required
               className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
             />
