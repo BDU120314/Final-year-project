@@ -6,7 +6,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { FiMenu, FiX } from "react-icons/fi";
 import { logout } from "../redux/reducers/auth";
-import logo from "../assets/logo.jpg";
 
 const Sidebar = () => {
   const dispatch = useDispatch();

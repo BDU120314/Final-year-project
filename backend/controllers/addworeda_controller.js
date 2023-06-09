@@ -84,6 +84,7 @@ const selectworedaById = (req, res) => {
       // Check if a zone was found
       if (results.length > 0) {
         const zone = results[0]; // Assuming only one zone is returned
+        console.log(zone)
         res.status(200).json(zone);
       } else {
         // No zone found with the given ID

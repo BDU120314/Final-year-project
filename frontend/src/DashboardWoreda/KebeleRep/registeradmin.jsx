@@ -4,7 +4,7 @@ import RegistrationFormate from "../../components/formate/registrationFormate";
 const AdminRegistrationForm = () => {
   return (
     <div>
-      <RegistrationFormate typeName="Kebele" dataBaseColumn="kebele_name" />
+      <RegistrationFormate typeName="Kebele" dataBaseColumn="kebele_id" />
     </div>
   );
 };

@@ -10,10 +10,10 @@ const WoredaDashboard = () => {
     <>
       {isLogin && (
         <div className="flex ">
-          <div className="basis-[17%] h-[100vh] border">
+          <div className="basis:0 lg:basis-[18%] h-[100vh] border">
             <WoredaSideBar />
           </div>
-          <div className="basis-[83%] border">
+          <div className="lg:basis-[82%] basis-[100%] border">
             <WoredaHeader />
             <div className="mt-[70px]">
               <Outlet />

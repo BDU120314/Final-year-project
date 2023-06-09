@@ -64,7 +64,7 @@ const WoredaHeader = () => {
   };
 
   return (
-    <div className="flex justify-end items-center bg-[#f7f7f7] shadow-lg h-[70px] fixed top-0 right-0 left-[17%]">
+    <div className="flex justify-end items-center bg-[#f7f7f7] shadow-sm h-[70px] fixed top-0 right-0 left-[18%]">
       <div className="flex items-center gap-[10px] relative ">
         <div className="flex items-center gap-[20px] border-r-[1px] pr-4">
           <Link
@@ -79,9 +79,6 @@ const WoredaHeader = () => {
             location.pathname === "/profile" ? "text-gray-400" : ""
           }`}
         >
-          <span className="italic text-md text-gray-600">
-            {user && user.user_name}
-          </span>
           <div className="flex justify-center items-center gap-[10px]">
             <img
               onClick={toggleUserMenu}
@@ -109,6 +106,9 @@ const WoredaHeader = () => {
           className="z-1 absolute right-10 top-[70px] py-1  flex flex-col items-center justify-center gap-5 bg-[#f7f7f6]  rounded shadow dark:bg-gray-200 "
           id="dropdown-user"
         >
+          <span className="italic text-md text-gray-600">
+            {user && user.user_name}
+          </span>
           <div
             className=" flex items-center justify-center flex-col gap-5 px-3 py-4"
             role="none"

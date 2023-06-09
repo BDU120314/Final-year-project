@@ -87,7 +87,7 @@ const Sidebar = () => {
     <>
       {isLogin && (
         <>
-          <div className="hidden lg:flex bg-green-400 h-screen w-[17%] flex-col fixed top-0 left-0">
+          <div className="hidden lg:flex bg-green-400 h-screen w-[18%] flex-col fixed top-0 left-0">
             <div className="pt-10 flex justify-center items-center flex-col border-b-[5px] border-gray-200">
               <div
                 className={`text-lg cursor-pointer font-bold flex justify-center items-center mr-4 py-1 whitespace-nowrap capitalize text-center text-green-500  ${
@@ -253,8 +253,10 @@ const Sidebar = () => {
 
           {/* Responsive sidebar content */}
           {showSidebar && (
+ 
             <div className="lg:hidden bg-green-400 h-[95%] w-[30%] flex flex-col fixed top-10 left-0 z-50">
               <div className="flex flex-col justify-start gap-5 py-5">
+ 
                 <div
                   className={`flex cursor-pointer  hover:bg-green-300 py-1 rounded-md gap-1 text-white ${
                     openLink === "farmers" ? "bg-green-300" : ""
@@ -359,7 +361,7 @@ const Sidebar = () => {
       )}
       {isUserMenuOpen && (
         <div
-          className="z-1 absolute left-0 top-[70px] py-1  flex flex-col items-center justify-center gap-5 bg-[#f7f7f6]  rounded shadow dark:bg-gray-200 "
+          className={`z-1 absolute right-0 lg:left-0 top-[70px] py-1  flex flex-col items-center justify-center gap-5 bg-[#f7f7f6]  rounded shadow dark:bg-gray-200 `}
           id="dropdown-user"
         >
           <div

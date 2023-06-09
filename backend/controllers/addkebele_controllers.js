@@ -6,6 +6,7 @@ const AddKebele = (req, res) => {
     kebele_name, 
     woreda_id
   } = req.body; 
+  console.log(req.body)
   const sql =
     "INSERT INTO kebeles (id,kebele_name, woreda_id ) VALUES (?,?,?)";
 
