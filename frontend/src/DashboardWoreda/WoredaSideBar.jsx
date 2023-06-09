@@ -6,6 +6,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { FiMenu, FiX } from "react-icons/fi";
 import { logout } from "../redux/reducers/auth";
+import { GiVillage } from "react-icons/gi";
+import { AiOutlineBorderOuter } from "react-icons/ai";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -53,7 +55,7 @@ const Sidebar = () => {
                 onClick={() => handleLinkClick("kebele")}
               >
                 <div className="flex items-center gap-2">
-                  <GrUserAdmin color="white" fontSize={32} />
+                  <GiVillage color="white" fontSize={32} />
                   <span className="text-[16px] font-bold">kebele</span>
                 </div>
                 <span className="shrink-0 transition duration-300">
@@ -138,7 +140,7 @@ const Sidebar = () => {
               >
                 <Link to="/woredaDashboard/orders">
                   <div className="flex items-center gap-2">
-                    <GrUserAdmin color="white" fontSize={32} />
+                    <AiOutlineBorderOuter color="white" fontSize={32} />
                     <span className="text-[16px] font-bold">Orders</span>
                   </div>
                 </Link>
@@ -188,16 +190,16 @@ const Sidebar = () => {
             </div>
           </div>
           {/* Responsive sidebar */}
-          <div className="lg:hidden bg-green-400 h-16 fixed top-0 left-0 right-0 flex items-center justify-between px-3">
+          <div className="lg:hidden bg-gray-100 h-[70px] fixed top-0 left-0 right-0 flex items-center justify-between px-3">
             {showSidebar ? (
               <FiX
-                className="text-white cursor-pointer"
+                className="text-gray-800 cursor-pointer"
                 size={24}
                 onClick={toggleSidebar}
               />
             ) : (
               <FiMenu
-                className="text-white cursor-pointer"
+                className="text-gray-700 cursor-pointer"
                 size={24}
                 onClick={toggleSidebar}
               />
@@ -206,15 +208,15 @@ const Sidebar = () => {
           </div>
           {/* Responsive sidebar content */}
           {showSidebar && (
-            <div className="md:hidden bg-green-300 h-[95%] w-[40%] flex flex-col fixed top-16 left-0 z-50">
-              <div className="flex flex-col justify-center items-center gap-5 py-5">
+            <div className="lg:hidden bg-green-300 h-[95%] w-[30%] flex flex-col fixed top-[70px] left-0 z-50">
+              <div className="flex flex-col justify-center gap-5 py-5">
                 <div
-                  className={`flex cursor-pointer items-center hover:bg-green-300 px-3 py-1 rounded-md justify-between gap-5 text-white ${
+                  className={`flex cursor-pointer items-center hover:bg-green-300 px-3 py-1 rounded-md gap-5 text-white ${
                     openLink === "kebele" ? "bg-green-300" : ""
                   }`}
                   onClick={() => handleLinkClick("kebele")}
                 >
-                  <GrUserAdmin color="white" fontSize={24} />
+                  <GiVillage color="white" fontSize={24} />
                   <span className="text-[16px] font-bold">kebele</span>
                   <FaChevronRight
                     color="white"
@@ -226,11 +228,11 @@ const Sidebar = () => {
                 {openLink === "kebele" && (
                   <nav
                     aria-label="kebele Nav"
-                    className="mt-2 gap-4 items-center flex flex-col"
+                    className="mt-2 gap-4 flex flex-col"
                   >
                     <Link
-                      to="/woredaDashboard/register_kebele"
-                      className="flex items-center gap-2 hover:bg-green-300 px-[15px] hover:rounded-md py-1 text-white"
+                      to="/woredaDashboard/addkebele"
+                      className="flex gap-2 hover:bg-green-300 px-[15px] hover:rounded-md py-1 text-white"
                       onClick={handleLinkItemClick}
                     >
                       <FaChevronRight
@@ -253,7 +255,7 @@ const Sidebar = () => {
                   </nav>
                 )}
                 <div
-                  className={`flex cursor-pointer items-center hover:bg-green-300 px-3 py-1 rounded-md justify-between gap-5 text-white ${
+                  className={`flex cursor-pointer items-center hover:bg-green-300 px-3 py-1 rounded-md gap-2 text-white ${
                     openLink === "landadmin" ? "bg-green-300" : ""
                   }`}
                   onClick={() => handleLinkClick("landadmin")}
@@ -270,7 +272,7 @@ const Sidebar = () => {
                 {openLink === "landadmin" && (
                   <nav
                     aria-label="landadmin Nav"
-                    className="mt-2 gap-4 items-center flex flex-col"
+                    className="mt-2 gap-4 flex flex-col"
                   >
                     <Link
                       to="/woredaDashboard/register"
@@ -299,20 +301,20 @@ const Sidebar = () => {
                   </nav>
                 )}
                 <div
-                  className={`flex cursor-pointer items-center hover:bg-green-300 pr-[105px] pl-[15px] hover:rounded-md justify-between gap-10 py-1 text-white ${
+                  className={`flex cursor-pointer  hover:bg-green-300 pr-[105px] pl-[15px] hover:rounded-md  py-1 text-white ${
                     openLink === "orders" ? "bg-green-300 rounded-md" : ""
                   }`}
                   onClick={() => handleLinkClick("orders")}
                 >
                   <Link to="/woredaDashboard/orders">
                     <div className="flex items-center gap-2">
-                      <GrUserAdmin color="white" fontSize={32} />
+                      <AiOutlineBorderOuter color="white" fontSize={32} />
                       <span className="text-[16px] font-bold">Orders</span>
                     </div>
                   </Link>
                 </div>
                 <div
-                  className={`flex cursor-pointer items-center hover:bg-green-300 px-3 py-1 rounded-md justify-between gap-5 text-white ${
+                  className={`flex cursor-pointer hover:bg-green-300 px-3 py-1 rounded-md gap-5 text-white ${
                     openLink === "reports" ? "bg-green-300" : ""
                   }`}
                   onClick={() => handleLinkClick("reports")}

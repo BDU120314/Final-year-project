@@ -70,24 +70,22 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
     e.preventDefault();
     try {
       await axios.post(
-        `http://localhost:5001/api/v1/${typeName.toLowerCase()}`, formData );
+        `http://localhost:5001/api/v1/${typeName.toLowerCase()}`, formData);
       alert("User successfully registered");
-        setFormData({
-          [dataBaseColumn]: "",
-          fname: "",
-          mname: "",
-          lname: "",
-          gender: "",
-          email: "",
-          phone_number: "",
-          user_name: "",
-          password: "",
-        });
+      setFormData({
+        [dataBaseColumn]: "",
+        fname: "",
+        mname: "",
+        lname: "",
+        gender: "",
+        email: "",
+        phone_number: "",
+        user_name: "",
+        password: "",
+      });
     } catch (error) {
       console.log(error);
     }
-
-  
   };
 
   return (
@@ -96,19 +94,19 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
         Registration Form
       </h2>
       <form className="flex flex-col bg-gray-200 mb-10" onSubmit={handleSubmit}>
-        <div className="flex justify-center items-center gap-10  py-[15px] px-[15px] ">
+        <div className="flex flex-wrap justify-center items-center gap-5  py-[1px] px-[15px] ">
           {(() => {
             switch (typeName) {
               case "Zone":
                 return (
-                  <div className="flex items-left flex-col justify-left">
+                  <div className="flex items-left flex-col justify-left ">
                     <label htmlFor={dataBaseColumn}>{typeName}</label>
                     <select
                       name={dataBaseColumn}
                       id={dataBaseColumn}
                       onChange={handleChange}
                       value={columnValue}
-                      className="w-[350px] h-10 pl-5 rounded-lg outline-none"
+                      className="w-[350px] h-8 pl-5 rounded-lg outline-none"
                       required
                     >
                       <option value="">Select {typeName}</option>
@@ -122,14 +120,14 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
                 );
               case "Woreda":
                 return (
-                  <div className="flex items-left flex-col justify-left">
+                  <div className="flex items-left flex-col justify-left ">
                     <label htmlFor={dataBaseColumn}>{typeName}</label>
                     <select
                       name={dataBaseColumn}
                       id={dataBaseColumn}
                       onChange={handleChange}
                       value={columnValue}
-                      className="w-[350px] h-10 pl-5 rounded-lg outline-none"
+                      className="w-[350px] h-8 pl-5 rounded-lg outline-none"
                       required
                     >
                       <option value="">Select {typeName}</option>
@@ -143,14 +141,14 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
                 );
               case "Kebele":
                 return (
-                  <div className="flex items-left flex-col justify-left">
+                  <div className="flex items-left flex-col justify-left ">
                     <label htmlFor={dataBaseColumn}>{typeName}</label>
                     <select
                       name={dataBaseColumn}
                       id={dataBaseColumn}
                       onChange={handleChange}
                       value={columnValue}
-                      className="w-[350px] h-10 pl-5 rounded-lg outline-none"
+                      className="w-[350px] h-8 pl-5 rounded-lg outline-none"
                       required
                     >
                       <option value="">Select {typeName}</option>
@@ -166,7 +164,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
                 return null;
             }
           })()}
-          <div className="flex items-start justify-lefft flex-col">
+          <div className="flex items-start justify-left  flex-col">
             <label htmlFor="fname">First Name</label>
             <input
               type="text"
@@ -175,12 +173,12 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
               onChange={handleChange}
               value={fname}
               required
-              className="outline-none w-[350px] h-10 pl-5 rounded-lg"
+              className="outline-none w-[350px] h-8 pl-5 rounded-lg"
             />
           </div>
         </div>
-        <div className="flex justify-center items-center gap-10  py-[15px]">
-          <div className="flex items-left flex-col justify-left">
+        <div className="flex flex-wrap justify-center items-center gap-6  py-[10px]">
+          <div className="flex items-left flex-col justify-left ">
             <label htmlFor="mname">Mid_Name</label>
             <input
               type="text"
@@ -189,10 +187,10 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
               onChange={handleChange}
               value={mname}
               required
-              className="outline-none w-[350px] h-10 pl-5 rounded-lg"
+              className="outline-none w-[350px] h-8 pl-5 rounded-lg"
             />
           </div>
-          <div className="flex items-left flex-col justify-left">
+          <div className="flex items-left flex-col justify-left ">
             <label htmlFor="lname">Last Name</label>
             <input
               type="text"
@@ -201,19 +199,19 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
               onChange={handleChange}
               value={lname}
               required
-              className="outline-none w-[350px] h-10 pl-5 rounded-lg"
+              className="outline-none w-[350px] h-8 pl-5 rounded-lg"
             />
           </div>
         </div>
-        <div className="flex justify-center items-center gap-10  py-[15px]">
-          <div className="flex justify-left flex-col">
+        <div className="flex flex-wrap justify-center items-center gap-6  py-[10px]">
+          <div className="flex justify-left  flex-col">
             <label htmlFor="gender">gender</label>
             <select
               name="gender"
               id="gender"
               value={gender}
               onChange={handleChange}
-              className="w-[350px] h-10 pl-5 rounded-lg outline-none"
+              className="w-[350px] h-8 pl-5 rounded-lg outline-none"
               required
             >
               <option value="">Select gender</option>
@@ -223,7 +221,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
             </select>
           </div>
 
-          <div className="flex justify-left flex-col">
+          <div className="flex justify-left  flex-col">
             <label htmlFor="email">Email</label>
             <input
               type="email"
@@ -231,12 +229,12 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
               id="email"
               value={email}
               onChange={handleChange}
-              className="w-[350px] h-10 pl-5 rounded-lg outline-none"
+              className="w-[350px] h-8 pl-5 rounded-lg outline-none"
             />
           </div>
         </div>
-        <div className="flex justify-center items-center gap-10  py-[15px]">
-          <div className="flex justify-left flex-col">
+        <div className="flex flex-wrap justify-center items-center gap-6  py-[10px]">
+          <div className="flex justify-left  flex-col">
             <label htmlFor="tel">Phone Number</label>
             <input
               type="text"
@@ -245,10 +243,10 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
               onChange={handleChange}
               value={phone_number}
               required
-              className="w-[350px] h-10 pl-5 rounded-lg outline-none"
+              className="w-[350px] h-8 pl-5 rounded-lg outline-none"
             />
           </div>
-          <div className="flex justify-left flex-col">
+          <div className="flex justify-left  flex-col">
             <label htmlFor="username">User Name</label>
             <input
               type="text"
@@ -257,12 +255,12 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
               onChange={handleChange}
               value={user_name}
               required
-              className="w-[350px] h-10 pl-5 rounded-lg outline-none"
+              className="w-[350px] h-8 pl-5 rounded-lg outline-none"
             />
           </div>
         </div>
-        <div className="flex justify-center items-center gap-10">
-          <div className="flex justify-left flex-col">
+        <div className="flex flex-wrap justify-center items-center gap-6 py-[10px]">
+          <div className="flex justify-left  flex-col">
             <label htmlFor="password">Password</label>
             <input
               type="password"
@@ -271,10 +269,10 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
               onChange={handleChange}
               value={password}
               required
-              className="w-[350px] h-10 pl-5 rounded-lg outline-none mb-5"
+              className="w-[350px] h-8 pl-5 rounded-lg outline-none mb-5"
             />
           </div>
-          <div className="flex justify-left flex-col">
+          <div className="flex justify-left  flex-col">
             <button
               type="submit"
               className="bg-green-500 w-[350px] hover:bg-green-700  h-10 text-white rounded-lg outline-none"
