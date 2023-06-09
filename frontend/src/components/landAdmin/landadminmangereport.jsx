@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { MdDelete } from "react-icons/md";
+import { GrView } from "react-icons/gr";
+import { BiEditAlt } from "react-icons/bi";
 
 const LandAdminManageAccount = () => {
   const [reportData, setReportData] = useState([]);
@@ -33,46 +36,62 @@ const LandAdminManageAccount = () => {
   }, [user_id]);
 
   return (
-    <div className="flex justify-center items-center bg-gray-50 text-gray-700 px-5">
-      <table className="table-auto w-[100%] px-20">
-        <thead className="bg-gray-100">
-          <tr>
-            <th className="px-4 py-2">title</th>
-            <th className="px-4 py-2">content</th>
-            <th className="px-4 py-2">Date</th>
-            <th className="px-4 py-2">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {reportData.map((report) => (
-            <tr key={report.id}>
-              <td className="breport px-4 py-2">{report.title}</td>
-              <td className="breport px-4 py-2">{report.content}</td>
-              <th className="px-4 py-2">{report.updateAt}</th>
-              <td className="breport px-4 py-2 flex justify-center items-center gap-10">
-                <Link
-                  to={`/farmerreportdisplay/update/${report.id}`}
-                  className="px-2 bg-blue-700 rounded-sm"
-                >
-                  <button className="btn edit">Edit</button>
-                </Link>
-                <Link
-                  to={`/view/${report.id}`}
-                  className="px-2 bg-gray-300 rounded-sm"
-                >
-                  <button className="btn view">View</button>
-                </Link>
-                <button
-                  className="bg-red-400"
-                  onClick={() => handleDelete(report.id)}
-                >
-                  Delete
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="mt-16 p-4">
+      <h1 className="text-center">Report Management</h1>
+      <div className="flex justify-center items-center bg-gray-50 text-gray-700 px-5">
+        <div className="max-h-80 overflow-y-scroll">
+          <table className="w-full">
+            <thead className="bg-gray-100">
+              <tr>
+                <th className="px-4 py-2">Title</th>
+                <th className="px-4 py-2">Content</th>
+                <th className="px-4 py-2">Date</th>
+                <th className="px-4 py-2">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {reportData.map((report) => (
+                <tr key={report.id}>
+                  <td className="px-4 py-2">{report.title}</td>
+                  <td className="px-4 py-2">{report.content}</td>
+                  <td className="px-4 py-2">
+                    {new Date(report.updateAt).toLocaleDateString(undefined, {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                  </td>
+                  <td className="px-4 py-2 flex justify-center items-center space-x-2">
+                    <Link
+                      to={`/farmerreportdisplay/update/${report.id}`}
+                      className="px-2 rounded-sm"
+                    >
+                      <button>
+                      <BiEditAlt color="blue" size={25} />
+                  
+                      </button>
+                    </Link>
+                    <Link
+                      to={`/view/${report.id}`}
+                      className="px-2 rounded-sm"
+                    >
+                      <button>
+                      <GrView color="white" size={25} /> 
+                      </button>
+                    </Link>
+                    <button
+                      className=""
+                      onClick={() => handleDelete(report.id)}
+                    >
+                  <MdDelete color="red" size={30} />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 };

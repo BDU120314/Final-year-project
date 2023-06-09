@@ -6,6 +6,9 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { TfiReload } from "react-icons/tfi";
 import { useSelector } from "react-redux";
+import { MdDelete } from "react-icons/md";
+import {  BiEditAlt } from "react-icons/bi";
+import { GrView } from "react-icons/gr";
 
 const FarmersData = () => {
   const [accountData, setAccountData] = useState([]);
@@ -129,7 +132,7 @@ const FarmersData = () => {
           className="bg-blue-400 h-10 px-[14px] rounded-md"
           // onClick={handleReload}
         >
-          <TfiReload color="white" fontSize={20} />
+          <TfiReload color="white" fontSize={32} />
         </button> */}
       </div>
       <div className="flex justify-center flex-col items-center px-5 ">
@@ -162,8 +165,8 @@ const FarmersData = () => {
                         to={`/landAdminDashboard/manageFarmers/update/${datas.id}`}
                         className="link"
                       >
-                        <button className="px-2 bg-blue-700 rounded-sm">
-                          Edit
+                        <button className="px-2 rounded-sm">
+                        <BiEditAlt color="blue" size={32} />
                         </button>
                       </Link>
 
@@ -172,7 +175,7 @@ const FarmersData = () => {
                         className="link"
                       >
                         <button className="px-2 bg-gray-300 rounded-sm">
-                          View
+                        <GrView color="white" size={32} /> 
                         </button>{" "}
                       </Link>
 
@@ -180,8 +183,8 @@ const FarmersData = () => {
                         className="bg-red-400"
                         onClick={() => handleDelete(datas.id)}
                       >
-                        Delete
-                      </button>
+                  <MdDelete color="red" size={30} />
+                </button>
                     </td>
                   </tr>
                 );

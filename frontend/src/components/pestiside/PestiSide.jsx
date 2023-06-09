@@ -19,6 +19,8 @@ const PestiSide = () => {
   }, [filter]);
 
   return (
+    <div className="mt-24">
+      <h2>Report Management</h2>
     <div className="flex justify-center items-center bg-gray-100 ">
       <div className="grid grid-cols-3 gap-5 place-content-evenly">
         {postData.map((post) => {
@@ -49,6 +51,7 @@ const PestiSide = () => {
           );
         })}
       </div>
+    </div>
     </div>
   );
 };
