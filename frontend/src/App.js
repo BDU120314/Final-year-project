@@ -177,8 +177,14 @@ const App = () => {
           />
 
           {/* woreda representative */}
-          <Route path="/zoneDashboard/register" element ={<WoredaRegistrationForm />} />
-          <Route path="/zoneDashboard/manageworedaAdmin" element={<WoredaData />} />
+          <Route
+            path="/zoneDashboard/register"
+            element={<WoredaRegistrationForm />}
+          />
+          <Route
+            path="/zoneDashboard/manageworedaAdmin"
+            element={<WoredaData />}
+          />
           <Route
             path={"/zoneDashboard/manageworedaAdmin/update/:id"}
             element={<WoredaUpdate />}

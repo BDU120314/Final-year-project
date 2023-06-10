@@ -20,13 +20,15 @@ function WoredaUpdate() {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    axios.get(`http://localhost:5001/api/v1/woreda/${id}`).then((res) => {
-      setFormData(res.data[0]);
-      console.log(res.data[0]);
-    });
-  }, [id]);
-
+useEffect(() => {
+  axios.get(`http://localhost:5001/api/v1/woreda/${id}`).then((res) => {
+    console.log(res.data.rows[0]); // Check the received data in the console
+    const woredaData = res.data.rows[0];
+    if (woredaData) {
+      setFormData(woredaData);
+    }
+  });
+}, [id]);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {

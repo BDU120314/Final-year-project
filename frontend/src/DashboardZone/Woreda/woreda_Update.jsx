@@ -11,19 +11,24 @@ function ModifyWoreda() {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    axios
-      .get(`http://localhost:5001/api/v1/addworeda/${id}`)
-      .then((res) => {
-        if (res.data && res.data.length > 0) {
-          setFormData(res.data[0]);
-          console.log(res.data[0]);
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, [id]);
+useEffect(() => {
+  axios
+    .get(`http://localhost:5001/api/v1/addworeda/select/${id}`)
+    .then((res) => {
+      console.log(res.data); // Log the response data
+      if (res.data && res.data.name && res.data.id) {
+        console.log(res.data);
+        setFormData({
+          name: res.data.name,
+          id: res.data.id,
+        });
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}, [id]);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -60,7 +65,7 @@ function ModifyWoreda() {
               type="text"
               id="name"
               name="name"
-              value={formData && formData.name}
+              value={ formData.name}
               onChange={handleChange}
               className="w-[350px] h-10 outline-none pl-5 rounded-lg"
               required
@@ -72,7 +77,7 @@ function ModifyWoreda() {
               type="text"
               id="id"
               name="id"
-              value={formData && formData.id}
+              value={ formData.id}
               onChange={handleChange}
               className="w-[350px] h-10 outline-none pl-5 rounded-lg"
             />

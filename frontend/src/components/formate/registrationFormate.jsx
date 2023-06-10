@@ -28,7 +28,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
 
   const [zones, setZones] = useState([]);
   const [woreda, setWoreda] = useState([]);
-  const [kebele, setKebele] = useState([]);
+  const [kebeles, setKebeles] = useState([]);
 
   const handleChange = (e) => {
     setFormData((prevState) => ({
@@ -44,6 +44,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
     };
     handleZoneData();
   }, []);
+
   useEffect(() => {
     const handleWoredaData = async () => {
       const response = await axios.get(
@@ -53,12 +54,14 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
     };
     handleWoredaData();
   }, []);
+
   useEffect(() => {
     const handleKebeleData = async () => {
       const response = await axios.get(
         "http://localhost:5001/api/v1/addkebele"
       );
-      setKebele(response.data);
+      console.log(response.data)
+      setKebeles(response.data);
     };
     handleKebeleData();
   }, []);
@@ -93,7 +96,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
         Registration Form
       </h2>
       <form className="flex flex-col bg-gray-200 mb-10" onSubmit={handleSubmit}>
-        <div className="flex justify-center items-center gap-10  py-[15px] px-[15px]">
+        <div className="flex justify-center items-center gap-10  py-[15px] px-[15px] ">
           {(() => {
             switch (typeName) {
               case "Zone":
@@ -151,9 +154,9 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
                       required
                     >
                       <option value="">Select {typeName}</option>
-                      {kebele.map((kebele) => (
+                      {kebeles.map((kebele) => (
                         <option key={kebele.id} value={kebele.id}>
-                          {kebele.name}
+                          {kebele.kebele_name}
                         </option>
                       ))}
                     </select>

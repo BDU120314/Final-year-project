@@ -15,6 +15,7 @@ const ZoneOrders = () => {
         const response = await axios.get(
           `http://localhost:5001/api/v1/zone/${user.rep_id}`
         );
+        console.log(response.data)
         setAdmin(response.data);
       } catch (error) {
         console.log(error.message);
@@ -32,8 +33,9 @@ const ZoneOrders = () => {
           const response = await axios.get(
             `http://localhost:5001/api/v1/order/zone/${zone_id}`
           );
+           console.log(response.data, "fetch woreda order specifc");
           setOrderData(response.data);
-          console.log(response.data, "fetch woreda order specifc");
+         
         } catch (error) {
           console.log(error.message);
         }

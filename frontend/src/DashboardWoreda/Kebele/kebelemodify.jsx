@@ -13,11 +13,11 @@ function ModifyKebele() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5001/api/v1/addkebele/${id}`)
+      .get(`http://localhost:5001/api/v1/addkebele/select/${id}`)
       .then((res) => {
-        if (res.data && res.data.length > 0) {
-          setFormData(res.data[0]);
-          console.log(res.data[0]);
+        if (res.data && res.data.kebele_name && res.data.id) {
+          console.log(res.data);
+          setFormData(res.data);
         }
       })
       .catch((error) => {
@@ -32,7 +32,7 @@ function ModifyKebele() {
         `http://localhost:5001/api/v1/addkebele/update/${id}`,
         formData
       );
-      navigate("/woreda_dashboard/manage_kebele");
+      navigate("/woredaDashboard/managekebele");
       console.log(response);
     } catch (error) {
       console.error(error);
@@ -60,7 +60,7 @@ function ModifyKebele() {
               type="text"
               id="kebele_name"
               name="kebele_name"
-              value={formData && formData.kebele_name}
+              value={ formData.kebele_name}
               onChange={handleChange}
               className="w-[350px] h-10 outline-none pl-5 rounded-lg"
               required
@@ -72,7 +72,7 @@ function ModifyKebele() {
               type="text"
               id="id"
               name="id"
-              value={formData && formData.id}
+              value={formData.id}
               onChange={handleChange}
               className="w-[350px] h-10 outline-none pl-5 rounded-lg"
             />
