@@ -64,11 +64,11 @@ const ZoneHeader = () => {
   };
 
   return (
-    <div className="flex justify-end items-center bg-[#f7f7f7] shadow-lg h-[70px] fixed top-0 right-0 left-[17%]">
+    <div className="flex justify-end items-center bg-[#f7f7f7] shadow-md h-[70px] fixed top-0 right-0 left-[18%]">
       <div className="flex items-center gap-4 relative ">
         <div className="flex items-center gap-[25px] border-r-[1px] pr-6">
           <Link
-            to="/woredaDashboard/register"
+            to="/zoneDashboard/register"
             className="bg-blue-400 flex justify-center items-centerh-[30px] px-4 rounded-md"
           >
             Add Admin

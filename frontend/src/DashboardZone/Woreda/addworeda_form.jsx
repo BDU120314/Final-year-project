@@ -36,10 +36,10 @@ function AddingWoreda  () {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit =  (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5001/api/v1/addworeda", {
+       axios.post("http://localhost:5001/api/v1/addworeda", {
         id,
         name,
         zone_id: admin.zone_id,
@@ -55,16 +55,9 @@ function AddingWoreda  () {
     });
   };
 
-  // const validateName = (e) => {
-  //   if (!/^[A-Z][a-z]*$/.test(e.target.value)) {
-  //     e.target.setCustomValidity("እባክዎ ስምዎን በትክክል ያስገቡ");
-  //   } else {
-  //     e.target.setCustomValidity("");
-  //   }
-  // };
 
   return (
-    <div className="flex justify-center items-center bg-gray-100 p-0 flex-col px-16">
+    <div className="flex justify-center items-center bg-white gap-5 p-0 flex-col px-16">
       <h2 className="text-black font-extrabold leading-10 py-[25px]">
        Woreda Registration Form
       </h2>
@@ -73,18 +66,7 @@ function AddingWoreda  () {
         className="flex flex-col bg-gray-200"
         onSubmit={handleSubmit}
       >
-        <div className="justify-center items-center gap-10  py-[15px] px-[15px]">
-          {/* <div className="flex items-left flex-col justify-left ">
-            <label htmlFor={dataBaseColumn}>{Name}</label>
-            <input
-              type="text"
-              name={dataBaseColumn}
-              id={dataBaseColumn}
-              onChange={handleChange}
-              value={columnValue}
-              className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
-            />
-          </div> */}
+        <div className=" flex flex-col justify-center items-center gap-5  p-[15px]">
          <div className="flex justify-left flex-col">
             <label htmlFor="name">Woreda Name</label>
             <input
@@ -94,7 +76,7 @@ function AddingWoreda  () {
               onChange={handleChange}
               value={formData.name}
               required
-              className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
+              className="w-[350px] h-10 pl-5 rounded-sm  outline-none"
             />
           </div>
           <div className="flex justify-left flex-col">
@@ -106,12 +88,12 @@ function AddingWoreda  () {
               onChange={handleChange}
               value={formData.id}
               required
-              className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
+              className="w-[350px] h-10 pl-5 rounded-sm  outline-none"
             />
           </div>
         </div> 
         <div className="flex justify-center items-center gap-10">
-          <div className=" h-10 flex items-center justify-center my-6 w-[200px] bg-48px bg-green-400 rounded-2xl">
+          <div className=" h-10 flex items-center justify-center my-6 w-[200px]  bg-green-400 rounded-md">
             <button className="text-center bg-green-400" type="submit">
               Add
             </button>

@@ -38,10 +38,10 @@ function FarmerRegistrationForm() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit =  (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
+      const response =  axios.post(
         "http://localhost:5001/api/v1/farmers",
         {
           ...formData,
@@ -68,7 +68,7 @@ function FarmerRegistrationForm() {
   };
 
   return (
-    <div className="flex justify-center items-center bg-gray-100 p-14 flex-col">
+    <div className="flex justify-center items-center bg-gray-white gap-5 p-14 flex-col">
       <div>
         <h2 className="text-black font-extrabold leading-10 py-25">
           Farmers Registration Form
@@ -76,10 +76,10 @@ function FarmerRegistrationForm() {
       </div>
       <form
         action="farmer-registration-form"
-        className="flex flex-col bg-gray-200"
+        className="flex flex-col bg-gray-200 gap-5"
         onSubmit={handleSubmit}
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-4 px-10">
           <div>
             <label htmlFor="id">ID No:</label>
             <input
@@ -88,7 +88,7 @@ function FarmerRegistrationForm() {
               name="id"
               value={formData.id}
               onChange={handleChange}
-              className="w-full h-8 pl-5 rounded-lg outline-none"
+              className="w-full h-8 pl-5 rounded-sm outline-none"
               required
             />
           </div>
@@ -100,7 +100,7 @@ function FarmerRegistrationForm() {
               name="fname"
               value={formData.fname}
               onChange={handleChange}
-              className="w-full h-8 pl-5  rounded-lg outline-none"
+              className="w-full h-8 pl-5  rounded-sm outline-none"
               required
             />
           </div>
@@ -112,7 +112,7 @@ function FarmerRegistrationForm() {
               name="mname"
               value={formData.mname}
               onChange={handleChange}
-              className="w-full h-8 pl-5 rounded-lg outline-none"
+              className="w-full h-8 pl-5 rounded-sm outline-none"
             />
           </div>
           <div>
@@ -123,7 +123,7 @@ function FarmerRegistrationForm() {
               name="lname"
               value={formData.lname}
               onChange={handleChange}
-              className="w-full h-8 pl-5 rounded-lg outline-none"
+              className="w-full h-8 pl-5 rounded-sm outline-none"
               required
             />
           </div>
@@ -135,7 +135,7 @@ function FarmerRegistrationForm() {
               name="birth_date"
               value={formData.birth_date}
               onChange={handleChange}
-              className="w-full h-8 pl-5 rounded-lg outline-none"
+              className="w-full h-8 pl-5 rounded-sm outline-none"
               required
             />
           </div>
@@ -147,7 +147,7 @@ function FarmerRegistrationForm() {
               value={formData.gender}
               onChange={handleChange}
               required
-              className="outline-none w-full h-8 pl-5 rounded-lg"
+              className="outline-none w-full h-8 pl-5 rounded-sm"
             >
               <option value="">Select Gender</option>
               <option value="Male">Male</option>
@@ -162,7 +162,7 @@ function FarmerRegistrationForm() {
               name="land_by_ha"
               value={formData.land_by_ha}
               onChange={handleChange}
-              className="w-full h-8 pl-5 rounded-lg outline-none"
+              className="w-full h-8 pl-5 rounded-sm outline-none"
               required
             />
           </div>
@@ -174,7 +174,7 @@ function FarmerRegistrationForm() {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full h-8 pl-5 rounded-lg outline-none"
+              className="w-full h-8 pl-5 rounded-sm outline-none"
               required
             />
           </div>
@@ -186,7 +186,7 @@ function FarmerRegistrationForm() {
               name="phone_number"
               value={formData.phone_number}
               onChange={handleChange}
-              className="w-full h-8 pl-5 rounded-lg outline-none"
+              className="w-full h-8 pl-5 rounded-sm outline-none"
               required
             />
           </div>
@@ -198,7 +198,7 @@ function FarmerRegistrationForm() {
               name="user_name"
               value={formData.user_name}
               onChange={handleChange}
-              className="w-full h-8 pl-5 rounded-lg outline-none"
+              className="w-full h-8 pl-5 rounded-sm outline-none"
               required
             />
           </div>
@@ -210,14 +210,14 @@ function FarmerRegistrationForm() {
               name="password"
               value={formData.password}
               onChange={handleChange}
-              className="w-full h-8 pl-5 rounded-lg outline-none"
+              className="w-full h-8 pl-5 rounded-sm outline-none"
               required
             />
           </div>
         </div>
 
         <div className="flex justify-center items-center py-4 px-4">
-          <div className="h-8 flex items-center justify-center my-6 w-[150px] bg-48px bg-green-400 rounded-2xl">
+          <div className="h-8 flex items-center justify-center my-6 w-[150px] bg-green-400 rounded-md">
             <button className="text-center bg-green-400" type="submit">
               Register
             </button>

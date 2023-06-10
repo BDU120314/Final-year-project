@@ -38,10 +38,10 @@ function AddingKebele  () {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit =  (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5001/api/v1/addkebele", {
+       axios.post("http://localhost:5001/api/v1/addkebele", {
         id,
         kebele_name,
         woreda_id: admin.woreda_id,
@@ -58,7 +58,7 @@ function AddingKebele  () {
   };
 
   return (
-    <div className="flex justify-center items-center bg-gray-100 p-0 flex-col px-16">
+    <div className="flex justify-center items-center bg-white gap-5 p-0 flex-col px-16">
       <h2 className="text-black font-extrabold leading-10 py-[25px]">
         Kebele Registration Form
       </h2>
@@ -67,7 +67,7 @@ function AddingKebele  () {
         className="flex flex-col bg-gray-200"
         onSubmit={handleSubmit}
       >
-        <div className="justify-center items-center gap-10  py-[15px] px-[15px]">
+        <div className="flex flex-col justify-center items-center gap-5  p-[15px] ">
           <div className="flex justify-left flex-col">
             <label htmlFor="kebele_name">Kebele Name</label>
             <input
@@ -77,7 +77,7 @@ function AddingKebele  () {
               onChange={handleChange}
               value={formData.kebele_name}
               required
-              className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
+              className="w-[350px] h-10 pl-5 rounded-sm outline-none"
             />
           </div>
           <div className="flex justify-left flex-col">
@@ -89,12 +89,12 @@ function AddingKebele  () {
               onChange={handleChange}
               value={formData.id}
               required
-              className="w-[350px] h-10 pl-5 rounded-lg  outline-none"
+              className="w-[350px] h-10 pl-5 rounded-sm outline-none"
             />
           </div>
         </div>
         <div className="flex justify-center items-center gap-10">
-          <div className=" h-10 flex items-center justify-center my-6 w-[200px] bg-48px bg-green-400 rounded-2xl">
+          <div className=" h-10 flex items-center justify-center my-6 w-[200px] bg-48px bg-green-400 rounded-md">
             <button className="text-center bg-green-400" type="submit">
               Add
             </button>

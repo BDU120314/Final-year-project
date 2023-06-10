@@ -48,13 +48,13 @@ function ZoneUpdate() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center p-5 bg-gray-100">
+    <div className="flex flex-col justify-center items-center gap-5 p-5 bg-white">
       <div className="text-black text-[18px] leading-6">
         <h2>Zone Modification Form</h2>
       </div>
-      <form className="bg-gray-200" onSubmit={handleSubmit}>
-        <div className="flex flex-col justify-center items-center gap-6 py-[15px] px-[15px]">
-          <div className="flex items-left flex-col justify-left w-full">
+      <form className="bg-gray-200 w-[100%] " onSubmit={handleSubmit}>
+        <div className="flex flex-col justify-center items-center w-full  gap-5 p-[15px]">
+          <div className="flex items-left flex-col justify-left w-[350px]">
             <label htmlFor="zonename">zone ID</label>
             <input
               type="number"
@@ -62,11 +62,11 @@ function ZoneUpdate() {
               name="zone_id"
               value={formData.zone_id}
               onChange={handleChange}
-              className="w-full h-8 outline-none pl-5 rounded-lg"
+              className="w-[350px] h-8 outline-none pl-5 rounded-sm"
               required
             />
           </div>
-          <div className="flex items-left flex-col justify-left w-full">
+          <div className="flex items-left flex-col justify-left w-[350px]">
             <label htmlFor="fname">First Name</label>
             <input
               type="text"
@@ -74,11 +74,11 @@ function ZoneUpdate() {
               name="fname"
               value={formData.fname}
               onChange={handleChange}
-              className="w-full h-8 outline-none pl-5 rounded-lg"
+              className="w-[350px] h-8 outline-none pl-5 rounded-sm"
               required
             />
           </div>
-          <div className="flex items-left flex-col justify-left w-full">
+          <div className="flex items-left flex-col justify-left w-[350px]">
             <label htmlFor="mname">Middle Name</label>
             <input
               type="text"
@@ -86,10 +86,10 @@ function ZoneUpdate() {
               name="mname"
               value={formData.mname}
               onChange={handleChange}
-              className="w-full h-8 outline-none pl-5 rounded-lg"
+              className="w-[350px] h-8 outline-none pl-5 rounded-sm"
             />
           </div>
-          <div className="flex items-left flex-col justify-left w-full">
+          <div className="flex items-left flex-col justify-left w-[350px]">
             <label htmlFor="lname">Last Name</label>
             <input
               type="text"
@@ -97,11 +97,11 @@ function ZoneUpdate() {
               name="lname"
               value={formData.lname}
               onChange={handleChange}
-              className="w-full h-8 outline-none pl-5 rounded-lg"
+              className="w-[350px] h-8 outline-none pl-5 rounded-sm"
               required
             />
           </div>
-          <div className="flex items-left flex-col justify-left w-full">
+          <div className="flex items-left flex-col justify-left w-[350px]">
             <label htmlFor="email">Email</label>
             <input
               type="email"
@@ -109,11 +109,11 @@ function ZoneUpdate() {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full h-8 outline-none pl-5 rounded-lg"
+              className="w-[350px] h-8 outline-none pl-5 rounded-sm"
               required
             />
           </div>
-          <div className="flex items-left flex-col justify-left w-full">
+          <div className="flex items-left flex-col justify-left w-[350px]">
             <label htmlFor="phone_number">Tel phone</label>
             <input
               type="tel"
@@ -121,11 +121,11 @@ function ZoneUpdate() {
               name="phone_number"
               value={formData.phone_number}
               onChange={handleChange}
-              className="w-full h-8 outline-none pl-5 rounded-lg"
+              className="w-[350px] h-8 outline-none pl-5 rounded-sm"
               required
             />
           </div>
-          <div className="flex items-left flex-col justify-left w-full">
+          <div className="flex items-left flex-col justify-left w-[350px]">
             <label htmlFor="user_name">Username</label>
             <input
               type="text"
@@ -133,11 +133,11 @@ function ZoneUpdate() {
               name="user_name"
               value={formData.user_name}
               onChange={handleChange}
-              className="w-full h-8 outline-none pl-5 rounded-lg"
+              className="w-[350px] h-8 outline-none pl-5 rounded-sm"
               required
             />
           </div>
-          <div className="flex items-left flex-col justify-left w-full">
+          <div className="flex items-left flex-col justify-left w-[350px]">
             <label htmlFor="password">Password</label>
             <input
               type="password"
@@ -145,11 +145,11 @@ function ZoneUpdate() {
               name="password"
               value={formData.password}
               onChange={handleChange}
-              className="w-full h-8 outline-none pl-5 rounded-lg"
+              className="w-[350px] h-8 outline-none pl-5 rounded-sm"
               required
             />
           </div>
-          <div className="flex items-left flex-col justify-left w-full">
+          <div className="flex items-left flex-col justify-left w-[350px]">
             <label htmlFor="id">ID No</label>
             <input
               type="text"
@@ -157,11 +157,14 @@ function ZoneUpdate() {
               name="id"
               value={formData.id}
               onChange={handleChange}
-              className="w-full h-8 outline-none pl-5 rounded-lg"
+              className="w-[350px] h-8 outline-none pl-5 rounded-sm"
               required
             />
           </div>
-          <button className="w-full h-8 bg-blue-400 rounded-3xl mt-[20px]" type="submit">
+          <button
+            className="w-[350px] h-8 bg-blue-400 rounded-md mt-[20px]"
+            type="submit"
+          >
             Update
           </button>
         </div>

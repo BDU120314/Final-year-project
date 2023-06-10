@@ -174,13 +174,12 @@ const FarmersData = () => {
                         to={`/landAdminDashboard/manageFarmers/view/${datas.id}`}
                         className="link"
                       >
-                        <button className="px-2 bg-gray-300 rounded-sm">
+                        <button>
                         <GrView color="white" size={32} /> 
                         </button>{" "}
                       </Link>
 
                       <button
-                        className="bg-red-400"
                         onClick={() => handleDelete(datas.id)}
                       >
                   <MdDelete color="red" size={30} />

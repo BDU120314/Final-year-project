@@ -66,10 +66,10 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
     handleKebeleData();
   }, []);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit =  (e) => {
     e.preventDefault();
     try {
-      await axios.post(
+       axios.post(
         `http://localhost:5001/api/v1/${typeName.toLowerCase()}`, formData);
       alert("User successfully registered");
       setFormData({
@@ -89,7 +89,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
   };
 
   return (
-    <div className="flex justify-center items-center bg-gray-100 p-0 flex-col min-h-full">
+    <div className="flex justify-center items-center bg-white p-0 flex-col min-h-full">
       <h2 className="text-black font-extrabold leading-10 py-[10px]">
         Registration Form
       </h2>
@@ -106,7 +106,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
                       id={dataBaseColumn}
                       onChange={handleChange}
                       value={columnValue}
-                      className="w-[350px] h-8 pl-5 rounded-lg outline-none"
+                      className="w-[350px] h-8 pl-5 rounded-sm outline-none"
                       required
                     >
                       <option value="">Select {typeName}</option>
@@ -127,7 +127,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
                       id={dataBaseColumn}
                       onChange={handleChange}
                       value={columnValue}
-                      className="w-[350px] h-8 pl-5 rounded-lg outline-none"
+                      className="w-[350px] h-8 pl-5 rounded-sm outline-none"
                       required
                     >
                       <option value="">Select {typeName}</option>
@@ -148,7 +148,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
                       id={dataBaseColumn}
                       onChange={handleChange}
                       value={columnValue}
-                      className="w-[350px] h-8 pl-5 rounded-lg outline-none"
+                      className="w-[350px] h-8 pl-5 rounded-sm outline-none"
                       required
                     >
                       <option value="">Select {typeName}</option>
@@ -173,7 +173,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
               onChange={handleChange}
               value={fname}
               required
-              className="outline-none w-[350px] h-8 pl-5 rounded-lg"
+              className="outline-none w-[350px] h-8 pl-5 rounded-sm"
             />
           </div>
         </div>
@@ -187,7 +187,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
               onChange={handleChange}
               value={mname}
               required
-              className="outline-none w-[350px] h-8 pl-5 rounded-lg"
+              className="outline-none w-[350px] h-8 pl-5 rounded-sm"
             />
           </div>
           <div className="flex items-left flex-col justify-left ">
@@ -199,7 +199,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
               onChange={handleChange}
               value={lname}
               required
-              className="outline-none w-[350px] h-8 pl-5 rounded-lg"
+              className="outline-none w-[350px] h-8 pl-5 rounded-sm"
             />
           </div>
         </div>
@@ -211,7 +211,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
               id="gender"
               value={gender}
               onChange={handleChange}
-              className="w-[350px] h-8 pl-5 rounded-lg outline-none"
+              className="w-[350px] h-8 pl-5 rounded-sm outline-none"
               required
             >
               <option value="">Select gender</option>
@@ -229,7 +229,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
               id="email"
               value={email}
               onChange={handleChange}
-              className="w-[350px] h-8 pl-5 rounded-lg outline-none"
+              className="w-[350px] h-8 pl-5 rounded-sm outline-none"
             />
           </div>
         </div>
@@ -243,7 +243,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
               onChange={handleChange}
               value={phone_number}
               required
-              className="w-[350px] h-8 pl-5 rounded-lg outline-none"
+              className="w-[350px] h-8 pl-5 rounded-sm outline-none"
             />
           </div>
           <div className="flex justify-left  flex-col">
@@ -255,7 +255,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
               onChange={handleChange}
               value={user_name}
               required
-              className="w-[350px] h-8 pl-5 rounded-lg outline-none"
+              className="w-[350px] h-8 pl-5 rounded-sm outline-none"
             />
           </div>
         </div>
@@ -269,13 +269,13 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
               onChange={handleChange}
               value={password}
               required
-              className="w-[350px] h-8 pl-5 rounded-lg outline-none mb-5"
+              className="w-[350px] h-8 pl-5 rounded-sm outline-none mb-5"
             />
           </div>
           <div className="flex justify-left  flex-col">
             <button
               type="submit"
-              className="bg-green-500 w-[350px] hover:bg-green-700  h-10 text-white rounded-lg outline-none"
+              className="bg-green-500 w-[350px] hover:bg-green-700  h-10 text-white rounded-sm outline-none"
             >
               Register
             </button>

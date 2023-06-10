@@ -35,10 +35,13 @@ const Post = () => {
         console.error(error);
         // Handle error
       });
+      setTitle("")
+      setDescription("")
+      setImage("")
   };
 
   return (
-    <div className="flex justify-center items-center mx-auto ">
+    <div className="flex justify-center mt-10 items-center mx-auto ">
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label

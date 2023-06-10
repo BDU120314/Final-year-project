@@ -77,6 +77,7 @@ const App = () => {
             path="/farmerDashboard/manageAccount"
             element={<ManageOrders />}
           />
+          <Route index element={<ManageOrders />} />
           <Route
             path={"/farmerDashboard/manageAccount/order/update/:id"}
             element={<UpdateOrder />}
@@ -255,6 +256,14 @@ const App = () => {
           <Route
             path="/regionDashboard/manageReport"
             element={<ManageReportZone />}
+          />
+          <Route
+            path="/regionDashboard/createpost"
+            element={<Post />}
+          />
+          <Route
+            path="/regionDashboard/managepost"
+            element={<Post />}
           />
         </Route>
       </Routes>
