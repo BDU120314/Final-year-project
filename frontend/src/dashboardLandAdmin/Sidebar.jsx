@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { FiLogOut, FiMenu, FiX } from "react-icons/fi";
-import { GrUserAdmin } from "react-icons/gr";
 import { FaTachometerAlt, FaRegEdit, FaChevronRight } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../redux/reducers/auth";
 import profile from "../assets/logo.jpg";
 import axios from "axios";
+import {GiFarmer } from "react-icons/gi"
 const Sidebar = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
@@ -125,7 +125,7 @@ const Sidebar = () => {
                 onClick={() => handleLinkClick("farmers")}
               >
                 <div className="flex items-center gap-2">
-                  <GrUserAdmin color="white" fontSize={32} />
+                  <GiFarmer color="white" fontSize={32} />
                   <span className="text-[18px] font-bold">Farmers</span>
                 </div>
                 <span className="shrink-0 transition duration-300">
@@ -206,7 +206,7 @@ const Sidebar = () => {
             </div>
             <div
               onClick={handleLogout}
-              className="flex items-center justify-center gap-2 bg-red-200 h-10 px-5 mt-[70px] rounded-md cursor-pointer"
+              className="flex items-center justify-center gap-2 bg-red-200 h-10 px-5 mt-80 rounded-md cursor-pointer"
             >
               <FiLogOut color="white" fontSize={28} />
               <p className="text-white text-[18px] leading-5">LogOut</p>
@@ -253,15 +253,17 @@ const Sidebar = () => {
 
           {/* Responsive sidebar content */}
           {showSidebar && (
-            <div className="lg:hidden bg-green-400 h-[100%] w-[30%] flex flex-col fixed top-10 left-0 z-50">
-              <div className="flex flex-col justify-center items-center gap-5 py-5">
+ 
+            <div className="lg:hidden bg-green-400 h-[95%] w-[30%] flex flex-col fixed top-10 left-0 z-50">
+              <div className="flex flex-col justify-start gap-5 py-5">
+ 
                 <div
-                  className={`flex cursor-pointer items-center hover:bg-green-300 px-3 py-1 rounded-md justify-between gap-5 text-white ${
+                  className={`flex cursor-pointer  hover:bg-green-300 py-1 rounded-md gap-1 text-white ${
                     openLink === "farmers" ? "bg-green-300" : ""
                   }`}
                   onClick={() => handleLinkClick("farmers")}
                 >
-                  <GrUserAdmin color="white" fontSize={24} />
+                  <GiFarmer color="white" fontSize={24} size={30}/>
                   <span className="text-[16px] font-bold">Farmers</span>
                   <FaChevronRight
                     color="white"
@@ -302,7 +304,7 @@ const Sidebar = () => {
                   </nav>
                 )}
                 <div
-                  className={`flex cursor-pointer items-center hover:bg-green-300 px-3 py-1 rounded-md justify-between gap-5 text-white ${
+                  className={`flex cursor-pointer items-center hover:bg-green-300 py-1 rounded-md gap-1 text-white ${
                     openLink === "reports" ? "bg-green-300" : ""
                   }`}
                   onClick={() => handleLinkClick("reports")}
@@ -348,7 +350,7 @@ const Sidebar = () => {
               </div>
               <div
                 onClick={handleLogout}
-                className="flex items-center justify-center gap-2 bg-red-200 h-10 px-5 mt-[auto] rounded-md cursor-pointer"
+                className="flex items-center justify-center gap-2 bg-red-200 h-10 px-5 mt-[150%] rounded-md cursor-pointer"
               >
                 <FiLogOut color="white" fontSize={24} />
                 <p className="text-white text-[16px]">Log Out</p>

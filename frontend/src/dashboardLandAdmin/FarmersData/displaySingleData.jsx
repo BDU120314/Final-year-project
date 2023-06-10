@@ -2,15 +2,23 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+
 const DisplaySingleData = () => {
   const [data, setData] = useState([]);
   const { id } = useParams();
+  
   useEffect(() => {
     axios.get(`http://localhost:5001/api/v1/farmers/${id}`).then((res) => {
       setData(res.data);
       console.log(data);
     });
-  });
+  }, []); // Empty dependency array to ensure useEffect runs only once
+
+  const formatDate = (dateString) => {
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    const date = new Date(dateString);
+    return date.toLocaleDateString(undefined, options);
+  };
 
   return (
     <div className="left-[17.5% px-5]">
@@ -42,7 +50,7 @@ const DisplaySingleData = () => {
                   <td className="border px-4 py-2">{datas.fname}</td>
                   <td className="border px-4 py-2">{datas.mname}</td>
                   <td className="border px-4 py-2">{datas.lname}</td>
-                  <td className="border px-4 py-2">{datas.birth_date}</td>
+                  <td className="border px-4 py-2">{formatDate(datas.birth_date)}</td>
                   <td className="border px-4 py-2">{datas.email}</td>
                   <td className="border px-4 py-2">{datas.phone_number}</td>
                   <td className="border px-4 py-2">{datas.user_name}</td>

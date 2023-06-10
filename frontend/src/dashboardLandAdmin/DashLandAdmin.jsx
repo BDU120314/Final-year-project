@@ -12,11 +12,13 @@ const DashLandAdmin = () => {
     <>
       {isLogin && (
         <div className="flex ">
-          <div className="basis:0 lg:basis-[18%] h-[100vh] border">
+ 
+          <div className="lg:basis-[18%] basis-0 h-[100vh] border">
             <Sidebar />
           </div>
           <div className="lg:basis-[82%] basis-[100%] border">
-            <div className="mt-[70px]">
+            <div className="">
+ 
               <Outlet></Outlet>
             </div>
           </div>
