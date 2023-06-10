@@ -24,8 +24,6 @@ const DisplaySingleWoreda = () => {
               <th className="px-4 py-2">Woreda Name</th>
               <th className="px-4 py-2">Id</th>
               <th className="px-4 py-2">Representative full name</th>
-              {/* <th className="px-4 py-2">Lastname</th>
-              <th className="px-4 py-2">Middle name</th> */}
               <th className="px-4 py-2">Gende</th>
               <th className="px-4 py-2">Email</th>
               <th className="px-4 py-2">Phone_number</th>

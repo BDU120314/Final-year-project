@@ -1,11 +1,10 @@
 import React from 'react'
 import WoredaSideBar from "./WoredaSideBar";
 import { Outlet } from 'react-router-dom'
-import { useSelector } from 'react-redux'
 import WoredaHeader from './WoredaHeader';
 
 const WoredaDashboard = () => {
-   const isLogin = useSelector((state) => state.auth.isLogin);
+   const isLogin = JSON.parse(localStorage.getItem("isLogin"));
   return (
     <>
       {isLogin && (

@@ -36,6 +36,7 @@ const authSlice = createSlice({
       state.role = null;
       state.error = null;
       state.isLogin = false;
+      localStorage.clear()
     },
   },
 });

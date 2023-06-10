@@ -13,8 +13,8 @@ import { MdOutlineHorizontalDistribute } from "react-icons/md";
 
 const RegionSideBar = () => {
   const [admin, setAdmin] = useState([]);
-  const isLogin = useSelector((state) => state.auth.isLogin);
-  const user = useSelector((state) => state.auth.user);
+  const isLogin = JSON.parse(localStorage.getItem("isLogin"));
+  const user = JSON.parse(localStorage.getItem("user"));
   const [openLink, setOpenLink] = useState("");
   const [pendingOrderCount, setPendingOrderCount] = useState(0);
   const [showSidebar, setShowSidebar] = useState(false);

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 function OrderForm() {
@@ -11,10 +10,10 @@ function OrderForm() {
   const [farmer, setFarmer] = useState([]);
   const { amount } = formData;
   const navigate = useNavigate();
-  const user = useSelector((state) => state.auth.user);
-  const farmers_id = user.farmers_id;
-  const role = user.role
- 
+  const storedUser = JSON.parse(localStorage.getItem("user"));
+  const farmers_id = storedUser.farmers_id;
+  const role = storedUser.role;
+
   useEffect(() => {
     const fetchedData = async () => {
       const response = await axios.get(
@@ -28,7 +27,7 @@ function OrderForm() {
   const fname = farmer.length > 0 ? farmer[0].fname : "";
   const mname = farmer.length > 0 ? farmer[0].mname : "";
   const kebele_id = farmer.length > 0 ? farmer[0].kebele_id : "";
-console.log(kebele_id)
+  console.log(kebele_id);
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };

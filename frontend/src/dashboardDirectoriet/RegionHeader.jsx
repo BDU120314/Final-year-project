@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { logout } from "../redux/reducers/auth";
 import profile from "../assets/logo.jpg";
@@ -7,8 +7,8 @@ import axios from "axios";
 const RegionHeader = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const isLogin = useSelector((state) => state.auth.isLogin);
-  const user = useSelector((state) => state.auth.user);
+  const isLogin = JSON.parse(localStorage.getItem("isLogin"));
+  const user = JSON.parse(localStorage.getItem("user"));
   const [image, setImage] = useState(null);
   const location = useLocation();
   const [isUserMenuOpen, setUserMenuOpen] = useState(false);

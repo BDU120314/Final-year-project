@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
 import { MdDelete } from "react-icons/md";
 import { GrView } from "react-icons/gr";
 import { BiEditAlt } from "react-icons/bi";
 
 const LandAdminManageAccount = () => {
   const [reportData, setReportData] = useState([]);
-  const user = useSelector((state) => state.auth.user);
+  const user = JSON.parse(localStorage.getItem("user"));
   const user_id = user.rep_id;
 
   const handleDelete = (id) => {

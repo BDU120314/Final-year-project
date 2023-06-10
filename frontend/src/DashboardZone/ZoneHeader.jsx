@@ -7,8 +7,8 @@ import axios from "axios";
 const ZoneHeader = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const isLogin = useSelector((state) => state.auth.isLogin);
-  const user = useSelector((state) => state.auth.user);
+  const isLogin = JSON.parse(localStorage.getItem("isLogin"));
+  const user = JSON.parse(localStorage.getItem("user"));
   const [image, setImage] = useState(null);
   const location = useLocation();
   const [isUserMenuOpen, setUserMenuOpen] = useState(false);

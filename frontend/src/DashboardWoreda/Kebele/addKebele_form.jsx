@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios"; 
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 
 function AddingKebele  () {
   const [formData, setFormData] = useState({
@@ -9,8 +7,7 @@ function AddingKebele  () {
     id: "",
   });
 
-  const user = useSelector((state) => state.auth.user);
-  const navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem("user"));
   const [admin, setAdmin] = useState([]);
 
   const { id, kebele_name } = formData;

@@ -1,12 +1,9 @@
 import React from 'react'
 import Sidebar from './Sidebar'
 import { Outlet } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-// import { useSelector } from 'react-redux'
 
 const DashLandAdmin = () => {
-  // const user = useSelector((state) => state.auth.user)
-  const isLogin = useSelector((state) => state.auth.isLogin);
+  const isLogin =JSON.parse(localStorage.getItem("isLogin"))
   
   return (
     <>

@@ -2,12 +2,11 @@ import React, { useRef, useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import axios from "axios";
-import { useSelector } from "react-redux";
 
 const ReportForm = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const user = useSelector((state) => state.auth.user);
+  const user = JSON.parse(localStorage.getItem("user"));
   const reactQuillRef = useRef(null);
   const token = user.token;
   const handleTitleChange = (e) => {

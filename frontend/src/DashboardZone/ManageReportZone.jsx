@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 const ManageReportZone = () => {
   const [reportData, setReportData] = useState([]);
-  const user = useSelector((state) => state.auth.user);
+  const user = JSON.parse(localStorage.getItem("user"));
   const user_id = user.rep_id;
 
   const handleDelete = (id) => {

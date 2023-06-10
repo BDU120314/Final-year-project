@@ -2,15 +2,15 @@ import React, { useEffect, useState } from "react";
 import { FiLogOut, FiMenu, FiX } from "react-icons/fi";
 import { FaTachometerAlt, FaRegEdit, FaChevronRight } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../redux/reducers/auth";
 import profile from "../assets/logo.jpg";
 import axios from "axios";
 import {GiFarmer } from "react-icons/gi"
+import { useDispatch } from "react-redux";
 const Sidebar = () => {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.auth.user);
-  const isLogin = useSelector((state) => state.auth.isLogin);
+  const user = JSON.parse(localStorage.getItem("user"));
+  const isLogin =  JSON.parse(localStorage.getItem("isLogin"));
   const navigate = useNavigate();
   const location = useLocation();
   const [openLink, setOpenLink] = useState("");

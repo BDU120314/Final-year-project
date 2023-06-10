@@ -18,14 +18,14 @@ const FarmerDashboard = () => {
 
   const location = useLocation();
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.auth.user);
+  const storedUser = JSON.parse(localStorage.getItem("user"));
 
   //fetch farmer details
   useEffect(() => {
     const fetchFarmerData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5001/api/v1/farmers/${user.farmers_id}`
+          `http://localhost:5001/api/v1/farmers/${storedUser.farmers_id}`
         );
         console.log(response.data);
         setFarmer(response.data);
@@ -35,7 +35,7 @@ const FarmerDashboard = () => {
     };
 
     fetchFarmerData();
-  }, [user.farmers_id]);
+  }, [storedUser.farmers_id]);
 
   //for navbar state
   const handleClicked = () => {
@@ -55,7 +55,7 @@ const FarmerDashboard = () => {
       const formData = new FormData();
       formData.append("image", image);
 
-      await axios.put(`${BASE_URL}/profile/${user.farmers_id}`, formData);
+      await axios.put(`${BASE_URL}/profile/${storedUser.farmers_id}`, formData);
 
     } catch (error) {
       console.error("Error updating profile image:", error);
@@ -89,7 +89,7 @@ const FarmerDashboard = () => {
                   alt=""
                 />
                 <span className="italic text-md text-gray-600">
-                  {user && user.user_name}
+                  {storedUser && storedUser.user_name}
                 </span>
               </div>
             </div>

@@ -11,8 +11,7 @@ import { AiOutlineBorderOuter } from "react-icons/ai";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.auth.user);
-  const isLogin = useSelector((state) => state.auth.isLogin);
+  const isLogin = JSON.parse(localStorage.getItem("isLogin"));
   const navigate = useNavigate();
   const [openLink, setOpenLink] = useState(""); // State to track the open link
   const [showSidebar, setShowSidebar] = useState(false);

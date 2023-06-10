@@ -19,8 +19,9 @@ const Login = () => {
   const role = useSelector((state) => state.auth.role);
   useEffect(() => {
     if (isLogin && user) {
-      // Navigate to the desired route based on the role_id
-      // You can update the routes as per your application's routes
+      localStorage.setItem("user", JSON.stringify(user));
+      localStorage.setItem("isLogin", JSON.stringify(isLogin));
+      
       const roleRoutes = {
         Farmer: "/farmerDashboard",
         Land_Admin: "/landAdminDashboard",

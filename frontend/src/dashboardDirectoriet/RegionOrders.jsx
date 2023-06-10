@@ -1,11 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 
 const RegionOrders = () => {
   const [orderData, setOrderData] = useState([]);
   const [admin, setAdmin] = useState([]);
-  const user = useSelector((state) => state.auth.user);
+  const user = JSON.parse(localStorage.getItem("user"));
   const role = user.role;
 
   // fetch admin detail

@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 function UpdateOrder() {
-  const user = useSelector((state) => state.auth.user);
-  const role = user.role;
+   const storedUser = JSON.parse(localStorage.getItem("user"));
+  const role = storedUser.role;
   const [formData, setFormData] = useState({
     input_type: "",
     amount: "",

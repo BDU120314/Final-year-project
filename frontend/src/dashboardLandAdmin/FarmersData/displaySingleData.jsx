@@ -12,7 +12,7 @@ const DisplaySingleData = () => {
       setData(res.data);
       console.log(data);
     });
-  }, []); // Empty dependency array to ensure useEffect runs only once
+  }, [data, id]); // Empty dependency array to ensure useEffect runs only once
 
   const formatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };

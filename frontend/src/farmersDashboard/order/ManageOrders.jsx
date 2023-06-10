@@ -7,8 +7,8 @@ import { useSelector } from "react-redux";
 
 const ManageOrders = () => {
   const [orderData, setOrderData] = useState([]);
-  const user = useSelector((state) => state.auth.user);
-  const user_id = user.farmers_id;
+ const storedUser = JSON.parse(localStorage.getItem("user"));
+  const user_id = storedUser.farmers_id;
 //for deleting order by order id 
   const handleDelete = (id) => {
     axios

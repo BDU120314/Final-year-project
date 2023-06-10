@@ -19,7 +19,7 @@ function FarmerRegistrationForm() {
 
   const [landAdmin, setLandAdmin] = useState([]);
   // const navigate = useNavigate();
-  const user = useSelector((state) => state.auth.user);
+  const user = JSON.parse(localStorage.getItem("user"));
   const LandAdmin_id = user.rep_id;
   console.log(LandAdmin_id);
   useEffect(() => {

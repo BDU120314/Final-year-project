@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios"; 
-import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 function AddingWoreda  () {
  const [formData, setFormData] = useState({
@@ -9,8 +7,7 @@ function AddingWoreda  () {
    name: "",
  });
  const { id, name } = formData;
- const user = useSelector((state) => state.auth.user);
- const navigate = useNavigate();
+ const user = JSON.parse(localStorage.getItem("user"));
  const [admin, setAdmin] = useState([]);
 
  // fetch admin detail

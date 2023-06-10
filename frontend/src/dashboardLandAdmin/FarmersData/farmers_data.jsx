@@ -4,8 +4,6 @@ import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { TfiReload } from "react-icons/tfi";
-import { useSelector } from "react-redux";
 import { MdDelete } from "react-icons/md";
 import {  BiEditAlt } from "react-icons/bi";
 import { GrView } from "react-icons/gr";
@@ -16,19 +14,19 @@ const FarmersData = () => {
   const [filteredData, setFilteredData] = useState([]);
   const [admin, setAdmin] = useState([]);
 
-  const user = useSelector((state) => state.auth.user);
+   const storedUser = JSON.parse(localStorage.getItem("user"));
 //for fetching admin details
   useEffect(() => {
     const reperesentative = async () => {
       const response = await axios.get(
-        `http://localhost:5001/api/v1/kebele/${user.rep_id}`
+        `http://localhost:5001/api/v1/kebele/${storedUser.rep_id}`
       );
       setAdmin(response.data);
       console.log(response.data);
     };
 
     reperesentative();
-  }, [user.rep_id]);
+  }, [storedUser.rep_id]);
 
   useEffect(() => {
     const loadAccountData = async () => {
@@ -80,28 +78,6 @@ const FarmersData = () => {
     }
     setFilteredData(filteredData);
   };
-
-  // const handleReload = async () => {
-  //   try {
-  //     const [accountResponse] = await Promise.all([
-  //       axios.get("http://localhost:5001/api/v1/farmers"),
-  //     ]);
-
-  //     const accountData = accountResponse.data;
-  //     // const updatedAccountData = accountData.map((data) => {
-  //     //   const roleName = roleData.find(
-  //     //     (role) => role.id === data.role_id
-  //     //   )?.name;
-  //     //   return { ...data, role: roleName };
-  //     // });
-
-  //     setAccountData(updatedAccountData);
-  //     setFormData("");
-  //     setFilteredData([]);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
   return (
     <div className="pt-5">
       <div className="flex justify-center items-center rounded-[5px] mx-4 my-10 gap-5">
@@ -128,12 +104,6 @@ const FarmersData = () => {
             <FaSearch color="white" />
           </button>
         </form>
-        {/* <button
-          className="bg-blue-400 h-10 px-[14px] rounded-md"
-          // onClick={handleReload}
-        >
-          <TfiReload color="white" fontSize={32} />
-        </button> */}
       </div>
       <div className="flex justify-center flex-col items-center px-5 ">
         <table className="table-auto w-full">

@@ -8,7 +8,6 @@ const SingleLandAdmin = () => {
   useEffect(() => {
     axios.get(`http://localhost:5001/api/v1/kebele/${id}`).then((res) => {
       setData(res.data);
-      console.log(data);
     });
   });
   return (

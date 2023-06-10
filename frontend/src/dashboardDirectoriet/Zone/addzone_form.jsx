@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 function AddingZone() {
   const [formData, setFormData] = useState({
@@ -9,7 +8,7 @@ function AddingZone() {
     name: "",
   });
 const { id, name } = formData;
-  const user = useSelector((state) => state.auth.user);
+  const user = JSON.parse(localStorage.getItem("user"));
   const navigate = useNavigate();
  const [admin, setAdmin] = useState([]);
   
