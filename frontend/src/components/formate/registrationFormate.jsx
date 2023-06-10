@@ -93,7 +93,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
       <h2 className="text-black font-extrabold leading-10 py-[10px]">
         Registration Form
       </h2>
-      <form className="flex flex-col bg-gray-200 mb-10" onSubmit={handleSubmit}>
+      <form className="flex flex-col overflow-auto md:overflow-scroll bg-gray-200 mb-10" onSubmit={handleSubmit}>
         <div className="flex flex-wrap justify-center items-center gap-5  py-[1px] px-[15px] ">
           {(() => {
             switch (typeName) {

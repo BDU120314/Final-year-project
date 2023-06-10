@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { MdDelete } from "react-icons/md";
+import { GrView } from "react-icons/gr";
+import { BiEditAlt } from "react-icons/bi";
 const ZoneData = () => {
   const [zoneData, setZoneData] = useState([]);
 
@@ -59,23 +62,25 @@ const ZoneData = () => {
                 <td className="w-auto flex justify-center items-center gap-2 py-2 px-4">
                   <Link
                     to={`/regionDashboard/manageZoneAdmin/update/${datas.id}`}
-                    className="px-2 bg-blue-700 rounded-sm"
                   >
-                    Edit
+                      <BiEditAlt color="blue" size={32} />
+                    
                   </Link>
 
                   <Link
                     to={`/regionDashboard/manageZoneAdmin/view/${datas.id}`}
-                    className="px-2 bg-gray-300 rounded-sm"
                   >
-                    <button>View</button>
+                    <button>
+                    <GrView color="white" size={32} />
+
+                    </button>
                   </Link>
 
                   <button
-                    className="bg-red-400 rounded-sm"
                     onClick={() => handleDelete(datas.id)}
                   >
-                    Delete
+                      <MdDelete color="red" size={30} />
+                    
                   </button>
                 </td>
               </tr>
