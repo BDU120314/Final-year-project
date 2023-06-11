@@ -52,6 +52,8 @@ import KebeleDisplay from "./DashboardWoreda/Kebele/kebeledisplay";
 import ModifyKebele from "./DashboardWoreda/Kebele/kebelemodify";
 import DisplaySingleKebele from "./DashboardWoreda/Kebele/singlekebele";
 import WoredaRegistrationForm from "./DashboardZone/WoredaRep/woredarepRegister";
+import CardOf from "./components/pestiside/CardOf";
+
 import SingleWoreda from "./DashboardZone/Woreda/singleworeda";
 import DisplaySingleWoreda from "./DashboardZone/WoredaRep/displaySingleWoreda";
 import ManageReportRegion from "./dashboardDirectoriet/ManageReportRegion";
@@ -61,7 +63,7 @@ const App = () => {
     <div>
       <Routes>
         {/* home page or landing page */}
-
+<Route path="/card" element ={<CardOf />} />
         <Route path="/" element={<Home />}>
           <Route index element={<Main />} />
           <Route path="/postPage" element={<Post />} />
