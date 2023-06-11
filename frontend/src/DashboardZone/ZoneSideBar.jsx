@@ -84,7 +84,7 @@ const ZoneSideBar = () => {
         <>
 
 <div className="hidden lg:flex bg-[#3d3d75] h-full w-[18%] flex-col fixed top-0 left-0">
-          <div className="flex gap-[15px] items-center bg-gray-400 w-[100%] pt-10 border-b-[1px] border-[#EDEDED]/[0.3]">
+          <div className="flex gap-[15px] items-center pb-5 border-b-[1px] bg-slate-400 w-[100%] pt-5 border-[#EDEDED]/[0.3]">
             <FaTachometerAlt className="text-white" fontSize={32} />
             <p className="text-white text-[18px] font-bold leading-5">
               Zone Admin

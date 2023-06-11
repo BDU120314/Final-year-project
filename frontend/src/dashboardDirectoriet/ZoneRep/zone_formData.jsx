@@ -64,6 +64,7 @@ const ZoneData = () => {
                 <td className="w-auto flex justify-center items-center gap-2 py-2 px-4">
                   <Link
                     to={`/regionDashboard/manageZoneAdmin/update/${datas.id}`}
+                    className="link  hover:bg-blue-400"
                   >
                       <BiEditAlt color="blue" size={32} />
                     
@@ -72,7 +73,7 @@ const ZoneData = () => {
                   <Link
                     to={`/regionDashboard/manageZoneAdmin/view/${datas.id}`}
                   >
-                    <button>
+                    <button className="hover:bg-yellow-300">
                     <GrView color="white" size={32} />
 
                     </button>
@@ -80,6 +81,7 @@ const ZoneData = () => {
 
                   <button
                     onClick={() => handleDelete(datas.id)}
+                    className=" hover:bg-red-400"
                   >
                       <MdDelete color="red" size={30} />
                     

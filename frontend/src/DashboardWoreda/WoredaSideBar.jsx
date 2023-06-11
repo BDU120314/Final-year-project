@@ -39,13 +39,14 @@ const Sidebar = () => {
     <>
       {isLogin && (
         <>
-          <div className="hidden lg:flex bg-slate-500 h-screen w-[17%] flex-col fixed top-0 left-0">
-            <div className=" flex gap-[15px] items-center pb-5 mt-16 border-b-[1px] bg-slate-400 border-[#EDEDED]/[0.3]">
-              <FaTachometerAlt className="text-white" fontSize={32} />
+          <div className="hidden lg:flex bg-[#3d3d75] h-full w-[18%] flex-col fixed top-0 left-0">
+          <div className="flex gap-[15px] items-center pb-5 border-b-[1px] bg-slate-400 w-[100%] pt-5 border-[#EDEDED]/[0.3]">
+             <FaTachometerAlt className="text-white" fontSize={32} />
               <p className="text-white text-[18px] font-bold leading-5">
                 woreda Admin
               </p>
             </div>
+
             <div className="pt-5 border-b-[1px] border-[#EDEDED]/[0.3] flex flex-col justify-start items-start gap-6">
               <div
                 className={`flex cursor-pointer items-center hover:bg-gray-300 px-[15px] hover:rounded-md justify-between gap-10 py-1 text-white ${

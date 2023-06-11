@@ -54,6 +54,7 @@ import DisplaySingleKebele from "./DashboardWoreda/Kebele/singlekebele";
 import WoredaRegistrationForm from "./DashboardZone/WoredaRep/woredarepRegister";
 import SingleWoreda from "./DashboardZone/Woreda/singleworeda";
 import DisplaySingleWoreda from "./DashboardZone/WoredaRep/displaySingleWoreda";
+import ManageReportRegion from "./dashboardDirectoriet/ManageReportRegion";
  
 const App = () => {
   return (
@@ -260,7 +261,7 @@ const App = () => {
 
           <Route
             path="/regionDashboard/manageReport"
-            element={<ManageReportZone />}
+            element={<ManageReportRegion />}
           />
           <Route
             path="/regionDashboard/createpost"
