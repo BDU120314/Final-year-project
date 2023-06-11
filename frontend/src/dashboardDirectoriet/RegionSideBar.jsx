@@ -78,8 +78,8 @@ const RegionSideBar = () => {
     <>
       {isLogin && (
         <>
-          <div className="hidden lg:flex bg-green-400 h-screen w-[18%] justify-top items-start gap-5 flex-col fixed top-0 left-0">
-            <div className="flex gap-[15px] items-center pb-5 border-b-[1px] border-[#EDEDED]/[0.3]">
+          <div className="hidden lg:flex  bg-[#3d3d75] h-screen w-[18%] justify-top items-start gap-5 flex-col fixed top-0 left-0">
+            <div className="flex gap-[15px] items-center pb-5 border-b-[1px] bg-slate-400 w-[100%] pt-5 border-[#EDEDED]/[0.3]">
               <FaTachometerAlt className="text-white" fontSize={32} />
               <p className="text-white text-[18px] font-bold leading-5">
                 Region Admin
@@ -87,7 +87,7 @@ const RegionSideBar = () => {
             </div>
             <div className="pt-5 border-b-[1px] border-[#EDEDED]/[0.3] flex flex-col justify-start items-start gap-6">
               <div
-                className={`flex cursor-pointer items-center hover:bg-green-300 pl-[15px] pr-[45px] hover:rounded-md justify-between gap-10 py-1 text-white ${
+                className={`flex cursor-pointer items-center  hover:bg-gray-400 pl-[15px] pr-[45px] hover:rounded-md justify-between gap-10 py-1 text-white ${
                   openLink === "zone" ? "bg-green-300 rounded-md" : ""
                 }`}
                 onClick={() => handleLinkClick("zone")}
@@ -110,24 +110,24 @@ const RegionSideBar = () => {
                 >
                   <Link
                     to="/regionDashboard/zoneAdd"
-                    className="flex items-center gap-2 hover:bg-green-300 px-[25px] hover:rounded-md py-1 text-white"
+                    className="flex items-center gap-2  hover:bg-gray-400 px-[25px] hover:rounded-md py-1 text-white"
                     onClick={handleLinkItemClick}
                   >
-                    <FaChevronRight className="text-green-800" fontSize={22} />
+                    <FaChevronRight className="white-800" fontSize={22} />
                     <span className="text-md font-medium">Add Zone</span>
                   </Link>
                   <Link
                     to="/regionDashboard/manageZone"
-                    className="flex items-center gap-2 py-1 hover:bg-green-300 px-[25px] hover:rounded-md text-white"
+                    className="flex items-center gap-2 py-1  hover:bg-gray-400 px-[25px] hover:rounded-md text-white"
                     onClick={handleLinkItemClick}
                   >
-                    <FaChevronRight className="text-green-800" fontSize={22} />
+                    <FaChevronRight className="white-800" fontSize={22} />
                     <span className="text-md font-medium">Manage Zone</span>
                   </Link>
                 </nav>
               )}
               <div
-                className={`flex cursor-pointer items-center hover:bg-green-300 pl-[15px] pr-[45px] hover:rounded-md justify-between gap-10 py-1 text-white ${
+                className={`flex cursor-pointer items-center  hover:bg-gray-400 pl-[15px] pr-[45px] hover:rounded-md justify-between gap-10 py-1 text-white ${
                   openLink === "zonerep" ? "bg-green-300 rounded-md" : ""
                 }`}
                 onClick={() => handleLinkClick("zonerep")}
@@ -152,25 +152,25 @@ const RegionSideBar = () => {
                 >
                   <Link
                     to="/regionDashboard/zoneAdminRegister"
-                    className="flex items-center gap-2 hover:bg-green-300 px-[25px] hover:rounded-md py-1 text-white"
+                    className="flex items-center gap-2  hover:bg-gray-400 px-[25px] hover:rounded-md py-1 text-white"
                     onClick={handleLinkItemClick}
                   >
-                    <FaChevronRight className="text-green-800" fontSize={22} />
+                    <FaChevronRight className="text-white-800" fontSize={22} />
                     <span className="text-md font-medium">Register Admin</span>
                   </Link>
                   <Link
                     to="/regionDashboard/manageZoneAdmin"
-                    className="flex items-center gap-2 py-1 hover:bg-green-300 px-[25px] hover:rounded-md text-white"
+                    className="flex items-center gap-2 py-1  hover:bg-gray-400 px-[25px] hover:rounded-md text-white"
                     onClick={handleLinkItemClick}
                   >
-                    <FaChevronRight className="text-green-800" fontSize={22} />
+                    <FaChevronRight className="text-white-800" fontSize={22} />
                     <span className="text-md font-medium">Manage Admin</span>
                   </Link>
                 </nav>
               )}
 
               <div
-                className={`flex cursor-pointer  items-center hover:bg-green-300 pl-[15px] pr-[23px] hover:rounded-md justify-between gap-10 py-1 text-white ${
+                className={`flex cursor-pointer  items-center hover:bg-gray-400 pl-[15px] pr-[23px] hover:rounded-md justify-between gap-10 py-1 text-white ${
                   openLink === "distributor" ? "bg-green-300 rounded-md" : ""
                 }`}
                 onClick={() => handleLinkClick("distributor")}
@@ -195,25 +195,25 @@ const RegionSideBar = () => {
                 >
                   <Link
                     to="/regionDashboard/registerDistributor"
-                    className="flex items-center gap-2 hover:bg-green-300 px-[25px] hover:rounded-md py-1 text-white"
+                    className="flex items-center gap-2  hover:bg-gray-400 px-[25px] hover:rounded-md py-1 text-white"
                     onClick={handleLinkItemClick}
                   >
-                    <FaChevronRight className="text-green-800" fontSize={22} />
+                    <FaChevronRight className="white-800" fontSize={22} />
                     <span className="text-md font-medium">Register Admin</span>
                   </Link>
                   <Link
                     to="/regionDashboard/manageDistributor"
-                    className="flex items-center gap-2 py-1 hover:bg-green-300 px-[25px] hover:rounded-md text-white"
+                    className="flex items-center gap-2 py-1  hover:bg-gray-400 px-[25px] hover:rounded-md text-white"
                     onClick={handleLinkItemClick}
                   >
-                    <FaChevronRight className="text-green-800" fontSize={22} />
+                    <FaChevronRight className="white-800" fontSize={22} />
                     <span className="text-md font-medium">Manage Admin</span>
                   </Link>
                 </nav>
               )}
 
               <div
-                className={`flex cursor-pointer  items-center hover:bg-green-300 pr-[20px] pl-[15px] hover:rounded-md justify-between gap-10 py-1 text-white ${
+                className={`flex cursor-pointer  items-center hover:bg-gray-400 pr-[20px] pl-[15px] hover:rounded-md justify-between gap-10 py-1 text-white ${
                   openLink === "orders" ? "bg-green-300 rounded-md" : ""
                 }`}
                 onClick={() => handleLinkClick("orders")}
@@ -229,7 +229,7 @@ const RegionSideBar = () => {
                 </div>
               </div>
               <div
-                className={`flex cursor-pointer  items-center justify-between gap-10 py-1 hover:bg-green-300 pl-[15px] pr-[35px] hover:rounded-md text-white ${
+                className={`flex cursor-pointer  items-center justify-between gap-10 py-1 hover:bg-gray-400 pl-[15px] pr-[35px] hover:rounded-md text-white ${
                   openLink === "reports" ? "bg-green-300 rounded-md" : ""
                 }`}
                 onClick={() => handleLinkClick("reports")}
@@ -254,18 +254,18 @@ const RegionSideBar = () => {
                 >
                   <Link
                     to="/regionDashboard/create"
-                    className="flex items-center gap-2 hover:bg-green-300 px-[15px] hover:rounded-md py-1 text-white"
+                    className="flex items-center gap-2 hover:bg-gray-400 px-[15px] hover:rounded-md py-1 text-white"
                     onClick={handleLinkItemClick}
                   >
-                    <FaChevronRight className="text-green-800" fontSize={22} />
+                    <FaChevronRight className="white-800" fontSize={22} />
                     <span className="text-md font-medium">Add Report</span>
                   </Link>
                   <Link
                     to="/regionDashboard/manageReport"
-                    className="flex items-center gap-2 hover:bg-green-300 px-[15px] hover:rounded-md py-1 text-white"
+                    className="flex items-center gap-2 hover:bg-gray-400 px-[15px] hover:rounded-md py-1 text-white"
                     onClick={handleLinkItemClick}
                   >
-                    <FaChevronRight className="text-green-800" fontSize={22} />
+                    <FaChevronRight className="white-800" fontSize={22} />
                     <span className="text-md font-medium">Manage Report</span>
                   </Link>
                 </nav>
@@ -295,18 +295,18 @@ const RegionSideBar = () => {
               >
                 <Link
                   to="/regionDashboard/createpost"
-                  className="flex items-center gap-2 hover:bg-green-300 px-[15px] hover:rounded-md py-1 text-white"
+                  className="flex items-center gap-2 hover:bg-gray-400 px-[15px] hover:rounded-md py-1 text-white"
                   onClick={handleLinkItemClick}
                 >
-                  <FaChevronRight className="text-green-800" fontSize={22} />
+                  <FaChevronRight className="white-800" fontSize={22} />
                   <span className="text-md font-medium">Add Post</span>
                 </Link>
                 <Link
                   to="/regionDashboard/managepost"
-                  className="flex items-center gap-2 hover:bg-green-300 px-[15px] hover:rounded-md py-1 text-white"
+                  className="flex items-center gap-2 hover:bg-gray-400 px-[15px] hover:rounded-md py-1 text-white"
                   onClick={handleLinkItemClick}
                 >
-                  <FaChevronRight className="text-green-800" fontSize={22} />
+                  <FaChevronRight className="white-800" fontSize={22} />
                   <span className="text-md font-medium">Manage Post</span>
                 </Link>
               </nav>
@@ -357,7 +357,7 @@ const RegionSideBar = () => {
                       onClick={handleLinkItemClick}
                     >
                       <FaChevronRight
-                        className="text-green-800"
+                        className="white-800"
                         fontSize={20}
                       />
                       <span className="text-md font-medium">Add woreda</span>
@@ -368,7 +368,7 @@ const RegionSideBar = () => {
                       onClick={handleLinkItemClick}
                     >
                       <FaChevronRight
-                        className="text-green-800"
+                        className="white-800"
                         fontSize={20}
                       />
                       <span className="text-md font-medium">Manage woreda</span>
@@ -401,7 +401,7 @@ const RegionSideBar = () => {
                       onClick={handleLinkItemClick}
                     >
                       <FaChevronRight
-                        className="text-green-800"
+                        className="white-800"
                         fontSize={20}
                       />
                       <span className="text-md font-medium">
@@ -414,7 +414,7 @@ const RegionSideBar = () => {
                       onClick={handleLinkItemClick}
                     >
                       <FaChevronRight
-                        className="text-green-800"
+                        className="white-800"
                         fontSize={20}
                       />
                       <span className="text-md font-medium">
@@ -449,7 +449,7 @@ const RegionSideBar = () => {
                       onClick={handleLinkItemClick}
                     >
                       <FaChevronRight
-                        className="text-green-800"
+                        className="white-800"
                         fontSize={20}
                       />
                       <span className="text-md font-medium">
@@ -462,7 +462,7 @@ const RegionSideBar = () => {
                       onClick={handleLinkItemClick}
                     >
                       <FaChevronRight
-                        className="text-green-800"
+                        className="white-800"
                         fontSize={20}
                       />
                       <span className="text-md font-medium">
@@ -511,7 +511,7 @@ const RegionSideBar = () => {
                       onClick={handleLinkItemClick}
                     >
                       <FaChevronRight
-                        className="text-green-800"
+                        className="white-800"
                         fontSize={20}
                       />
                       <span className="text-md font-medium">Add Report</span>
@@ -522,7 +522,7 @@ const RegionSideBar = () => {
                       onClick={handleLinkItemClick}
                     >
                       <FaChevronRight
-                        className="text-green-800"
+                        className="white-800"
                         fontSize={20}
                       />
                       <span className="text-md font-medium">Manage Report</span>
@@ -560,7 +560,7 @@ const RegionSideBar = () => {
                       onClick={handleLinkItemClick}
                     >
                       <FaChevronRight
-                        className="text-green-800"
+                        className="white-800"
                         fontSize={22}
                       />
                       <span className="text-md font-medium">Add Post</span>
@@ -571,7 +571,7 @@ const RegionSideBar = () => {
                       onClick={handleLinkItemClick}
                     >
                       <FaChevronRight
-                        className="text-green-800"
+                        className="white-800"
                         fontSize={22}
                       />
                       <span className="text-md font-medium">Manage Post</span>

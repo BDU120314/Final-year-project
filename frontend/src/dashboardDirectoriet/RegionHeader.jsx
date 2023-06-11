@@ -68,10 +68,10 @@ const RegionHeader = () => {
       <div className="flex items-center gap-4 relative ">
         <div className="flex items-center gap-[25px] border-r-[1px] pr-1">
           <Link
-            to="/regionDashboard/zoneAdminRegister"
-            className="bg-blue-400 flex justify-center items-centerh-[30px] px-4 rounded-md"
+            to="/regionDashboard/zoneadd"
+            className="bg-blue-600 hover:bg-blue-400 flex justify-center items-centerh-[30px] px-4 text-white rounded-md"
           >
-            Add zone
+            Add Zone
           </Link>
         </div>
         <div
@@ -95,9 +95,9 @@ const RegionHeader = () => {
         {isLogin && (
           <div
             onClick={handleLogout}
-            className="flex items-center justify-center gap-3 mr-5  cursor-pointer"
+            className="flex items-center justify-center gap-3 mr-5 hover:bg-red-300 bg-red-600 h-8 w-[80px] rounded-md cursor-pointer"
           >
-            <p className="text-gray-600 text-18px leading-5">Logout</p>
+            <p className="text-white text-18px leading-5">Logout</p>
           </div>
         )}
       </div>
