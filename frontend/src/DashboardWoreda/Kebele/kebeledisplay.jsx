@@ -6,6 +6,19 @@ import { FiEdit } from "react-icons/fi";
 import { GrView } from "react-icons/gr";
 
 const KebeleDisplay = () => {
+  const [admin, setAdmin] = useState([]);
+  const user = JSON.parse(localStorage.getItem("user"));
+  const [formData, setWoredasData] = useState([]);
+  useEffect(() => {
+    const adminData = async () => {
+      const response = await axios.get(
+        `http://localhost:5001/api/v1/woreda/${user.rep_id}`
+      );
+      setAdmin(response.data.rows[0]);
+    };
+    adminData();
+  }, [user.rep_id]);
+
   const handleDelete = (id) => {
     axios
       .delete(`http://localhost:5001/api/v1/addkebele/delete/${id}`)
@@ -17,18 +30,18 @@ const KebeleDisplay = () => {
       });
   };
 
-  const [formData, setWoredasData] = useState([]);
-
+  console.log(admin.woreda_id)
   useEffect(() => {
     axios
-      .get("http://localhost:5001/api/v1/addkebele")
+      .get(`http://localhost:5001/api/v1/addkebele/fetch/${admin.woreda_id}`)
       .then((response) => {
+        console.log(response.data, "woreda id");
         setWoredasData(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [admin]);
 
   return (
     <div className="flex justify-center items-center px-20">

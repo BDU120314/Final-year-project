@@ -60,6 +60,24 @@ const GetSingleWoreda = (req, res) => {
   });
 };
 
+const GetSingleAdminByZone_id = (req, res) => {
+  const id = req.params.id;
+  const sql = `SELECT r.*
+               FROM representative AS r
+               JOIN woredas AS w ON r.woreda_id =w.id
+               WHERE w.zone_id = "${id}"`;
+
+  db.query(sql, (err, rows, fields) => {
+    if (!err) {
+      res.send(rows);
+    } else {
+      console.log(err);
+      res.status(500).send("An error occurred while fetching the data.");
+    }
+  });
+};
+
+
 //for updating
 
 const UpdateWoreda = (req, res) => {
@@ -106,5 +124,6 @@ module.exports = {
   GetSingleWoreda,
   UpdateWoreda,
   DeleteWoreda,
+  GetSingleAdminByZone_id,
 };
 //for getting all farmers

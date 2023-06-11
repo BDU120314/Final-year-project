@@ -1,30 +1,17 @@
 const db = require("../config/connection_db");
 
 const AddKebele = (req, res) => {
-  const {
-     id,
-    kebele_name, 
-    woreda_id
-  } = req.body; 
-  console.log(req.body)
-  const sql =
-    "INSERT INTO kebeles (id,kebele_name, woreda_id ) VALUES (?,?,?)";
+  const { id, kebele_name, woreda_id } = req.body;
+  console.log(req.body);
+  const sql = "INSERT INTO kebeles (id,kebele_name, woreda_id ) VALUES (?,?,?)";
 
-  db.query(
-    sql,
-    [
-      id,
-     kebele_name,
-     woreda_id  
-    ],
-    (error, result) => {
-      if (!error) {
-        console.log("Data added successfully!");
-      } else {
-        console.log(error.message);
-      }
+  db.query(sql, [id, kebele_name, woreda_id], (error, result) => {
+    if (!error) {
+      console.log("Data added successfully!");
+    } else {
+      console.log(error.message);
     }
-  );
+  });
 };
 
 const GetKebele = (req, res) => {
@@ -33,6 +20,18 @@ const GetKebele = (req, res) => {
       res.send(rows);
     } else console.log(err);
   });
+};
+const GetKebeleByWoredaId = (req, res) => {
+  const id = req.params.id;
+  db.query(
+    `SELECT * FROM kebeles WHERE woreda_id =?`,
+    [id],
+    (err, rows, fields) => {
+      if (!err) {
+        res.send(rows);
+      } else console.log(err);
+    }
+  );
 };
 
 const GetSingleKebele = (req, res) => {
@@ -52,30 +51,21 @@ const GetSingleKebele = (req, res) => {
   });
 };
 
-
 //for updating
 
 const UpdateKebele = (req, res) => {
   const id = req.params.id;
-  const {
-    kebele_name,
-  } = req.body;
+  const { kebele_name } = req.body;
 
   const sql = `UPDATE kebeles SET kebele_name='${kebele_name}' WHERE id=${id}`;
-  db.query(
-    sql,
-    [ 
-      kebele_name,
-    ],
-    (error, result) => {
-      if (error) {
-        console.error(error);
-        res.status(500).send(error);
-      } else {
-        res.status(200).send("User data updated successfully");
-      }
+  db.query(sql, [kebele_name], (error, result) => {
+    if (error) {
+      console.error(error);
+      res.status(500).send(error);
+    } else {
+      res.status(200).send("User data updated successfully");
     }
-  );
+  });
 };
 
 const DeleteKebele = (req, res) => {
@@ -110,7 +100,6 @@ const selectkebeleById = (req, res) => {
   });
 };
 
-
 module.exports = {
   AddKebele,
   GetKebele,
@@ -118,4 +107,5 @@ module.exports = {
   UpdateKebele,
   DeleteKebele,
   selectkebeleById,
+  GetKebeleByWoredaId,
 };

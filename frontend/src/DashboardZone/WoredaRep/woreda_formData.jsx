@@ -6,6 +6,19 @@ import { BiEditAlt } from "react-icons/bi";
 import { MdDelete } from "react-icons/md";
 const WoredaData = () => {
   const [woredaData, setWoredData] = useState([]);
+  const [admin, setAdmin] = useState([]);
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  useEffect(() => {
+    const adminData = async () => {
+      const response = await axios.get(
+        `http://localhost:5001/api/v1/zone/${user.rep_id}`
+      );
+      
+      setAdmin(response.data[0]);
+    };
+    adminData();
+  }, [user]);
 
   const handleDelete = (id) => {
     axios
@@ -20,15 +33,14 @@ const WoredaData = () => {
   };
   useEffect(() => {
     axios
-      .get("http://localhost:5001/api/v1/woreda")
+      .get(`http://localhost:5001/api/v1/woreda/fetch/${admin.zone_id}`)
       .then((response) => {
         setWoredData(response.data);
-        console.log(woredaData);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, [woredaData]);
+  }, [admin]);
 
   return (
     <div className="flex justify-center items-center px-5 ">

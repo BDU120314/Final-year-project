@@ -44,6 +44,19 @@ const GetSingleWoreda = (req, res) => {
   });
 };
 
+const GetKebeleByZoneId = (req, res) => {
+  const id = req.params.id;
+  db.query(
+    `SELECT * FROM woredas WHERE zone_id =?`,
+    [id],
+    (err, rows, fields) => {
+      if (!err) {
+        res.send(rows);
+      } else console.log(err);
+    }
+  );
+};
+
 const UpdateWoreda = (req, res) => {
   const id = req.params.id;
   const { name } = req.body;
@@ -102,4 +115,5 @@ module.exports = {
   UpdateWoreda,
   DeleteWoreda,
   selectworedaById,
+  GetKebeleByZoneId,
 };
