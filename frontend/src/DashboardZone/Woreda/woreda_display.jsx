@@ -6,6 +6,19 @@ import { FiEdit } from "react-icons/fi";
 import { GrView } from "react-icons/gr";
 
 const WoredaDisplay = () => {
+
+  const [admin, setAdmin] = useState([]);
+  const user = JSON.parse(localStorage.getItem("user"));
+  useEffect(() => {
+    const adminData = async () => {
+      const response = await axios.get(
+        `http://localhost:5001/api/v1/zone/${user.rep_id}`
+      );
+      setAdmin(response.data[0]);
+    };
+    adminData();
+  }, [user.rep_id]);
+
   const handleDelete = (id) => {
     axios
       .delete(`http://localhost:5001/api/v1/addworeda/delete/${id}`)
@@ -21,14 +34,14 @@ const WoredaDisplay = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5001/api/v1/addworeda")
+      .get(`http://localhost:5001/api/v1/addworeda/fetch/${admin.zone_id}`)
       .then((response) => {
         setWoredasData(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [admin]);
 
   return (
     <div className="flex justify-center items-center px-20">

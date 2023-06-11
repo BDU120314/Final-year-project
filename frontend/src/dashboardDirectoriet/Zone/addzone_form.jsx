@@ -45,7 +45,7 @@ const { id, name } = formData;
         region_id: admin.region_id,
       });
       window.alert("Zone successfully registered.");
-      navigate("/region_dashboard/register_zonerep");
+     
     } catch (error) {
       console.log(error);
     }

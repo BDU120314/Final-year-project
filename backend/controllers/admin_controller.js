@@ -67,6 +67,22 @@ const GetSingleAdmin = (req, res) => {
     } else console.log(err);
   });
 };
+const GetSingleAdminByWoreda_id = (req, res) => {
+  const id = req.params.id;
+  const sql = `SELECT r.*
+               FROM representative AS r
+               JOIN kebeles AS k ON r.kebele_id = k.id
+               WHERE k.woreda_id = "${id}"`;
+
+  db.query(sql, (err, rows, fields) => {
+    if (!err) {
+      res.send(rows);
+    } else {
+      console.log(err);
+      res.status(500).send("An error occurred while fetching the data.");
+    }
+  });
+};
 
 //for updating
 
@@ -160,4 +176,5 @@ module.exports = {
   DeleteAdmin,
   UpdateProfile,
   upload,
+  GetSingleAdminByWoreda_id,
 };

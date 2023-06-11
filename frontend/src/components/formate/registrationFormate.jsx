@@ -29,6 +29,27 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
   const [zones, setZones] = useState([]);
   const [woreda, setWoreda] = useState([]);
   const [kebeles, setKebeles] = useState([]);
+  const [admin, setAdmin] =useState([])
+  const user = JSON.parse(localStorage.getItem("user"));
+
+   useEffect(() => {
+     const adminData = async () => {
+       const response = await axios.get(
+         `http://localhost:5001/api/v1/woreda/${user.rep_id}`
+       );
+       setAdmin(response.data.rows[0]);
+     };
+     adminData();
+   }, [user.rep_id]);
+   useEffect(() => {
+     const adminData = async () => {
+       const response = await axios.get(
+         `http://localhost:5001/api/v1/zone/${user.rep_id}`
+       );
+       setAdmin(response.data.rows[0]);
+     };
+     adminData();
+   }, [user.rep_id]);
 
   const handleChange = (e) => {
     setFormData((prevState) => ({
@@ -48,29 +69,31 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
   useEffect(() => {
     const handleWoredaData = async () => {
       const response = await axios.get(
-        "http://localhost:5001/api/v1/addworeda"
+        `http://localhost:5001/api/v1/addworeda/fetch/${admin.zone_id}`
       );
       setWoreda(response.data);
     };
     handleWoredaData();
-  }, []);
+  }, [admin]);
 
   useEffect(() => {
     const handleKebeleData = async () => {
       const response = await axios.get(
-        "http://localhost:5001/api/v1/addkebele"
+        `http://localhost:5001/api/v1/addkebele/fetch/${admin.woreda_id}`
       );
-      console.log(response.data)
+      console.log(response.data);
       setKebeles(response.data);
     };
     handleKebeleData();
-  }, []);
+  }, [admin]);
 
-  const handleSubmit =  (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     try {
-       axios.post(
-        `http://localhost:5001/api/v1/${typeName.toLowerCase()}`, formData);
+      axios.post(
+        `http://localhost:5001/api/v1/${typeName.toLowerCase()}`,
+        formData
+      );
       alert("User successfully registered");
       setFormData({
         [dataBaseColumn]: "",
@@ -93,7 +116,9 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
       <h2 className="text-black font-extrabold leading-10 py-[10px]">
         Registration Form
       </h2>
+ 
       <form className="flex flex-col bg-white mb-10" onSubmit={handleSubmit}>
+ 
         <div className="flex flex-wrap justify-center items-center gap-5  py-[1px] px-[15px] ">
           {(() => {
             switch (typeName) {

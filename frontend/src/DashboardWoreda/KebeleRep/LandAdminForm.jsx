@@ -6,8 +6,18 @@ import { GrView } from "react-icons/gr";
 import { BiEditAlt } from "react-icons/bi";
 
 const LandAdminForm1 = () => {
+  const [admin, setAdmin] = useState([]);
+  const user = JSON.parse(localStorage.getItem("user"));
   const [kebeleData, setKebeleData] = useState([]);
-
+  useEffect(() => {
+    const adminData = async () => {
+      const response = await axios.get(
+        `http://localhost:5001/api/v1/woreda/${user.rep_id}`
+      );
+      setAdmin(response.data.rows[0]);
+    };
+    adminData();
+  }, [user.rep_id]);
   const handleDelete = (id) => {
     axios
       .delete(`http://localhost:5001/api/v1/kebele/delete/${id}`)
@@ -21,7 +31,7 @@ const LandAdminForm1 = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5001/api/v1/kebele")
+      .get(`http://localhost:5001/api/v1/kebele/fetch/${admin.woreda_id}`)
       .then((response) => {
         console.log(response.data);
         setKebeleData(response.data);
@@ -29,7 +39,7 @@ const LandAdminForm1 = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [admin]);
 
   return (
     <div className="flex justify-center flex-col items-center px-5">
