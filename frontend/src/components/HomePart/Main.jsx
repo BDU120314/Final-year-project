@@ -9,8 +9,8 @@ import green from "../../assets/Green.jpg";
 const Main = () => {
   return (
     <div className="">
-      <div className="">
-        <div className="mb-16 text-center">
+      <div className="mb-20">
+        <div className="ext-center">
           <div
             style={{
               backgroundImage: `url(${green})`,
@@ -27,8 +27,8 @@ const Main = () => {
 
           <p className="mt-2 text-3xl font-extrabold leading-8 tracking-tight text-gray-900 dark:text-white sm:text-4xl"></p>
         </div>
-        <div className="flex flex-wrap my-12 dark:text-white ">
-          <div className="w-full p-8 border-b md:w-1/2 md:border-r lg:w-1/3 hover:scale-105">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="border hover:scale-95 shadow-lg">
             <Link to="/pestiSide?filter=pesti side">
               <div className="flex flex-col items-center mb-6">
                 <img
@@ -44,7 +44,7 @@ const Main = () => {
               </p>
             </Link>
           </div>
-          <div className="w-full p-8 border-b md:w-1/2 lg:w-1/3 lg:border-r hover:scale-105">
+          <div className="border hover:scale-95 shadow-lg">
             <Link to="/pestiSide?filter=Agrochemicals">
               <div className="flex flex-col items-center mb-6">
                 <div className="ml-4 text-xl">Agrochemicals</div>
@@ -55,7 +55,7 @@ const Main = () => {
               </p>
             </Link>
           </div>
-          <div className="w-full p-8 border-b md:w-1/2 md:border-r lg:w-1/3 lg:border-r-0 hover:scale-105">
+          <div className="border hover:scale-95 shadow-lg">
             <Link to="/pestiSide?filter=Organic Fertilizer">
               <div className="flex flex-col items-center mb-6">
                 <img
@@ -71,7 +71,7 @@ const Main = () => {
               </p>
             </Link>
           </div>
-          <div className="w-full p-8 border-b md:w-1/2 lg:w-1/3 lg:border-r lg:border-b-0 hover:scale-105">
+          <div className="border hover:scale-95 shadow-lg">
             <Link to="/pestiSide?filter=Chemical Fertilizer">
               <div className="flex flex-col items-center mb-6">
                 <img
@@ -79,7 +79,6 @@ const Main = () => {
                   alt=""
                   className="h-[300px] w-full object-cover rounded-[5px]"
                 />
-
                 <div className="ml-4 text-xl">Chemical Fertilizer</div>
               </div>
               <p className="leading-loose text-gray-500 dark:text-gray-200 text-md">
@@ -88,7 +87,7 @@ const Main = () => {
               </p>
             </Link>
           </div>
-          <div className="w-full p-8 border-b md:w-1/2 md:border-r md:border-b-0 lg:w-1/3 lg:border-b-0 hover:scale-105">
+          <div className="border hover:scale-95 shadow-lg">
             <Link to="/pestiSide?filter=Organic Farming">
               <div className="flex flex-col items-center mb-6">
                 <img

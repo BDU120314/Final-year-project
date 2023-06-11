@@ -17,6 +17,7 @@
     "antd": "^5.5.0",
     "axios": "^1.4.0",
     "cookie-parser": "^1.4.6",
+    "date-fns": "^2.30.0",
     "eslint-plugin-react-hooks": "^5.0.0-canary-aef7ce554-20230503",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
