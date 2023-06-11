@@ -80,7 +80,7 @@ const FarmersData = () => {
   };
   return (
     <div className="pt-5">
-      <div className="flex justify-center items-center rounded-[5px] mx-4 my-10 gap-5">
+      <div className="flex rounded-[5px] mx-14 my-10 gap-5">
         <form
           action=""
           onSubmit={handleSubmit}
@@ -135,7 +135,7 @@ const FarmersData = () => {
                         to={`/landAdminDashboard/manageFarmers/update/${datas.id}`}
                         className="link"
                       >
-                        <button className="px-2 rounded-sm">
+                        <button className="px-2 rounded-sm hover:bg-blue-300">
                         <BiEditAlt color="blue" size={32} />
                         </button>
                       </Link>
@@ -144,13 +144,16 @@ const FarmersData = () => {
                         to={`/landAdminDashboard/manageFarmers/view/${datas.id}`}
                         className="link"
                       >
-                        <button>
+                        <button
+                        className="hover:bg-yellow-200 px-2 rounded-sm"
+                        >
                         <GrView color="white" size={32} /> 
                         </button>{" "}
                       </Link>
 
                       <button
                         onClick={() => handleDelete(datas.id)}
+                        className="hover:bg-red-300 px-2 rounded-sm"
                       >
                   <MdDelete color="red" size={30} />
                 </button>

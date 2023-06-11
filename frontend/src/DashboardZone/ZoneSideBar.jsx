@@ -83,22 +83,22 @@ const ZoneSideBar = () => {
       {isLogin && (
         <>
 
-<div className="hidden lg:flex bg-green-400 h-screen w-[17%] flex-col fixed top-0 left-0">
-          <div className="flex gap-[15px] items-center pb-5 border-b-[1px] border-[#EDEDED]/[0.3]">
+<div className="hidden lg:flex bg-[#3d3d75] h-full w-[18%] flex-col fixed top-0 left-0">
+          <div className="flex gap-[15px] items-center bg-slate-500 pb-5 border-b-[1px] border-[#EDEDED]/[0.3]">
             <FaTachometerAlt className="text-white" fontSize={32} />
             <p className="text-white text-[18px] font-bold leading-5">
               Zone Admin
             </p>
           </div>
-          <div className="pt-5 border-b-[1px] border-[#EDEDED]/[0.3] flex flex-col justify-start items-start gap-6">
+          <div className="pt-5 border-b-[1px] border-[#EDEDED]/[0.3] flex  flex-col justify-start items-start gap-6">
             <div
-              className={`flex cursor-pointer items-center hover:bg-green-300 pl-[15px] pr-[45px] hover:rounded-md justify-between gap-10 py-1 text-white ${
+              className={`flex cursor-pointer items-center hover:bg-gray-400 pl-[15px] pr-[45px] hover:rounded-md justify-between gap-10 py-1 text-white ${
                 openLink === "woreda" ? "bg-green-300 rounded-md" : ""
               }`}
               onClick={() => handleLinkClick("woreda")}
             >
               <div className="flex items-center gap-2">
-                <GrUserAdmin color="white" fontSize={32} />
+                <GiVillage color="white" fontSize={32} />
                 <span className="text-[16px] font-bold">Woreda</span>
               </div>
               <span className="shrink-0 transition duration-300">
@@ -115,7 +115,7 @@ const ZoneSideBar = () => {
               >
                 <Link
                   to="/zoneDashboard/addworeda"
-                  className="flex items-center gap-2 hover:bg-green-300 px-[25px] hover:rounded-md py-1 text-white"
+                  className="flex items-center gap-2 hover:bg-gray-400 px-[25px] hover:rounded-md py-1 text-white"
                   onClick={handleLinkItemClick}
                 >
                   <FaChevronRight className="text-green-800" fontSize={22} />
@@ -123,7 +123,7 @@ const ZoneSideBar = () => {
                 </Link>
                 <Link
                   to="/zoneDashboard/manageWoreda"
-                  className="flex items-center gap-2 py-1 hover:bg-green-300 px-[25px] hover:rounded-md text-white"
+                  className="flex items-center gap-2 py-1 hover:bg-gray-400 px-[25px] hover:rounded-md text-white"
                   onClick={handleLinkItemClick}
                 >
                   <FaChevronRight className="text-green-800" fontSize={22} />
@@ -132,7 +132,7 @@ const ZoneSideBar = () => {
               </nav>
             )}
             <div
-              className={`flex cursor-pointer items-center hover:bg-green-300 pl-[15px] pr-[45px] hover:rounded-md justify-between gap-10 py-1 text-white ${
+              className={`flex cursor-pointer items-center hover:bg-gray-400 pl-[15px] pr-[45px] hover:rounded-md justify-between gap-10 py-1 text-white ${
                 openLink === "woredarep" ? "bg-green-300 rounded-md" : ""
               }`}
               onClick={() => handleLinkClick("woredarep")}
@@ -157,7 +157,7 @@ const ZoneSideBar = () => {
               >
                 <Link
                   to="/zoneDashboard/register"
-                  className="flex items-center gap-2 hover:bg-green-300 px-[25px] hover:rounded-md py-1 text-white"
+                  className="flex items-center gap-2 hover:bg-gray-400 px-[25px] hover:rounded-md py-1 text-white"
                   onClick={handleLinkItemClick}
                 >
                   <FaChevronRight className="text-green-800" fontSize={22} />
@@ -165,7 +165,7 @@ const ZoneSideBar = () => {
                 </Link>
                 <Link
                   to="/zoneDashboard/manageworedaAdmin"
-                  className="flex items-center gap-2 py-1 hover:bg-green-300 px-[25px] hover:rounded-md text-white"
+                  className="flex items-center gap-2 py-1 hover:bg-gray-400 px-[25px] hover:rounded-md text-white"
                   onClick={handleLinkItemClick}
                 >
                   <FaChevronRight className="text-green-800" fontSize={22} />
@@ -174,14 +174,14 @@ const ZoneSideBar = () => {
               </nav>
             )}
             <div
-              className={`flex cursor-pointer items-center hover:bg-green-300 pr-[20px] pl-[15px] hover:rounded-md justify-between gap-10 py-1 text-white ${
+              className={`flex cursor-pointer items-center hover:bg-gray-400 pr-[20px] pl-[15px] hover:rounded-md justify-between gap-10 py-1 text-white ${
                 openLink === "orders" ? "bg-green-300 rounded-md" : ""
               }`}
               onClick={() => handleLinkClick("orders")}
             >
               <Link to="/zoneDashboard/orders">
                 <div className="flex items-center gap-2">
-                  <GrUserAdmin color="white" fontSize={32} />
+                  <AiOutlineBorderOuter color="white" fontSize={32} />
                   <span className="text-[16px] font-bold">Orders</span>
                 </div>
               </Link>
@@ -190,7 +190,7 @@ const ZoneSideBar = () => {
               </div>
             </div>
             <div
-              className={`flex cursor-pointer items-center justify-between gap-10 py-1 hover:bg-green-300 pl-[15px] pr-[35px] hover:rounded-md text-white ${
+              className={`flex cursor-pointer items-center justify-between gap-10 py-1 hover:bg-gray-400 pl-[15px] pr-[35px] hover:rounded-md text-white ${
                 openLink === "reports" ? "bg-green-300 rounded-md" : ""
               }`}
               onClick={() => handleLinkClick("reports")}
@@ -215,7 +215,7 @@ const ZoneSideBar = () => {
               >
                 <Link
                   to="/zoneDashboard/create"
-                  className="flex items-center gap-2 hover:bg-green-300 px-[15px] hover:rounded-md py-1 text-white"
+                  className="flex items-center gap-2 hover:bg-gray-400 px-[15px] hover:rounded-md py-1 text-white"
                   onClick={handleLinkItemClick}
                 >
                   <FaChevronRight className="text-green-800" fontSize={22} />
@@ -223,7 +223,7 @@ const ZoneSideBar = () => {
                 </Link>
                 <Link
                   to="/zoneDashboard/manageReport"
-                  className="flex items-center gap-2 hover:bg-green-300 px-[15px] hover:rounded-md py-1 text-white"
+                  className="flex items-center gap-2 hover:bg-gray-400 px-[15px] hover:rounded-md py-1 text-white"
                   onClick={handleLinkItemClick}
                 >
                   <FaChevronRight className="text-green-800" fontSize={22} />
@@ -256,7 +256,7 @@ const ZoneSideBar = () => {
             <div className="lg:hidden bg-green-300 h-[95%] w-[30%] flex flex-col fixed top-[70px] left-0 z-50">
               <div className="flex flex-col justify-center gap-5 py-5">
                 <div
-                  className={`flex cursor-pointer items-center hover:bg-green-300 px-3 py-1 rounded-md gap-5 text-white ${
+                  className={`flex cursor-pointer items-center hover:bg-gray-400 px-3 py-1 rounded-md gap-5 text-white ${
                     openLink === "woreda" ? "bg-green-300" : ""
                   }`}
                   onClick={() => handleLinkClick("woreda")}
@@ -277,7 +277,7 @@ const ZoneSideBar = () => {
                   >
                     <Link
                       to="/zoneDashboard/addworeda"
-                      className="flex gap-2 hover:bg-green-300 px-[15px] hover:rounded-md py-1 text-white"
+                      className="flex gap-2 hover:bg-gray-400 px-[15px] hover:rounded-md py-1 text-white"
                       onClick={handleLinkItemClick}
                     >
                       <FaChevronRight
@@ -288,7 +288,7 @@ const ZoneSideBar = () => {
                     </Link>
                     <Link
                       to="/zoneDashboard/manageWoreda"
-                      className="flex items-center gap-2 py-1 hover:bg-green-300 px-[15px] hover:rounded-md text-white"
+                      className="flex items-center gap-2 py-1 hover:bg-gray-400 px-[15px] hover:rounded-md text-white"
                       onClick={handleLinkItemClick}
                     >
                       <FaChevronRight
@@ -300,7 +300,7 @@ const ZoneSideBar = () => {
                   </nav>
                 )}
                 <div
-                  className={`flex cursor-pointer items-center hover:bg-green-300 px-3 py-1 rounded-md gap-2 text-white ${
+                  className={`flex cursor-pointer items-center hover:bg-gray-400 px-3 py-1 rounded-md gap-2 text-white ${
                     openLink === "landadmin" ? "bg-green-300" : ""
                   }`}
                   onClick={() => handleLinkClick("landadmin")}
@@ -321,7 +321,7 @@ const ZoneSideBar = () => {
                   >
                     <Link
                       to="/zoneDashboard/register"
-                      className="flex items-center gap-2 hover:bg-green-300 px-[15px] hover:rounded-md py-1 text-white"
+                      className="flex items-center gap-2 hover:bg-gray-400 px-[15px] hover:rounded-md py-1 text-white"
                       onClick={handleLinkItemClick}
                     >
                       <FaChevronRight
@@ -332,7 +332,7 @@ const ZoneSideBar = () => {
                     </Link>
                     <Link
                       to="/zoneDashboard/manageworedaAdmin"
-                      className="flex items-center gap-2 py-1 hover:bg-green-300 px-[15px] hover:rounded-md text-white"
+                      className="flex items-center gap-2 py-1 hover:bg-gray-400 px-[15px] hover:rounded-md text-white"
                       onClick={handleLinkItemClick}
                     >
                       <FaChevronRight
@@ -346,7 +346,7 @@ const ZoneSideBar = () => {
                   </nav>
                 )}
                 <div
-                  className={`flex cursor-pointer  hover:bg-green-300 pr-[105px] pl-[15px] hover:rounded-md  py-1 text-white ${
+                  className={`flex cursor-pointer  hover:bg-gray-400 pr-[105px] pl-[15px] hover:rounded-md  py-1 text-white ${
                     openLink === "orders" ? "bg-green-300 rounded-md" : ""
                   }`}
                   onClick={() => handleLinkClick("orders")}
@@ -359,7 +359,7 @@ const ZoneSideBar = () => {
                   </Link>
                 </div>
                 <div
-                  className={`flex cursor-pointer hover:bg-green-300 px-3 py-1 rounded-md gap-5 text-white ${
+                  className={`flex cursor-pointer hover:bg-gray-400 px-3 py-1 rounded-md gap-5 text-white ${
                     openLink === "reports" ? "bg-green-300" : ""
                   }`}
                   onClick={() => handleLinkClick("reports")}
@@ -380,7 +380,7 @@ const ZoneSideBar = () => {
                   >
                     <Link
                       to="/zoneDashboard/create"
-                      className="flex items-center gap-2 hover:bg-green-300 px-[15px] hover:rounded-md py-1 text-white"
+                      className="flex items-center gap-2 hover:bg-gray-400 px-[15px] hover:rounded-md py-1 text-white"
                       onClick={handleLinkItemClick}
                     >
                       <FaChevronRight
@@ -391,7 +391,7 @@ const ZoneSideBar = () => {
                     </Link>
                     <Link
                       to="/zoneDashboard/manageReport"
-                      className="flex items-center gap-2 hover:bg-green-300 px-[15px] hover:rounded-md py-1 text-white"
+                      className="flex items-center gap-2 hover:bg-gray-400 px-[15px] hover:rounded-md py-1 text-white"
                       onClick={handleLinkItemClick}
                     >
                       <FaChevronRight

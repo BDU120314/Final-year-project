@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FiLogOut } from "react-icons/fi";
-import { GrUserAdmin } from "react-icons/gr";
+import { GrUserAdmin, GrUserWorker } from "react-icons/gr";
 import { FaTachometerAlt, FaRegEdit, FaChevronRight } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -39,8 +39,8 @@ const Sidebar = () => {
     <>
       {isLogin && (
         <>
-          <div className="hidden lg:flex bg-green-400 h-screen w-[17%] flex-col fixed top-0 left-0">
-            <div className=" flex gap-[15px] items-center pb-5 mt-16 border-b-[1px] border-[#EDEDED]/[0.3]">
+          <div className="hidden lg:flex bg-slate-500 h-screen w-[17%] flex-col fixed top-0 left-0">
+            <div className=" flex gap-[15px] items-center pb-5 mt-16 border-b-[1px] bg-slate-400 border-[#EDEDED]/[0.3]">
               <FaTachometerAlt className="text-white" fontSize={32} />
               <p className="text-white text-[18px] font-bold leading-5">
                 woreda Admin
@@ -48,8 +48,8 @@ const Sidebar = () => {
             </div>
             <div className="pt-5 border-b-[1px] border-[#EDEDED]/[0.3] flex flex-col justify-start items-start gap-6">
               <div
-                className={`flex cursor-pointer items-center hover:bg-green-300 px-[15px] hover:rounded-md justify-between gap-10 py-1 text-white ${
-                  openLink === "kebele" ? "bg-green-300 rounded-md" : ""
+                className={`flex cursor-pointer items-center hover:bg-gray-300 px-[15px] hover:rounded-md justify-between gap-10 py-1 text-white ${
+                  openLink === "kebele" ? "bg-gray-300 rounded-md" : ""
                 }`}
                 onClick={() => handleLinkClick("kebele")}
               >
@@ -73,7 +73,7 @@ const Sidebar = () => {
                 >
                   <Link
                     to="/woredaDashboard/addkebele"
-                    className="flex items-center gap-2 hover:bg-green-300 px-[25px] hover:rounded-md py-1 text-white"
+                    className="flex items-center gap-2 hover:bg-gray-300 px-[25px] hover:rounded-md py-1 text-white"
                     onClick={handleLinkItemClick}
                   >
                     <FaChevronRight className="text-green-800" fontSize={22} />
@@ -81,7 +81,7 @@ const Sidebar = () => {
                   </Link>
                   <Link
                     to="/woredaDashboard/managekebele"
-                    className="flex items-center gap-2 py-1 hover:bg-green-300 px-[25px] hover:rounded-md text-white"
+                    className="flex items-center gap-2 py-1 hover:bg-gray-300 px-[25px] hover:rounded-md text-white"
                     onClick={handleLinkItemClick}
                   >
                     <FaChevronRight className="text-green-800" fontSize={22} />
@@ -90,13 +90,13 @@ const Sidebar = () => {
                 </nav>
               )}
               <div
-                className={`flex cursor-pointer items-center hover:bg-green-300 px-[15px] hover:rounded-md justify-between gap-10 py-1 text-white ${
-                  openLink === "landAdmin" ? "bg-green-300 rounded-md" : ""
+                className={`flex cursor-pointer items-center hover:bg-gray-300 px-[15px] hover:rounded-md justify-between gap-10 py-1 text-white ${
+                  openLink === "landAdmin" ? "bg-gray-300 rounded-md" : ""
                 }`}
                 onClick={() => handleLinkClick("landAdmin")}
               >
                 <div className="flex items-center gap-2">
-                  <GrUserAdmin color="white" fontSize={32} />
+                <GrUserWorker className="white-icon" fontSize={22} />
                   <span className="text-[16px] font-bold">LandAdmin</span>
                 </div>
                 <span className="shrink-0 transition duration-300">
@@ -115,7 +115,7 @@ const Sidebar = () => {
                 >
                   <Link
                     to="/woredaDashboard/register"
-                    className="flex items-center gap-2 hover:bg-green-300 px-[25px] hover:rounded-md py-1 text-white"
+                    className="flex items-center gap-2 hover:bg-gray-300 px-[25px] hover:rounded-md py-1 text-white"
                     onClick={handleLinkItemClick}
                   >
                     <FaChevronRight className="text-green-800" fontSize={22} />
@@ -123,7 +123,7 @@ const Sidebar = () => {
                   </Link>
                   <Link
                     to="/woredaDashboard/manageland"
-                    className="flex items-center gap-2 py-1 hover:bg-green-300 px-[25px] hover:rounded-md text-white"
+                    className="flex items-center gap-2 py-1 hover:bg-gray-300 px-[25px] hover:rounded-md text-white"
                     onClick={handleLinkItemClick}
                   >
                     <FaChevronRight className="text-green-800" fontSize={22} />
@@ -132,8 +132,8 @@ const Sidebar = () => {
                 </nav>
               )}
               <div
-                className={`flex cursor-pointer items-center hover:bg-green-300 pr-[105px] pl-[15px] hover:rounded-md justify-between gap-10 py-1 text-white ${
-                  openLink === "orders" ? "bg-green-300 rounded-md" : ""
+                className={`flex cursor-pointer items-center hover:bg-gray-300 pr-[105px] pl-[15px] hover:rounded-md justify-between gap-10 py-1 text-white ${
+                  openLink === "orders" ? "bg-gray-300 rounded-md" : ""
                 }`}
                 onClick={() => handleLinkClick("orders")}
               >
@@ -145,8 +145,8 @@ const Sidebar = () => {
                 </Link>
               </div>
               <div
-                className={`flex cursor-pointer items-center justify-between gap-10 py-1 hover:bg-green-300 pl-[15px] pr-[35px] hover:rounded-md text-white ${
-                  openLink === "reports" ? "bg-green-300 rounded-md" : ""
+                className={`flex cursor-pointer items-center justify-between gap-10 py-1 hover:bg-gray-300 pl-[15px] pr-[35px] hover:rounded-md text-white ${
+                  openLink === "reports" ? "bg-gray-300 rounded-md" : ""
                 }`}
                 onClick={() => handleLinkClick("reports")}
               >
@@ -170,7 +170,7 @@ const Sidebar = () => {
                 >
                   <Link
                     to="/woredaDashboard/create"
-                    className="flex items-center gap-2 hover:bg-green-300 px-[15px] hover:rounded-md py-1 text-white"
+                    className="flex items-center gap-2 hover:bg-gray-300 px-[15px] hover:rounded-md py-1 text-white"
                     onClick={handleLinkItemClick}
                   >
                     <FaChevronRight className="text-green-800" fontSize={22} />
@@ -178,7 +178,7 @@ const Sidebar = () => {
                   </Link>
                   <Link
                     to="/woredaDashboard/manageReport"
-                    className="flex items-center gap-2 hover:bg-green-300 px-[15px] hover:rounded-md py-1 text-white"
+                    className="flex items-center gap-2 hover:bg-gray-300 px-[15px] hover:rounded-md py-1 text-white"
                     onClick={handleLinkItemClick}
                   >
                     <FaChevronRight className="text-green-800" fontSize={22} />
@@ -203,15 +203,14 @@ const Sidebar = () => {
                 onClick={toggleSidebar}
               />
             )}
-            
           </div>
           {/* Responsive sidebar content */}
           {showSidebar && (
-            <div className="lg:hidden bg-green-300 h-[95%] w-[30%] flex flex-col fixed top-[70px] left-0 z-50">
+            <div className="lg:hidden bg-green-400 h-[95%] w-[30%] flex flex-col fixed top-[70px] left-0 z-50">
               <div className="flex flex-col justify-center gap-5 py-5">
                 <div
                   className={`flex cursor-pointer items-center hover:bg-green-300 px-3 py-1 rounded-md gap-5 text-white ${
-                    openLink === "kebele" ? "bg-green-300" : ""
+                    openLink === "kebele" ? "bg-gray-300" : ""
                   }`}
                   onClick={() => handleLinkClick("kebele")}
                 >
@@ -255,7 +254,7 @@ const Sidebar = () => {
                 )}
                 <div
                   className={`flex cursor-pointer items-center hover:bg-green-300 px-3 py-1 rounded-md gap-2 text-white ${
-                    openLink === "landadmin" ? "bg-green-300" : ""
+                    openLink === "landadmin" ? "bg-gray-300" : ""
                   }`}
                   onClick={() => handleLinkClick("landadmin")}
                 >
@@ -301,7 +300,7 @@ const Sidebar = () => {
                 )}
                 <div
                   className={`flex cursor-pointer  hover:bg-green-300 pr-[105px] pl-[15px] hover:rounded-md  py-1 text-white ${
-                    openLink === "orders" ? "bg-green-300 rounded-md" : ""
+                    openLink === "orders" ? "bg-gray-300 rounded-md" : ""
                   }`}
                   onClick={() => handleLinkClick("orders")}
                 >
@@ -314,7 +313,7 @@ const Sidebar = () => {
                 </div>
                 <div
                   className={`flex cursor-pointer hover:bg-green-300 px-3 py-1 rounded-md gap-5 text-white ${
-                    openLink === "reports" ? "bg-green-300" : ""
+                    openLink === "reports" ? "bg-gray-300" : ""
                   }`}
                   onClick={() => handleLinkClick("reports")}
                 >
@@ -359,7 +358,7 @@ const Sidebar = () => {
               </div>
               <div
                 onClick={handleLogout}
-                className="flex items-center justify-center gap-2 bg-red-200 h-10 px-5 mt-[auto] rounded-md cursor-pointer"
+                className="flex items-center justify-center gap-2 bg-red-600 h-10 px-5 mt-[auto] rounded-md cursor-pointer"
               >
                 <FiLogOut color="white" fontSize={24} />
                 <p className="text-white text-[16px]">Log Out</p>

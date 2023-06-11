@@ -47,13 +47,14 @@ import SingleZone from "./dashboardDirectoriet/Zone/singlezone";
 import WoredaDisplay from "./DashboardZone/Woreda/woreda_display";
 import AddingWoreda from "./DashboardZone/Woreda/addworeda_form";
 import ModifyWoreda from "./DashboardZone/Woreda/woreda_Update";
-import DisplaySingleWoreda from "./DashboardZone/Woreda/singleworeda";
 import AddingKebele from "./DashboardWoreda/Kebele/addKebele_form";
 import KebeleDisplay from "./DashboardWoreda/Kebele/kebeledisplay";
 import ModifyKebele from "./DashboardWoreda/Kebele/kebelemodify";
 import DisplaySingleKebele from "./DashboardWoreda/Kebele/singlekebele";
 import WoredaRegistrationForm from "./DashboardZone/WoredaRep/woredarepRegister";
-
+import SingleWoreda from "./DashboardZone/Woreda/singleworeda";
+import DisplaySingleWoreda from "./DashboardZone/WoredaRep/displaySingleWoreda";
+ 
 const App = () => {
   return (
     <div>
@@ -174,7 +175,7 @@ const App = () => {
           />
           <Route
             path="/zoneDashboard/manageWoreda/view/:id"
-            element={<DisplaySingleWoreda />}
+            element={<SingleWoreda />}
           />
 
           {/* woreda representative */}
@@ -189,6 +190,10 @@ const App = () => {
           <Route
             path={"/zoneDashboard/manageworedaAdmin/update/:id"}
             element={<WoredaUpdate />}
+          />
+          <Route
+            path={"/zoneDashboard/manageWoredaAdmin/view/:id"}
+            element={<DisplaySingleWoreda />}
           />
           <Route path="/zoneDashboard/create" element={<ReportEditor />} />
 

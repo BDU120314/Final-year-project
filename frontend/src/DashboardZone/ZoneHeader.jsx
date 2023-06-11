@@ -68,10 +68,10 @@ const ZoneHeader = () => {
       <div className="flex items-center gap-4 relative ">
         <div className="flex items-center gap-[25px] border-r-[1px] pr-6">
           <Link
-            to="/zoneDashboard/register"
-            className="bg-blue-400 flex justify-center items-centerh-[30px] px-4 rounded-md"
+            to="/zoneDashboard/addworeda"
+            className="bg-green-500 hover:bg-green-400 flex justify-center items-centerh-[30px] px-4 rounded-md"
           >
-            Add Admin
+            Add New Woreda
           </Link>
         </div>
         <div
@@ -98,7 +98,7 @@ const ZoneHeader = () => {
         {isLogin && (
           <div
             onClick={handleLogout}
-            className="flex items-center justify-center gap-3 mr-5 bg-red-200 h-8 w-[80px] rounded-md cursor-pointer"
+            className="flex items-center justify-center gap-3 mr-5 hover:bg-red-300 bg-red-600 h-8 w-[80px] rounded-md cursor-pointer"
           >
             <p className="text-white text-18px leading-5">Logout</p>
           </div>

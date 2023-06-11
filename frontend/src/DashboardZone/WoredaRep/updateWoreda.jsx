@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
@@ -20,15 +19,16 @@ function WoredaUpdate() {
   const { id } = useParams();
   const navigate = useNavigate();
 
-useEffect(() => {
-  axios.get(`http://localhost:5001/api/v1/woreda/${id}`).then((res) => {
-    console.log(res.data.rows[0]); // Check the received data in the console
-    const woredaData = res.data.rows[0];
-    if (woredaData) {
-      setFormData(woredaData);
-    }
-  });
-}, [id]);
+  useEffect(() => {
+    axios.get(`http://localhost:5001/api/v1/woreda/${id}`).then((res) => {
+      console.log(res.data.rows[0]); // Check the received data in the console
+      const woredaData = res.data.rows[0];
+      if (woredaData) {
+        setFormData(woredaData);
+      }
+    });
+  }, [id]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -49,14 +49,15 @@ useEffect(() => {
       [e.target.name]: e.target.value,
     }));
   };
+
   return (
-    <div className="flex flex-col justify-center items-center p-5 bg-gray-100 ">
+    <div className="flex flex-col justify-center items-center p-5 bg-gray-100">
       <div className="text-black text-[18px] leading-6">
-        <h2>Woreda Modification Form</h2>
+        <h2>Woreda Representative Modification Form</h2>
       </div>
-      <form className=" bg-gray-200" onSubmit={handleSubmit}>
-        <div className="flex justify-center items-center gap-10  py-[15px] px-[15px]">
-          <div className="flex items-left flex-col justify-left ">
+      <form className="bg-white" onSubmit={handleSubmit}>
+        <div className="flex flex-col gap-4 py-2 px-4 md:flex-row md:justify-between md:items-center">
+          <div className="flex flex-col">
             <label htmlFor="woreda_Name">Woreda ID</label>
             <input
               type="text"
@@ -64,11 +65,11 @@ useEffect(() => {
               name="woreda_id"
               value={formData.woreda_id}
               onChange={handleChange}
-              className="w-[350px] h-10 outline-none pl-5 rounded-lg"
+              className="w-[350px] h-8 mt-2 border-2 bg-slate-100 text-gray-400 outline-none pl-5 rounded-lg"
               required
             />
           </div>
-          <div className="flex items-left flex-col justify-left ">
+          <div className="flex flex-col">
             <label htmlFor="fname">First Name</label>
             <input
               type="text"
@@ -76,14 +77,14 @@ useEffect(() => {
               name="fname"
               value={formData.fname}
               onChange={handleChange}
-              className="w-[350px] h-10 outline-none pl-5 rounded-lg"
+              className="w-[350px] h-8 mt-2 border-2 bg-slate-100 text-gray-400 outline-none pl-5 rounded-lg"
               required
             />
           </div>
         </div>
 
-        <div className="flex justify-center items-center gap-10  py-[15px] px-[15px]">
-          <div className="flex items-left flex-col justify-left ">
+        <div className="flex flex-col gap-4 py-2 px-4 md:flex-row md:justify-between md:items-center">
+          <div className="flex flex-col">
             <label htmlFor="mname">Middle Name</label>
             <input
               type="text"
@@ -91,10 +92,10 @@ useEffect(() => {
               name="mname"
               value={formData.mname}
               onChange={handleChange}
-              className="w-[350px] h-10 outline-none pl-5 rounded-lg"
+              className="w-[350px] h-8 mt-2 border-2 bg-slate-100 text-gray-400 outline-none pl-5 rounded-lg"
             />
           </div>
-          <div className="flex items-left flex-col justify-left ">
+          <div className="flex flex-col">
             <label htmlFor="lname">Last Name</label>
             <input
               type="text"
@@ -102,14 +103,14 @@ useEffect(() => {
               name="lname"
               value={formData.lname}
               onChange={handleChange}
-              className="w-[350px] h-10 outline-none pl-5 rounded-lg"
+              className="w-[350px] h-8 mt-2 border-2 bg-slate-100 text-gray-400 outline-none pl-5 rounded-lg"
               required
             />
           </div>
         </div>
 
-        <div className="flex justify-center items-center gap-10  py-[15px] px-[15px]">
-          <div className="flex items-left flex-col justify-left ">
+        <div className="flex flex-col gap-4 py-2 px-4 md:flex-row md:justify-between md:items-center">
+          <div className="flex flex-col">
             <label htmlFor="email">Email</label>
             <input
               type="email"
@@ -117,12 +118,12 @@ useEffect(() => {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="w-[350px] h-10 outline-none pl-5 rounded-lg"
+              className="w-[350px] h-8 mt-2 border-2 bg-slate-100 text-gray-400 outline-none pl-5 rounded-lg"
               required
             />
           </div>
 
-          <div className="flex items-left flex-col justify-left ">
+          <div className="flex flex-col">
             <label htmlFor="phone_number">Tel phone</label>
             <input
               type="tel"
@@ -130,14 +131,14 @@ useEffect(() => {
               name="phone_number"
               value={formData.phone_number}
               onChange={handleChange}
-              className="w-[350px] h-10 outline-none pl-5 rounded-lg"
+              className="w-[350px] h-8 mt-2 border-2 bg-slate-100 text-gray-400 outline-none pl-5 rounded-lg"
               required
             />
           </div>
         </div>
 
-        <div className="flex justify-center items-center gap-10  py-[15px] px-[15px]">
-          <div className="flex items-left flex-col justify-left ">
+        <div className="flex flex-col gap-4 py-2 px-4 md:flex-row md:justify-between md:items-center">
+          <div className="flex flex-col">
             <label htmlFor="user_name">Username</label>
             <input
               type="text"
@@ -145,39 +146,14 @@ useEffect(() => {
               name="user_name"
               value={formData.user_name}
               onChange={handleChange}
-              className="w-[350px] h-10 outline-none pl-5 rounded-lg"
-              required
-            />
-          </div>
-          <div className="flex items-left flex-col justify-left ">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              className="w-[350px] h-10 outline-none pl-5 rounded-lg"
+              className="w-[350px] h-8 mt-2 border-2 bg-slate-100 text-gray-400 outline-none pl-5 rounded-lg"
               required
             />
           </div>
         </div>
-
-        <div className="flex justify-center items-center gap-10  py-[15px] px-[15px]">
-          <div className="flex items-left flex-col justify-left ">
-            <label htmlFor="id">ID No</label>
-            <input
-              type="text"
-              id="id"
-              name="id"
-              value={formData.id}
-              onChange={handleChange}
-              className="w-[350px] h-10 outline-none pl-5 rounded-lg"
-              required
-            />
-          </div>
-          <button
-            className="w-[350px] h-10 bg-blue-400 rounded-3xl mt-[20px]"
+        <div className="flex justify-center items-center">
+        <button
+            className="w-[200px] h-10 mt-2 border-2 hover:bg-blue-400 bg-blue-600 rounded-md"
             type="submit"
           >
             Update
