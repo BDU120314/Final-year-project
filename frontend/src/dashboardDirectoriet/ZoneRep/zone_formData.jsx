@@ -31,12 +31,14 @@ const ZoneData = () => {
   }, [zoneData]);
 
   return (
+    <div >
+       <h2 className="flex items-center justify-center mt-24 text-[25px] "> Zone Representative Modification Form</h2>
     <div className="flex  justify-center   items-center ">
       <table className="table-auto w-full">
         <thead className="bg-gray-100">
           <tr>
             <th className="px-4 py-2">ID</th>
-            <th className="px-4 py-2">First NAme</th>
+            <th className="px-4 py-2">First Name</th>
             <th className="px-4 py-2">Middle Name</th>
             <th className="px-4 py-2">Email Address</th>
             <th className="px-4 py-2">Phone Number</th>
@@ -89,6 +91,7 @@ const ZoneData = () => {
           )}
         </tbody>
       </table>
+    </div>
     </div>
   );
 };

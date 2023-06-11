@@ -36,7 +36,7 @@ const LandAdminManageAccount = () => {
 
   return (
     <div className="mt-16 p-4">
-      <h1 className="text-center">Report Management</h1>
+      <h1 className="text-center text-[25px]">Report Management</h1>
       <div className="flex justify-center items-center bg-gray-50 text-gray-700 px-5">
         <div className="max-h-80 overflow-y-scroll">
           <table className="w-full">
@@ -63,7 +63,7 @@ const LandAdminManageAccount = () => {
                   <td className="px-4 py-2 flex justify-center items-center space-x-2">
                     <Link
                       to={`/farmerreportdisplay/update/${report.id}`}
-                      className="px-2 rounded-sm"
+                      className="px-2 rounded-sm hover:bg-blue-400"
                     >
                       <button>
                       <BiEditAlt color="blue" size={25} />
@@ -72,14 +72,14 @@ const LandAdminManageAccount = () => {
                     </Link>
                     <Link
                       to={`/view/${report.id}`}
-                      className="px-2 rounded-sm"
+                      className=" hover:bg-gray-300 px-2 rounded-sm"
                     >
                       <button>
                       <GrView color="white" size={25} /> 
                       </button>
                     </Link>
                     <button
-                      className=""
+                      className="hover:bg-red-400 "
                       onClick={() => handleDelete(report.id)}
                     >
                   <MdDelete color="red" size={30} />

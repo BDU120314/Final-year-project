@@ -77,7 +77,7 @@ const WoredaData = () => {
                   </Link>
 
                   <Link
-                    to={`/zoneDashboard/manageworedaAdmin/view/${datas.id}`}
+                    to={`/zoneDashboard/manageWoredaAdmin/view/${datas.id}`}
                   >
                     <button>
                     <GrView color="white" size={32} />

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-const DisplaySingleWoreda = () => {
+const SingleWoreda = () => {
   const [data, setData] = useState([]);
   const { id } = useParams();
   useEffect(() => {
@@ -24,7 +24,7 @@ const DisplaySingleWoreda = () => {
               <th className="px-4 py-2">Woreda Name</th>
               <th className="px-4 py-2">Id</th>
               <th className="px-4 py-2">Representative full name</th>
-              <th className="px-4 py-2">Gende</th>
+              <th className="px-4 py-2">Gender</th>
               <th className="px-4 py-2">Email</th>
               <th className="px-4 py-2">Phone_number</th>
               <th className="px-4 py-2">User name</th>  
@@ -53,4 +53,4 @@ const DisplaySingleWoreda = () => {
   );
 };
 
-export default DisplaySingleWoreda;
+export default SingleWoreda;

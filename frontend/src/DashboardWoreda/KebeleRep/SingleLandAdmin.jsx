@@ -25,7 +25,6 @@ const SingleLandAdmin = () => {
               <th className="px-4 py-2">Email</th>
               <th className="px-4 py-2">Phone_number</th>
               <th className="px-4 py-2">User name</th>
-              <th className="px-4 py-2">password</th>
               <th className="px-4 py-2">Id</th>
             </tr>
           </thead>
@@ -40,7 +39,6 @@ const SingleLandAdmin = () => {
                   <td className="border px-4 py-2">{datas.email}</td>
                   <td className="border px-4 py-2">{datas.phone_number}</td>
                   <td className="border px-4 py-2">{datas.user_name}</td>
-                  <td className="border px-4 py-2">{datas.password}</td>
                 </tr>
               );
             })}

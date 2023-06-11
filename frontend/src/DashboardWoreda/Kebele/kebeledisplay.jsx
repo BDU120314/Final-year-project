@@ -65,20 +65,20 @@ const KebeleDisplay = () => {
                       to={`/woredaDashboard/managekebele/update/${datas.id}`}
                       className="link"
                     >
-                      <button className="px-2">
-                        <FiEdit color="blue" size={20} /> Edit
+                      <button className="px-2 hover:bg-blue-400">
+                        <FiEdit color="blue" size={32} />
                       </button>
                     </Link>
                     <Link
                       to={`/woredaDashboard/managekebele/view/${datas.id}`}
                       className="link"
                     >
-                      <button className="px-2">
-                        <GrView color="white" size={20} /> Detail
+                      <button className="px-2 hover:bg-yellow-300">
+                        <GrView color="white" size={32} />  
                       </button>
                     </Link>
-                    <button onClick={() => handleDelete(datas.id)}>
-                      <RiDeleteBin6Line color="red" size={20} />
+                    <button className="hover:bg-red-400" onClick={() => handleDelete(datas.id)}>
+                      <RiDeleteBin6Line color="red" size={32} />
                     </button>
                   </div>
                 </td>

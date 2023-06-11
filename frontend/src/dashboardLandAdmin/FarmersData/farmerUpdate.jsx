@@ -47,13 +47,13 @@ function FarmerUpdate() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center p-4 mt-16 gap-5 bg-white">
-      <div className="text-black text-[18px] leading-6">
+    <div className="flex flex-col justify-center items-center p-4 mt-16 gap-5 bg-gray-100">
+      <div className="text-black text-[25px] leading-6">
         <h2>Farmers Modification form</h2>
       </div>
-      <form className="bg-gray-200" onSubmit={handleSubmit}>
-        <div className="lg:flex gap-5 lg:justify-center lg:items-center lg:gap-8 lg:p-[15px] ">
-          <div className="flex items-left flex-col justify-left mt-8">
+      <form className="bg-white" onSubmit={handleSubmit}>
+        <div className="lg:flex gap-5 px-[10px] lg:justify-center lg:items-center lg:gap-8 lg:p-[8px] ">
+          <div className="flex items-left flex-col justify-left mt-4">
             <label htmlFor="fname">First Name</label>
             <input
               type="text"
@@ -61,11 +61,11 @@ function FarmerUpdate() {
               name="fname"
               value={formData.fname}
               onChange={handleChange}
-              className="w-[280px] h-10 outline-none pl-5 rounded-md"
+              className="w-[280px] h-10 outline-none border-2 bg-slate-100 text-gray-400 mt-[5px] pl-5 rounded-md"
               required
             />
           </div>
-          <div className="flex items-left flex-col justify-left mt-8">
+          <div className="flex items-left flex-col justify-left mt-4">
             <label htmlFor="mname">Middle Name</label>
             <input
               type="text"
@@ -73,13 +73,13 @@ function FarmerUpdate() {
               name="mname"
               value={formData.mname}
               onChange={handleChange}
-              className="w-[280px] h-10 outline-none pl-5 rounded-md"
+              className="w-[280px] h-10 outline-none border-2 bg-slate-100 text-gray-400 mt-[5px] pl-5 rounded-md"
             />
           </div>
         </div>
 
-        <div className="lg:flex gap-5 px-[10px] lg:justify-center lg:items-center lg:gap-8 lg:p-[15px]">
-          <div className="flex items-left flex-col justify-left mt-8">
+        <div className="lg:flex gap-5 px-[10px] lg:justify-center lg:items-center lg:gap-8 lg:p-[8px]">
+          <div className="flex items-left flex-col justify-left mt-4">
             <label htmlFor="lname">Last Name</label>
             <input
               type="text"
@@ -87,11 +87,11 @@ function FarmerUpdate() {
               name="lname"
               value={formData.lname}
               onChange={handleChange}
-              className="w-[280px] h-10 outline-none pl-5 rounded-md"
+              className="w-[280px] h-10 outline-none border-2 bg-slate-100 text-gray-400 mt-[5px] pl-5 rounded-md"
               required
             />
           </div>
-          <div className="flex items-left flex-col justify-left mt-8">
+          <div className="flex items-left flex-col justify-left mt-4">
             <label htmlFor="id">ID No</label>
             <input
               type="text"
@@ -99,14 +99,14 @@ function FarmerUpdate() {
               name="id"
               value={formData.id}
               onChange={handleChange}
-              className="w-[280px] h-10 outline-none pl-5 rounded-md"
+              className="w-[280px] h-10 outline-none border-2 bg-slate-100 text-gray-400 mt-[5px] pl-5 rounded-md"
               required
             />
           </div>
         </div>
 
-        <div className="lg:flex gap-5 px-[10px] lg:justify-center lg:items-center lg:gap-8 lg:p-[15px]">
-          <div className="flex items-left flex-col justify-left mt-8">
+        <div className="lg:flex gap-5 px-[10px] lg:justify-center lg:items-center lg:gap-8 lg:p-[8px]">
+          <div className="flex items-left flex-col justify-left mt-4">
             <label htmlFor="email">Email</label>
             <input
               type="email"
@@ -114,11 +114,11 @@ function FarmerUpdate() {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="w-[280px] h-10 outline-none pl-5 rounded-md"
+              className="w-[280px] h-10 outline-none border-2 bg-slate-100 text-gray-400 mt-[5px] pl-5 rounded-md"
               required
             />
           </div>
-          <div className="flex items-left flex-col justify-left mt-8">
+          <div className="flex items-left flex-col justify-left mt-4">
             <label htmlFor="phone_number">Tel phone</label>
             <input
               type="tel"
@@ -126,14 +126,14 @@ function FarmerUpdate() {
               name="phone_number"
               value={formData.phone_number}
               onChange={handleChange}
-              className="w-[280px] h-10 outline-none pl-5 rounded-md"
+              className="w-[280px] h-10 outline-none border-2 bg-slate-100 text-gray-400 mt-[5px] pl-5 rounded-md"
               required
             />
           </div>
         </div>
 
-        <div className="lg:flex gap-5 px-[10px] lg:justify-center lg:items-center lg:gap-8 lg:p-[15px]">
-          <div className="flex items-left flex-col justify-left mt-8">
+        <div className="lg:flex gap-5 px-[10px] lg:justify-center lg:items-center lg:gap-8 lg:p-[8px]">
+          <div className="flex items-left flex-col justify-left mt-4">
             <label htmlFor="user_name">Username</label>
             <input
               type="text"
@@ -141,31 +141,19 @@ function FarmerUpdate() {
               name="user_name"
               value={formData.user_name}
               onChange={handleChange}
-              className="w-[280px] h-10 outline-none pl-5 rounded-md"
-              required
-            />
-          </div>
-          <div className="flex items-left flex-col justify-left mt-8">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              className="w-[280px] h-10 outline-none pl-5 rounded-md"
+              className="w-[280px] h-10 outline-none border-2 bg-slate-100 text-gray-400 mt-[5px] pl-5 rounded-md"
               required
             />
           </div>
         </div>
 
-        <div className="flex justify-end items-center gap-8 p-[15px] mb-10">
-          <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center py-4 px-4">
+        <div className="h-10 flex items-center justify-center my-1 w-[150px]  hover:bg-green-400 bg-green-600 rounded-md">
             <button
-              className="w-[150px] h-10 bg-blue-400 rounded-md mt-[20px]"
+              className=" text-center text-white"
               type="submit"
             >
-              update
+              Update
             </button>
           </div>
         </div>

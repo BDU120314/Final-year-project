@@ -74,7 +74,7 @@ const LandAdminForm1 = () => {
                   <td className="w-auto flex justify-center items-center gap-2 py-2 px-4">
                     <Link
                       to={`/woredaDashboard/manageland/update/${datas.id}`}
-                      className="link"
+                      className="link hover:bg-blue-400"
                     >
                       <BiEditAlt color="blue" size={32} />
                     </Link>
@@ -83,12 +83,12 @@ const LandAdminForm1 = () => {
                       className="link"
                       to={`/woredaDashboard/manageland/view/${datas.id}`}
                     >
-                      <button>
+                      <button className="hover:bg-yellow-300">
                         <GrView color="white" size={32} />
                       </button>
                     </Link>
 
-                    <button onClick={() => handleDelete(datas.id)}>
+                    <button className="hover:bg-red-400" onClick={() => handleDelete(datas.id)}>
                       <MdDelete color="red" size={30} />
                     </button>
                   </td>

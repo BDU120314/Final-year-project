@@ -48,13 +48,13 @@ function ZoneUpdate() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center gap-5 p-5 bg-white">
+    <div className="flex flex-col justify-center items-center p-5 bg-gray-100">
       <div className="text-black text-[18px] leading-6">
-        <h2>Zone Modification Form</h2>
+        <h2>Zone Representative Modification Form</h2>
       </div>
-      <form className="bg-gray-200 w-[100%] " onSubmit={handleSubmit}>
-        <div className="flex flex-col justify-center items-center w-full  gap-5 p-[15px]">
-          <div className="flex items-left flex-col justify-left w-[350px]">
+      <form className="bg-white" onSubmit={handleSubmit}>
+        <div className="flex flex-col gap-4 py-2 px-4 md:flex-row md:justify-between md:items-center">
+          <div className="flex flex-col">
             <label htmlFor="zonename">zone ID</label>
             <input
               type="number"
@@ -62,11 +62,11 @@ function ZoneUpdate() {
               name="zone_id"
               value={formData.zone_id}
               onChange={handleChange}
-              className="w-[350px] h-8 outline-none pl-5 rounded-sm"
+              className="w-[350px] h-8 outline-none mt-2 border-2 bg-slate-100 text-gray-400 pl-5 rounded-sm"
               required
             />
           </div>
-          <div className="flex items-left flex-col justify-left w-[350px]">
+          <div className="flex flex-col">
             <label htmlFor="fname">First Name</label>
             <input
               type="text"
@@ -74,11 +74,13 @@ function ZoneUpdate() {
               name="fname"
               value={formData.fname}
               onChange={handleChange}
-              className="w-[350px] h-8 outline-none pl-5 rounded-sm"
+              className="w-[350px] h-8 outline-none mt-2 border-2 bg-slate-100 text-gray-400 pl-5 rounded-sm"
               required
             />
           </div>
-          <div className="flex items-left flex-col justify-left w-[350px]">
+        </div>
+        <div className="flex flex-col gap-4 py-2 px-4 md:flex-row md:justify-between md:items-center">
+          <div className="flex flex-col">
             <label htmlFor="mname">Middle Name</label>
             <input
               type="text"
@@ -86,10 +88,10 @@ function ZoneUpdate() {
               name="mname"
               value={formData.mname}
               onChange={handleChange}
-              className="w-[350px] h-8 outline-none pl-5 rounded-sm"
+              className="w-[350px] h-8 outline-none mt-2 border-2 bg-slate-100 text-gray-400 pl-5 rounded-sm"
             />
           </div>
-          <div className="flex items-left flex-col justify-left w-[350px]">
+          <div className="flex flex-col">
             <label htmlFor="lname">Last Name</label>
             <input
               type="text"
@@ -97,11 +99,14 @@ function ZoneUpdate() {
               name="lname"
               value={formData.lname}
               onChange={handleChange}
-              className="w-[350px] h-8 outline-none pl-5 rounded-sm"
+              className="w-[350px] h-8 outline-none mt-2 border-2 bg-slate-100 text-gray-400 pl-5 rounded-sm"
               required
             />
           </div>
-          <div className="flex items-left flex-col justify-left w-[350px]">
+        </div>
+
+        <div className="flex flex-col gap-4 py-2 px-4 md:flex-row md:justify-between md:items-center">
+          <div className="flex flex-col">
             <label htmlFor="email">Email</label>
             <input
               type="email"
@@ -109,11 +114,11 @@ function ZoneUpdate() {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="w-[350px] h-8 outline-none pl-5 rounded-sm"
+              className="w-[350px] h-8 outline-none mt-2 border-2 bg-slate-100 text-gray-400 pl-5 rounded-sm"
               required
             />
           </div>
-          <div className="flex items-left flex-col justify-left w-[350px]">
+          <div className="flex flex-col">
             <label htmlFor="phone_number">Tel phone</label>
             <input
               type="tel"
@@ -121,53 +126,46 @@ function ZoneUpdate() {
               name="phone_number"
               value={formData.phone_number}
               onChange={handleChange}
-              className="w-[350px] h-8 outline-none pl-5 rounded-sm"
+              className="w-[350px] h-8 outline-none mt-2 border-2 bg-slate-100 text-gray-400 pl-5 rounded-sm"
               required
             />
           </div>
-          <div className="flex items-left flex-col justify-left w-[350px]">
-            <label htmlFor="user_name">Username</label>
+        </div>
+        <div className="flex flex-col gap-4 py-2 px-4 md:flex-row md:justify-between md:items-center">
+          <div className="flex flex-col">
+            <label htmlFor="gender">Gender</label>
             <input
               type="text"
-              id="user_name"
-              name="user_name"
-              value={formData.user_name}
+              id="gender"
+              name="gender"
+              value={formData.gender}
               onChange={handleChange}
-              className="w-[350px] h-8 outline-none pl-5 rounded-sm"
+              className="w-[350px] h-8 outline-none mt-2 border-2 bg-slate-100 text-gray-400 pl-5 rounded-sm"
               required
             />
+            </div>
+            <div className="flex flex-col">
+              <label htmlFor="user_name">Username</label>
+              <input
+                type="text"
+                id="user_name"
+                name="user_name"
+                value={formData.user_name}
+                onChange={handleChange}
+                className="w-[350px] h-8 outline-none mt-2 border-2 bg-slate-100 text-gray-400 pl-5 rounded-sm"
+                required
+              />
+            </div>
           </div>
-          <div className="flex items-left flex-col justify-left w-[350px]">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              className="w-[350px] h-8 outline-none pl-5 rounded-sm"
-              required
-            />
-          </div>
-          <div className="flex items-left flex-col justify-left w-[350px]">
-            <label htmlFor="id">ID No</label>
-            <input
-              type="text"
-              id="id"
-              name="id"
-              value={formData.id}
-              onChange={handleChange}
-              className="w-[350px] h-8 outline-none pl-5 rounded-sm"
-              required
-            />
-          </div>
-          <button
-            className="w-[350px] h-8 bg-blue-400 rounded-md mt-[20px]"
+<div className="flex  justify-center  items-center ">
+<button
+            className="w-[200px] text-white h-8 hover:bg-blue-400 bg-blue-600 rounded-md mt-[20px]"
             type="submit"
           >
             Update
           </button>
-        </div>
+</div>
+        
       </form>
     </div>
   );

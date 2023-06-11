@@ -68,10 +68,10 @@ const WoredaHeader = () => {
       <div className="flex items-center gap-[10px] relative ">
         <div className="flex items-center gap-[20px] border-r-[1px] pr-4">
           <Link
-            to="/woredaDashboard/register"
-            className="bg-blue-400 flex justify-center items-centerh-[30px] px-4 rounded-md"
+            to="/woredaDashboard/addkebele"
+            className="bg-green-600 hover:bg-green-400 flex justify-center text-white items-centerh-[30px] px-4 rounded-md"
           >
-            Add Admin
+            Add Kebele
           </Link>
         </div>
         <div
@@ -95,7 +95,7 @@ const WoredaHeader = () => {
         {isLogin && (
           <div
             onClick={handleLogout}
-            className="flex items-center justify-center gap-3 mr-5 bg-red-200 h-8 w-[80px] rounded-md cursor-pointer"
+            className="flex items-center justify-center gap-3 mr-5 bg-red-500 h-8 w-[80px] rounded-md cursor-pointer"
           >
             <p className="text-white text-18px leading-5">Logout</p>
           </div>
