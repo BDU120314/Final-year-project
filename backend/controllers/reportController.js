@@ -92,7 +92,7 @@ const updateReport =  (req, res) => {
 };
 
 const getAllReports =  (req, res) => {
-  const query = "SELECT * FROM reports";
+  const query = "SELECT * FROM reports ";
   db.query(query, (error, results) => {
     if (error) {
       console.error("Error retrieving reports:", error);
@@ -126,7 +126,19 @@ const getReportById =  (req, res) => {
 // for getting all orders of a specific farmer
 const getAllReportsLandAdminId = (req, res) => {
   const landAdminId = req.params.id;
-  const sql = "SELECT * FROM reports WHERE rep_id = ?";
+  const sql = "SELECT * FROM reports WHERE rep_id=?";
+  db.query(sql, [landAdminId], (err, rows, fields) => {
+    if (!err) {
+      res.send(rows);
+    } else {
+      console.log(err);
+      res.status(500).send(err.message);
+    }
+  });
+};
+const getAllReportsWoreda = (req, res) => {
+  const landAdminId = req.params.id;
+  const sql = "SELECT * FROM reports WHERE rep_id=?";
   db.query(sql, [landAdminId], (err, rows, fields) => {
     if (!err) {
       res.send(rows);

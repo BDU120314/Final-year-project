@@ -69,11 +69,11 @@ const FarmerDashboard = () => {
 
   return (
     <div className="flex flex-col h-[100vh]">
-      <nav className="fixed top-0 left-0 w-screen flex flex-wrap items-center justify-between bg-[#f7f7f7] shadow-md mb-1 z-[1]">
+      <nav className="fixed top-0 left-0 w-screen flex flex-wrap items-center justify-between bg-[#e4dcdc] shadow-md mb-1 z-[1]">
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
           <div className="w-full relative flex justify-between items-center lg:w-auto lg:static lg:block lg:justify-start">
             <div
-              className={`text-lg cursor-pointer font-bold flex justify-center items-center mr-4 py-1 whitespace-nowrap capitalize text-center text-green-500  ${
+              className={`text-lg cursor-pointer font-bold flex justify-center items-center mr-4 py-1 whitespace-nowrap capitalize text-center text-white  ${
                 location.pathname === "/profile" ? "text-gray-400" : ""
               }`}
             >
@@ -88,7 +88,7 @@ const FarmerDashboard = () => {
                   }
                   alt=""
                 />
-                <span className="italic text-md text-gray-600">
+                <span className="italic text-md text-white">
                   {storedUser && storedUser.user_name}
                 </span>
               </div>
@@ -117,9 +117,9 @@ const FarmerDashboard = () => {
                   onClick={handleClicked}
                   exact
                   to="/farmerDashboard/manageAccount"
-                  className={`px-3 py-2 flex items-center capitalize font-bold leading-6 text-gray-600 hover:text-gray-400 hover:opacity-75 ${
+                  className={`px-3 py-2 flex items-center capitalize font-bold leading-6 text-green-600 hover:text-green-400 hover:opacity-75 ${
                     location.pathname === "/farmerDashboard/manageAccount"
-                      ? "text-gray-300"
+                      ? "text-white"
                       : ""
                   }`}
                 >
@@ -130,9 +130,9 @@ const FarmerDashboard = () => {
                 <NavLink
                   onClick={handleClicked}
                   to="/farmerDashboard/order"
-                  className={`px-3 py-2 flex items-center  capitalize font-bold leading-6 text-gray-600 hover:text-gray-400 hover:opacity-75 ${
+                  className={`px-3 py-2 flex items-center  capitalize font-bold leading-6 text-green-600 hover:text-green-400 hover:opacity-75 ${
                     location.pathname === "/farmerDashboard/order"
-                      ? "text-gray-300"
+                      ? "text-white"
                       : ""
                   }`}
                 >
@@ -148,7 +148,7 @@ const FarmerDashboard = () => {
                     onClick={() => {
                       dispatch(logout());
                     }}
-                    className="w-[80px] h-[32px] text-white bg-blue-500 items-center hover:bg-blue-300 hover:text-black"
+                    className="w-[80px] h-[32px] text-white bg-red-600 items-center rounded-md hover:bg-red-400 hover:text-black"
                   >
                     Logout
                   </button>
@@ -190,7 +190,7 @@ const FarmerDashboard = () => {
               }}
               disabled={isUploadDisabled}
             >
-              Change photo
+              Upload Photo
             </button>
           </div>
         </div>

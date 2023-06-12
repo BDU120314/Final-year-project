@@ -9,6 +9,8 @@ import { GiVillage } from "react-icons/gi";
 import { AiOutlineBorderOuter } from "react-icons/ai";
 import { logout } from "../redux/reducers/auth";
 import { FiLogOut } from "react-icons/fi";
+import { RiFolderReceivedFill } from "react-icons/ri";
+import { TfiWrite } from "react-icons/tfi";
 
 
 const ZoneSideBar = () => {
@@ -190,13 +192,29 @@ const ZoneSideBar = () => {
               </div>
             </div>
             <div
+              className={`flex cursor-pointer items-center hover:bg-gray-400 pr-[20px] pl-[15px] hover:rounded-md justify-between gap-10 py-1 text-white ${
+                openLink === "orders" ? "bg-green-300 rounded-md" : ""
+              }`}
+              onClick={() => handleLinkClick("coming")}
+            >
+              <Link to="/zoneDashboard/coming">
+                <div className="flex items-center gap-2">
+                  <RiFolderReceivedFill color="white" fontSize={32} />
+                  <span className="text-[16px] font-bold">Received Report</span>
+                </div>
+              </Link>
+              <div className="bg-blue-500 text-white rounded-full w-12 justify-center items-center flex h-6">
+                <span>{pendingOrderCount}</span>
+              </div>
+            </div>
+            <div
               className={`flex cursor-pointer items-center justify-between gap-10 py-1 hover:bg-gray-400 pl-[15px] pr-[35px] hover:rounded-md text-white ${
                 openLink === "reports" ? "bg-green-300 rounded-md" : ""
               }`}
               onClick={() => handleLinkClick("reports")}
             >
               <div className="flex items-center gap-2">
-                <FaRegEdit color="gray-400" fontSize={32} />
+                <TfiWrite color="gray-400" fontSize={24} />
                 <span className="text-[18px] font-bold">Reports</span>
               </div>
               <span className="shrink-0 transition duration-300">
@@ -253,7 +271,7 @@ const ZoneSideBar = () => {
           </div>
           {/* Responsive sidebar content */}
           {showSidebar && (
-            <div className="lg:hidden bg-green-300 h-[95%] w-[30%] flex flex-col fixed top-[70px] left-0 z-50">
+            <div className="lg:hidden bg-[#3d3d75] h-[95%] w-[30%] flex flex-col fixed top-[70px] left-0 z-50">
               <div className="flex flex-col justify-center gap-5 py-5">
                 <div
                   className={`flex cursor-pointer items-center hover:bg-gray-400 px-3 py-1 rounded-md gap-5 text-white ${
@@ -359,12 +377,25 @@ const ZoneSideBar = () => {
                   </Link>
                 </div>
                 <div
+                  className={`flex cursor-pointer  hover:bg-gray-400 pr-[105px] pl-[15px] hover:rounded-md  py-1 text-white ${
+                    openLink === "orders" ? "bg-green-300 rounded-md" : ""
+                  }`}
+                  onClick={() => handleLinkClick("orders")}
+                >
+                  <Link to="/zoneDashboard/coming">
+                    <div className="flex items-center gap-2">
+                      <RiFolderReceivedFill color="white" fontSize={32} />
+                      <span className="text-[16px] font-bold">Received Report</span>
+                    </div>
+                  </Link>
+                </div>
+                <div
                   className={`flex cursor-pointer hover:bg-gray-400 px-3 py-1 rounded-md gap-5 text-white ${
                     openLink === "reports" ? "bg-green-300" : ""
                   }`}
                   onClick={() => handleLinkClick("reports")}
                 >
-                  <FaRegCreditCard color="gray-400" fontSize={24} />
+                  <TfiWrite color="gray-400" fontSize={24} />
                   <span className="text-[16px] font-bold">Reports</span>
                   <FaChevronRight
                     color="white"

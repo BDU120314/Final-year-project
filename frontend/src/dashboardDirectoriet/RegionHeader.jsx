@@ -133,7 +133,7 @@ const RegionHeader = () => {
               }}
               disabled={isUploadDisabled}
             >
-              Change photo
+              Upload Photo
             </button>
           </div>
         </div>

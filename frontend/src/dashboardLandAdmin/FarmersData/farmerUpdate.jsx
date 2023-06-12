@@ -115,7 +115,7 @@ function FarmerUpdate() {
               value={formData.email}
               onChange={handleChange}
               className="w-[280px] h-10 outline-none border-2 bg-slate-100 text-gray-400 mt-[5px] pl-5 rounded-md"
-              required
+              
             />
           </div>
           <div className="flex items-left flex-col justify-left mt-4">

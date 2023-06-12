@@ -85,13 +85,13 @@ function AddingKebele  () {
               id="id"
               onChange={handleChange}
               value={formData.id}
-              required
+              
               className="w-[350px] h-10 pl-5 rounded-sm outline-none"
             />
           </div>
         </div>
         <div className="flex justify-center items-center gap-10">
-          <div className=" h-10 flex items-center justify-center my-6 w-[200px] bg-48px bg-green-400 rounded-md">
+          <div className=" h-10 flex items-center justify-center my-6 w-[200px] bg-green-400 rounded-md">
             <button className="text-center bg-green-400" type="submit">
               Add
             </button>
