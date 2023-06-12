@@ -336,18 +336,20 @@ const RegionSideBar = () => {
           {showSidebar && (
             <div className="lg:hidden bg-[#3d3d75] h-[95%] w-[50%] flex flex-col fixed top-[70px] left-0 z-50">
               <div className="flex flex-col justify-center gap-5 py-5">
+                <div className="" >
                 <div
                   className={`flex cursor-pointer items-center hover:bg-gray-300 px-3 py-1 rounded-md gap-5 text-white ${
                     openLink === "zone" ? "bg-green-300" : ""
                   }`}
                   onClick={() => handleLinkClick("zone")}
                 >
-                  <SiQzone color="white" fontSize={24} />
-                  <span className="text-[16px] font-bold">zone</span>
+                  <SiQzone className="text-white " fontSize={24} />
+                  <span className="text-[16px] font-bold mr-20" >zone</span>
                   <FaChevronRight
                     color="white"
-                    className={openLink === "zone" ? "transform rotate-90" : ""}
+                    className={openLink === "zone" ? "transform rotate-90"  : ""}
                   />
+                </div>
                 </div>
                 {openLink === "zone" && (
                   <nav
@@ -379,7 +381,7 @@ const RegionSideBar = () => {
                   onClick={() => handleLinkClick("zonerep")}
                 >
                   <GrUserAdmin color="white" fontSize={24} />
-                  <span className="text-[16px] font-bold">Representative</span>
+                  <span className="text-[16px] font-bold mr-7">Woreda Admin</span>
                   <FaChevronRight
                     color="white"
                     className={
@@ -414,7 +416,7 @@ const RegionSideBar = () => {
                     </Link>
                   </nav>
                 )}
-                <div
+                {/* <div
                   className={`flex cursor-pointer items-center hover:bg-gray-300 px-3 py-1 rounded-md gap-5 text-white ${
                     openLink === "distributor" ? "bg-green-300" : ""
                   }`}
@@ -455,10 +457,10 @@ const RegionSideBar = () => {
                       </span>
                     </Link>
                   </nav>
-                )}
+                )} */}
 
                 <div
-                  className={`flex cursor-pointer  hover:bg-gray-300 pr-[105px] pl-[15px] hover:rounded-md  py-1 text-white ${
+                  className={`flex cursor-pointer  hover:bg-gray-400 pr-[10px] pl-[15px] hover:rounded-md  py-1 text-white ${
                     openLink === "orders" ? "bg-green-300 rounded-md" : ""
                   }`}
                   onClick={() => handleLinkClick("orders")}
@@ -478,7 +480,7 @@ const RegionSideBar = () => {
                   onClick={() => handleLinkClick("reports")}
                 >
                   <TfiWrite color="gray-400" fontSize={24} />
-                  <span className="text-[16px] font-bold">Reports</span>
+                  <span className="text-[16px] font-bold mr-10">Reports</span>
                   <FaChevronRight
                     color="white"
                     className={
@@ -511,13 +513,13 @@ const RegionSideBar = () => {
                 )}
 
                 <div
-                  className={`flex cursor-pointer  items-center justify-between gap-10 py-1 hover:bg-gray-300 pl-[15px] pr-[35px] hover:rounded-md text-white ${
+                  className={`flex cursor-pointer  items-center justify-between gap-10 py-1 hover:bg-gray-300 pl-[1px] pr-[160px] hover:rounded-md text-white ${
                     openLink === "posts" ? "bg-green-300 rounded-md" : ""
                   }`}
                   onClick={() => handleLinkClick("posts")}
                 >
-                  <div className="flex items-center gap-2">
-                    <FaRegEdit color="gray-400" fontSize={32} />
+                  <div className="flex  gap-2">
+                    <FaRegEdit color="gray-400 -ml-14" fontSize={32} />
                     <span className="text-[18px] font-bold">Posts</span>
                   </div>
                   <span className="shrink-0 transition duration-300">
@@ -536,7 +538,7 @@ const RegionSideBar = () => {
                   >
                     <Link
                       to="/regionDashboard/createpost"
-                      className="flex items-center gap-2 hover:bg-green-300 px-[15px] hover:rounded-md py-1 text-white"
+                      className="flex items-center gap-2 hover:bg-gray-400 px-[15px] rounded-md py-1 text-white"
                       onClick={handleLinkItemClick}
                     >
                       <FaChevronRight className="white-800" fontSize={22} />
@@ -555,10 +557,13 @@ const RegionSideBar = () => {
               </div>
               <div
                 onClick={handleLogout}
-                className="flex items-center justify-center gap-2 bg-red-200 h-10 px-5 mt-[auto] rounded-md cursor-pointer"
+                className="flex items-center justify-center gap-2"
               >
+                
+                <button className="text-white text-[16px] flex items-center justify-center -ml-5 hover:bg-gray-400 mt-10 bg-red-600 h-10 px-5  rounded-md cursor-pointer"> 
                 <FiLogOut color="white" fontSize={24} />
-                <p className="text-white text-[16px]">Log Out</p>
+                Log Out</button>
+                  
               </div>
             </div>
           )}

@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FiLogOut } from "react-icons/fi";
+import axios from "axios";
 import { GrUserAdmin, GrUserWorker } from "react-icons/gr";
 import { FaTachometerAlt, FaRegEdit, FaChevronRight } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
@@ -12,15 +13,57 @@ import { RiAdminFill, RiFolderReceivedFill } from "react-icons/ri";
 import { TfiWrite } from "react-icons/tfi";
 
 const Sidebar = () => {
+  const [admin, setAdmin] = useState([]);
+
   const dispatch = useDispatch();
+  const [pendingOrderCount, setPendingOrderCount] = useState(0);
   const isLogin = JSON.parse(localStorage.getItem("isLogin"));
+  const user = JSON.parse(localStorage.getItem("user"));
+
   const navigate = useNavigate();
   const [openLink, setOpenLink] = useState(""); // State to track the open link
   const [showSidebar, setShowSidebar] = useState(false);
+  const id = user.rep_id;
+
   const handleLogout = () => {
     dispatch(logout());
     navigate("/");
   };
+
+  useEffect(() => {
+    const fetchAdminDetails = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:5001/api/v1/admin/${user.rep_id}`
+        );
+        console.log(response.data, "admin info");
+        setAdmin(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchAdminDetails();
+  }, [user.rep_id]);
+
+  useEffect(() => {
+    if (admin && admin.length > 0) {
+      const woreda_id = admin[0].woreda_id;
+      console.log(woreda_id);
+      const fetchPendingOrderCount = async () => {
+        try {
+          const response = await axios.get(
+            `http://localhost:5001/api/v1/order/countWoreda/${woreda_id}`
+          );
+          setPendingOrderCount(response.data.count);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+      fetchPendingOrderCount();
+    }
+  }, [admin]);
 
   const handleLinkClick = (link) => {
     setOpenLink((prevLink) => (prevLink === link ? "" : link)); // Toggle open/close the link
@@ -137,9 +180,10 @@ const Sidebar = () => {
                   </Link>
                 </nav>
               )}
+              <div className="flex flex-row">
               <div
                 className={`flex cursor-pointer items-center hover:bg-gray-300 pr-[115px] pl-[18px] hover:rounded-md justify-between gap-10 py-1 text-white ${
-                  openLink === "orders" ? "bg-gray-300 rounded-md" : ""
+                  openLink === "orders" ? "bg-green-300 rounded-md" : ""
                 }`}
                 onClick={() => handleLinkClick("orders")}
               >
@@ -150,6 +194,10 @@ const Sidebar = () => {
                   </div>
                 </Link>
               </div>
+              </div>
+              <div className="bg-blue-500 text-white rounded-full w-12 justify-center items-center flex h-6">
+                  <span>{pendingOrderCount}</span>
+                </div>
               <div
                 className={`flex cursor-pointer items-center hover:bg-gray-300 pl-[18px] pr-[40px] hover:rounded-md justify-between gap-10 py-1 text-white ${
                   openLink === "coming" ? "bg-green-300 rounded-md" : ""

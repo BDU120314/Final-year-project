@@ -257,6 +257,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
               name="email"
               id="email"
               value={email}
+              required
               onChange={handleChange}
               className="w-[350px] h-8 pl-5 rounded-sm outline-none border-2 bg-slate-100 text-gray-400"
             />
