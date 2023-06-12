@@ -8,7 +8,7 @@ import { FiMenu, FiX } from "react-icons/fi";
 import { logout } from "../redux/reducers/auth";
 import { GiVillage } from "react-icons/gi";
 import { AiOutlineBorderOuter } from "react-icons/ai";
-import { RiFolderReceivedFill } from "react-icons/ri";
+import { RiAdminFill, RiFolderReceivedFill } from "react-icons/ri";
 import { TfiWrite } from "react-icons/tfi";
 
 const Sidebar = () => {
@@ -42,8 +42,8 @@ const Sidebar = () => {
       {isLogin && (
         <>
           <div className="hidden lg:flex bg-[#3d3d75] h-full w-[18%] flex-col fixed top-0 left-0">
-          <div className="flex gap-[15px] items-center pb-5 border-b-[1px] bg-slate-400 w-[100%] pt-5 border-[#EDEDED]/[0.3]">
-             <FaTachometerAlt className="text-white" fontSize={32} />
+            <div className="flex gap-[15px] items-center pb-5 border-b-[1px] bg-slate-400 w-[100%] pt-5 border-[#EDEDED]/[0.3]">
+              <FaTachometerAlt className="text-white" fontSize={32} />
               <p className="text-white text-[18px] font-bold leading-5">
                 woreda Admin
               </p>
@@ -51,13 +51,13 @@ const Sidebar = () => {
 
             <div className="pt-5 border-b-[1px] border-[#EDEDED]/[0.3] flex flex-col justify-start items-start gap-6">
               <div
-                className={`flex cursor-pointer items-center hover:bg-gray-300 px-[15px] hover:rounded-md justify-between gap-10 py-1 text-white ${
-                  openLink === "kebele" ? "bg-gray-300 rounded-md" : ""
+                className={`flex cursor-pointer items-center  hover:bg-gray-300 px-[36px] hover:rounded-md justify-between gap-16 py-1 text-white ${
+                  openLink === "kebele" ? "bg-green-300 rounded-md" : ""
                 }`}
                 onClick={() => handleLinkClick("kebele")}
               >
                 <div className="flex items-center gap-2">
-                  <GiVillage color="white" fontSize={32} />
+                  <GiVillage className="text-white -ml-4" fontSize={32} />
                   <span className="text-[16px] font-bold">kebele</span>
                 </div>
                 <span className="shrink-0 transition duration-300">
@@ -76,30 +76,33 @@ const Sidebar = () => {
                 >
                   <Link
                     to="/woredaDashboard/addkebele"
-                    className="flex items-center gap-2 hover:bg-gray-300 px-[25px] hover:rounded-md py-1 text-white"
+                    className="flex items-center gap-2 hover:bg-gray-300 px-[65px] hover:rounded-md py-1 text-white"
                     onClick={handleLinkItemClick}
                   >
-                    <FaChevronRight className="text-green-800" fontSize={22} />
+                    <FaChevronRight
+                      className="text-white -ml-6"
+                      fontSize={22}
+                    />
                     <span className="text-md font-medium">Add Kebele</span>
                   </Link>
                   <Link
                     to="/woredaDashboard/managekebele"
-                    className="flex items-center gap-2 py-1 hover:bg-gray-300 px-[25px] hover:rounded-md text-white"
+                    className="flex items-center gap-2 py-1 hover:bg-gray-300 px-[38px] hover:rounded-md text-white"
                     onClick={handleLinkItemClick}
                   >
-                    <FaChevronRight className="text-green-800" fontSize={22} />
+                    <FaChevronRight className="text-white" fontSize={22} />
                     <span className="text-md font-medium">Manage Kebele</span>
                   </Link>
                 </nav>
               )}
               <div
-                className={`flex cursor-pointer items-center hover:bg-gray-300 px-[15px] hover:rounded-md justify-between gap-10 py-1 text-white ${
+                className={`flex cursor-pointer items-center hover:bg-gray-300 px-[30px] hover:rounded-md justify-between gap-8 py-1 text-white ${
                   openLink === "landAdmin" ? "bg-gray-300 rounded-md" : ""
                 }`}
                 onClick={() => handleLinkClick("landAdmin")}
               >
                 <div className="flex items-center gap-2">
-                <GrUserWorker className="white-icon" fontSize={22} />
+                  <RiAdminFill className="text-white -ml-3" fontSize={32} />
                   <span className="text-[16px] font-bold">LandAdmin</span>
                 </div>
                 <span className="shrink-0 transition duration-300">
@@ -118,24 +121,24 @@ const Sidebar = () => {
                 >
                   <Link
                     to="/woredaDashboard/register"
-                    className="flex items-center gap-2 hover:bg-gray-300 px-[25px] hover:rounded-md py-1 text-white"
+                    className="flex items-center gap-2 hover:bg-gray-300 px-[45px] hover:rounded-md py-1 text-white"
                     onClick={handleLinkItemClick}
                   >
-                    <FaChevronRight className="text-green-800" fontSize={22} />
+                    <FaChevronRight className="text-white" fontSize={22} />
                     <span className="text-md font-medium">Register Admin</span>
                   </Link>
                   <Link
                     to="/woredaDashboard/manageland"
-                    className="flex items-center gap-2 py-1 hover:bg-gray-300 px-[25px] hover:rounded-md text-white"
+                    className="flex items-center gap-2 py-1 hover:bg-gray-300 px-[45px] hover:rounded-md text-white"
                     onClick={handleLinkItemClick}
                   >
-                    <FaChevronRight className="text-green-800" fontSize={22} />
+                    <FaChevronRight className="text-white" fontSize={22} />
                     <span className="text-md font-medium">Manage Admin</span>
                   </Link>
                 </nav>
               )}
               <div
-                className={`flex cursor-pointer items-center hover:bg-gray-300 pr-[105px] pl-[15px] hover:rounded-md justify-between gap-10 py-1 text-white ${
+                className={`flex cursor-pointer items-center hover:bg-gray-300 pr-[115px] pl-[18px] hover:rounded-md justify-between gap-10 py-1 text-white ${
                   openLink === "orders" ? "bg-gray-300 rounded-md" : ""
                 }`}
                 onClick={() => handleLinkClick("orders")}
@@ -148,20 +151,22 @@ const Sidebar = () => {
                 </Link>
               </div>
               <div
-                className={`flex cursor-pointer items-center hover:bg-gray-300 pr-[105px] pl-[15px] hover:rounded-md justify-between gap-10 py-1 text-white ${
+                className={`flex cursor-pointer items-center hover:bg-gray-300 pl-[18px] pr-[40px] hover:rounded-md justify-between gap-10 py-1 text-white ${
                   openLink === "coming" ? "bg-green-300 rounded-md" : ""
                 }`}
                 onClick={() => handleLinkClick("coming")}
               >
                 <Link to="/woredaDashboard/comingReport">
                   <div className="flex items-center gap-2">
-                    <RiFolderReceivedFill color="white" fontSize={24} />
-                    <span className="text-[16px] font-bold">Received Report</span>
+                    <RiFolderReceivedFill color="white" fontSize={32} />
+                    <span className="text-[16px] font-bold">
+                      Received Report
+                    </span>
                   </div>
                 </Link>
               </div>
               <div
-                className={`flex cursor-pointer items-center justify-between gap-10 py-1 hover:bg-gray-300 pl-[15px] pr-[35px] hover:rounded-md text-white ${
+                className={`flex cursor-pointer items-center justify-between gap-14 py-1 hover:bg-gray-300 pl-[15px] pr-[33px] hover:rounded-md text-white ${
                   openLink === "reports" ? "bg-gray-300 rounded-md" : ""
                 }`}
                 onClick={() => handleLinkClick("reports")}
@@ -186,18 +191,21 @@ const Sidebar = () => {
                 >
                   <Link
                     to="/woredaDashboard/create"
-                    className="flex items-center gap-2 hover:bg-gray-300 px-[15px] hover:rounded-md py-1 text-white"
+                    className="flex items-center gap-2 hover:bg-gray-300 px-[55px] hover:rounded-md py-1 text-white"
                     onClick={handleLinkItemClick}
                   >
-                    <FaChevronRight className="text-green-800" fontSize={22} />
+                    <FaChevronRight
+                      className="text-white -ml-4"
+                      fontSize={22}
+                    />
                     <span className="text-md font-medium">Add Report</span>
                   </Link>
                   <Link
                     to="/woredaDashboard/manageReport"
-                    className="flex items-center gap-2 hover:bg-gray-300 px-[15px] hover:rounded-md py-1 text-white"
+                    className="flex items-center gap-2 hover:bg-gray-300 px-[38px] hover:rounded-md py-1 text-white"
                     onClick={handleLinkItemClick}
                   >
-                    <FaChevronRight className="text-green-800" fontSize={22} />
+                    <FaChevronRight className="text-white " fontSize={22} />
                     <span className="text-md font-medium">Manage Report</span>
                   </Link>
                 </nav>
@@ -249,10 +257,7 @@ const Sidebar = () => {
                       className="flex gap-2 hover:bg-gray-400 px-[15px] hover:rounded-md py-1 text-white"
                       onClick={handleLinkItemClick}
                     >
-                      <FaChevronRight
-                        className="text-green-800"
-                        fontSize={20}
-                      />
+                      <FaChevronRight className="text-white" fontSize={20} />
                       <span className="text-md font-medium">Add Kebele</span>
                     </Link>
                     <Link
@@ -260,10 +265,7 @@ const Sidebar = () => {
                       className="flex items-center gap-2 py-1 hover:bg-gray-400 px-[15px] hover:rounded-md text-white"
                       onClick={handleLinkItemClick}
                     >
-                      <FaChevronRight
-                        className="text-green-800"
-                        fontSize={20}
-                      />
+                      <FaChevronRight className="text-white" fontSize={20} />
                       <span className="text-md font-medium">Manage Kebele</span>
                     </Link>
                   </nav>
@@ -293,10 +295,7 @@ const Sidebar = () => {
                       className="flex items-center gap-2 hover:bg-gray-400 px-[15px] hover:rounded-md py-1 text-white"
                       onClick={handleLinkItemClick}
                     >
-                      <FaChevronRight
-                        className="text-green-800"
-                        fontSize={20}
-                      />
+                      <FaChevronRight className="text-white" fontSize={20} />
                       <span className="text-md font-medium">Add landAdmin</span>
                     </Link>
                     <Link
@@ -304,10 +303,7 @@ const Sidebar = () => {
                       className="flex items-center gap-2 py-1 hover:bg-gray-400 px-[15px] hover:rounded-md text-white"
                       onClick={handleLinkItemClick}
                     >
-                      <FaChevronRight
-                        className="text-green-800"
-                        fontSize={20}
-                      />
+                      <FaChevronRight className="text-white" fontSize={20} />
                       <span className="text-md font-medium">
                         Manage landAdmin
                       </span>
@@ -336,7 +332,9 @@ const Sidebar = () => {
                   <Link to="/woredaDashboard/coming">
                     <div className="flex items-center gap-2">
                       <RiFolderReceivedFill color="white" fontSize={32} />
-                      <span className="text-[16px] font-bold">Received Report</span>
+                      <span className="text-[16px] font-bold">
+                        Received Report
+                      </span>
                     </div>
                   </Link>
                 </div>
@@ -365,10 +363,7 @@ const Sidebar = () => {
                       className="flex items-center gap-2 hover:bg-gray-400 px-[15px] hover:rounded-md py-1 text-white"
                       onClick={handleLinkItemClick}
                     >
-                      <FaChevronRight
-                        className="text-green-800"
-                        fontSize={20}
-                      />
+                      <FaChevronRight className="text-white" fontSize={20} />
                       <span className="text-md font-medium">Add Report</span>
                     </Link>
                     <Link
@@ -376,10 +371,7 @@ const Sidebar = () => {
                       className="flex items-center gap-2 hover:bg-gray-400 px-[15px] hover:rounded-md py-1 text-white"
                       onClick={handleLinkItemClick}
                     >
-                      <FaChevronRight
-                        className="text-green-800"
-                        fontSize={20}
-                      />
+                      <FaChevronRight className="text-white" fontSize={20} />
                       <span className="text-md font-medium">Manage Report</span>
                     </Link>
                   </nav>

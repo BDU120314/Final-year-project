@@ -69,7 +69,7 @@ const FarmerDashboard = () => {
 
   return (
     <div className="flex flex-col h-[100vh]">
-      <nav className="fixed top-0 left-0 w-screen flex flex-wrap items-center justify-between bg-[#e4dcdc] shadow-md mb-1 z-[1]">
+      <nav className="fixed top-0 left-0 w-screen flex flex-wrap items-center justify-between bg-[#f7f7f7] shadow-sm mb-1 z-[1]">
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
           <div className="w-full relative flex justify-between items-center lg:w-auto lg:static lg:block lg:justify-start">
             <div

@@ -57,28 +57,31 @@ const WoredaDisplay = () => {
           {formData.map((datas) => {
             return (
               <tr key={datas.id} className="bg-gray-100">
-                <td className="border px-4 py-2">{datas.id}</td>
-                <td className="border px-4 py-2">{datas.name}</td>
-                <td className="border px-4 py-2">
+                <td className="border border-gray-400 px-4 py-2">{datas.id}</td>
+                <td className="border border-gray-400 px-4 py-2">{datas.name}</td>
+                <td className="border border-gray-400 px-4 py-2">
                   <div className="flex justify-center items-center gap-2">
                     <Link
                       to={`/zoneDashboard/manageWoreda/update/${datas.id}`}
                       className="link"
                     >
-                      <button className="px-2">
-                        <FiEdit color="blue" size={20} /> Edit
+                      <button className="px-2 hover:bg-gray-400 rounded-sm py-2">
+                        <FiEdit color="blue" size={32} />
                       </button>
                     </Link>
                     <Link
                       to={`/zoneDashboard/manageWoreda/view/${datas.id}`}
                       className="link"
                     >
-                      <button className="px-2">
-                        <GrView color="white" size={20} /> Detail
+                      <button className="px-2 hover:bg-gray-400 rounded-sm py-2">
+                        <GrView color="white" size={32} /> 
                       </button>
                     </Link>
-                    <button onClick={() => handleDelete(datas.id)}>
-                      <RiDeleteBin6Line color="red" size={20} />
+                    <button
+                      className="hover:bg-gray-400 rounded-sm py-1"
+                      onClick={() => handleDelete(datas.id)}
+                    >
+                      <RiDeleteBin6Line color="red" size={32} />
                     </button>
                   </div>
                 </td>

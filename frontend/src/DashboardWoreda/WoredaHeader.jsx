@@ -66,10 +66,10 @@ const WoredaHeader = () => {
   return (
     <div className="flex justify-end items-center bg-[#f7f7f7] shadow-sm h-[70px] fixed top-0 right-0 left-[18%]">
       <div className="flex items-center gap-[10px] relative ">
-        <div className="flex items-center gap-[20px] border-r-[1px] pr-4">
+        <div className="flex items-center gap-[20px] border-r-[1px] pr-1">
           <Link
             to="/woredaDashboard/addkebele"
-            className="bg-green-600 hover:bg-green-400 flex justify-center text-white items-centerh-[30px] px-4 rounded-md"
+            className="bg-green-600 hover:bg-green-400 flex justify-center text-white items-center h-8 px-4 rounded-md"
           >
             Add Kebele
           </Link>

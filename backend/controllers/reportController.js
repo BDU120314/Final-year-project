@@ -23,20 +23,29 @@ const authenticateUser = (req, res, next) => {
   }
 };
 
-const createReport =  (req, res) => {
+const createReport = (req, res) => {
   try {
-    const { title, content } = req.body;
+    const { title, content, kebele_id, woreda_id, zone_id } = req.body;
     const userId = req.user.id;
     const date = new Date();
     const query = `
-      INSERT INTO reports (title, content, rep_id, createAt, updateAt)
-      VALUES (?, ?, ?, ?, ?)
+      INSERT INTO reports (title, content, rep_id, kebele_id, woreda_id, zone_id, createAt, updateAt)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
     `;
-    const values = [title, content, userId, date, date];
-    console.log("Query:", query); // Add this line to print the query to the console
+    const values = [
+      title,
+      content,
+      userId,
+      kebele_id || null,
+      woreda_id || null,
+      zone_id || null,
+      date,
+      date,
+    ];
+    console.log("Query:", query);
     console.log("Values:", values);
 
-    const result =  db.query(query, values);
+    const result = db.query(query, values);
     console.log(result);
     const reportId = result.insertId;
 
@@ -44,6 +53,9 @@ const createReport =  (req, res) => {
       title,
       content,
       rep_id: userId,
+      kebele_id: kebele_id || null,
+      woreda_id: woreda_id || null,
+      zone_id: zone_id || null,
       reportId,
     };
 
@@ -55,6 +67,8 @@ const createReport =  (req, res) => {
     res.status(500).json({ error: "Failed to create report" });
   }
 };
+
+
 
 const updateReport =  (req, res) => {
   const { id } = req.params;
@@ -134,6 +148,42 @@ const getAllReportsWoreda = (req, res) => {
     }
   });
 };
+const getAllReportsLandKebeleId = (req, res) => {
+  const kebele_id = req.params.id;
+  const sql = "SELECT * FROM reports WHERE kebele_id = ?";
+  db.query(sql, [kebele_id], (err, rows, fields) => {
+    if (!err) {
+      res.send(rows);
+    } else {
+      console.log(err);
+      res.status(500).send(err.message);
+    }
+  });
+};
+const getAllReportsLandWoredaId = (req, res) => {
+  const woreda_id = req.params.id;
+  const sql = "SELECT * FROM reports WHERE woreda_id = ?";
+  db.query(sql, [woreda_id], (err, rows, fields) => {
+    if (!err) {
+      res.send(rows);
+    } else {
+      console.log(err);
+      res.status(500).send(err.message);
+    }
+  });
+};
+const getAllReportsLandZoneId = (req, res) => {
+  const zone_id = req.params.id;
+  const sql = "SELECT * FROM reports WHERE zone_id = ?";
+  db.query(sql, [zone_id], (err, rows, fields) => {
+    if (!err) {
+      res.send(rows);
+    } else {
+      console.log(err);
+      res.status(500).send(err.message);
+    }
+  });
+};
 
 
 const deleteReport =  (req, res) => {
@@ -160,4 +210,7 @@ module.exports = {
   deleteReport,
   authenticateUser,
   getAllReportsLandAdminId,
+  getAllReportsLandKebeleId,
+  getAllReportsLandWoredaId,
+  getAllReportsLandZoneId,
 };

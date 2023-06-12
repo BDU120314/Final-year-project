@@ -10,7 +10,7 @@ import { AiOutlineBorderOuter } from "react-icons/ai";
 import { logout } from "../redux/reducers/auth";
 import {SiQzone  } from "react-icons/si";
 import { MdOutlineHorizontalDistribute } from "react-icons/md";
-import { RiFolderReceivedFill } from "react-icons/ri";
+ import { RiAdminFill } from "react-icons/ri";
 import { TfiWrite } from "react-icons/tfi";
 
 const RegionSideBar = () => {
@@ -89,7 +89,7 @@ const RegionSideBar = () => {
             </div>
             <div className="pt-5 border-b-[1px] border-[#EDEDED]/[0.3] flex flex-col justify-start items-start gap-6">
               <div
-                className={`flex cursor-pointer items-center  hover:bg-gray-400 pl-[15px] pr-[45px] hover:rounded-md justify-between gap-10 py-1 text-white ${
+                className={`flex cursor-pointer items-center  hover:bg-gray-400 pl-[12px] pr-[40px] hover:rounded-md justify-between gap-20 py-1 text-white ${
                   openLink === "zone" ? "bg-green-300 rounded-md" : ""
                 }`}
                 onClick={() => handleLinkClick("zone")}
@@ -112,15 +112,15 @@ const RegionSideBar = () => {
                 >
                   <Link
                     to="/regionDashboard/zoneAdd"
-                    className="flex items-center gap-2  hover:bg-gray-400 px-[25px] hover:rounded-md py-1 text-white"
+                    className="flex items-start justify-start gap-2  hover:bg-gray-400 px-[80px] hover:rounded-md py-1 text-white"
                     onClick={handleLinkItemClick}
                   >
-                    <FaChevronRight className="white-800" fontSize={22} />
+                    <FaChevronRight className="-ml-8" fontSize={22} />
                     <span className="text-md font-medium">Add Zone</span>
                   </Link>
                   <Link
                     to="/regionDashboard/manageZone"
-                    className="flex items-center gap-2 py-1  hover:bg-gray-400 px-[25px] hover:rounded-md text-white"
+                    className="flex items-center gap-2 py-1  hover:bg-gray-400 px-[50px] hover:rounded-md text-white"
                     onClick={handleLinkItemClick}
                   >
                     <FaChevronRight className="white-800" fontSize={22} />
@@ -129,13 +129,13 @@ const RegionSideBar = () => {
                 </nav>
               )}
               <div
-                className={`flex cursor-pointer items-center  hover:bg-gray-400 pl-[15px] pr-[45px] hover:rounded-md justify-between gap-10 py-1 text-white ${
+                className={`flex cursor-pointer items-center  hover:bg-gray-400 px-10 hover:rounded-md justify-between gap-6 py-1 text-white ${
                   openLink === "zonerep" ? "bg-green-300 rounded-md" : ""
                 }`}
                 onClick={() => handleLinkClick("zonerep")}
               >
-                <div className="flex items-center gap-2">
-                  <GrUserAdmin color="white" fontSize={32} />
+                <div className="flex items-center -ml-8 gap-2">
+                  <RiAdminFill className="text-white" fontSize={32} />
                   <span className="text-[16px] font-bold">Zones Admin</span>
                 </div>
                 <span className="shrink-0 transition duration-300">
@@ -154,7 +154,7 @@ const RegionSideBar = () => {
                 >
                   <Link
                     to="/regionDashboard/zoneAdminRegister"
-                    className="flex items-center gap-2  hover:bg-gray-400 px-[25px] hover:rounded-md py-1 text-white"
+                    className="flex items-center gap-2  hover:bg-gray-400 px-[45px] hover:rounded-md py-1 text-white"
                     onClick={handleLinkItemClick}
                   >
                     <FaChevronRight className="text-white-800" fontSize={22} />
@@ -162,7 +162,7 @@ const RegionSideBar = () => {
                   </Link>
                   <Link
                     to="/regionDashboard/manageZoneAdmin"
-                    className="flex items-center gap-2 py-1  hover:bg-gray-400 px-[25px] hover:rounded-md text-white"
+                    className="flex items-center gap-2 py-1  hover:bg-gray-400 px-[45px] hover:rounded-md text-white"
                     onClick={handleLinkItemClick}
                   >
                     <FaChevronRight className="text-white-800" fontSize={22} />
@@ -171,7 +171,7 @@ const RegionSideBar = () => {
                 </nav>
               )}
 
-              <div
+              {/* <div
                 className={`flex cursor-pointer  items-center hover:bg-gray-400 pl-[15px] pr-[23px] hover:rounded-md justify-between gap-10 py-1 text-white ${
                   openLink === "distributor" ? "bg-green-300 rounded-md" : ""
                 }`}
@@ -212,17 +212,17 @@ const RegionSideBar = () => {
                     <span className="text-md font-medium">Manage Admin</span>
                   </Link>
                 </nav>
-              )}
+              )} */}
 
               <div
-                className={`flex cursor-pointer  items-center hover:bg-gray-400 pr-[20px] pl-[15px] hover:rounded-md justify-between gap-10 py-1 text-white ${
+                className={`flex cursor-pointer  items-center hover:bg-gray-400 px-10 hover:rounded-md justify-between gap-8 py-1 text-white ${
                   openLink === "orders" ? "bg-green-300 rounded-md" : ""
                 }`}
                 onClick={() => handleLinkClick("orders")}
               >
-                <Link to="/regionDashboard/orders">
+                <Link to="/regionDashboard/orders ">
                   <div className="flex items-center gap-2">
-                    <AiOutlineBorderOuter color="white" fontSize={32} />
+                    <AiOutlineBorderOuter className="text-white -ml-7" fontSize={32} />
                     <span className="text-[16px] font-bold">Orders</span>
                   </div>
                 </Link>
@@ -230,30 +230,15 @@ const RegionSideBar = () => {
                   <span>{pendingOrderCount}</span>
                 </div>
               </div>
+
               <div
-                className={`flex cursor-pointer  items-center hover:bg-gray-400 pr-[20px] pl-[15px] hover:rounded-md justify-between gap-10 py-1 text-white ${
-                  openLink === "orders" ? "bg-green-300 rounded-md" : ""
-                }`}
-                onClick={() => handleLinkClick("coming")}
-              >
-                <Link to="/regionDashboard/coming">
-                  <div className="flex items-center gap-2">
-                    <RiFolderReceivedFill color="white" fontSize={32} />
-                    <span className="text-[16px] font-bold">Received Report</span>
-                  </div>
-                </Link>
-                <div className="bg-blue-500 text-white rounded-full w-12 justify-center items-center flex h-6">
-                  <span>{pendingOrderCount}</span>
-                </div>
-              </div>
-              <div
-                className={`flex cursor-pointer  items-center justify-between gap-10 py-1 hover:bg-gray-400 pl-[15px] pr-[35px] hover:rounded-md text-white ${
+                className={`flex cursor-pointer  items-center justify-between gap-16 py-1 hover:bg-gray-400 px-10 hover:rounded-md text-white ${
                   openLink === "reports" ? "bg-green-300 rounded-md" : ""
                 }`}
                 onClick={() => handleLinkClick("reports")}
               >
                 <div className="flex items-center gap-2">
-                  <TfiWrite color="gray-400" fontSize={24} />
+                  <TfiWrite className="text-gray-400 -ml-7" fontSize={24} />
                   <span className="text-[18px] font-bold">Reports</span>
                 </div>
                 <span className="shrink-0 transition duration-300">
@@ -290,13 +275,13 @@ const RegionSideBar = () => {
               )}
             </div>
             <div
-              className={`flex cursor-pointer  items-center justify-between gap-10 py-1 hover:bg-green-300 pl-[15px] pr-[35px] hover:rounded-md text-white ${
+              className={`flex cursor-pointer  items-center justify-between gap-20 py-1 hover:bg-gray-400 pl-[15px] pr-[35px] hover:rounded-md text-white ${
                 openLink === "posts" ? "bg-green-300 rounded-md" : ""
               }`}
               onClick={() => handleLinkClick("posts")}
             >
               <div className="flex items-center gap-2">
-                <FaRegEdit color="gray-400" fontSize={32} />
+                <FaRegEdit className="bg-gray-400 -ml-1" fontSize={32} />
                 <span className="text-[18px] font-bold">Posts</span>
               </div>
               <span className="shrink-0 transition duration-300">
@@ -349,7 +334,7 @@ const RegionSideBar = () => {
           </div>
           {/* Responsive sidebar content */}
           {showSidebar && (
-            <div className="lg:hidden bg-[#3d3d75] h-[95%] w-[30%] flex flex-col fixed top-[70px] left-0 z-50">
+            <div className="lg:hidden bg-[#3d3d75] h-[95%] w-[50%] flex flex-col fixed top-[70px] left-0 z-50">
               <div className="flex flex-col justify-center gap-5 py-5">
                 <div
                   className={`flex cursor-pointer items-center hover:bg-gray-300 px-3 py-1 rounded-md gap-5 text-white ${
@@ -374,10 +359,7 @@ const RegionSideBar = () => {
                       className="flex gap-2 hover:bg-gray-300 px-[15px] hover:rounded-md py-1 text-white"
                       onClick={handleLinkItemClick}
                     >
-                      <FaChevronRight
-                        className="white-800"
-                        fontSize={20}
-                      />
+                      <FaChevronRight className="white-800" fontSize={20} />
                       <span className="text-md font-medium">Add woreda</span>
                     </Link>
                     <Link
@@ -385,10 +367,7 @@ const RegionSideBar = () => {
                       className="flex items-center gap-2 py-1 hover:bg-gray-300 px-[15px] hover:rounded-md text-white"
                       onClick={handleLinkItemClick}
                     >
-                      <FaChevronRight
-                        className="white-800"
-                        fontSize={20}
-                      />
+                      <FaChevronRight className="white-800" fontSize={20} />
                       <span className="text-md font-medium">Manage woreda</span>
                     </Link>
                   </nav>
@@ -418,10 +397,7 @@ const RegionSideBar = () => {
                       className="flex items-center gap-2 hover:bg-gray-300 px-[15px] hover:rounded-md py-1 text-white"
                       onClick={handleLinkItemClick}
                     >
-                      <FaChevronRight
-                        className="white-800"
-                        fontSize={20}
-                      />
+                      <FaChevronRight className="white-800" fontSize={20} />
                       <span className="text-md font-medium">
                         Add Representative
                       </span>
@@ -431,10 +407,7 @@ const RegionSideBar = () => {
                       className="flex items-center gap-2 py-1 hover:bg-gray-300 px-[15px] hover:rounded-md text-white"
                       onClick={handleLinkItemClick}
                     >
-                      <FaChevronRight
-                        className="white-800"
-                        fontSize={20}
-                      />
+                      <FaChevronRight className="white-800" fontSize={20} />
                       <span className="text-md font-medium">
                         Manage Representative
                       </span>
@@ -466,10 +439,7 @@ const RegionSideBar = () => {
                       className="flex gap-2 hover:bg-green-300 px-[15px] hover:rounded-md py-1 text-white"
                       onClick={handleLinkItemClick}
                     >
-                      <FaChevronRight
-                        className="white-800"
-                        fontSize={20}
-                      />
+                      <FaChevronRight className="white-800" fontSize={20} />
                       <span className="text-md font-medium">
                         Add Distributor
                       </span>
@@ -479,10 +449,7 @@ const RegionSideBar = () => {
                       className="flex items-center gap-2 py-1 hover:bg-gray-300 px-[15px] hover:rounded-md text-white"
                       onClick={handleLinkItemClick}
                     >
-                      <FaChevronRight
-                        className="white-800"
-                        fontSize={20}
-                      />
+                      <FaChevronRight className="white-800" fontSize={20} />
                       <span className="text-md font-medium">
                         Manage Distribitor
                       </span>
@@ -503,20 +470,7 @@ const RegionSideBar = () => {
                     </div>
                   </Link>
                 </div>
-                 
-                <div
-                  className={`flex cursor-pointer  hover:bg-gray-300 pr-[105px] pl-[15px] hover:rounded-md  py-1 text-white ${
-                    openLink === "orders" ? "bg-green-300 rounded-md" : ""
-                  }`}
-                  onClick={() => handleLinkClick("coming")}
-                >
-                  <Link to="/regionDashboard/orders">
-                    <div className="flex items-center gap-2">
-                      <RiFolderReceivedFill color="white" fontSize={32} />
-                      <span className="text-[16px] font-bold">Received Report</span>
-                    </div>
-                  </Link>
-                </div>
+
                 <div
                   className={`flex cursor-pointer hover:bg-gray-300 px-3 py-1 rounded-md gap-5 text-white ${
                     openLink === "reports" ? "bg-green-300" : ""
@@ -542,10 +496,7 @@ const RegionSideBar = () => {
                       className="flex items-center gap-2 hover:bg-gray-300 px-[15px] hover:rounded-md py-1 text-white"
                       onClick={handleLinkItemClick}
                     >
-                      <FaChevronRight
-                        className="white-800"
-                        fontSize={20}
-                      />
+                      <FaChevronRight className="white-800" fontSize={20} />
                       <span className="text-md font-medium">Add Report</span>
                     </Link>
                     <Link
@@ -553,10 +504,7 @@ const RegionSideBar = () => {
                       className="flex items-center gap-2 hover:bg-gray-300 px-[15px] hover:rounded-md py-1 text-white"
                       onClick={handleLinkItemClick}
                     >
-                      <FaChevronRight
-                        className="white-800"
-                        fontSize={20}
-                      />
+                      <FaChevronRight className="white-800" fontSize={20} />
                       <span className="text-md font-medium">Manage Report</span>
                     </Link>
                   </nav>
@@ -591,10 +539,7 @@ const RegionSideBar = () => {
                       className="flex items-center gap-2 hover:bg-green-300 px-[15px] hover:rounded-md py-1 text-white"
                       onClick={handleLinkItemClick}
                     >
-                      <FaChevronRight
-                        className="white-800"
-                        fontSize={22}
-                      />
+                      <FaChevronRight className="white-800" fontSize={22} />
                       <span className="text-md font-medium">Add Post</span>
                     </Link>
                     <Link
@@ -602,10 +547,7 @@ const RegionSideBar = () => {
                       className="flex items-center gap-2 hover:bg-gray-300 px-[15px] hover:rounded-md py-1 text-white"
                       onClick={handleLinkItemClick}
                     >
-                      <FaChevronRight
-                        className="white-800"
-                        fontSize={22}
-                      />
+                      <FaChevronRight className="white-800" fontSize={22} />
                       <span className="text-md font-medium">Manage Post</span>
                     </Link>
                   </nav>

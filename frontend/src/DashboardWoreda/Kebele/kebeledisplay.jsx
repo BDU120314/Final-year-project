@@ -44,7 +44,7 @@ const KebeleDisplay = () => {
   }, [admin]);
 
   return (
-    <div className="flex justify-center items-center px-20">
+    <div className="flex justify-start items-start px-1 lg:px-20">
       <table className="table-auto w-full">
         <thead className="bg-gray-100">
           <tr>
@@ -65,7 +65,7 @@ const KebeleDisplay = () => {
                       to={`/woredaDashboard/managekebele/update/${datas.id}`}
                       className="link"
                     >
-                      <button className="px-2 hover:bg-blue-400">
+                      <button className="px-2 hover:bg-gray-400 rounded-sm">
                         <FiEdit color="blue" size={32} />
                       </button>
                     </Link>
@@ -73,11 +73,11 @@ const KebeleDisplay = () => {
                       to={`/woredaDashboard/managekebele/view/${datas.id}`}
                       className="link"
                     >
-                      <button className="px-2 hover:bg-yellow-300">
+                      <button className="px-2 hover:bg-gray-400 rounded-sm ">
                         <GrView color="white" size={32} />  
                       </button>
                     </Link>
-                    <button className="hover:bg-red-400" onClick={() => handleDelete(datas.id)}>
+                    <button className="hover:bg-gray-400 rounded-sm px-2" onClick={() => handleDelete(datas.id)}>
                       <RiDeleteBin6Line color="red" size={32} />
                     </button>
                   </div>

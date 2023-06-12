@@ -84,10 +84,10 @@ useEffect(() => {
           </div>
         </div>
 
-        <div className="flex justify-center items-center gap-10 py-[15px] px-[15px]">
+        <div className="flex justify-center items-center gap-10 p-[15px]">
           <div className="flex justify-center items-center">
             <button
-              className="w-[350px] h-10 bg-blue-400 rounded-md mt-[20px]"
+              className="w-[200px] text-white h-10 bg-green-600 hover:bg-green-400 rounded-md mt-[20px]"
               type="submit"
             >
               Update

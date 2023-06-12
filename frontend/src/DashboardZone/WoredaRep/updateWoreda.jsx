@@ -153,7 +153,7 @@ function WoredaUpdate() {
         </div>
         <div className="flex justify-center items-center">
         <button
-            className="w-[200px] h-10 mt-2 border-2 hover:bg-blue-400 bg-blue-600 rounded-md"
+            className="w-[200px] text-white h-10 mt-2 border-2 hover:bg-green-400 bg-green-600 rounded-md"
             type="submit"
           >
             Update

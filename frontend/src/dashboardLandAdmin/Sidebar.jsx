@@ -7,6 +7,7 @@ import profile from "../assets/logo.jpg";
 import axios from "axios";
 import {GiFarmer } from "react-icons/gi"
 import { useDispatch } from "react-redux";
+import { RiFolderReceivedFill } from "react-icons/ri";
 const Sidebar = () => {
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem("user"));
@@ -119,7 +120,7 @@ const Sidebar = () => {
             </div>
             <div className="pt-5 border-b-[1px] border-[#EDEDED]/[0.3] flex flex-col justify-center items-center gap-5">
               <div
-                className={`flex cursor-pointer items-center hover:bg-gray-500 px-[15px] hover:rounded-md justify-between gap-10 py-1 text-white ${
+                className={`flex cursor-pointer items-center hover:bg-gray-400 px-[30px] hover:rounded-md justify-between gap-10 py-1 text-white ${
                   openLink === "farmers" ? "bg-green-300 rounded-md" : ""
                 }`}
                 onClick={() => handleLinkClick("farmers")}
@@ -144,7 +145,7 @@ const Sidebar = () => {
                 >
                   <Link
                     to="/landAdminDashboard/register"
-                    className="flex items-center gap-2 hover:bg-gray-500 px-[25px] hover:rounded-md py-1 text-white"
+                    className="flex items-center gap-2 hover:bg-gray-400 px-[35px] hover:rounded-md py-1 text-white"
                     onClick={handleLinkItemClick}
                   >
                     <FaChevronRight className="text-white-800" fontSize={22} />
@@ -152,7 +153,7 @@ const Sidebar = () => {
                   </Link>
                   <Link
                     to="/landAdminDashboard/manageFarmers"
-                    className="flex items-center gap-2 py-1 hover:bg-gray-500 px-[25px] hover:rounded-md text-white"
+                    className="flex items-center gap-2 py-1 hover:bg-gray-400 px-[35px] hover:rounded-md text-white"
                     onClick={handleLinkItemClick}
                   >
                     <FaChevronRight className="text-white-800" fontSize={22} />
@@ -160,9 +161,24 @@ const Sidebar = () => {
                   </Link>
                 </nav>
               )}
-
               <div
-                className={`flex cursor-pointer items-center justify-between gap-10 py-1 hover:bg-gray-500 px-[15px] hover:rounded-md text-white ${
+                className={`flex cursor-pointer  items-center hover:bg-gray-400 pr-[33px] pl-[20px] hover:rounded-md justify-between gap-10 py-1 text-white ${
+                  openLink === "orders" ? "bg-green-300 rounded-md" : ""
+                }`}
+                onClick={() => handleLinkClick("coming")}
+              >
+                <Link to="/landAdminDashboard/coming">
+                  <div className="flex items-center gap-2">
+                    <RiFolderReceivedFill color="white" fontSize={32} />
+                    <span className="text-[16px] font-bold">
+                      Received Report
+                    </span>
+                  </div>
+                </Link>
+              </div>
+{/* 
+              <div
+                className={`flex cursor-pointer items-center justify-between gap-10 py-1 hover:bg-gray-400 px-[32px] hover:rounded-md text-white ${
                   openLink === "reports" ? "bg-green-300 rounded-md" : ""
                 }`}
                 onClick={() => handleLinkClick("reports")}
@@ -187,7 +203,7 @@ const Sidebar = () => {
                 >
                   <Link
                     to="/landAdminDashboard/create"
-                    className="flex items-center gap-2 hover:bg-gray-500 px-[15px] hover:rounded-md py-1 text-white"
+                    className="flex items-center gap-2 hover:bg-gray-400 px-[35px] hover:rounded-md py-1 text-white"
                     onClick={handleLinkItemClick}
                   >
                     <FaChevronRight className="text-white-800" fontSize={22} />
@@ -195,14 +211,14 @@ const Sidebar = () => {
                   </Link>
                   <Link
                     to="/landAdminDashboard/manageReport"
-                    className="flex items-center gap-2 hover:bg-gray-500 px-[15px] hover:rounded-md py-1 text-white"
+                    className="flex items-center gap-2 hover:bg-gray-400 px-[35px] hover:rounded-md py-1 text-white"
                     onClick={handleLinkItemClick}
                   >
                     <FaChevronRight className="text-white-800" fontSize={22} />
                     <span className="text-md font-medium">Manage Report</span>
                   </Link>
                 </nav>
-              )}
+              )} */}
             </div>
             <div
               onClick={handleLogout}
@@ -253,17 +269,15 @@ const Sidebar = () => {
 
           {/* Responsive sidebar content */}
           {showSidebar && (
- 
             <div className="lg:hidden bg-gray-600 h-screen w-[30%] flex flex-col fixed top-14 left-0 z-50">
               <div className="flex flex-col justify-start gap-5 py-5">
- 
                 <div
                   className={`flex cursor-pointer  hover:bg-gray-500 py-1 rounded-md gap-1 text-white ${
                     openLink === "farmers" ? "bg-green-300" : ""
                   }`}
                   onClick={() => handleLinkClick("farmers")}
                 >
-                  <GiFarmer color="white" fontSize={24} size={30}/>
+                  <GiFarmer color="white" fontSize={24} size={30} />
                   <span className="text-[16px] font-bold">Farmers</span>
                   <FaChevronRight
                     color="white"
@@ -349,21 +363,20 @@ const Sidebar = () => {
                 )}
               </div>
               <div
-              className={`flex cursor-pointer items-center hover:bg-gray-400 pr-[20px] pl-[15px] hover:rounded-md justify-between gap-10 py-1 text-white ${
-                openLink === "Coming" ? "bg-green-300 rounded-md" : ""
-              }`}
-              onClick={() => handleLinkClick("Coming")}
-            >
-              <Link to="/zoneDashboard/Coming">
-                <div className="flex items-center gap-2">
-                  <FaRegEdit color="white" fontSize={32} />
-                  <span className="text-[16px] font-bold">Coming</span>
-                </div>
-              </Link>
-              <div className="bg-blue-500 text-white rounded-full w-12 justify-center items-center flex h-6">
-                {/* <span>{pendingOrderCount}</span> */}
+                className={`flex cursor-pointer  hover:bg-gray-300 pr-[105px] pl-[15px] hover:rounded-md  py-1 text-white ${
+                  openLink === "orders" ? "bg-green-300 rounded-md" : ""
+                }`}
+                onClick={() => handleLinkClick("coming")}
+              >
+                <Link to="/regionDashboard/orders">
+                  <div className="flex items-center gap-2">
+                    <RiFolderReceivedFill color="white" fontSize={32} />
+                    <span className="text-[16px] font-bold">
+                      Received Report
+                    </span>
+                  </div>
+                </Link>
               </div>
-            </div>
               <div
                 onClick={handleLogout}
                 className="flex items-center justify-center gap-2 bg-red-500 h-10 px-5 mt-[65%] fixed rounded-md cursor-pointer"
@@ -377,38 +390,34 @@ const Sidebar = () => {
       )}
       {isUserMenuOpen && (
         <div
-        className={`z-1 absolute sm:ml-auto lg:left-0 top-24 py-1 px-0 flex flex-col items-center justify-center gap-5 bg-[#f7f7f6]  rounded shadow dark:bg-gray-200 `}
-        id="dropdown-user"
-      >
-        <div
-          className="flex flex-col gap-5 px-3 py-4 left-0"
-          role="none"
+          className={`z-1 absolute sm:ml-auto lg:left-0 top-24 py-1 px-0 flex flex-col items-center justify-center gap-5 bg-[#f7f7f6]  rounded shadow dark:bg-gray-200 `}
+          id="dropdown-user"
         >
-          <label
-            htmlFor="image-input"
-            className="bg-gray-500 text-white px-3 h-8 flex items-center rounded-md cursor-pointer ml-0 sm:ml-auto"
-          >
-            Choose photo
-            <input
-              type="file"
-              id="image-input"
-              className="hidden"
-              onChange={handleImageSelect}
-            />
-          </label>
-          <button
-            className="bg-gray-600 rounded-md text-white px-3 h-8 cursor-pointer ml-0 sm:ml-auto"
-            onClick={() => {
-              updateUserProfileImage();
-              toggleUserMenu();
-            }}
-            disabled={isUploadDisabled}
-          >
-            Upload photo
-          </button>
+          <div className="flex flex-col gap-5 px-3 py-4 left-0" role="none">
+            <label
+              htmlFor="image-input"
+              className="bg-gray-500 text-white px-3 h-8 flex items-center rounded-md cursor-pointer ml-0 sm:ml-auto"
+            >
+              Choose photo
+              <input
+                type="file"
+                id="image-input"
+                className="hidden"
+                onChange={handleImageSelect}
+              />
+            </label>
+            <button
+              className="bg-gray-600 rounded-md text-white px-3 h-8 cursor-pointer ml-0 sm:ml-auto"
+              onClick={() => {
+                updateUserProfileImage();
+                toggleUserMenu();
+              }}
+              disabled={isUploadDisabled}
+            >
+              Upload photo
+            </button>
+          </div>
         </div>
-      </div>
-      
       )}
     </>
   );

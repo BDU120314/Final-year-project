@@ -55,8 +55,9 @@ const LandAdminForm1 = () => {
               <th className="px-4 py-2">Middle Name</th>
               <th className="px-4 py-2">Email Address</th>
               <th className="px-4 py-2">Phone Number</th>
-              <th className="px-4 py-2">User Name</th>
-              <th className="px-4 py-2">Kebele</th>
+              <th className="px-4 py-2">User Name</th> 
+              <th className="px-4 py-2">Kebele ID</th>
+
               <th className="px-4 py-2 w-auto">Action</th>
             </tr>
           </thead>
@@ -77,7 +78,7 @@ const LandAdminForm1 = () => {
                   <td className="w-auto flex justify-center items-center gap-2 py-2 px-4">
                     <Link
                       to={`/woredaDashboard/manageland/update/${datas.id}`}
-                      className="link hover:bg-gray-400 rounded-sm"
+                      className="link hover:bg-gray-400 rounded-sm px-2"
                     >
                       <BiEditAlt color="blue" size={32} />
                     </Link>
@@ -86,7 +87,7 @@ const LandAdminForm1 = () => {
                       className="link"
                       to={`/woredaDashboard/manageland/view/${datas.id}`}
                     >
-                      <button className="hover:bg-gray-400 rounded-sm">
+                      <button className="hover:bg-gray-400 rounded-sm px-2">
                         <GrView color="white" size={32} />
                       </button>
                     </Link>

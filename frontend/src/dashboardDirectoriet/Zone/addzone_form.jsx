@@ -61,7 +61,7 @@ const { id, name } = formData;
       <h2 className="text-black font-extrabold leading-10 py-[25px]">
         Zone Registration Form
       </h2>
-      <form className="flex flex-col bg-gray-200"  onSubmit={handleSubmit}>
+      <form className="flex flex-col bg-gray-200" onSubmit={handleSubmit}>
         <div className="justify-center flex flex-col items-center gap-5 p-[15px]">
           <div className="flex justify-left flex-col">
             <label htmlFor="name">Zone Name</label>
@@ -89,8 +89,8 @@ const { id, name } = formData;
           </div>
         </div>
         <div className="flex justify-center items-center gap-10">
-          <div className="h-10 flex items-center justify-center my-6 w-[200px]  bg-green-400 rounded-md">
-            <button className="text-center bg-green-400" type="submit">
+          <div className="h-10 flex items-center justify-center my-6 w-[200px] hover:bg-green-400  bg-green-600 rounded-md">
+            <button className="text-center text-white  " type="submit">
               Add
             </button>
           </div>
