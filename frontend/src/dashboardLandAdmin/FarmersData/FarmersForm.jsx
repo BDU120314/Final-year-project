@@ -38,16 +38,13 @@ function FarmerRegistrationForm() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit =  (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     try {
-      const response =  axios.post(
-        "http://localhost:5001/api/v1/farmers",
-        {
-          ...formData,
-          kebele_id,
-        }
-      );
+      const response = axios.post("http://localhost:5001/api/v1/farmers", {
+        ...formData,
+        kebele_id,
+      });
       console.log(response.data);
       window.alert("Farmer successfully registered.");
       setFormData({
@@ -68,7 +65,7 @@ function FarmerRegistrationForm() {
   };
 
   return (
-    <div className="flex justify-center items-center bg-gray-100 gap-5 pt-10 flex-col">
+    <div className="flex justify-center items-center bg-gray-100 gap-5   flex-col">
       <div>
         <h2 className="text-black font-extrabold leading-10 py-25">
           Farmers Registration Form
@@ -76,11 +73,11 @@ function FarmerRegistrationForm() {
       </div>
       <form
         action="farmer-registration-form"
-        className="flex flex-col bg-white gap-5"
+        className="flex flex-col bg-white gap-5 p-8"
         onSubmit={handleSubmit}
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-4 px-10">
-          <div>
+        <div className="lg:flex gap-5 px-[10px] lg:justify-center lg:items-center lg:gap-4  ]">
+          <div className="flex items-left flex-col justify-left mt-1">
             <label htmlFor="id">ID No:</label>
             <input
               type="text"
@@ -88,11 +85,14 @@ function FarmerRegistrationForm() {
               name="id"
               value={formData.id}
               onChange={handleChange}
-              className="w-full h-8 pl-5 rounded-sm mt-[5px] border-2 bg-slate-100 text-gray-400 outline-none"
+              className="w-[280px] h-8 outline-none border-2 bg-slate-100 text-gray-400 pl-5 rounded-md"
               required
             />
           </div>
-          <div>
+        </div>
+
+        <div className="lg:flex gap-5 px-[10px] lg:justify-center lg:items-center lg:gap-8  ]">
+          <div className="flex items-left flex-col justify-left mt-1">
             <label htmlFor="fname">First Name:</label>
             <input
               type="text"
@@ -100,11 +100,11 @@ function FarmerRegistrationForm() {
               name="fname"
               value={formData.fname}
               onChange={handleChange}
-              className="w-full h-8 pl-5  rounded-sm mt-[5px] border-2 bg-slate-100 text-gray-400 outline-none "
+              className="w-[280px] h-8 outline-none border-2 bg-slate-100 text-gray-400 pl-5 rounded-md"
               required
             />
           </div>
-          <div>
+          <div className="flex items-left flex-col justify-left mt-1">
             <label htmlFor="mname">Middle Name:</label>
             <input
               type="text"
@@ -112,10 +112,13 @@ function FarmerRegistrationForm() {
               name="mname"
               value={formData.mname}
               onChange={handleChange}
-              className="w-full h-8 pl-5 rounded-sm mt-[5px] border-2 bg-slate-100 text-gray-400 outline-none"
+              className="w-[280px] h-8 outline-none border-2 bg-slate-100 text-gray-400 pl-5 rounded-md"
             />
           </div>
-          <div>
+        </div>
+
+        <div className="lg:flex gap-5 px-[10px] lg:justify-center lg:items-center lg:gap-8  ]">
+          <div className="flex items-left flex-col justify-left mt-1">
             <label htmlFor="lname">Last Name:</label>
             <input
               type="text"
@@ -123,11 +126,11 @@ function FarmerRegistrationForm() {
               name="lname"
               value={formData.lname}
               onChange={handleChange}
-              className="w-full h-8 pl-5 rounded-sm mt-[5px] border-2 bg-slate-100 text-gray-400 outline-none "
+              className="w-[280px] h-8 outline-none border-2 bg-slate-100 text-gray-400 pl-5 rounded-md"
               required
             />
           </div>
-          <div>
+          <div className="flex items-left flex-col justify-left mt-1">
             <label htmlFor="birth_date">Birth Date:</label>
             <input
               type="date"
@@ -135,38 +138,44 @@ function FarmerRegistrationForm() {
               name="birth_date"
               value={formData.birth_date}
               onChange={handleChange}
-              className="w-full h-8 pl-5 rounded-sm mt-[5px] border-2 bg-slate-100 text-gray-400 outline-none "
+              className="w-[280px] h-8 outline-none border-2 bg-slate-100 text-gray-400 pl-5 rounded-md"
               required
             />
           </div>
-          <div>
+        </div>
+
+        <div className="lg:flex gap-5 px-[10px] lg:justify-center lg:items-center lg:gap-8  ]">
+          <div className="flex items-left flex-col justify-left mt-1">
             <label htmlFor="gender">Gender</label>
             <select
               name="gender"
               id="gender"
               value={formData.gender}
-              onChange={handleChange }
+              onChange={handleChange}
               required
-              className="outline-none w-full h-8 pl-5 rounded-sm mt-[5px] border-2 bg-slate-100 text-gray-400"
+              className="w-[280px] h-8 outline-none border-2 bg-slate-100 text-gray-400 pl-5 rounded-md"
             >
               <option value="">Select Gender</option>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
             </select>
           </div>
-          <div>
-            <label htmlFor="land_by_ha">Land Amount:</label>
+          <div className="flex items-left flex-col justify-left mt-1">
+            <label htmlFor="land_by_ha">Land Amount in Hectar:</label>
             <input
               type="number"
               id="land_by_ha"
               name="land_by_ha"
               value={formData.land_by_ha}
               onChange={handleChange}
-              className="w-full h-8 pl-5 rounded-sm mt-[5px] border-2 bg-slate-100 text-gray-400 outline-none "
+              className="w-[280px] h-8 outline-none border-2 bg-slate-100 text-gray-400 pl-5 rounded-md"
               required
             />
           </div>
-          <div>
+        </div>
+
+        <div className="lg:flex gap-5 px-[10px] lg:justify-center lg:items-center lg:gap-8  ]">
+          <div className="flex items-left flex-col justify-left mt-1">
             <label htmlFor="email">Email:</label>
             <input
               type="email"
@@ -174,11 +183,10 @@ function FarmerRegistrationForm() {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full h-8 pl-5 rounded-sm mt-[5px] border-2 bg-slate-100 text-gray-400 outline-none "
-              required
+              className="w-[280px] h-8 outline-none border-2 bg-slate-100 text-gray-400 pl-5 rounded-md"
             />
           </div>
-          <div>
+          <div className="flex items-left flex-col justify-left mt-1">
             <label htmlFor="phone_number">Telephone:</label>
             <input
               type="tel"
@@ -186,11 +194,14 @@ function FarmerRegistrationForm() {
               name="phone_number"
               value={formData.phone_number}
               onChange={handleChange}
-              className="w-full h-8 pl-5 rounded-sm mt-[5px] border-2 bg-slate-100 text-gray-400 outline-none "
+              className="w-[280px] h-8 outline-none border-2 bg-slate-100 text-gray-400 pl-5 rounded-md"
               required
             />
           </div>
-          <div>
+        </div>
+
+        <div className="lg:flex gap-5 px-[10px] lg:justify-center lg:items-center lg:gap-8  ]">
+          <div className="flex items-left flex-col justify-left mt-1">
             <label htmlFor="user_name">User Name</label>
             <input
               type="text"
@@ -198,11 +209,11 @@ function FarmerRegistrationForm() {
               name="user_name"
               value={formData.user_name}
               onChange={handleChange}
-              className="w-full h-8 pl-5 rounded-sm mt-[5px] border-2 bg-slate-100 text-gray-400 outline-none "
+              className="w-[280px] h-8 outline-none border-2 bg-slate-100 text-gray-400 pl-5 rounded-md"
               required
             />
           </div>
-          <div>
+          <div className="flex items-left flex-col justify-left mt-1">
             <label htmlFor="password">Password:</label>
             <input
               type="password"
@@ -210,12 +221,11 @@ function FarmerRegistrationForm() {
               name="password"
               value={formData.password}
               onChange={handleChange}
-              className="w-full h-8 pl-5 rounded-sm mt-[5px] border-2 bg-slate-100 text-gray-400 outline-none "
+              className="w-[280px] h-8 outline-none border-2 bg-slate-100 text-gray-400 pl-5 rounded-md"
               required
             />
           </div>
         </div>
-
         <div className="flex justify-center items-center py-4 px-4">
           <div className="h-8 flex items-center justify-center my-1 w-[150px]  hover:bg-green-400 bg-green-600 rounded-md">
             <button className="text-center text-white" type="submit">

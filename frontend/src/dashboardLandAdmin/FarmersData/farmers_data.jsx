@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { MdDelete } from "react-icons/md";
-import {  BiEditAlt } from "react-icons/bi";
+import { BiEditAlt } from "react-icons/bi";
 import { GrView } from "react-icons/gr";
 
 const FarmersData = () => {
@@ -13,16 +13,17 @@ const FarmersData = () => {
   const [formData, setFormData] = useState("");
   const [filteredData, setFilteredData] = useState([]);
   const [admin, setAdmin] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 7;
 
-   const storedUser = JSON.parse(localStorage.getItem("user"));
-//for fetching admin details
+  const storedUser = JSON.parse(localStorage.getItem("user"));
+  // for fetching admin details
   useEffect(() => {
     const reperesentative = async () => {
       const response = await axios.get(
         `http://localhost:5001/api/v1/kebele/${storedUser.rep_id}`
       );
       setAdmin(response.data);
-      console.log(response.data);
     };
 
     reperesentative();
@@ -41,8 +42,6 @@ const FarmersData = () => {
     };
     loadAccountData();
   }, [admin]);
-
-  
 
   const handleDelete = (id) => {
     axios
@@ -78,6 +77,21 @@ const FarmersData = () => {
     }
     setFilteredData(filteredData);
   };
+
+  const handleClickPrevious = () => {
+    setCurrentPage((prevPage) => prevPage - 1);
+  };
+
+  const handleClickNext = () => {
+    setCurrentPage((prevPage) => prevPage + 1);
+  };
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentData = filteredData.length > 0 ? filteredData.slice(startIndex, endIndex) : accountData.slice(startIndex, endIndex);
+
+  const totalPages = Math.ceil(accountData.length / itemsPerPage);
+
   return (
     <div className="pt-5">
       <div className="flex rounded-[5px] mx-14 my-10 gap-5">
@@ -110,7 +124,7 @@ const FarmersData = () => {
           <thead className="bg-gray-100">
             <tr>
               <th className="px-4 py-2">ID</th>
-              <th className="px-4 py-2">First NAme</th>
+              <th className="px-4 py-2">First Name</th>
               <th className="px-4 py-2">Middle Name</th>
               <th className="px-4 py-2">Email Address</th>
               <th className="px-4 py-2">Phone Number</th>
@@ -119,51 +133,66 @@ const FarmersData = () => {
             </tr>
           </thead>
           <tbody>
-            {(filteredData.length > 0 ? filteredData : accountData).map(
-              (datas) => {
-                return (
-                  <tr key={datas.id} className="bg-gray-100/{0-4}">
-                    <td className="border px-4 py-2">{datas.id}</td>
-                    <td className="border px-4 py-2">{datas.fname} </td>
-                    <td className="border px-4 py-2">{datas.mname}</td>
-                    <td className="border px-4 py-2">{datas.email}</td>
-                    <td className="border px-4 py-2">{datas.phone_number}</td>
-                    <td className="border px-4 py-2 ">{datas.user_name}</td>
+            {currentData.map((datas) => {
+              return (
+                <tr key={datas.id} className="bg-gray-100/{0-4}">
+                  <td className="border px-4 py-2">{datas.id}</td>
+                  <td className="border px-4 py-2">{datas.fname} </td>
+                  <td className="border px-4 py-2">{datas.mname}</td>
+                  <td className="border px-4 py-2">{datas.email}</td>
+                  <td className="border px-4 py-2">{datas.phone_number}</td>
+                  <td className="border px-4 py-2 ">{datas.user_name}</td>
 
-                    <td className="w-auto flex justify-center items-center gap-2 py-2 px-4">
-                      <Link
-                        to={`/landAdminDashboard/manageFarmers/update/${datas.id}`}
-                        className="link"
-                      >
-                        <button className="px-2 rounded-sm hover:bg-blue-300">
+                  <td className="w-auto flex justify-center items-center gap-2 py-2 px-4">
+                    <Link
+                      to={`/landAdminDashboard/manageFarmers/update/${datas.id}`}
+                      className="link"
+                    >
+                      <button className="px-2 rounded-sm hover:bg-gray-400">
                         <BiEditAlt color="blue" size={32} />
-                        </button>
-                      </Link>
+                      </button>
+                    </Link>
 
-                      <Link
-                        to={`/landAdminDashboard/manageFarmers/view/${datas.id}`}
-                        className="link"
-                      >
-                        <button
-                        className="hover:bg-yellow-200 px-2 rounded-sm"
-                        >
-                        <GrView color="white" size={32} /> 
-                        </button>{" "}
-                      </Link>
+                    <Link
+                      to={`/landAdminDashboard/manageFarmers/view/${datas.id}`}
+                      className="link"
+                    >
+                      <button className="px-2 rounded-sm hover:bg-gray-400">
+                        <GrView color="white" size={32} />
+                      </button>{" "}
+                    </Link>
 
-                      <button
-                        onClick={() => handleDelete(datas.id)}
-                        className="hover:bg-red-300 px-2 rounded-sm"
-                      >
-                  <MdDelete color="red" size={30} />
-                </button>
-                    </td>
-                  </tr>
-                );
-              }
-            )}
+                    <button
+                      onClick={() => handleDelete(datas.id)}
+                      className="px-2 rounded-sm hover:bg-gray-400"
+                    >
+                      <MdDelete color="red" size={30} />
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
+      </div>
+      <div className="flex justify-center items-center mt-5">
+        <button
+          onClick={handleClickPrevious}
+          disabled={currentPage === 1}
+          className="bg-blue-500 h-10 px-4 py-2 hover:bg-blue-300 rounded-l-[5px] text-white"
+        >
+          Previous
+        </button>
+        <span className="mx-4 text-lg font-semibold">
+          Page {currentPage} of {totalPages}
+        </span>
+        <button
+          onClick={handleClickNext}
+          disabled={currentPage === totalPages}
+          className="bg-blue-500 h-10 px-4 py-2 hover:bg-blue-300 rounded-r-[5px] text-white"
+        >
+          Next
+        </button>
       </div>
       <ToastContainer />
     </div>

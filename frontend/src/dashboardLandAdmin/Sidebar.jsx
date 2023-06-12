@@ -87,8 +87,8 @@ const Sidebar = () => {
     <>
       {isLogin && (
         <>
-          <div className="hidden lg:flex bg-gray-600 h-screen w-[18%] flex-col fixed top-0 left-0">
-            <div className="pt-10 flex justify-center items-center flex-col border-b-[5px] border-gray-200">
+          <div className="hidden lg:flex bg-[#3d3d75] h-screen w-[18%] flex-col fixed top-0 left-0">
+            <div className="pt-0 flex justify-center items-center flex-col border-b-[5px] border-gray-200">
               <div
                 className={`text-lg cursor-pointer font-bold flex justify-center items-center mr-4 py-1 whitespace-nowrap capitalize text-center text-green-500  ${
                   location.pathname === "/profile" ? "text-gray-400" : ""
@@ -111,7 +111,7 @@ const Sidebar = () => {
                 </div>
               </div>
             </div>
-            <div className=" flex gap-[15px] items-center py-5 border-b-[1px] border-[#EDEDED]/[0.3] bg-gray-400">
+            <div className=" flex gap-[15px] items-center py-2 border-b-[1px] border-[#EDEDED]/[0.3] bg-gray-400">
               <FaTachometerAlt className="text-white" fontSize={32} />
               <p className="text-white text-[18px] font-bold leading-5">
                 Dashboard
@@ -214,7 +214,7 @@ const Sidebar = () => {
           </div>
 
           {/* Responsive sidebar */}
-          <div className="lg:hidden bg-green-400 h-14 fixed top-0 left-0 right-0 flex items-center justify-between px-3">
+          <div className="lg:hidden bg-gray-400 h-14 fixed top-0 left-0 right-0 flex items-center justify-between px-3">
             {showSidebar ? (
               <FiX
                 className="text-white cursor-pointer"
@@ -254,7 +254,7 @@ const Sidebar = () => {
           {/* Responsive sidebar content */}
           {showSidebar && (
  
-            <div className="lg:hidden bg-green-400 h-[85%] w-[30%] flex flex-col fixed top-10 left-0 z-50">
+            <div className="lg:hidden bg-gray-600 h-screen w-[30%] flex flex-col fixed top-14 left-0 z-50">
               <div className="flex flex-col justify-start gap-5 py-5">
  
                 <div
@@ -349,6 +349,22 @@ const Sidebar = () => {
                 )}
               </div>
               <div
+              className={`flex cursor-pointer items-center hover:bg-gray-400 pr-[20px] pl-[15px] hover:rounded-md justify-between gap-10 py-1 text-white ${
+                openLink === "Coming" ? "bg-green-300 rounded-md" : ""
+              }`}
+              onClick={() => handleLinkClick("Coming")}
+            >
+              <Link to="/zoneDashboard/Coming">
+                <div className="flex items-center gap-2">
+                  <FaRegEdit color="white" fontSize={32} />
+                  <span className="text-[16px] font-bold">Coming</span>
+                </div>
+              </Link>
+              <div className="bg-blue-500 text-white rounded-full w-12 justify-center items-center flex h-6">
+                {/* <span>{pendingOrderCount}</span> */}
+              </div>
+            </div>
+              <div
                 onClick={handleLogout}
                 className="flex items-center justify-center gap-2 bg-red-500 h-10 px-5 mt-[65%] fixed rounded-md cursor-pointer"
               >
@@ -381,7 +397,7 @@ const Sidebar = () => {
             />
           </label>
           <button
-            className="bg-green-400 rounded-md text-white px-3 h-8 cursor-pointer ml-0 sm:ml-auto"
+            className="bg-gray-600 rounded-md text-white px-3 h-8 cursor-pointer ml-0 sm:ml-auto"
             onClick={() => {
               updateUserProfileImage();
               toggleUserMenu();

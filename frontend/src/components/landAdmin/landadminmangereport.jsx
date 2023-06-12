@@ -38,7 +38,7 @@ const LandAdminManageAccount = () => {
     <div className="mt-16 p-4">
       <h1 className="text-center text-[25px]">Report Management</h1>
       <div className="flex justify-center items-center bg-gray-50 text-gray-700 px-5">
-        <div className="max-h-80 overflow-y-scroll">
+        <div className="max-h-80 ">
           <table className="w-full">
             <thead className="bg-gray-100">
               <tr>

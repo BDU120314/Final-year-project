@@ -43,6 +43,7 @@ const LandAdminForm1 = () => {
 
   return (
     <div className="flex justify-center flex-col items-center px-5">
+      <h1 className="text-[25px]"> Representative Management Form </h1>
       <div className="overflow-x-auto w-full">
         <table className="table-auto min-w-full">
           <thead className="bg-gray-100">

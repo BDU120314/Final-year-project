@@ -47,6 +47,7 @@ const ManageReportWoredaAdmin = () => {
             <th className="px-4 py-2">content</th>
             <th className="px-4 py-2">Date</th>
             <th className="px-4 py-2">Action</th>
+            <th className="px-4 py-2">id</th>
           </tr>
         </thead>
         <tbody>
@@ -55,6 +56,7 @@ const ManageReportWoredaAdmin = () => {
               <td className="breport px-4 py-2">{report.title}</td>
               <td className="breport px-4 py-2">{report.content}</td>
               <th className="px-4 py-2">{report.updateAt}</th>
+              <th className="px-4 py-2">{report.rep_id}</th>
               <td className="breport px-4 py-2 flex justify-center items-center gap-10">
                 <Link
                   to={`/farmerreportdisplay/update/${report.id}`}

@@ -191,7 +191,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
           })()}
         </div>
 
-        <div className="flex flex-wrap justify-center items-center gap-6  py-[10px]">
+        <div className="flex flex-wrap justify-center items-center gap-6 px-4 py-[10px]">
         <div className="flex items-start justify-left  flex-col">
             <label htmlFor="fname">First Name</label>
             <input
@@ -297,7 +297,7 @@ const RegistrationFormate = ({ typeName, dataBaseColumn }) => {
               onChange={handleChange}
               value={password}
               required
-              className="w-[350px] h-8 pl-5 rounded-sm outline-none border-2 bg-slate-100 text-gray-400 mb-5"
+              className="w-[350px] h-8 pl-5 rounded-sm outline-none border-2 bg-slate-100 text-gray-400"
             />
           </div>
         </div>

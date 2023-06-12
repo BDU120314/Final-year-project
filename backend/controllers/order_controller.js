@@ -1,9 +1,10 @@
 const db = require("../config/connection_db");
 
 // for creating an order
+// for creating an order
+// for creating an order
 const AddOrder = (req, res) => {
-  const { fname, mname, input_type, amount, farmers_id, kebele_id, role } =
-    req.body;
+  const { fname, mname, input_type, subtypeAmounts, farmers_id, kebele_id, role } = req.body;
 
   // Set the initial status based on the user's role
   let status;
@@ -20,19 +21,25 @@ const AddOrder = (req, res) => {
     return;
   }
 
-  const sql =
-    "INSERT INTO orders (farmer_fname, farmer_mname, input_type, amount, farmer_id, kebele_id, status) VALUES (?, ?, ?, ?, ?, ?, ?)";
-  const values = [
-    fname,
-    mname,
-    input_type,
-    amount,
-    farmers_id,
-    kebele_id,
-    status,
-  ];
+  const subtypes = Object.keys(subtypeAmounts);
+  const values = subtypes.map((subtype) => {
+    const amount = subtypeAmounts[subtype];
+    return [
+      fname,
+      mname,
+      input_type,
+      subtype !== "" ? subtype : "Default Subtype", // Assign a default value if subtype is empty
+      amount !== "" ? amount : 0, // Assign a default value if amount is empty
+      farmers_id,
+      kebele_id,
+      status,
+    ];
+  });
 
-  db.query(sql, values, (error, result) => {
+  const sql =
+    "INSERT INTO orders (farmer_fname, farmer_mname, input_type, subtype, amount, farmer_id, kebele_id, status) VALUES ?";
+
+  db.query(sql, [values], (error, result) => {
     if (!error) {
       console.log("Order created successfully!");
       res.status(200).send("Order created successfully");
@@ -42,20 +49,16 @@ const AddOrder = (req, res) => {
     }
   });
 };
+
+
 // farmer can update order
 const UpdateFarmersOrder = (req, res) => {
-  const { input_type, amount, role} = req.body;
-  const order_id = req.params.id;
-let status;
-if (role === "Farmer") {
-  status = "Pending";
-} else {
-  res.status(400).send("Invalid role");
-  return;
-}
-  const sql =
-    "UPDATE orders SET input_type = ?, amount = ?, status = ? WHERE id = ?";
-  const values = [input_type, amount, status, order_id];
+  const orderId = req.params.id;
+  const { role, status = "Pending" } = req.body;
+  const { input_type, subtype, amount } = req.body;
+
+  const sql = "UPDATE orders SET input_type = ?, subtype = ?, amount = ?, status =? WHERE id = ?";
+  const values = [input_type, subtype, amount, status, orderId];
 
   db.query(sql, values, (error, result) => {
     if (!error) {

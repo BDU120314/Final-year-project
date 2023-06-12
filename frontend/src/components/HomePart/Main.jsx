@@ -20,7 +20,7 @@ const Main = () => {
               height: "500px",
             }}
           >
-            <h2 className="font-semibold tracking-wide text-black uppercase text-3xl">
+            <h2 className="font-semibold tracking-wide flex items-center justify-center text-black uppercase text-3xl">
               እንኳን ወደ አማራ ክልል የግብርና ግብዓት ፎርም በደህና መጡ
             </h2>
           </div>
