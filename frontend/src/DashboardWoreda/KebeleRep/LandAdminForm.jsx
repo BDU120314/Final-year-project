@@ -9,6 +9,7 @@ const LandAdminForm1 = () => {
   const [admin, setAdmin] = useState([]);
   const user = JSON.parse(localStorage.getItem("user"));
   const [kebeleData, setKebeleData] = useState([]);
+
   useEffect(() => {
     const adminData = async () => {
       const response = await axios.get(
@@ -18,6 +19,7 @@ const LandAdminForm1 = () => {
     };
     adminData();
   }, [user.rep_id]);
+
   const handleDelete = (id) => {
     axios
       .delete(`http://localhost:5001/api/v1/kebele/delete/${id}`)
@@ -42,10 +44,10 @@ const LandAdminForm1 = () => {
   }, [admin]);
 
   return (
-    <div className="flex justify-center flex-col items-center px-5">
-      <h1 className="text-[25px]"> Representative Management Form </h1>
-      <div className="overflow-x-auto w-full">
-        <table className="table-auto min-w-full">
+    <div className="flex justify-center flex-col items-center px-5 h-screen mt-0 fixed">
+      <h1 className="text-[25px]">Land Admin Management Form</h1>
+      <div className="overflow-y-auto  w-full h-screen">
+        <table className="table-auto min-w-full h-screen">
           <thead className="bg-gray-100">
             <tr>
               <th className="px-4 py-2">ID</th>
@@ -54,7 +56,7 @@ const LandAdminForm1 = () => {
               <th className="px-4 py-2">Email Address</th>
               <th className="px-4 py-2">Phone Number</th>
               <th className="px-4 py-2">User Name</th>
-              <th className="px-4 py-2">Kebele Name</th>
+              <th className="px-4 py-2">Kebele</th>
               <th className="px-4 py-2 w-auto">Action</th>
             </tr>
           </thead>
@@ -71,11 +73,11 @@ const LandAdminForm1 = () => {
                   <td className="border px-4 py-2">{datas.email}</td>
                   <td className="border px-4 py-2">{datas.phone_number}</td>
                   <td className="border px-4 py-2">{datas.user_name}</td>
-                  <td className="border px-4 py-2">{datas.kebele_name}</td>
+                  <td className="border px-4 py-2">{datas.kebele_id}</td>
                   <td className="w-auto flex justify-center items-center gap-2 py-2 px-4">
                     <Link
                       to={`/woredaDashboard/manageland/update/${datas.id}`}
-                      className="link hover:bg-blue-400"
+                      className="link hover:bg-gray-400 rounded-sm"
                     >
                       <BiEditAlt color="blue" size={32} />
                     </Link>
@@ -84,12 +86,15 @@ const LandAdminForm1 = () => {
                       className="link"
                       to={`/woredaDashboard/manageland/view/${datas.id}`}
                     >
-                      <button className="hover:bg-yellow-300">
+                      <button className="hover:bg-gray-400 rounded-sm">
                         <GrView color="white" size={32} />
                       </button>
                     </Link>
 
-                    <button className="hover:bg-red-400" onClick={() => handleDelete(datas.id)}>
+                    <button
+                      className="hover:bg-gray-400 rounded-sm"
+                      onClick={() => handleDelete(datas.id)}
+                    >
                       <MdDelete color="red" size={30} />
                     </button>
                   </td>

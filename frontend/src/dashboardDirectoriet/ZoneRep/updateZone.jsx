@@ -50,7 +50,7 @@ function ZoneUpdate() {
   return (
     <div className="flex flex-col justify-center items-center p-5 bg-gray-100">
       <div className="text-black text-[18px] leading-6">
-        <h2>Zone Representative Modification Form</h2>
+      <h2 className="flex items-center justify-center mt-24 text-[25px] ">Representative Modification Form</h2>
       </div>
       <form className="bg-white" onSubmit={handleSubmit}>
         <div className="flex flex-col gap-4 py-2 px-4 md:flex-row md:justify-between md:items-center">

@@ -64,8 +64,8 @@ const RegionHeader = () => {
   };
 
   return (
-    <div className="flex justify-end items-center bg-[#f7f7f7] shadow-md h-[70px] fixed top-0 right-0 left-[18%]">
-      <div className="flex items-center gap-4 relative ">
+    <div className="flex justify-end items-center bg-[#f7f7f7] shadow-md h-[70px] top-0 right-0 left-[18%]">
+      <div className="flex items-center gap-4">
         <div className="flex items-center gap-[25px] border-r-[1px] pr-1">
           <Link
             to="/regionDashboard/zoneadd"

@@ -139,9 +139,9 @@ function UpdateLandAdmin() {
             />
           </div>
         </div>
-        <div className="flex justify-center items-center hover:bg-blue-400">
+        <div className="flex justify-center items-center ">
           <button
-            className="w-[350px] h-8 text-black bg-blue-400 rounded-md m-[20px]  hover:bg-blue-400"
+            className="w-[200px] h-10 text-white bg-blue-600 rounded-md m-[20px]  hover:bg-blue-400"
             type="submit"
           >
             Update

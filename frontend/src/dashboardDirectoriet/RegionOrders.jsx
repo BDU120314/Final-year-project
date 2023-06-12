@@ -83,6 +83,8 @@ const RegionOrders = () => {
   };
 
   return (
+    <div className="mt-0 ">
+       <h2 className="flex items-center justify-center mt-0 text-[25px] ">Orders Management Form</h2>
     <div className="flex justify-center items-center px-5 ">
       <table className="table-auto w-full">
         <thead className="bg-gray-200/50">
@@ -132,6 +134,7 @@ const RegionOrders = () => {
           })}
         </tbody>
       </table>
+    </div>
     </div>
   );
 };

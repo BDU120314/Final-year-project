@@ -43,8 +43,10 @@ const WoredaData = () => {
   }, [admin]);
 
   return (
-    <div className="flex justify-center items-center px-5 ">
-      <table className="table-auto w-full">
+    <div className="flex justify-center flex-col items-center px-5 h-screen mt-0 fixed">
+           <h1 className="text-[25px]">Land Admin Management Form</h1>
+      <div className="overflow-y-auto  w-full h-screen">
+        <table className="table-auto min-w-full h-screen">
         <thead className="bg-gray-100">
           <tr>
             <th className="px-4 py-2">ID</th>
@@ -96,6 +98,7 @@ const WoredaData = () => {
           })}
         </tbody>
       </table>
+      </div>
     </div>
   );
 };
