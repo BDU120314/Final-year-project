@@ -57,6 +57,12 @@ import CardOf from "./components/pestiside/CardOf";
 import SingleWoreda from "./DashboardZone/Woreda/singleworeda";
 import DisplaySingleWoreda from "./DashboardZone/WoredaRep/displaySingleWoreda";
 import ManageReportRegion from "./dashboardDirectoriet/ManageReportRegion";
+import RegionEditor from "./dashboardDirectoriet/RegionEditor";
+import ZoneEditor from "./DashboardZone/ZoneEditor";
+import ReciveRegionReport from "./DashboardZone/ReciveRegionReport";
+import ReciveZoneReport from "./DashboardWoreda/RecivedZoneReport";
+import WoredaEditor from "./DashboardWoreda/WoredaEditor";
+import ReciveWoredaReport from "./dashboardLandAdmin/RecivedWoredaReport";
 
 const App = () => {
   return (
@@ -118,6 +124,10 @@ const App = () => {
             path="/landAdminDashboard/manageReport"
             element={<LandAdminManageAccount />}
           />
+          <Route
+            path="/landAdminDashboard/coming"
+            element={<ReciveWoredaReport />}
+          />
         </Route>
 
         {/* woreda Admin Dashboard */}
@@ -156,10 +166,14 @@ const App = () => {
             element={<AdminRegistrationForm />}
           />
           <Route path="/woredaDashboard/orders" element={<WoredaOrders />} />
-          <Route path="/woredaDashboard/create" element={<ReportEditor />} />
+          <Route path="/woredaDashboard/create" element={<WoredaEditor />} />
           <Route
             path="/woredaDashboard/manageReport"
             element={<ManageReportWoredaAdmin />}
+          />
+          <Route
+            path="/woredaDashboard/comingReport"
+            element={<ReciveZoneReport />}
           />
         </Route>
 
@@ -198,11 +212,15 @@ const App = () => {
             path={"/zoneDashboard/manageWoredaAdmin/view/:id"}
             element={<DisplaySingleWoreda />}
           />
-          <Route path="/zoneDashboard/create" element={<ReportEditor />} />
+          <Route path="/zoneDashboard/create" element={<ZoneEditor />} />
 
           <Route
             path="/zoneDashboard/manageReport"
             element={<ManageReportZone />}
+          />
+          <Route
+            path="/zoneDashboard/coming"
+            element={<ReciveRegionReport />}
           />
           <Route path="/zoneDashboard/orders" element={<ZoneOrders />} />
         </Route>
@@ -259,7 +277,7 @@ const App = () => {
           />
 
           <Route path="/regionDashboard/orders" element={<RegionOrders />} />
-          <Route path="/regionDashboard/create" element={<ReportEditor />} />
+          <Route path="/regionDashboard/create" element={<RegionEditor />} />
 
           <Route
             path="/regionDashboard/manageReport"
@@ -268,7 +286,7 @@ const App = () => {
           <Route path="/regionDashboard/createpost" element={<Post />} />
           <Route path="/regionDashboard/managepost" element={<Post />} />
         </Route>
-      </Routes>
+      </Routes> 
     </div>
   );
 };

@@ -69,7 +69,7 @@ const RegionHeader = () => {
         <div className="flex items-center gap-[25px] border-r-[1px] pr-1">
           <Link
             to="/regionDashboard/zoneadd"
-            className="bg-blue-600 hover:bg-blue-400 flex justify-center items-centerh-[30px] px-4 text-white rounded-md"
+            className="bg-green-600 hover:bg-green-400 flex justify-center items-centerh-[30px] px-4 text-white rounded-md"
           >
             Add Zone
           </Link>

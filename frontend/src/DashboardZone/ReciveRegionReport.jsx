@@ -19,7 +19,7 @@ const ReciveRegionReport = () => {
       );
 
       console.log(response.data[0].zone_id, "wewewe");
-      setAdmin(response.data);
+      setAdmin(response.data[0]);
     };
     fetchedData();
   }, [user_id]);
@@ -35,11 +35,11 @@ const ReciveRegionReport = () => {
         console.log(error);
       });
   };
-
+console.log(admin.zone_id)
   useEffect(() => {
     axios
       .get(
-        `http://localhost:5001/api/v1/report/landAdminByZone/${admin[0].zone_id}`
+        `http://localhost:5001/api/v1/report/landAdminByZone/${admin.zone_id}`
       )
       .then((response) => {
         const formattedData = response.data.map((report) => ({

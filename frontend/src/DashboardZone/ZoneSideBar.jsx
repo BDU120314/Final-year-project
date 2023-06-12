@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { GrUserAdmin } from "react-icons/gr";
-import { FaTachometerAlt, FaRegEdit, FaChevronRight, FaRegCreditCard } from "react-icons/fa";
-import { Link,useNavigate } from "react-router-dom";
-import {useDispatch, useSelector } from "react-redux";
+import {
+  FaTachometerAlt,
+  FaRegEdit,
+  FaChevronRight,
+  FaRegCreditCard,
+} from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { FiMenu, FiX } from "react-icons/fi";
 import { GiVillage } from "react-icons/gi";
 import { AiOutlineBorderOuter } from "react-icons/ai";
 import { logout } from "../redux/reducers/auth";
 import { FiLogOut } from "react-icons/fi";
-import { RiFolderReceivedFill } from "react-icons/ri";
+import { RiAdminFill, RiFolderReceivedFill } from "react-icons/ri";
 import { TfiWrite } from "react-icons/tfi";
-
 
 const ZoneSideBar = () => {
   const [admin, setAdmin] = useState([]);
@@ -81,178 +85,183 @@ const ZoneSideBar = () => {
   };
   return (
     <>
-
       {isLogin && (
         <>
-
-<div className="hidden lg:flex bg-[#3d3d75] h-full w-[18%] flex-col fixed top-0 left-0">
-          <div className="flex gap-[15px] items-center pb-5 border-b-[1px] bg-slate-400 w-[100%] pt-5 border-[#EDEDED]/[0.3]">
-            <FaTachometerAlt className="text-white" fontSize={32} />
-            <p className="text-white text-[18px] font-bold leading-5">
-              Zone Admin
-            </p>
-          </div>
-          <div className="pt-5 border-b-[1px] border-[#EDEDED]/[0.3] flex  flex-col justify-start items-start gap-6">
-            <div
-              className={`flex cursor-pointer items-center hover:bg-gray-400 pl-[15px] pr-[45px] hover:rounded-md justify-between gap-10 py-1 text-white ${
-                openLink === "woreda" ? "bg-green-300 rounded-md" : ""
-              }`}
-              onClick={() => handleLinkClick("woreda")}
-            >
-              <div className="flex items-center gap-2">
-                <GiVillage color="white" fontSize={32} />
-                <span className="text-[16px] font-bold">Woreda</span>
-              </div>
-              <span className="shrink-0 transition duration-300">
-                <FaChevronRight
-                  color="white"
-                  className={openLink === "woreda" ? "transform rotate-90" : ""}
-                />
-              </span>
+          <div className="hidden lg:flex bg-[#3d3d75] h-full w-[18%] flex-col fixed top-0 left-0">
+            <div className="flex gap-[15px] items-center pb-5 border-b-[1px] bg-slate-400 w-[100%] pt-5 border-[#EDEDED]/[0.3]">
+              <FaTachometerAlt className="text-white" fontSize={32} />
+              <p className="text-white text-[18px] font-bold leading-5">
+                Zone Admin
+              </p>
             </div>
-            {openLink === "woreda" && (
-              <nav
-                aria-label="Farmers Nav"
-                className="mt-2 gap-4 items-center flex flex-col"
+            <div className="pt-5 border-b-[1px] border-[#EDEDED]/[0.3] flex  flex-col justify-start items-start gap-6">
+              <div
+                className={`flex cursor-pointer items-center hover:bg-gray-400 pl-[10px] pr-[40px] hover:rounded-md justify-between gap-16 py-1 text-white ${
+                  openLink === "woreda" ? "bg-green-300 rounded-md" : ""
+                }`}
+                onClick={() => handleLinkClick("woreda")}
               >
-                <Link
-                  to="/zoneDashboard/addworeda"
-                  className="flex items-center gap-2 hover:bg-gray-400 px-[25px] hover:rounded-md py-1 text-white"
-                  onClick={handleLinkItemClick}
-                >
-                  <FaChevronRight className="text-green-800" fontSize={22} />
-                  <span className="text-md font-medium">Add Woreda</span>
-                </Link>
-                <Link
-                  to="/zoneDashboard/manageWoreda"
-                  className="flex items-center gap-2 py-1 hover:bg-gray-400 px-[25px] hover:rounded-md text-white"
-                  onClick={handleLinkItemClick}
-                >
-                  <FaChevronRight className="text-green-800" fontSize={22} />
-                  <span className="text-md font-medium">Manage Woreda</span>
-                </Link>
-              </nav>
-            )}
-            <div
-              className={`flex cursor-pointer items-center hover:bg-gray-400 pl-[15px] pr-[45px] hover:rounded-md justify-between gap-10 py-1 text-white ${
-                openLink === "woredarep" ? "bg-green-300 rounded-md" : ""
-              }`}
-              onClick={() => handleLinkClick("woredarep")}
-            >
-              <div className="flex items-center gap-2">
-                <GrUserAdmin color="white" fontSize={32} />
-                <span className="text-[16px] font-bold">Woreda Admin</span>
-              </div>
-              <span className="shrink-0 transition duration-300">
-                <FaChevronRight
-                  color="white"
-                  className={
-                    openLink === "woredarep" ? "transform rotate-90" : ""
-                  }
-                />
-              </span>
-            </div>
-            {openLink === "woredarep" && (
-              <nav
-                aria-label="Farmers Nav"
-                className="mt-2 gap-4 items-center flex flex-col"
-              >
-                <Link
-                  to="/zoneDashboard/register"
-                  className="flex items-center gap-2 hover:bg-gray-400 px-[25px] hover:rounded-md py-1 text-white"
-                  onClick={handleLinkItemClick}
-                >
-                  <FaChevronRight className="text-green-800" fontSize={22} />
-                  <span className="text-md font-medium">Register Admin</span>
-                </Link>
-                <Link
-                  to="/zoneDashboard/manageworedaAdmin"
-                  className="flex items-center gap-2 py-1 hover:bg-gray-400 px-[25px] hover:rounded-md text-white"
-                  onClick={handleLinkItemClick}
-                >
-                  <FaChevronRight className="text-green-800" fontSize={22} />
-                  <span className="text-md font-medium">Manage Admin</span>
-                </Link>
-              </nav>
-            )}
-            <div
-              className={`flex cursor-pointer items-center hover:bg-gray-400 pr-[20px] pl-[15px] hover:rounded-md justify-between gap-10 py-1 text-white ${
-                openLink === "orders" ? "bg-green-300 rounded-md" : ""
-              }`}
-              onClick={() => handleLinkClick("orders")}
-            >
-              <Link to="/zoneDashboard/orders">
                 <div className="flex items-center gap-2">
-                  <AiOutlineBorderOuter color="white" fontSize={32} />
-                  <span className="text-[16px] font-bold">Orders</span>
+                  <GiVillage color="white" fontSize={32} />
+                  <span className="text-[16px] font-bold">Woreda</span>
                 </div>
-              </Link>
-              <div className="bg-blue-500 text-white rounded-full w-12 justify-center items-center flex h-6">
-                <span>{pendingOrderCount}</span>
+                <span className="shrink-0 transition duration-300">
+                  <FaChevronRight
+                    color="white"
+                    className={
+                      openLink === "woreda" ? "transform rotate-90" : ""
+                    }
+                  />
+                </span>
               </div>
-            </div>
-            <div
-              className={`flex cursor-pointer items-center hover:bg-gray-400 pr-[20px] pl-[15px] hover:rounded-md justify-between gap-10 py-1 text-white ${
-                openLink === "orders" ? "bg-green-300 rounded-md" : ""
-              }`}
-              onClick={() => handleLinkClick("coming")}
-            >
-              <Link to="/zoneDashboard/coming">
-                <div className="flex items-center gap-2">
-                  <RiFolderReceivedFill color="white" fontSize={32} />
-                  <span className="text-[16px] font-bold">Received Report</span>
-                </div>
-              </Link>
-              <div className="bg-blue-500 text-white rounded-full w-12 justify-center items-center flex h-6">
-                <span>{pendingOrderCount}</span>
-              </div>
-            </div>
-            <div
-              className={`flex cursor-pointer items-center justify-between gap-10 py-1 hover:bg-gray-400 pl-[15px] pr-[35px] hover:rounded-md text-white ${
-                openLink === "reports" ? "bg-green-300 rounded-md" : ""
-              }`}
-              onClick={() => handleLinkClick("reports")}
-            >
-              <div className="flex items-center gap-2">
-                <TfiWrite color="gray-400" fontSize={24} />
-                <span className="text-[18px] font-bold">Reports</span>
-              </div>
-              <span className="shrink-0 transition duration-300">
-                <FaChevronRight
-                  color="white"
-                  className={
-                    openLink === "reports" ? "transform rotate-90" : ""
-                  }
-                />
-              </span>
-            </div>
-            {openLink === "reports" && (
-              <nav
-                aria-label="Reports Nav"
-                className="mt-2 flex flex-col gap-4"
+              {openLink === "woreda" && (
+                <nav
+                  aria-label="Farmers Nav"
+                  className="mt-2 gap-4 items-center flex flex-col"
+                >
+                  <Link
+                    to="/zoneDashboard/addworeda"
+                    className="flex items-center gap-2 hover:bg-gray-400 px-[60px] hover:rounded-md py-1 text-white"
+                    onClick={handleLinkItemClick}
+                  >
+                    <FaChevronRight
+                      className="text-white -ml-6"
+                      fontSize={22}
+                    />
+                    <span className="text-md font-medium">Add Woreda</span>
+                  </Link>
+                  <Link
+                    to="/zoneDashboard/manageWoreda"
+                    className="flex items-center gap-2 py-1 hover:bg-gray-400 px-[35px] hover:rounded-md text-white"
+                    onClick={handleLinkItemClick}
+                  >
+                    <FaChevronRight className="text-white" fontSize={22} />
+                    <span className="text-md font-medium">Manage Woreda</span>
+                  </Link>
+                </nav>
+              )}
+              <div
+                className={`flex cursor-pointer items-center hover:bg-gray-400 px-8 hover:rounded-md justify-between gap-4 py-1 text-white ${
+                  openLink === "woredarep" ? "bg-green-300 rounded-md" : ""
+                }`}
+                onClick={() => handleLinkClick("woredarep")}
               >
-                <Link
-                  to="/zoneDashboard/create"
-                  className="flex items-center gap-2 hover:bg-gray-400 px-[15px] hover:rounded-md py-1 text-white"
-                  onClick={handleLinkItemClick}
+                <div className="flex items-center gap-2">
+                  <RiAdminFill className="text-white -ml-6" fontSize={32} />
+                  <span className="text-[16px] font-bold">Woreda Admin</span>
+                </div>
+                <span className="shrink-0 transition duration-300">
+                  <FaChevronRight
+                    color="white"
+                    className={
+                      openLink === "woredarep" ? "transform rotate-90" : ""
+                    }
+                  />
+                </span>
+              </div>
+              {openLink === "woredarep" && (
+                <nav
+                  aria-label="Farmers Nav"
+                  className="mt-2 gap-4 items-center flex flex-col"
                 >
-                  <FaChevronRight className="text-green-800" fontSize={22} />
-                  <span className="text-md font-medium">Add Report</span>
+                  <Link
+                    to="/zoneDashboard/register"
+                    className="flex items-center gap-2 hover:bg-gray-400 px-[25px] hover:rounded-md py-1 text-white"
+                    onClick={handleLinkItemClick}
+                  >
+                    <FaChevronRight className="text-green-800" fontSize={22} />
+                    <span className="text-md font-medium">Register Admin</span>
+                  </Link>
+                  <Link
+                    to="/zoneDashboard/manageworedaAdmin"
+                    className="flex items-center gap-2 py-1 hover:bg-gray-400 px-[25px] hover:rounded-md text-white"
+                    onClick={handleLinkItemClick}
+                  >
+                    <FaChevronRight className="text-green-800" fontSize={22} />
+                    <span className="text-md font-medium">Manage Admin</span>
+                  </Link>
+                </nav>
+              )}
+              <div
+                className={`flex cursor-pointer items-center hover:bg-gray-400 pr-[20px] pl-[15px] hover:rounded-md justify-between gap-12 py-1 text-white ${
+                  openLink === "orders" ? "bg-green-300 rounded-md" : ""
+                }`}
+                onClick={() => handleLinkClick("orders")}
+              >
+                <Link to="/zoneDashboard/orders">
+                  <div className="flex items-center gap-2">
+                    <AiOutlineBorderOuter color="white" fontSize={32} />
+                    <span className="text-[16px] font-bold">Orders</span>
+                  </div>
                 </Link>
-                <Link
-                  to="/zoneDashboard/manageReport"
-                  className="flex items-center gap-2 hover:bg-gray-400 px-[15px] hover:rounded-md py-1 text-white"
-                  onClick={handleLinkItemClick}
+                <div className="bg-blue-500 text-white rounded-full w-12 justify-center items-center flex h-6">
+                  <span>{pendingOrderCount}</span>
+                </div>
+              </div>
+              <div
+                className={`flex cursor-pointer items-center hover:bg-gray-400 pr-[45px] pl-[15px] hover:rounded-md justify-between gap-10 py-1 text-white ${
+                  openLink === "orders" ? "bg-green-300 rounded-md" : ""
+                }`}
+                onClick={() => handleLinkClick("coming")}
+              >
+                <Link to="/zoneDashboard/coming">
+                  <div className="flex items-center gap-2">
+                    <RiFolderReceivedFill color="white" fontSize={32} />
+                    <span className="text-[16px] font-bold">
+                      Received Report
+                    </span>
+                  </div>
+                </Link>
+                {/* <div className="bg-blue-500 text-white rounded-full w-12 justify-center items-center flex h-6">
+                <span>{pendingOrderCount}</span>
+              </div> */}
+              </div>
+              <div
+                className={`flex cursor-pointer items-center justify-between gap-14 py-1 hover:bg-gray-400 pl-[15px] pr-[35px] hover:rounded-md text-white ${
+                  openLink === "reports" ? "bg-green-300 rounded-md" : ""
+                }`}
+                onClick={() => handleLinkClick("reports")}
+              >
+                <div className="flex items-center gap-2">
+                  <TfiWrite color="gray-400" fontSize={24} />
+                  <span className="text-[18px] font-bold">Reports</span>
+                </div>
+                <span className="shrink-0 transition duration-300">
+                  <FaChevronRight
+                    color="white"
+                    className={
+                      openLink === "reports" ? "transform rotate-90" : ""
+                    }
+                  />
+                </span>
+              </div>
+              {openLink === "reports" && (
+                <nav
+                  aria-label="Reports Nav"
+                  className="mt-2 flex flex-col gap-4"
                 >
-                  <FaChevronRight className="text-green-800" fontSize={22} />
-                  <span className="text-md font-medium">Manage Report</span>
-                </Link>
-              </nav>
-            )}
+                  <Link
+                    to="/zoneDashboard/create"
+                    className="flex items-center gap-2 hover:bg-gray-400 px-[15px] hover:rounded-md py-1 text-white"
+                    onClick={handleLinkItemClick}
+                  >
+                    <FaChevronRight className="text-green-800" fontSize={22} />
+                    <span className="text-md font-medium">Add Report</span>
+                  </Link>
+                  <Link
+                    to="/zoneDashboard/manageReport"
+                    className="flex items-center gap-2 hover:bg-gray-400 px-[15px] hover:rounded-md py-1 text-white"
+                    onClick={handleLinkItemClick}
+                  >
+                    <FaChevronRight className="text-green-800" fontSize={22} />
+                    <span className="text-md font-medium">Manage Report</span>
+                  </Link>
+                </nav>
+              )}
+            </div>
           </div>
-        </div>
 
-                {/* Responsive sidebar */}
+          {/* Responsive sidebar */}
           <div className="lg:hidden bg-gray-100 h-[70px] fixed top-0 left-0 right-0 flex items-center justify-between px-3">
             {showSidebar ? (
               <FiX
@@ -267,7 +276,6 @@ const ZoneSideBar = () => {
                 onClick={toggleSidebar}
               />
             )}
-            
           </div>
           {/* Responsive sidebar content */}
           {showSidebar && (
@@ -346,7 +354,9 @@ const ZoneSideBar = () => {
                         className="text-green-800"
                         fontSize={20}
                       />
-                      <span className="text-md font-medium">Add Representative</span>
+                      <span className="text-md font-medium">
+                        Add Representative
+                      </span>
                     </Link>
                     <Link
                       to="/zoneDashboard/manageworedaAdmin"
@@ -374,6 +384,10 @@ const ZoneSideBar = () => {
                       <AiOutlineBorderOuter color="white" fontSize={32} />
                       <span className="text-[16px] font-bold">Orders</span>
                     </div>
+
+                    <div className="bg-blue-500 text-white rounded-full w-12 justify-center items-center flex h-6">
+                      <span>{pendingOrderCount}</span>
+                    </div>
                   </Link>
                 </div>
                 <div
@@ -385,7 +399,9 @@ const ZoneSideBar = () => {
                   <Link to="/zoneDashboard/coming">
                     <div className="flex items-center gap-2">
                       <RiFolderReceivedFill color="white" fontSize={32} />
-                      <span className="text-[16px] font-bold">Received Report</span>
+                      <span className="text-[16px] font-bold">
+                        Received Report
+                      </span>
                     </div>
                   </Link>
                 </div>
@@ -443,8 +459,7 @@ const ZoneSideBar = () => {
               </div>
             </div>
           )}
-          </>
-
+        </>
       )}
     </>
   );

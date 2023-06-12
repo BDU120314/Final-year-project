@@ -142,7 +142,7 @@ console.log(kebeles)
             value={selectedKebele}
             onChange={handleWoredaChange}
           >
-            <option value="">Select Woreda</option>
+            <option value="">Select kebele</option>
             {kebeles.map((kebele) => (
               <option key={kebele.id} value={kebele.id}>
                 {kebele.kebele_name}

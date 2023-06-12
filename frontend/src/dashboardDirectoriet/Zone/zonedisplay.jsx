@@ -31,7 +31,7 @@ const ZoneDisplay = () => {
   }, []);
 
   return (
-    <div className="flex justify-center items-center px-20 py-5">
+    <div className="flex  justify-center items-center px-1 lg:px-20 py-5">
       <table className="table-auto w-full">
         <thead className="bg-gray-500 sticky top-16">
           <tr>
@@ -52,20 +52,23 @@ const ZoneDisplay = () => {
                       to={`/regionDashboard/manageZone/update/${datas.id}`}
                       className="link"
                     >
-                      <button className="px-2">
-                        <FiEdit color="blue" size={20} /> Edit
+                      <button className="px-2 hover:bg-gray-400 rounded-sm py-1">
+                        <FiEdit color="blue" size={32} /> 
                       </button>
                     </Link>
                     <Link
                       to={`/regionDashboard/manageZone/view/${datas.id}`}
                       className="link"
                     >
-                      <button className="px-2">
-                        <GrView color="white" size={20} /> Detail
+                      <button className="px-2 hover:bg-gray-400 rounded-sm py-1">
+                        <GrView color="white" size={32} /> 
                       </button>
                     </Link>
-                    <button onClick={() => handleDelete(datas.id)}>
-                      <RiDeleteBin6Line color="red" size={20} />
+                    <button
+                      className="hover:bg-gray-400 rounded-sm py-1 px-2"
+                      onClick={() => handleDelete(datas.id)}
+                    >
+                      <RiDeleteBin6Line color="red" size={32} />
                     </button>
                   </div>
                 </td>

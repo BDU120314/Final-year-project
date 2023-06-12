@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { logout } from "../redux/reducers/auth";
 import profile from "../assets/logo.jpg";
@@ -66,10 +66,10 @@ const ZoneHeader = () => {
   return (
     <div className="flex justify-end items-center bg-[#f7f7f7] shadow-md h-[70px] fixed top-0 right-0 left-[18%]">
       <div className="flex items-center gap-4 relative ">
-        <div className="flex items-center gap-[25px] border-r-[1px] pr-6">
+        <div className="flex items-center gap-[25px] border-r-[1px] pr-1">
           <Link
             to="/zoneDashboard/addworeda"
-            className="bg-green-500 hover:bg-green-400 flex justify-center items-centerh-[30px] px-4 rounded-md"
+            className="bg-green-600 text-white h-8  hover:bg-green-400 flex justify-center items-center  px-4 rounded-md"
           >
             Add New Woreda
           </Link>
@@ -79,9 +79,6 @@ const ZoneHeader = () => {
             location.pathname === "/profile" ? "text-gray-400" : ""
           }`}
         >
-          <span className="italic text-md text-gray-600">
-            {user && user.user_name}
-          </span>
           <div className="flex justify-center items-center gap-[10px]">
             <img
               onClick={toggleUserMenu}
@@ -106,9 +103,12 @@ const ZoneHeader = () => {
       </div>
       {isUserMenuOpen && (
         <div
-          className="z-1 absolute right-10 top-[70px] py-1  flex flex-col items-center justify-center gap-5 bg-[#f7f7f6]  rounded shadow dark:bg-gray-200 "
+          className="z-1 absolute right-10 top-[70px] py-1  flex flex-col items-center justify-center gap-1 bg-[#f7f7f6]  rounded shadow dark:bg-gray-200 "
           id="dropdown-user"
         >
+          <span className="italic text-md py-1 text-gray-600">
+            {user && user.user_name}
+          </span>
           <div
             className=" flex items-center justify-center flex-col gap-5 px-3 py-4"
             role="none"
@@ -133,7 +133,7 @@ const ZoneHeader = () => {
               }}
               disabled={isUploadDisabled}
             >
-              Change photo
+              Upload photo
             </button>
           </div>
         </div>
