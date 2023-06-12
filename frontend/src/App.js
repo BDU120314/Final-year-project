@@ -57,13 +57,13 @@ import CardOf from "./components/pestiside/CardOf";
 import SingleWoreda from "./DashboardZone/Woreda/singleworeda";
 import DisplaySingleWoreda from "./DashboardZone/WoredaRep/displaySingleWoreda";
 import ManageReportRegion from "./dashboardDirectoriet/ManageReportRegion";
- 
+
 const App = () => {
   return (
     <div>
       <Routes>
         {/* home page or landing page */}
-<Route path="/card" element ={<CardOf />} />
+        <Route path="/card" element={<CardOf />} />
         <Route path="/" element={<Home />}>
           <Route index element={<Main />} />
           <Route path="/postPage" element={<Post />} />
@@ -265,14 +265,8 @@ const App = () => {
             path="/regionDashboard/manageReport"
             element={<ManageReportRegion />}
           />
-          <Route
-            path="/regionDashboard/createpost"
-            element={<Post />}
-          />
-          <Route
-            path="/regionDashboard/managepost"
-            element={<Post />}
-          />
+          <Route path="/regionDashboard/createpost" element={<Post />} />
+          <Route path="/regionDashboard/managepost" element={<Post />} />
         </Route>
       </Routes>
     </div>

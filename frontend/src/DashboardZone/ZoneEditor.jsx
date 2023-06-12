@@ -1,45 +1,53 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import axios from "axios";
 
-const ReportForm = () => {
+const ZoneEditor = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [woredas, setWoredas] = useState([]);
+  const [selectedWoreda, setSelectedWoreda] = useState("");
   const user = JSON.parse(localStorage.getItem("user"));
   const reactQuillRef = useRef(null);
   const token = user.token;
-const [admin, setAdmin] = useState({})
-const LandAdmin_id = user.rep_id
-const role =user.role
-useEffect(() => {
-  let value;
-  console.log(role);
-  switch (role) {
-    case "Land_Admin":
-      value = "kebele";
-      break;
-    case "Woreda_Admin":
-      value = "woreda";
-      break;
-    case "Zone_Admin":
-      value = "zone";
-      break;
-    default:
-      break;
-  }
 
-  const fetchedData = async () => {
-    const response = await axios.get(
-      `http://localhost:5001/api/v1/${value}/${LandAdmin_id}`
-    );
-    setAdmin(response.data);
-  };
+  const [admin, setAdmin] = useState([]);
+  useEffect(() => {
+    const adminData = async () => {
+      const response = await axios.get(
+        `http://localhost:5001/api/v1/zone/${user.rep_id}`
+      );
+      setAdmin(response.data[0]);
+    };
+    adminData();
+  }, [user.rep_id]);
 
-  if (value && LandAdmin_id) {
-    fetchedData();
-  }
-}, [LandAdmin_id, role]);
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5001/api/v1/addworeda/fetch/${admin.zone_id}`)
+      .then((response) => {
+        setWoredas(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [admin]);
+
+  // useEffect(() => {
+  //   const fetchworedas = async () => {
+  //     try {
+  //       const response = await axios.get(
+  //         "http://localhost:5001/api/v1/addworeda"
+  //       );
+  //       setWoredas(response.data);
+  //     } catch (error) {
+  //       console.error("Error fetching woredas", error);
+  //     }
+  //   };
+
+  //   fetchworedas();
+  // }, []);
 
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
@@ -48,44 +56,21 @@ useEffect(() => {
   const handleContentChange = (value) => {
     setContent(value);
   };
-const handleSubmit = async (e) => {
-  e.preventDefault();
 
-  const editor = reactQuillRef.current.getEditor();
-  const content = editor.root.innerHTML;
-  const plainTextContent = stripHtmlTags(content);
+  const handleWoredaChange = (e) => {
+    setSelectedWoreda(e.target.value);
+  };
 
-  // Replace "your_backend_url" with the actual URL of your backend API
-  const url = "http://localhost:5001/api/v1/report";
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  let id;
-  let valueParam;
+    const editor = reactQuillRef.current.getEditor();
+    const content = editor.root.innerHTML;
+    const plainTextContent = stripHtmlTags(content);
 
-  switch (role) {
-    case "Land_Admin":
-      if (admin[0] && admin[0].kebele_id) {
-        id = admin[0].kebele_id;
-        valueParam = "kebele_id";
-      }
-      break;
-    case "Woreda_Admin":
-      if (admin.rows[0] && admin.rows[0].woreda_id) {
-        id = admin.rows[0].woreda_id;
-        valueParam = "woreda_id";
-      }
-      break;
-    case "Zone_Admin":
-      if (admin[0] && admin[0].zone_id) {
-        id = admin[0].zone_id;
-        valueParam = "zone_id";
-      }
-      break;
-    default:
-      break;
-  }
+    // Replace "your_backend_url" with the actual URL of your backend API
+    const url = "http://localhost:5001/api/v1/report";
 
-  // Check if valueParam is valid
-  if (valueParam) {
     try {
       // Make a POST request to create a new report
       const response = await axios.post(
@@ -93,7 +78,7 @@ const handleSubmit = async (e) => {
         {
           title,
           content: plainTextContent,
-          [valueParam]: id,
+          woreda_id: selectedWoreda,
         },
         {
           headers: {
@@ -111,11 +96,7 @@ const handleSubmit = async (e) => {
     } catch (error) {
       console.error("Error creating report", error);
     }
-  } else {
-    console.error("Invalid role or missing ID");
-  }
-};
-
+  };
 
   const stripHtmlTags = (html) => {
     const tempDiv = document.createElement("div");
@@ -133,7 +114,7 @@ const handleSubmit = async (e) => {
   ];
 
   return (
-    <div className="p-4 mt-[70px]">
+    <div className="p-4">
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label className="block text-gray-700 font-bold mb-2" htmlFor="title">
@@ -166,6 +147,24 @@ const handleSubmit = async (e) => {
             }}
           />
         </div>
+        <div className="mb-4">
+          <label className="block text-gray-700 font-bold mb-2" htmlFor="zone">
+            Woreda
+          </label>
+          <select
+            className="border border-gray-300 outline-none rounded-md px-3 py-2 w-full"
+            id="owreda"
+            value={selectedWoreda}
+            onChange={handleWoredaChange}
+          >
+            <option value="">Select Woreda</option>
+            {woredas.map((zone) => (
+              <option key={zone.id} value={zone.id}>
+                {zone.name}
+              </option>
+            ))}
+          </select>
+        </div>
         <button
           className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
           type="submit"
@@ -177,4 +176,4 @@ const handleSubmit = async (e) => {
   );
 };
 
-export default ReportForm;
+export default ZoneEditor;
