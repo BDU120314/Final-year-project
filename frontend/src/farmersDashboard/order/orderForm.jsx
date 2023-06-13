@@ -117,27 +117,28 @@ function OrderForm() {
   };
 
   return (
-    <div className="flex justify-center items-center  h-[100vh] bg-gray-100 flex-col">
+    <div className="flex justify-center -mt-20 items-center w-screen h-[100vh] bg-gray-100 flex-col">
       <div className="mt-0">
-        <h2 className="text-red-800 font-extrabold leading-10 py-25">
+        <h2 className="text-red-800 font-extrabold leading-10]">
           Order form for farmers
         </h2>
       </div>
       <form
-        className="flex flex-col items-center bg-white p-10 gap-10 justify-center"
+        className="flex flex-col items-center bg-white p-10 gap-10 justify-center w-[70%]"
         onSubmit={handleSubmit}
       >
-        <div className="flex items-start justify-left flex-col">
+        <div className="flex items-start justify-left flex-col gap-5">
           <label htmlFor="input_type">የግብአት አይነት ዋና ክፍል</label>
           {MAIN_TYPES.map((type) => (
-            <div key={type.name}>
-              <label>
+            <div key={type.name} className="">
+              <label className="flex justify-center items-center gap-5">
                 <input
                   type="checkbox"
                   name="input_type"
                   value={type.name}
                   checked={input_type === type.name}
                   onChange={handleMainTypeChange}
+                  className=""
                 />
                 {type.name}
               </label>
@@ -149,35 +150,38 @@ function OrderForm() {
           <div className="flex items-start justify-left flex-col gap-5">
             <label htmlFor="subtype">የግብአት ንዑስ ክፍል</label>
             {MAIN_TYPES.map((type) =>
-              input_type === type.name ? (
-                type.subtypes.map((sub) => (
-                  <div key={sub} className="flex items-center gap-4 border-2 bg-slate-100 text-gray-400">
-                    <label>
-                      <input
-                        type="checkbox"
-                        name="subtype"
-                        value={sub}
-                        checked={subtypeAmounts[sub] !== ""}
-                        onChange={handleSubtypeAmountChange}
-                        className=""
-                      />
-                      {sub}
-                    </label>
-                    {subtypeAmounts[sub] !== "" && (
-                      <input
-                        type="number"
-                        name={sub}
-                        value={subtypeAmounts[sub]}
-                        onChange={handleSubtypeAmountChange}
-                        className="w-[100px] ml-2 gap-4 border-2 bg-slate-800 text-white"
-                      />
-                    )}
-                    {subtypeAmounts[sub] !== "" && (
-                      <span>{getSubtypeUnit(sub)}</span>
-                    )}
-                  </div>
-                ))
-              ) : null
+              input_type === type.name
+                ? type.subtypes.map((sub) => (
+                    <div
+                      key={sub}
+                      className="flex items-center gap-4 border-2 bg-slate-100 text-gray-400"
+                    >
+                      <label className="flex justify-center items-center gap-5 mr-2">
+                        <input
+                          type="checkbox"
+                          name="subtype"
+                          value={sub}
+                          checked={subtypeAmounts[sub] !== ""}
+                          onChange={handleSubtypeAmountChange}
+                          className=""
+                        />
+                        {sub}
+                      </label>
+                      {subtypeAmounts[sub] !== "" && (
+                        <input
+                          type="number"
+                          name={sub}
+                          value={subtypeAmounts[sub]}
+                          onChange={handleSubtypeAmountChange}
+                          className="w-[100px] ml-2 gap-4 border-2 bg-gray-50 text-gray-600"
+                        />
+                      )}
+                      {subtypeAmounts[sub] !== "" && (
+                        <span>{getSubtypeUnit(sub)}</span>
+                      )}
+                    </div>
+                  ))
+                : null
             )}
           </div>
         )}

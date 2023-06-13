@@ -95,11 +95,9 @@ const App = () => {
         </Route>
 
         {/* land admin dashboard route */}
-
         <Route path="/landAdminDashboard" element={<DashLandAdmin />}>
           <Route
             index
-            // path="/landAdminDashboard/manageFarmers"
             element={<FarmersData />}
           />
           <Route

@@ -120,7 +120,7 @@ const Sidebar = () => {
             </div>
             <div className="pt-5 border-b-[1px] border-[#EDEDED]/[0.3] flex flex-col justify-center items-center gap-5">
               <div
-                className={`flex cursor-pointer items-center hover:bg-gray-500 px-[15px] hover:rounded-md justify-between gap-10 py-1 text-white ${
+                className={`flex cursor-pointer items-center hover:bg-gray-400 px-[30px] hover:rounded-md justify-between gap-10 py-1 text-white ${
                   openLink === "farmers" ? "bg-green-300 rounded-md" : ""
                 }`}
                 onClick={() => handleLinkClick("farmers")}
@@ -145,7 +145,7 @@ const Sidebar = () => {
                 >
                   <Link
                     to="/landAdminDashboard/register"
-                    className="flex items-center gap-2 hover:bg-gray-500 px-[25px] hover:rounded-md py-1 text-white"
+                    className="flex items-center gap-2 hover:bg-gray-400 px-[35px] hover:rounded-md py-1 text-white"
                     onClick={handleLinkItemClick}
                   >
                     <FaChevronRight className="text-white-800" fontSize={22} />
@@ -153,7 +153,7 @@ const Sidebar = () => {
                   </Link>
                   <Link
                     to="/landAdminDashboard/manageFarmers"
-                    className="flex items-center gap-2 py-1 hover:bg-gray-500 px-[25px] hover:rounded-md text-white"
+                    className="flex items-center gap-2 py-1 hover:bg-gray-400 px-[35px] hover:rounded-md text-white"
                     onClick={handleLinkItemClick}
                   >
                     <FaChevronRight className="text-white-800" fontSize={22} />
@@ -162,7 +162,7 @@ const Sidebar = () => {
                 </nav>
               )}
               <div
-                className={`flex cursor-pointer  items-center hover:bg-gray-400 pr-[20px] pl-[15px] hover:rounded-md justify-between gap-10 py-1 text-white ${
+                className={`flex cursor-pointer  items-center hover:bg-gray-400 pr-[33px] pl-[20px] hover:rounded-md justify-between gap-10 py-1 text-white ${
                   openLink === "orders" ? "bg-green-300 rounded-md" : ""
                 }`}
                 onClick={() => handleLinkClick("coming")}
@@ -176,9 +176,9 @@ const Sidebar = () => {
                   </div>
                 </Link>
               </div>
-
+{/* 
               <div
-                className={`flex cursor-pointer items-center justify-between gap-10 py-1 hover:bg-gray-500 px-[15px] hover:rounded-md text-white ${
+                className={`flex cursor-pointer items-center justify-between gap-10 py-1 hover:bg-gray-400 px-[32px] hover:rounded-md text-white ${
                   openLink === "reports" ? "bg-green-300 rounded-md" : ""
                 }`}
                 onClick={() => handleLinkClick("reports")}
@@ -203,7 +203,7 @@ const Sidebar = () => {
                 >
                   <Link
                     to="/landAdminDashboard/create"
-                    className="flex items-center gap-2 hover:bg-gray-500 px-[15px] hover:rounded-md py-1 text-white"
+                    className="flex items-center gap-2 hover:bg-gray-400 px-[35px] hover:rounded-md py-1 text-white"
                     onClick={handleLinkItemClick}
                   >
                     <FaChevronRight className="text-white-800" fontSize={22} />
@@ -211,14 +211,14 @@ const Sidebar = () => {
                   </Link>
                   <Link
                     to="/landAdminDashboard/manageReport"
-                    className="flex items-center gap-2 hover:bg-gray-500 px-[15px] hover:rounded-md py-1 text-white"
+                    className="flex items-center gap-2 hover:bg-gray-400 px-[35px] hover:rounded-md py-1 text-white"
                     onClick={handleLinkItemClick}
                   >
                     <FaChevronRight className="text-white-800" fontSize={22} />
                     <span className="text-md font-medium">Manage Report</span>
                   </Link>
                 </nav>
-              )}
+              )} */}
             </div>
             <div
               onClick={handleLogout}

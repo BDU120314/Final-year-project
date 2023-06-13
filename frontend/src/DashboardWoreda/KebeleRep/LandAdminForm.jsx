@@ -54,7 +54,7 @@ const LandAdminForm1 = () => {
               <th className="px-4 py-2">Email Address</th>
               <th className="px-4 py-2">Phone Number</th>
               <th className="px-4 py-2">User Name</th>
-              <th className="px-4 py-2">Kebele Name</th>
+              <th className="px-4 py-2">Kebele ID</th>
               <th className="px-4 py-2 w-auto">Action</th>
             </tr>
           </thead>
@@ -71,11 +71,11 @@ const LandAdminForm1 = () => {
                   <td className="border px-4 py-2">{datas.email}</td>
                   <td className="border px-4 py-2">{datas.phone_number}</td>
                   <td className="border px-4 py-2">{datas.user_name}</td>
-                  <td className="border px-4 py-2">{datas.kebele_name}</td>
+                  <td className="border px-4 py-2">{datas.kebele_id}</td>
                   <td className="w-auto flex justify-center items-center gap-2 py-2 px-4">
                     <Link
                       to={`/woredaDashboard/manageland/update/${datas.id}`}
-                      className="link hover:bg-blue-400"
+                      className="link hover:bg-gray-400 rounded-sm px-2"
                     >
                       <BiEditAlt color="blue" size={32} />
                     </Link>
@@ -84,12 +84,12 @@ const LandAdminForm1 = () => {
                       className="link"
                       to={`/woredaDashboard/manageland/view/${datas.id}`}
                     >
-                      <button className="hover:bg-yellow-300">
+                      <button className="hover:bg-gray-400 rounded-sm px-2">
                         <GrView color="white" size={32} />
                       </button>
                     </Link>
 
-                    <button className="hover:bg-red-400" onClick={() => handleDelete(datas.id)}>
+                    <button className="hover:bg-gray-400 rounded-sm px-2" onClick={() => handleDelete(datas.id)}>
                       <MdDelete color="red" size={30} />
                     </button>
                   </td>

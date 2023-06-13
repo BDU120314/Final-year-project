@@ -43,35 +43,35 @@ const ManageReportWoredaAdmin = () => {
       <table className="table-auto w-[100%] px-20">
         <thead className="bg-gray-100">
           <tr>
+            <th className="px-4 py-2">id</th>
             <th className="px-4 py-2">title</th>
             <th className="px-4 py-2">content</th>
             <th className="px-4 py-2">Date</th>
             <th className="px-4 py-2">Action</th>
-            <th className="px-4 py-2">id</th>
           </tr>
         </thead>
         <tbody>
           {reportData.map((report) => (
             <tr key={report.id}>
+              <th className="px-4 py-2">{report.rep_id}</th>
               <td className="breport px-4 py-2">{report.title}</td>
               <td className="breport px-4 py-2">{report.content}</td>
               <th className="px-4 py-2">{report.updateAt}</th>
-              <th className="px-4 py-2">{report.rep_id}</th>
               <td className="breport px-4 py-2 flex justify-center items-center gap-10">
                 <Link
                   to={`/farmerreportdisplay/update/${report.id}`}
-                  className="px-2  hover:bg-blue-400 rounded-sm"
+                  className="px-2  hover:bg-gray-400 rounded-sm "
                 >
                   <BiEditAlt color="blue" size={32} />
                 </Link>
                 <Link
                   to={`/view/${report.id}`}
-                  className="px-2 hover:bg-yellow-300"
+                  className="px-2 hover:bg-gray-400 rounded-sm "
                 >
                   <GrView color="white" size={32} />
                 </Link>
                 <button
-                  className="hover:bg-red-400"
+                  className="hover:bg-gray-400 rounded-sm "
                   onClick={() => handleDelete(report.id)}
                 >
                   <MdDelete color="red" size={30} />

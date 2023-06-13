@@ -169,7 +169,7 @@ const ZoneSideBar = () => {
                     className="flex items-center gap-2 hover:bg-gray-400 px-[25px] hover:rounded-md py-1 text-white"
                     onClick={handleLinkItemClick}
                   >
-                    <FaChevronRight className="text-green-800" fontSize={22} />
+                    <FaChevronRight className="white" fontSize={22} />
                     <span className="text-md font-medium">Register Admin</span>
                   </Link>
                   <Link
@@ -177,7 +177,7 @@ const ZoneSideBar = () => {
                     className="flex items-center gap-2 py-1 hover:bg-gray-400 px-[25px] hover:rounded-md text-white"
                     onClick={handleLinkItemClick}
                   >
-                    <FaChevronRight className="text-green-800" fontSize={22} />
+                    <FaChevronRight className="white" fontSize={22} />
                     <span className="text-md font-medium">Manage Admin</span>
                   </Link>
                 </nav>
@@ -242,18 +242,18 @@ const ZoneSideBar = () => {
                 >
                   <Link
                     to="/zoneDashboard/create"
-                    className="flex items-center gap-2 hover:bg-gray-400 px-[15px] hover:rounded-md py-1 text-white"
+                    className="flex items-center gap-2 hover:bg-gray-400 px-[50px] hover:rounded-md py-1 text-white"
                     onClick={handleLinkItemClick}
                   >
-                    <FaChevronRight className="text-green-800" fontSize={22} />
+                    <FaChevronRight className="text-white -ml-3" fontSize={22} />
                     <span className="text-md font-medium">Add Report</span>
                   </Link>
                   <Link
                     to="/zoneDashboard/manageReport"
-                    className="flex items-center gap-2 hover:bg-gray-400 px-[15px] hover:rounded-md py-1 text-white"
+                    className="flex items-center gap-2 hover:bg-gray-400 px-[35px] hover:rounded-md py-1 text-white"
                     onClick={handleLinkItemClick}
                   >
-                    <FaChevronRight className="text-green-800" fontSize={22} />
+                    <FaChevronRight className="white" fontSize={22} />
                     <span className="text-md font-medium">Manage Report</span>
                   </Link>
                 </nav>
@@ -307,7 +307,7 @@ const ZoneSideBar = () => {
                       onClick={handleLinkItemClick}
                     >
                       <FaChevronRight
-                        className="text-green-800"
+                        className="white"
                         fontSize={20}
                       />
                       <span className="text-md font-medium">Add woreda</span>
@@ -318,7 +318,7 @@ const ZoneSideBar = () => {
                       onClick={handleLinkItemClick}
                     >
                       <FaChevronRight
-                        className="text-green-800"
+                        className="white"
                         fontSize={20}
                       />
                       <span className="text-md font-medium">Manage woreda</span>
@@ -351,7 +351,7 @@ const ZoneSideBar = () => {
                       onClick={handleLinkItemClick}
                     >
                       <FaChevronRight
-                        className="text-green-800"
+                        className="white"
                         fontSize={20}
                       />
                       <span className="text-md font-medium">
@@ -364,7 +364,7 @@ const ZoneSideBar = () => {
                       onClick={handleLinkItemClick}
                     >
                       <FaChevronRight
-                        className="text-green-800"
+                        className="white"
                         fontSize={20}
                       />
                       <span className="text-md font-medium">
@@ -431,18 +431,18 @@ const ZoneSideBar = () => {
                       onClick={handleLinkItemClick}
                     >
                       <FaChevronRight
-                        className="text-green-800"
+                        className="white"
                         fontSize={20}
                       />
                       <span className="text-md font-medium">Add Report</span>
                     </Link>
                     <Link
                       to="/zoneDashboard/manageReport"
-                      className="flex items-center gap-2 hover:bg-gray-400 px-[15px] hover:rounded-md py-1 text-white"
+                      className="flex items-center gap-2 hover:bg-gray-400 px-[70px] hover:rounded-md py-1 text-white"
                       onClick={handleLinkItemClick}
                     >
                       <FaChevronRight
-                        className="text-green-800"
+                        className="text-gray-800"
                         fontSize={20}
                       />
                       <span className="text-md font-medium">Manage Report</span>
