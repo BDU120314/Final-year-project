@@ -1,8 +1,6 @@
 const db = require("../config/connection_db");
 
 // for creating an order
-// for creating an order
-// for creating an order
 const AddOrder = (req, res) => {
   const { fname, mname, input_type, subtypeAmounts, farmers_id, kebele_id, role } = req.body;
 
@@ -28,7 +26,7 @@ const AddOrder = (req, res) => {
       fname,
       mname,
       input_type,
-      subtype !== "" ? subtype : "Default Subtype", // Assign a default value if subtype is empty
+      subtype !== "" ? subtype : null, // Assign a default value if subtype is empty
       amount !== "" ? amount : 0, // Assign a default value if amount is empty
       farmers_id,
       kebele_id,
@@ -37,7 +35,7 @@ const AddOrder = (req, res) => {
   });
 
   const sql =
-    "INSERT INTO orders (farmer_fname, farmer_mname, input_type, subtype, amount, farmer_id, kebele_id, status) VALUES ?";
+    "INSERT INTO orders (farmer_fname, farmer_mname, input_type, subType, amount, farmer_id, kebele_id, status) VALUES ?";
 
   db.query(sql, [values], (error, result) => {
     if (!error) {
@@ -51,25 +49,30 @@ const AddOrder = (req, res) => {
 };
 
 
-// farmer can update order
 const UpdateFarmersOrder = (req, res) => {
   const orderId = req.params.id;
-  const { role, status = "Pending" } = req.body;
-  const { input_type, subtype, amount } = req.body;
+  const status = "Pending";
+  const { input_type, subtype, amount, role } = req.body;
 
-  const sql = "UPDATE orders SET input_type = ?, subtype = ?, amount = ?, status =? WHERE id = ?";
-  const values = [input_type, subtype, amount, status, orderId];
+  // Check if the role is "Farmers"
+  if (role === "Farmer") {
+    const sql = "UPDATE orders SET input_type = ?, subType = ?, amount = ?, status = ? WHERE id = ?";
+    const values = [input_type, subtype, amount, status, orderId];
 
-  db.query(sql, values, (error, result) => {
-    if (!error) {
-      console.log("Order updated successfully!");
-      res.status(200).send("Order updated successfully");
-    } else {
-      console.error(error);
-      res.status(500).send(error.message);
-    }
-  });
+    db.query(sql, values, (error, result) => {
+      if (!error) {
+        console.log("Order updated successfully!");
+        res.status(200).send("Order updated successfully");
+      } else {
+        console.error(error);
+        res.status(500).send(error.message);
+      }
+    });
+  } else {
+    res.status(403).send("Access denied"); // Return a 403 Forbidden status if the role is not "Farmers"
+  }
 };
+
 
 
 // for getting all orders

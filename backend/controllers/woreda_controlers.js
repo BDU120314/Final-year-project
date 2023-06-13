@@ -1,8 +1,7 @@
+const bcrypt = require("bcrypt");
 const db = require("../config/connection_db");
 
-// for creating a farmer
-
-const CreateWoreda = (req, res) => {
+const CreateWoreda = async (req, res) => {
   const {
     fname,
     mname,
@@ -12,32 +11,45 @@ const CreateWoreda = (req, res) => {
     phone_number,
     user_name,
     password,
-    woreda_id, 
+    woreda_id,
   } = req.body;
   const role_id = 3;
-  const sql = `INSERT INTO representative (fname, mname,lname,gender, email,phone_number, user_name, password,woreda_id, role_id) VALUES (?,?,?,?,?,?,?,?,?,${role_id} )`;
-  db.query(
-    sql,
-    [
-      fname,
-      mname,
-      lname,
-      gender,
-      email,
-      phone_number,
-      user_name,
-      password,
-      woreda_id,
-    ],
-    (error, result) => {
-      if (!error) {
-        console.log("Data added successfully!");
-      } else {
-        console.log(error.message);
+
+  try {
+    // Hash the password
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const sql = `INSERT INTO representative (fname, mname, lname, gender, email, phone_number, user_name, password, woreda_id, role_id) VALUES (?,?,?,?,?,?,?,?,?,?)`;
+
+    db.query(
+      sql,
+      [
+        fname,
+        mname,
+        lname,
+        gender,
+        email,
+        phone_number,
+        user_name,
+        hashedPassword,
+        woreda_id,
+        role_id,
+      ],
+      (error, result) => {
+        if (!error) {
+          console.log("Data added successfully!");
+        } else {
+          console.log(error.message);
+        }
       }
-    }
-  );
+    );
+  } catch (error) {
+    console.error(error.message);
+  }
 };
+
+module.exports = { CreateWoreda };
+
 
 const getAllWoreda = (req, res) => {
   db.query(

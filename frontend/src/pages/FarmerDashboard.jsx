@@ -88,7 +88,7 @@ const FarmerDashboard = () => {
                   }
                   alt=""
                 />
-                <span className="italic text-md text-white">
+                <span className="italic text-md text-gray-600">
                   {storedUser && storedUser.user_name}
                 </span>
               </div>
@@ -111,15 +111,15 @@ const FarmerDashboard = () => {
             }`}
             id="example-navbar-danger"
           >
-            <ul className="flex text-gray-600 flex-col  lg:flex-row list-none lg:ml-auto items-center">
+            <ul className="flex text-gray-800 flex-col  lg:flex-row list-none lg:ml-auto items-center">
               <li className="flex items-center">
                 <NavLink
                   onClick={handleClicked}
                   exact
                   to="/farmerDashboard/manageAccount"
-                  className={`px-3 py-2 flex items-center capitalize font-bold leading-6 text-green-600 hover:text-green-400 hover:opacity-75 ${
+                  className={`px-3 py-2 flex items-center capitalize font-bold leading-6 text-gray-600 hover:text-gray-400 hover:opacity-75 ${
                     location.pathname === "/farmerDashboard/manageAccount"
-                      ? "text-white"
+                      ? "text-gray-400"
                       : ""
                   }`}
                 >
@@ -130,9 +130,9 @@ const FarmerDashboard = () => {
                 <NavLink
                   onClick={handleClicked}
                   to="/farmerDashboard/order"
-                  className={`px-3 py-2 flex items-center  capitalize font-bold leading-6 text-green-600 hover:text-green-400 hover:opacity-75 ${
+                  className={`px-3 py-2 flex items-center  capitalize font-bold leading-6 text-gray-600 hover:text-gray-400 hover:opacity-75 ${
                     location.pathname === "/farmerDashboard/order"
-                      ? "text-white"
+                      ? "text-gray-400"
                       : ""
                   }`}
                 >

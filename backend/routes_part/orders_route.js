@@ -19,7 +19,7 @@ const order_route = express.Router();
 order_route.post("/", AddOrder);
 order_route.get("/", getAllOrders);
 order_route.get("/farmer/:id", getAllOrdersByFarmerId);
-order_route.put("/update/:id", UpdateFarmersOrder);
+order_route.put("/updates/:id", UpdateFarmersOrder);
 order_route.get("/woreda/:id", getAllOrdersByWoredaId);
 order_route.get("/zone/:id", getAllOrdersByZoneId);
 order_route.get("/region/:id", getAllOrdersByRegionAdminId);

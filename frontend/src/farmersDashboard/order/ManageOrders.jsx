@@ -72,7 +72,7 @@ const ManageOrders = () => {
             {currentOrders.map((order) => (
               <tr key={order.id}>
                 <td className="border px-4 py-1">{order.input_type}</td>
-                <td className="border px-4 py-1">{order.subtype}</td>
+                <td className="border px-4 py-1">{order.subType}</td>
                 <td className="border px-4 py-1">{order.amount}</td>
                 <td className="border px-4 py-1">
                   {order.status === "Completed" ? "ordered" : order.status}

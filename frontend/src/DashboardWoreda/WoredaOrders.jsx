@@ -114,6 +114,7 @@ const WoredaOrders = () => {
             <th className="px-4 py-2">Farmer_ID</th>
             <th className="px-4 py-2">F_Name</th>
             <th className="px-4 py-2">Input_type</th>
+            <th className="px-4 py-2">subType</th>
             <th className="px-4 py-2">Amount</th>
             <th className="px-4 py-2">Status</th>
           </tr>
@@ -129,6 +130,7 @@ const WoredaOrders = () => {
                 <td className="border px-4 py-2">{order.farmer_id}</td>
                 <td className="border px-4 py-2">{order.farmer_fname}</td>
                 <td className="border px-4 py-2">{order.input_type}</td>
+                <td className="border px-4 py-2">{order.subType}</td>
                 <td className="border px-4 py-2">{order.amount}</td>
                 <td className="border px-4 py-2">
                   {order.status === "Pending" ? (

@@ -4,10 +4,16 @@ import { Link } from "react-router-dom";
 import { GrView } from "react-icons/gr";
 import { BiEditAlt } from "react-icons/bi";
 import { MdDelete } from "react-icons/md";
+import { FaSearch } from "react-icons/fa";
+import { toast } from "react-toastify";
 const WoredaData = () => {
   const [woredaData, setWoredData] = useState([]);
   const [admin, setAdmin] = useState([]);
+    const [formData, setFormData] = useState("");
+    const [filteredData, setFilteredData] = useState([]);
   const user = JSON.parse(localStorage.getItem("user"));
+   const [currentPage, setCurrentPage] = useState(1);
+   const itemsPerPage = 7;
 
   useEffect(() => {
     const adminData = async () => {
@@ -42,8 +48,76 @@ const WoredaData = () => {
       });
   }, [admin]);
 
+     const handleSubmit = (e) => {
+       e.preventDefault();
+
+       const filteredData = woredaData.filter((data) => {
+         const lowercasedFormData = formData.toLowerCase();
+         const lowercasedFname = data.fname.toLowerCase();
+         const lowercasedLname = data.mname.toLowerCase();
+         const lowercasedEmail = data.email.toLowerCase();
+         const lowercasedId = data.id.toString().toLowerCase();
+         const lowercasedPhone_number = data.phone_number.toString().toLowerCase();
+
+         return (
+           lowercasedFname.includes(lowercasedFormData) ||
+           lowercasedLname.includes(lowercasedFormData) ||
+           lowercasedEmail.includes(lowercasedFormData) ||
+           lowercasedPhone_number.includes(lowercasedFormData) ||
+           lowercasedId.includes(lowercasedFormData)
+         );
+       });
+
+       if (filteredData.length === 0) {
+         toast.info("No results found");
+       }
+       setFilteredData(filteredData);
+     };
+     const handleClickPrevious = () => {
+       setCurrentPage((prevPage) => prevPage - 1);
+     };
+
+  const handleClickNext = () => {
+    setCurrentPage((prevPage) => prevPage + 1);
+  };
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentData =
+    filteredData.length > 0
+      ? filteredData.slice(startIndex, endIndex)
+      : woredaData.slice(startIndex, endIndex);
+
+  const totalPages = Math.ceil(woredaData.length / itemsPerPage);
+
+
   return (
-    <div className="flex justify-center items-center px-5 ">
+    <div className="flex justify-center flex-col items-center px-5 ">
+      <div className="flex rounded-[5px] mx-14 my-10 gap-5">
+        <form
+          action=""
+          onSubmit={handleSubmit}
+          className="flex items-center justify-center"
+        >
+          <input
+            id="search"
+            name="search"
+            value={formData}
+            onChange={(e) => {
+              setFormData(e.target.value);
+            }}
+            type="text"
+            className="bg-gray-100 w-[250px] outline-none border-2 border-gray-300 pl-3 lg:w-[350px] h-10 rounded-[5px] placeholder:text-[18px] leading-4 font-normal"
+            placeholder="search here..."
+          />
+          <button
+            type="submit"
+            className="bg-blue-400 h-10 flex px-[14px] justify-center items-center rounded-tr-[5px] rounded-br-[5px] cursor-pointer"
+          >
+            <FaSearch color="white" />
+          </button>
+        </form>
+      </div>
       <table className="table-auto w-full">
         <thead className="bg-gray-100">
           <tr>
@@ -58,7 +132,7 @@ const WoredaData = () => {
           </tr>
         </thead>
         <tbody>
-          {woredaData.map((datas) => {
+          {currentData.map((datas) => {
             return (
               <tr key={datas.id} className="bg-gray-100/{0-4}">
                 <td className="border px-4 py-2">{datas.id}</td>
@@ -72,23 +146,18 @@ const WoredaData = () => {
                   <Link
                     to={`/zoneDashboard/manageworedaAdmin/update/${datas.id}`}
                   >
-                      <BiEditAlt color="blue" size={32} />
-                    
+                    <BiEditAlt color="blue" size={32} />
                   </Link>
 
                   <Link
                     to={`/zoneDashboard/manageWoredaAdmin/view/${datas.id}`}
                   >
                     <button>
-                    <GrView color="white" size={32} />
-
+                      <GrView color="white" size={32} />
                     </button>
                   </Link>
-                  <button
-                    onClick={() => handleDelete(datas.id)}
-                  >
-                      <MdDelete color="red" size={30} />
-                    
+                  <button onClick={() => handleDelete(datas.id)}>
+                    <MdDelete color="red" size={30} />
                   </button>
                 </td>
               </tr>

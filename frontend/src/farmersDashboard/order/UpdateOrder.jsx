@@ -20,8 +20,10 @@ const MAIN_TYPES = {
 };
 
 function UpdateOrder() {
+
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const role = storedUser.role;
+
   const [formData, setFormData] = useState({
     input_type: "",
     subtype: "",
@@ -39,7 +41,7 @@ function UpdateOrder() {
         if (res.data) {
           setFormData({
             input_type: res.data.input_type,
-            subtype: res.data.subtype,
+            subtype: res.data.subType,
             amount: res.data.amount,
             role: role,
           });
@@ -54,7 +56,7 @@ function UpdateOrder() {
     e.preventDefault();
     try {
       const { input_type, subtype, amount, role } = formData;
-      await axios.put(`http://localhost:5001/api/v1/order/update/${id}`, {
+      await axios.put(`http://localhost:5001/api/v1/order/updates/${id}`, {
         input_type,
         subtype,
         amount,
