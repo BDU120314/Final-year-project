@@ -23,6 +23,7 @@ const ZoneDisplay = () => {
     axios
       .get("http://localhost:5001/api/v1/addzone")
       .then((response) => {
+        console.log(response.data)
         setWoredasData(response.data);
       })
       .catch((error) => {
@@ -31,7 +32,12 @@ const ZoneDisplay = () => {
   }, []);
 
   return (
+    <div className="flex flex-col">
+      <h2 className="text-black font-extrabold leading-10 py-[25px] flex justify-center items-center">
+        Zone Management Form
+      </h2>
     <div className="flex  justify-center items-center px-1 lg:px-20 py-5">
+      
       <table className="table-auto w-full">
         <thead className="bg-gray-500 sticky top-16">
           <tr>
@@ -77,6 +83,7 @@ const ZoneDisplay = () => {
           })}
         </tbody>
       </table>
+    </div>
     </div>
   );
 };

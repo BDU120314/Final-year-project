@@ -9,12 +9,13 @@ import { FaSearch } from "react-icons/fa";
 
 const LandAdminForm1 = () => {
   const [admin, setAdmin] = useState([]);
-   const [filteredData, setFilteredData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
   const user = JSON.parse(localStorage.getItem("user"));
-   const [formData, setFormData] = useState("");
+  const [formData, setFormData] = useState("");
   const [kebeleData, setKebeleData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 7;
+
   useEffect(() => {
     const adminData = async () => {
       const response = await axios.get(
@@ -24,6 +25,7 @@ const LandAdminForm1 = () => {
     };
     adminData();
   }, [user.rep_id]);
+
   const handleDelete = (id) => {
     axios
       .delete(`http://localhost:5001/api/v1/kebele/delete/${id}`)
@@ -47,51 +49,51 @@ const LandAdminForm1 = () => {
       });
   }, [admin]);
 
-   const handleSubmit = (e) => {
-     e.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-     const filteredData = kebeleData.filter((data) => {
-       const lowercasedFormData = formData.toLowerCase();
-       const lowercasedFname = data.fname.toLowerCase();
-       const lowercasedLname = data.mname.toLowerCase();
-       const lowercasedEmail = data.email.toLowerCase();
-       const lowercasedId = data.id.toString().toLowerCase();
-       const lowercasedPhone_number = data.phone_number.toString().toLowerCase();
+    const filteredData = kebeleData.filter((data) => {
+      const lowercasedFormData = formData.toLowerCase();
+      const lowercasedFname = data.fname.toLowerCase();
+      const lowercasedLname = data.mname.toLowerCase();
+      const lowercasedEmail = data.email.toLowerCase();
+      const lowercasedId = data.id.toString().toLowerCase();
+      const lowercasedPhone_number = data.phone_number.toString().toLowerCase();
 
-       return (
-         lowercasedFname.includes(lowercasedFormData) ||
-         lowercasedLname.includes(lowercasedFormData) ||
-         lowercasedEmail.includes(lowercasedFormData) ||
-         lowercasedPhone_number.includes(lowercasedFormData) ||
-         lowercasedId.includes(lowercasedFormData)
-       );
-     });
+      return (
+        lowercasedFname.includes(lowercasedFormData) ||
+        lowercasedLname.includes(lowercasedFormData) ||
+        lowercasedEmail.includes(lowercasedFormData) ||
+        lowercasedPhone_number.includes(lowercasedFormData) ||
+        lowercasedId.includes(lowercasedFormData)
+      );
+    });
 
-     if (filteredData.length === 0) {
-       toast.info("No results found");
-     }
-     setFilteredData(filteredData);
-   };
-const handleClickPrevious = () => {
-  setCurrentPage((prevPage) => prevPage - 1);
-};
+    if (filteredData.length === 0) {
+      toast.info("No results found");
+    }
+    setFilteredData(filteredData);
+  };
+  const handleClickPrevious = () => {
+    setCurrentPage((prevPage) => prevPage - 1);
+  };
 
-const handleClickNext = () => {
-  setCurrentPage((prevPage) => prevPage + 1);
-};
+  const handleClickNext = () => {
+    setCurrentPage((prevPage) => prevPage + 1);
+  };
 
-const startIndex = (currentPage - 1) * itemsPerPage;
-const endIndex = startIndex + itemsPerPage;
-const currentData =
-  filteredData.length > 0
-    ? filteredData.slice(startIndex, endIndex)
-    : kebeleData.slice(startIndex, endIndex);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentData =
+    filteredData.length > 0
+      ? filteredData.slice(startIndex, endIndex)
+      : kebeleData.slice(startIndex, endIndex);
 
-const totalPages = Math.ceil(kebeleData.length / itemsPerPage);
+  const totalPages = Math.ceil(kebeleData.length / itemsPerPage);
 
   return (
-    <div className="flex justify-center flex-col items-center px-5">
-      <div className="flex rounded-[5px] mx-14 my-10 gap-5">
+    <div className="flex justify-start flex-col items-start px-1 h-screen mt-0">
+      <div className="flex rounded-[5px] mx-1 my-10 gap-5">
         <form
           action=""
           onSubmit={handleSubmit}
@@ -116,8 +118,8 @@ const totalPages = Math.ceil(kebeleData.length / itemsPerPage);
           </button>
         </form>
       </div>
-      <h1 className="text-[25px]"> Representative Management Form </h1>
-      <div className="overflow-x-auto w-full">
+
+      <div className="overflow-y-auto  w-full h-screen">
         <table className="table-auto min-w-full">
           <thead className="bg-gray-100">
             <tr>
@@ -128,6 +130,7 @@ const totalPages = Math.ceil(kebeleData.length / itemsPerPage);
               <th className="px-4 py-2">Phone Number</th>
               <th className="px-4 py-2">User Name</th>
               <th className="px-4 py-2">Kebele ID</th>
+
               <th className="px-4 py-2 w-auto">Action</th>
             </tr>
           </thead>

@@ -11,7 +11,7 @@ const RegionDashboard = () => {
       </div>
       <div className="basis-[100%] lg:basis-[82%] border">
         <RegionHeader />
-        <div className="mt-[70px]">
+        <div className="mt-[50px]">
           <Outlet></Outlet>
         </div>
       </div>

@@ -279,7 +279,7 @@ const ZoneSideBar = () => {
           </div>
           {/* Responsive sidebar content */}
           {showSidebar && (
-            <div className="lg:hidden bg-[#3d3d75] h-[95%] w-[30%] flex flex-col fixed top-[70px] left-0 z-50">
+            <div className="lg:hidden bg-[#3d3d75] h-[95%] w-[50%] flex flex-col fixed top-[70px] left-0 z-50">
               <div className="flex flex-col justify-center gap-5 py-5">
                 <div
                   className={`flex cursor-pointer items-center hover:bg-gray-400 px-3 py-1 rounded-md gap-5 text-white ${
@@ -288,7 +288,7 @@ const ZoneSideBar = () => {
                   onClick={() => handleLinkClick("woreda")}
                 >
                   <GiVillage color="white" fontSize={24} />
-                  <span className="text-[16px] font-bold">Woreda</span>
+                  <span className="text-[16px] font-bold mr-10">Woreda</span>
                   <FaChevronRight
                     color="white"
                     className={
@@ -332,7 +332,7 @@ const ZoneSideBar = () => {
                   onClick={() => handleLinkClick("landadmin")}
                 >
                   <GrUserAdmin color="white" fontSize={24} />
-                  <span className="text-[16px] font-bold">Representative</span>
+                  <span className="text-[16px] font-bold mr-2">Woreda Admin</span>
                   <FaChevronRight
                     color="white"
                     className={
@@ -374,18 +374,20 @@ const ZoneSideBar = () => {
                   </nav>
                 )}
                 <div
-                  className={`flex cursor-pointer  hover:bg-gray-400 pr-[105px] pl-[15px] hover:rounded-md  py-1 text-white ${
+                  className={`flex cursor-pointer flex-row hover:bg-gray-400 pr-[105px] pl-[15px] hover:rounded-md  py-1 text-white ${
                     openLink === "orders" ? "bg-green-300 rounded-md" : ""
                   }`}
                   onClick={() => handleLinkClick("orders")}
                 >
-                  <Link to="/zoneDashboard/orders">
-                    <div className="flex items-center gap-2">
-                      <AiOutlineBorderOuter color="white" fontSize={32} />
-                      <span className="text-[16px] font-bold">Orders</span>
+                  <Link to="/zoneDashboard/orders"
+                  className="flex flex-row "
+                  >
+                    <div className="flex items-center -ml-2">
+                      <AiOutlineBorderOuter className="text-white ml-2" fontSize={32} />
+                      <span className="text-[16px] font-bold mr-10">Orders</span>
                     </div>
 
-                    <div className="bg-blue-500 text-white rounded-full w-12 justify-center items-center flex h-6">
+                    <div className="bg-blue-500 text-white rounded-full w-12  justify-center items-center flex h-6">
                       <span>{pendingOrderCount}</span>
                     </div>
                   </Link>
@@ -394,7 +396,7 @@ const ZoneSideBar = () => {
                   className={`flex cursor-pointer  hover:bg-gray-400 pr-[105px] pl-[15px] hover:rounded-md  py-1 text-white ${
                     openLink === "orders" ? "bg-green-300 rounded-md" : ""
                   }`}
-                  onClick={() => handleLinkClick("orders")}
+                  onClick={() => handleLinkClick("coming")}
                 >
                   <Link to="/zoneDashboard/coming">
                     <div className="flex items-center gap-2">
@@ -452,10 +454,9 @@ const ZoneSideBar = () => {
               </div>
               <div
                 onClick={handleLogout}
-                className="flex items-center justify-center gap-2 bg-red-200 h-10 px-5 mt-[auto] rounded-md cursor-pointer"
+                className="flex items-center justify-center gap-2  h-10 px-5 mt-10 rounded-md cursor-pointer"
               >
-                <FiLogOut color="white" fontSize={24} />
-                <p className="text-white text-[16px]">Log Out</p>
+                <button className="text-white text-[16px] h-10 bg-red-600 hover:bg-gray-400 w-32 flex items-center justify-center rounded-sm"><FiLogOut color="white" fontSize={24} />Log Out</button>
               </div>
             </div>
           )}

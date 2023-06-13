@@ -45,7 +45,7 @@ const convertToEthiopianDate = (time) => {
   const serverTime = new Date(time);
   const ethiopianYear = serverTime.getFullYear() - 8;
   const ethiopianMonth = serverTime.getMonth() + 5; // Adjusted to +1
-  const ethiopianDay = serverTime.getDate() - 6; // Adjusted to -6
+  const ethiopianDay = serverTime.getDate() - 7; // Adjusted to -6
   if (ethiopianDay <= 0) {
     // If the day is negative or zero, adjust the month and year accordingly
     const daysInEthiopianMonth = 30; // Assuming 30 days in each month (you can adjust it as per the Ethiopian calendar)

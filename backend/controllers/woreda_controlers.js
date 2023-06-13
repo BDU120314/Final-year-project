@@ -17,7 +17,7 @@ const CreateWoreda = async (req, res) => {
 
   try {
     // Hash the password
-    const hashedPassword = await bcrypt.hash(password, 10);
+    // const hashedPassword = await bcrypt.hash(password, 10);
 
     const sql = `INSERT INTO representative (fname, mname, lname, gender, email, phone_number, user_name, password, woreda_id, role_id) VALUES (?,?,?,?,?,?,?,?,?,?)`;
 
@@ -31,7 +31,7 @@ const CreateWoreda = async (req, res) => {
         email,
         phone_number,
         user_name,
-        hashedPassword,
+        password,
         woreda_id,
         role_id,
       ],

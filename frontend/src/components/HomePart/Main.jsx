@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import images from "../../assets/images.jpg";
-import download from "../../assets/Photo/download.jpg";
+import images from "../../assets/pestiside.jpeg";
+import download from "../../assets/seed.jpg";
 import urea from "../../assets/Photo/urea.jpg";
 import chemical_fertilizer from "../../assets/Photo/chemical_fertilizer.jpg";
 import green from "../../assets/Green.jpg";
+import About from "../../pages/About";
 
 const Main = () => {
   return (
@@ -28,23 +29,27 @@ const Main = () => {
           <p className="mt-2 text-3xl font-extrabold leading-8 tracking-tight text-gray-900 dark:text-white sm:text-4xl"></p>
         </div>
         <div className="grid grid-cols-1 gap-8 p-5 md:grid-cols-2 lg:grid-cols-3">
-          <div className="border hover:scale-95 shadow-lg">
-            <Link to="/pestiSide?filter=pesti side">
+          <div className="border hover:scale-95 shadow-md">
+            <Link to="/pestiSide?filter=Chemicals">
               <div className="flex flex-col items-center mb-6">
                 <img
                   src={images}
                   alt="New"
                   className="h-[300px] w-full object-cover rounded-[5px]"
                 />
-                <div className="ml-4 text-xl">Pesti Side</div>
+                <div className="ml-4 text-xl">Chemicals</div>
               </div>
               <p className="leading-loose px-5 text-gray-500 dark:text-gray-200 text-md">
-                Receive more sales by selling across multiple sales channels
-                instead of just having a single point of entry.
+                Pesticides – also known as agricultural chemicals – are
+                substances that are used to protect plants against pests. They
+                include herbicides to kill weeds, fungicides to get rid of
+                diseases and insecticides to kill bugs. Those chemicals are
+                unfortunately not only getting rid of the unwanted but can also
+                cause harm to our health and the environment.
               </p>
             </Link>
           </div>
-          <div className="border hover:scale-95 shadow-lg">
+          {/* <div className="border hover:scale-95 shadow-lg">
             <Link to="/pestiSide?filter=Agrochemicals">
               <div className="flex flex-col items-center mb-6">
                 <div className="ml-4 text-xl">Agrochemicals</div>
@@ -54,24 +59,27 @@ const Main = () => {
                 through our platform. A visual touch.
               </p>
             </Link>
-          </div>
+          </div> */}
           <div className="border hover:scale-95 shadow-lg">
-            <Link to="/pestiSide?filter=Organic Fertilizer">
+            <Link to="/pestiSide?filter=Seed">
               <div className="flex flex-col items-center mb-6">
                 <img
                   src={download}
                   alt="New"
                   className="h-[300px] w-full object-cover rounded-[5px]"
                 />
-                <div className="ml-4 text-xl">Organic Fertilizer</div>
+                <div className="ml-4 text-xl">Seed</div>
               </div>
               <p className="leading-loose px-5 text-gray-500 dark:text-gray-200 text-md">
-                Apply filters and control which products to sell on each sales
-                channel. E.g. exclude products with low margins.
+                Organic Cover Crop Seed Product ID: 4170G Six-row barley with
+                improved disease resistance. A six-row malting barley for spring
+                sowing that has improved Fusarium head blight (or scab)
+                resistance. Higher yielding than Robust barley, which it
+                replaced. Sow at 85 lb./acre or 2 lb./1,000
               </p>
             </Link>
           </div>
-          <div className="border hover:scale-95 shadow-lg">
+          {/* <div className="border hover:scale-95 shadow-lg">
             <Link to="/pestiSide?filter=Chemical Fertilizer">
               <div className="flex flex-col items-center mb-6">
                 <img
@@ -86,24 +94,27 @@ const Main = () => {
                 and achieve better results and lower costs.
               </p>
             </Link>
-          </div>
+          </div> */}
           <div className="border hover:scale-95 shadow-lg">
-            <Link to="/pestiSide?filter=Organic Farming">
+            <Link to="/pestiSide?filter=Fertilizers">
               <div className="flex flex-col items-center mb-6">
                 <img
                   src={urea}
                   alt=""
                   className="h-[300px] w-full object-cover rounded-[5px]"
                 />
-                <div className="ml-4 text-xl">Organic Farming</div>
+                <div className="ml-4 text-xl">Fertilizers</div>
               </div>
               <p className="leading-loose px-5 text-gray-500 dark:text-gray-200 text-md">
-                Modify products with extra properties and achieve the maximum
-                output for each installed sales channel.
+                fertilizer, natural or artificial substance containing the
+                chemical elements that improve growth and productiveness of
+                plants. Fertilizers enhance the natural fertility of the soil or
+                replace chemical elements taken from the soil by previous crops.
               </p>
             </Link>
           </div>
         </div>
+        <About />
       </div>
     </div>
   );

@@ -83,12 +83,12 @@ const ZoneData = () => {
 
 
   return (
-    <div className="flex justify-start flex-col items-start px-5">
+    <div className=" flex justify-start flex-col items-start px-1h-screen mt-0 ">
       <div className="flex rounded-[5px] mx-14 my-10 gap-5">
         <form
           action=""
           onSubmit={handleSubmit}
-          className="flex items-center justify-center"
+          className="flex justify-start items-start"
         >
           <input
             id="search"
@@ -109,11 +109,7 @@ const ZoneData = () => {
           </button>
         </form>
       </div>
-      {/* <h2 className="flex items-center justify-center  text-[25px] ">
-        {" "}
-        Zone Representative Modification Form
-      </h2> */}
-      <div className="flex  justify-center   items-center ">
+      <div className="overflow-y-auto h-screen">
         <table className="table-auto w-full">
           <thead className="bg-gray-100">
             <tr>

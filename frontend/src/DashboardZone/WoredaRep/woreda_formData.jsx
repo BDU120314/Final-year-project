@@ -6,6 +6,7 @@ import { BiEditAlt } from "react-icons/bi";
 import { MdDelete } from "react-icons/md";
 import { FaSearch } from "react-icons/fa";
 import { toast } from "react-toastify";
+
 const WoredaData = () => {
   const [woredaData, setWoredData] = useState([]);
   const [admin, setAdmin] = useState([]);
@@ -20,7 +21,6 @@ const WoredaData = () => {
       const response = await axios.get(
         `http://localhost:5001/api/v1/zone/${user.rep_id}`
       );
-      
       setAdmin(response.data[0]);
     };
     adminData();
@@ -31,12 +31,13 @@ const WoredaData = () => {
       .delete(`http://localhost:5001/api/v1/woreda/delete/${id}`)
       .then((response) => {
         setWoredData(woredaData.filter((item) => item.id !== id));
-        console.log(`deleted user id :${id}`);
+        console.log(`deleted user id: ${id}`);
       })
       .catch((error) => {
         console.log(error);
       });
   };
+
   useEffect(() => {
     axios
       .get(`http://localhost:5001/api/v1/woreda/fetch/${admin.zone_id}`)
@@ -92,8 +93,9 @@ const WoredaData = () => {
 
 
   return (
-    <div className="flex justify-center flex-col items-center px-5 ">
-      <div className="flex rounded-[5px] mx-14 my-10 gap-5">
+
+   <div className="flex justify-start flex-col items-start px-1 mt-0">
+      <div className="flex rounded-[5px] mx-1 my-10 gap-5">
         <form
           action=""
           onSubmit={handleSubmit}
@@ -118,6 +120,7 @@ const WoredaData = () => {
           </button>
         </form>
       </div>
+     <div className="overflow-y-auto ">
       <table className="table-auto w-full">
         <thead className="bg-gray-100">
           <tr>
@@ -158,13 +161,14 @@ const WoredaData = () => {
                   </Link>
                   <button onClick={() => handleDelete(datas.id)}>
                     <MdDelete color="red" size={30} />
+
                   </button>
                 </td>
               </tr>
-            );
-          })}
-        </tbody>
-      </table>
+            )})}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

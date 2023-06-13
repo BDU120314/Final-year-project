@@ -77,14 +77,17 @@ const ManageOrders = () => {
                 <td className="border px-4 py-1">
                   {order.status === "Completed" ? "ordered" : order.status}
                 </td>
+
                 <td className="border px-4 py-1 flex justify-center items-center gap-3">
-                  <Link
-                    to={`/farmerDashboard/manageAccount/order/update/${order.id}`}
-                  >
-                    <button className="px-2 rounded-sm hover:bg-gray-400">
-                      <BiEditAlt color="blue" size={32} />
-                    </button>
-                  </Link>
+                  {order.status === "Completed" ? "" : (
+                    <Link
+                      to={`/farmerDashboard/manageAccount/order/update/${order.id}`}
+                    >
+                      <button className="px-2 rounded-sm hover:bg-gray-400">
+                        <BiEditAlt color="blue" size={32} />
+                      </button>
+                    </Link>
+                  )}
                   <button
                     onClick={() => handleDelete(order.id)}
                     className="hover:bg-gray-400 px-2 rounded-sm"
